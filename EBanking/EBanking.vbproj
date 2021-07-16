@@ -216,6 +216,13 @@
       <DependentUpon>Operation.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="Official\Print\OpenAccountCheck.aspx.designer.vb">
+      <DependentUpon>OpenAccountCheck.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Print\OpenAccountCheck.aspx.vb">
+      <DependentUpon>OpenAccountCheck.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Official\rdDeposit.aspx.designer.vb">
       <DependentUpon>rdDeposit.aspx</DependentUpon>
     </Compile>
@@ -334,6 +341,10 @@
     <Content Include="Content\Images\small-logo.svg" />
     <Content Include="Content\Images\user.svg" />
     <Content Include="App_Data\ApplicationMenuDataSource.sitemap" />
+    <Content Include="DATA\Image\1560Photo190620211227" />
+    <Content Include="DATA\Image\1560PhotoDD06YYY1224" />
+    <Content Include="DATA\Image\156312PhotoDD06YYY1224" />
+    <Content Include="DATA\Image\bgv44354Photo190620211228" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -353,12 +364,29 @@
     <Content Include="Content\Script.js" />
     <Content Include="Content\SignInRegister.css" />
     <Content Include="Content\SignInRegister.js" />
+    <Content Include="DATA\Image\1234343Photo190620211008.png" />
+    <Content Include="DATA\Image\123456789Photo270620211126.jpg" />
+    <Content Include="DATA\Image\customer Details.png" />
+    <Content Include="DATA\Image\tre1234Photo190620211007.png" />
+    <Content Include="DATA\Image\tre1234Photo190620211026.png" />
+    <Content Include="DATA\Image\tre1234Photo190620211033.png" />
+    <Content Include="DATA\Image\vter123Photo19062021710.png" />
+    <Content Include="DATA\Sign\1234343Sign190620211008.png" />
+    <Content Include="DATA\Sign\123456789Sign270620211126.jpg" />
+    <Content Include="DATA\Sign\1560Sign190620211227.png" />
+    <Content Include="DATA\Sign\bgv44354Sign190620211228.png" />
+    <Content Include="DATA\Sign\customer registration.png" />
+    <Content Include="DATA\Sign\tre1234Sign190620211007.png" />
+    <Content Include="DATA\Sign\tre1234Sign190620211023.png" />
+    <Content Include="DATA\Sign\tre1234Sign190620211028.png" />
+    <Content Include="DATA\Sign\vter123Sign19062021710.png" />
     <Content Include="Official\addAccount.aspx" />
     <Content Include="Official\addcif.aspx" />
     <Content Include="Official\Default.aspx" />
     <Content Include="Official\newopentransction.aspx" />
     <Content Include="Official\openAccount.aspx" />
     <Content Include="Official\Operation.aspx" />
+    <Content Include="Official\Print\OpenAccountCheck.aspx" />
     <Content Include="Official\rdDeposit.aspx" />
     <Content Include="Official\sbDeposit.aspx" />
     <Content Include="Official\sbInterest.aspx" />

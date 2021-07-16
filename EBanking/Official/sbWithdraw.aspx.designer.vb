@@ -104,6 +104,15 @@ Partial Public Class sbWithdraw
     Protected WithEvents nametb2 As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
+    '''ASPxRoundPanel1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ASPxRoundPanel1 As Global.DevExpress.Web.ASPxRoundPanel
+    
+    '''<summary>
     '''photophoto control.
     '''</summary>
     '''<remarks>

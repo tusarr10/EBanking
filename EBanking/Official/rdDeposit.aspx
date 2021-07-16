@@ -13,7 +13,7 @@
         <ClientSideEvents NodeClick="function (s, e) { HideLeftPanelIfRequired(); }" />
     </dx:ASPxTreeView>
 
-   <asp:XmlDataSource ID="NodesDataSource" runat="server" DataFile="~/App_Data/DefaultLeft.xml" XPath="//Nodes/TransctionNode/*" />
+    <asp:XmlDataSource ID="NodesDataSource" runat="server" DataFile="~/App_Data/DefaultLeft.xml" XPath="//Nodes/TransctionNode/*" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="RightPanelContent" runat="server">
 </asp:Content>
@@ -108,21 +108,24 @@
         </div>
 
         <div class="card-body">
-            <button type="button" class="collapsible1">User Details</button>
-            <div class="content">
+            <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" Width="100%" ClientInstanceName="roundpanel" HeaderText="User Details" AllowCollapsingByHeaderClick="True" ShowCollapseButton="True" LoadContentViaCallback="True" Collapsed="true" EnableAnimation="True">
+                <PanelCollection>
+                    <dx:PanelContent>
 
-                <div class="card ">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <center>
+                        <div class="content">
+
+                            <div class="card ">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <center>
                            <h4>Details</h4>
                         </center>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <center>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <center>
                                    
                                      <dx:ASPxImage ID="photophoto" runat="server" ShowLoadingImage="true" Theme="Material" AlternateText="Photo" Height="100px" Width="100px">
                                          <Border BorderColor="#33CC33" BorderStyle="Solid" BorderWidth="1px" />
@@ -130,109 +133,114 @@
                                    
                            <%--<img width="100px" src="../Resour/Images/generaluser.png" alt="Photo" />--%>
                         </center>
-                            </div>
-                        </div>
+                                        </div>
+                                    </div>
 
-                        <div class="row">
-                            <div class="col">
-                                <hr>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label>Cif ID</label>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <asp:TextBox CssClass="form-control" ID="CifInfo" runat="server" placeholder="CIF ID" ReadOnly="True"></asp:TextBox>
+                                    <div class="row">
+                                        <div class="col">
+                                            <hr>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Cif ID</label>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <asp:TextBox CssClass="form-control" ID="CifInfo" runat="server" placeholder="CIF ID" ReadOnly="True"></asp:TextBox>
 
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Full Name</label>
+                                            <div class="form-group  ">
+                                                <asp:TextBox CssClass="form-control" ID="NameInfo" runat="server" placeholder="Full Name" ReadOnly="True"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label>CIF Status</label>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <asp:TextBox CssClass="form-control mr-1" ID="CifStatustb" runat="server" placeholder="Account Status" ReadOnly="True"></asp:TextBox>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>DOB</label>
+                                            <div class="form-group  ">
+                                                <asp:TextBox CssClass="form-control" ID="dobtb" runat="server" placeholder="Date" TextMode="Date" ReadOnly="True"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Gender</label>
+                                            <div class="form-group">
+                                                <asp:DropDownList CssClass="form-control" ID="genderlb" runat="server" placeholder="Gender" ReadOnly="True" Enabled="False">
+                                                    <asp:ListItem Text="Male" Value="Male" />
+                                                    <asp:ListItem Text="Female" Value="Female" />
+                                                    <asp:ListItem Text="Other" Value="Other" />
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Contact No</label>
+                                            <div class="form-group">
+                                                <asp:TextBox CssClass="form-control" ID="mobiletb" runat="server" placeholder="Contact No" ReadOnly="True"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Email ID</label>
+                                            <div class="form-group">
+                                                <asp:TextBox CssClass="form-control" ID="emailtb" runat="server" placeholder="Email ID" ReadOnly="True"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Pan</label>
+                                            <div class="form-group">
+                                                <asp:TextBox CssClass="form-control" ID="pantb" runat="server" placeholder="PAN No" ReadOnly="True"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Aadhar No</label>
+                                            <div class="form-group">
+                                                <asp:TextBox CssClass="form-control" ID="adhartb" runat="server" placeholder="Adhar Card No" ReadOnly="True"></asp:TextBox>
+                                            </div>
+                                        </div>
 
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label>Full Name</label>
-                                <div class="form-group  ">
-                                    <asp:TextBox CssClass="form-control" ID="NameInfo" runat="server" placeholder="Full Name" ReadOnly="True"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                <label>CIF Status</label>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <asp:TextBox CssClass="form-control mr-1" ID="CifStatustb" runat="server" placeholder="Account Status" ReadOnly="True"></asp:TextBox>
 
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <label>Full Postal Address</label>
+                                            <div class="form-group">
+                                                <asp:TextBox CssClass="form-control" ID="addresstb" runat="server" placeholder="Full Postal Address" TextMode="MultiLine" Rows="2" ReadOnly="True"></asp:TextBox>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label>DOB</label>
-                                <div class="form-group  ">
-                                    <asp:TextBox CssClass="form-control" ID="dobtb" runat="server" placeholder="Date" TextMode="Date" ReadOnly="True"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label>Gender</label>
-                                <div class="form-group">
-                                    <asp:DropDownList CssClass="form-control" ID="genderlb" runat="server" placeholder="Gender" ReadOnly="True" Enabled="False">
-                                        <asp:ListItem Text="Male" Value="Male" />
-                                        <asp:ListItem Text="Female" Value="Female" />
-                                        <asp:ListItem Text="Other" Value="Other" />
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label>Contact No</label>
-                                <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="mobiletb" runat="server" placeholder="Contact No" ReadOnly="True"></asp:TextBox>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label>Email ID</label>
-                                <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="emailtb" runat="server" placeholder="Email ID" ReadOnly="True"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label>Pan</label>
-                                <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="pantb" runat="server" placeholder="PAN No" ReadOnly="True"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label>Aadhar No</label>
-                                <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="adhartb" runat="server" placeholder="Adhar Card No" ReadOnly="True"></asp:TextBox>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="row">
-                            <div class="col-12">
-                                <label>Full Postal Address</label>
-                                <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="addresstb" runat="server" placeholder="Full Postal Address" TextMode="MultiLine" Rows="2" ReadOnly="True"></asp:TextBox>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <center>
+                                    <div class="row">
+                                        <div class="col">
+                                            <center>
                                       <%--  <img width="100px" src="../Resour/Images/generalSign.png" alt="Signiture" />--%>
                                     <dx:ASPxImage ID="photosign" runat="server" ShowLoadingImage="true" AlternateText="Signiture" Theme="Material" Border-BorderColor="#33CC33" Border-BorderStyle="Solid" Border-BorderWidth="1px" Width="100px" Height="50px"></dx:ASPxImage>
                                    </center>
+                                        </div>
+
+                                    </div>
+
+                                </div>
                             </div>
 
                         </div>
 
-                    </div>
-                </div>
+                    </dx:PanelContent>
+                </PanelCollection>
+            </dx:ASPxRoundPanel>
 
-            </div>
         </div>
 
         <div class="row">

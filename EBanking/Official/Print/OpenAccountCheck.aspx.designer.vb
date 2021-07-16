@@ -11,446 +11,527 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class addAccount
+Partial Public Class OpenAccountCheck
     
     '''<summary>
-    '''TableOfContentsTreeView control.
+    '''form1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TableOfContentsTreeView As Global.DevExpress.Web.ASPxTreeView
+    Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
     
     '''<summary>
-    '''NodesDataSource control.
+    '''pnl1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents NodesDataSource As Global.System.Web.UI.WebControls.XmlDataSource
+    Protected WithEvents pnl1 As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''accIdTb control.
+    '''Label1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents accIdTb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''LinkButton4 control.
+    '''lbacname control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents LinkButton4 As Global.System.Web.UI.WebControls.LinkButton
+    Protected WithEvents lbacname As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''balanceTb control.
+    '''Label37 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents balanceTb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents Label37 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''AccStatustb control.
+    '''lbacno control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents AccStatustb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents lbacno As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''AccountStatusApproveBtn control.
+    '''Label43 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents AccountStatusApproveBtn As Global.System.Web.UI.WebControls.LinkButton
+    Protected WithEvents Label43 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''AccountStatusPendingBtn control.
+    '''lbcif control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents AccountStatusPendingBtn As Global.System.Web.UI.WebControls.LinkButton
+    Protected WithEvents lbcif As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''AccountStatusFreezBtn control.
+    '''Label39 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents AccountStatusFreezBtn As Global.System.Web.UI.WebControls.LinkButton
+    Protected WithEvents Label39 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''ASPxRoundPanel1 control.
+    '''lbreffno control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ASPxRoundPanel1 As Global.DevExpress.Web.ASPxRoundPanel
+    Protected WithEvents lbreffno As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''ciftb control.
+    '''Label45 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ciftb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents Label45 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''LinkButton5 control.
+    '''lbprno control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents LinkButton5 As Global.System.Web.UI.WebControls.LinkButton
+    Protected WithEvents lbprno As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''nametb control.
+    '''Label41 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents nametb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents Label41 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''name2tb control.
+    '''lbdoo control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents name2tb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents lbdoo As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''nominiregcb control.
+    '''Label47 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents nominiregcb As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents Label47 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''ProductCb control.
+    '''lbstatus control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ProductCb As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents lbstatus As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Modetb control.
+    '''Label2 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Modetb As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents Label2 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Guardiantb control.
+    '''lbdob control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Guardiantb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents lbdob As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''ASPxRoundPanel2 control.
+    '''Label4 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ASPxRoundPanel2 As Global.DevExpress.Web.ASPxRoundPanel
+    Protected WithEvents Label4 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''photophoto control.
+    '''lbgender control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents photophoto As Global.DevExpress.Web.ASPxImage
+    Protected WithEvents lbgender As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''CifInfo control.
+    '''Label6 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents CifInfo As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents Label6 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''NameInfo control.
+    '''lbmobile control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents NameInfo As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents lbmobile As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''CifStatustb control.
+    '''Label7 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents CifStatustb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents Label7 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''dobtb control.
+    '''lbemail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents dobtb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents lbemail As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''genderlb control.
+    '''Label10 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents genderlb As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents Label10 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''mobiletb control.
+    '''lbadhar control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents mobiletb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents lbadhar As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''emailtb control.
+    '''Label12 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents emailtb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents Label12 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''pantb control.
+    '''lbpan control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents pantb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents lbpan As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''adhartb control.
+    '''Label14 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents adhartb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents Label14 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''addresstb control.
+    '''lbaddress control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents addresstb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents lbaddress As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''signphoto control.
+    '''Label15 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents signphoto As Global.DevExpress.Web.ASPxImage
+    Protected WithEvents Label15 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''ASPxRoundPanel3 control.
+    '''lbproduct control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ASPxRoundPanel3 As Global.DevExpress.Web.ASPxRoundPanel
+    Protected WithEvents lbproduct As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''AcModetb control.
+    '''Label17 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents AcModetb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents Label17 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''GuardianNametb control.
+    '''lbterm control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents GuardianNametb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents lbterm As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Relationtb control.
+    '''Label19 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Relationtb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents Label19 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''ASPxRoundPanel4 control.
+    '''lbValue control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ASPxRoundPanel4 As Global.DevExpress.Web.ASPxRoundPanel
+    Protected WithEvents lbValue As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''ActypeInfotb control.
+    '''Label20 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ActypeInfotb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents Label20 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Actermtb control.
+    '''lbmop control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Actermtb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents lbmop As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''AccValuetb control.
+    '''Label22 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents AccValuetb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents Label22 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''ASPxRoundPanel5 control.
+    '''lbGuardian control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ASPxRoundPanel5 As Global.DevExpress.Web.ASPxRoundPanel
+    Protected WithEvents lbGuardian As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''NominiRegInfo control.
+    '''Label24 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents NominiRegInfo As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents Label24 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''NominiNameInfotb control.
+    '''lbname2 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents NominiNameInfotb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents lbname2 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''NominiRelationInfotb control.
+    '''Label26 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents NominiRelationInfotb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents Label26 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''NominiAgeInfotb control.
+    '''lbrelation control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents NominiAgeInfotb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents lbrelation As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''NominiAddressInfotb control.
+    '''Label27 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents NominiAddressInfotb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents Label27 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Button1 control.
+    '''lbnominireg control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents lbnominireg As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Button3 control.
+    '''Label29 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Button3 As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents Label29 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Button2 control.
+    '''lbnomininame control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Button2 As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents lbnomininame As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Errortb control.
+    '''Label31 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Errortb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents Label31 As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''lbnominirelation control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lbnominirelation As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Label33 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Label33 As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''lbnominidob control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lbnominidob As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Label35 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Label35 As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''lbnominiaddress control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lbnominiaddress As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Label36 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Label36 As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''lbbalance control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lbbalance As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''lb101 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lb101 As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''lbtrid control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lbtrid As Global.System.Web.UI.WebControls.Label
 End Class
