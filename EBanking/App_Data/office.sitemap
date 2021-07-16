@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="" title=""  description="">
+    <siteMapNode url="~/official/" title="Home"  description="" />
+    <siteMapNode url="~/official/transction.aspx" title="Transction"  description="" >
+      <siteMapNode url="#" title=" Saving Bank"  description="" >
+        <siteMapNode url="~/official/sbDeposit.aspx" title=" Deposit"  description=""/>
+        <siteMapNode url="~/official/sbWithdraw.aspx" title=" Withdraw"  description=""/>
+        <siteMapNode url="~/official/sbInterest.aspx" title=" Interest"  description=""/>
+      </siteMapNode>
+    </siteMapNode>
+
+    <siteMapNode url="" title="Accounts"  description="" />
+    <siteMapNode url="~/official/operation.aspx" title="Operation"  description="" />
+    <siteMapNode url="" title="Report"  description="" />
+  </siteMapNode>
+</siteMap>

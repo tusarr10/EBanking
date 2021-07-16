@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Nodes>
+  <TreeViewNode Text="SB Transctions" NavigateUrl="#">
+    <TreeViewNode Text="Sb Deposit" NavigateUrl="sbDeposit.aspx" />
+    <TreeViewNode Text="Sb Withdraw" NavigateUrl="sbWithdraw.aspx" />
+    <TreeViewNode Text="Sb Interest" NavigateUrl="sbInterest.aspx" />
+    <TreeViewNode Text="SB Transfer " NavigateUrl="sbTransfer.aspx" />
+  </TreeViewNode>
+  <TreeViewNode Text="RD" NavigateUrl="#">
+    <TreeViewNode Text="RD Deposit" NavigateUrl="rdDeposit.aspx" />
+    <TreeViewNode Text="RD Withdraw" NavigateUrl="#" />
+    <TreeViewNode Text="RD Transfer" NavigateUrl="#" />
+    <TreeViewNode Text="Loan" NavigateUrl="#" />
+  </TreeViewNode>
+  <TreeViewNode Text="SSA" NavigateUrl="#">
+    <TreeViewNode Text="SSA Deposit" NavigateUrl="ssaDeposit.aspx" />
+    <TreeViewNode Text="SSA Withdraw" NavigateUrl="#" />
+    <TreeViewNode Text="SSA Interest" NavigateUrl="ssaInterest.aspx" />
+    <TreeViewNode Text="Loan" NavigateUrl="#" />
+  </TreeViewNode>
+  <TreeViewNode Text="TD" NavigateUrl="#">
+    <TreeViewNode Text="TD Deposit" NavigateUrl="#" />
+    <TreeViewNode Text="TD Withdraw" NavigateUrl="#" />
+    <TreeViewNode Text="TD Transfer" NavigateUrl="#" />
+    <TreeViewNode Text="Loan" NavigateUrl="#" />
+  </TreeViewNode>
+</Nodes>

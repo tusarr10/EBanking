@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Nodes>
+  <TreeViewNode Text="CIF" NavigateUrl="#">
+    <TreeViewNode Text="ADD" NavigateUrl="addcif.aspx" />
+    <TreeViewNode Text="NEW" NavigateUrl="#" />
+    <TreeViewNode Text="EDIT" NavigateUrl="# "/>
+    <TreeViewNode Text="Delete  " NavigateUrl="#" />
+      
+  </TreeViewNode>
+    
+  <TreeViewNode Text="Account" NavigateUrl="#">
+    <TreeViewNode Text="ADD" NavigateUrl="addAccount.aspx" />
+    <TreeViewNode Text="NEW" NavigateUrl="openAccount.aspx">
+      <TreeViewNode Text="Funding" NavigateUrl="newopentransction.aspx" />
+      <TreeViewNode Text="Pending" NavigateUrl="#" />
+      <TreeViewNode Text="Status" NavigateUrl="#" />
+    </TreeViewNode>
+    
+    <TreeViewNode Text="Mod" NavigateUrl="#" />
+    <TreeViewNode Text="Delete" NavigateUrl="#" />
+  </TreeViewNode>
+  
+</Nodes>
