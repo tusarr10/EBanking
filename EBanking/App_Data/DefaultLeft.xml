@@ -1,61 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Nodes>
   <TransctionNode text="Transction" >
-    <TreeViewNode Text="SB Transctions" NavigateUrl="#">
+    <TreeViewNode Text="All Transctions" NavigateUrl="~/official/transction.aspx"/>
+    <TreeViewNode Text="SB Transctions" NavigateUrl="">
       <TreeViewNode Text="Sb Deposit" NavigateUrl="sbDeposit.aspx" />
       <TreeViewNode Text="Sb Withdraw" NavigateUrl="sbWithdraw.aspx" />
       <TreeViewNode Text="Sb Interest" NavigateUrl="sbInterest.aspx" />
       <TreeViewNode Text="SB Transfer " NavigateUrl="sbTransfer.aspx" />
     </TreeViewNode>
-    <TreeViewNode Text="RD" NavigateUrl="#">
+    <TreeViewNode Text="RD" NavigateUrl="">
       <TreeViewNode Text="RD Deposit" NavigateUrl="rdDeposit.aspx" />
       <TreeViewNode Text="RD Withdraw" NavigateUrl="#" />
       <TreeViewNode Text="RD Transfer" NavigateUrl="#" />
       <TreeViewNode Text="Loan" NavigateUrl="#" />
     </TreeViewNode>
-    <TreeViewNode Text="SSA" NavigateUrl="#">
+    <TreeViewNode Text="SSA" NavigateUrl="">
       <TreeViewNode Text="SSA Deposit" NavigateUrl="ssaDeposit.aspx" />
       <TreeViewNode Text="SSA Withdraw" NavigateUrl="#" />
       <TreeViewNode Text="SSA Interest" NavigateUrl="ssaInterest.aspx" />
       <TreeViewNode Text="Loan" NavigateUrl="#" />
     </TreeViewNode>
-    <TreeViewNode Text="TD" NavigateUrl="#">
+    <TreeViewNode Text="TD" NavigateUrl="">
       <TreeViewNode Text="TD Deposit" NavigateUrl="#" />
       <TreeViewNode Text="TD Withdraw" NavigateUrl="#" />
       <TreeViewNode Text="TD Transfer" NavigateUrl="#" />
       <TreeViewNode Text="Loan" NavigateUrl="#" />
     </TreeViewNode>
   </TransctionNode>
-  
-  
+
+
   <AccountNode text="Accounts" >
     <TreeViewNode Text="Daly Account" NavigateUrl="#" />
   </AccountNode>
-  
-  
+
+
   <OperationNode text="Operation">
-    <TreeViewNode Text="CIF" NavigateUrl="#">
+    <TreeViewNode Text="CIF" NavigateUrl="">
       <TreeViewNode Text="ADD" NavigateUrl="addcif.aspx" />
       <TreeViewNode Text="NEW" NavigateUrl="#" />
       <TreeViewNode Text="EDIT" NavigateUrl="# "/>
       <TreeViewNode Text="Delete  " NavigateUrl="#" />
     </TreeViewNode>
-    <TreeViewNode Text="Account" NavigateUrl="#">
+    <TreeViewNode Text="Account" NavigateUrl="">
       <TreeViewNode Text="ADD" NavigateUrl="addAccount.aspx" />
-      <TreeViewNode Text="NEW" NavigateUrl="openAccount.aspx">
+      <TreeViewNode Text="NEW" NavigateUrl="">
+        <TreeViewNode Text="Open  " NavigateUrl="openAccount.aspx" />
         <TreeViewNode Text="Funding" NavigateUrl="newopentransction.aspx" />
-        <TreeViewNode Text="Pending" NavigateUrl="#" />
-        <TreeViewNode Text="Status" NavigateUrl="#" />
+        <TreeViewNode Text="Pending" NavigateUrl="pendingAccount.aspx" />
+        <TreeViewNode Text="Status" NavigateUrl="StatusAccount.aspx" />
       </TreeViewNode>
       <TreeViewNode Text="Mod" NavigateUrl="#" />
       <TreeViewNode Text="Delete" NavigateUrl="#" />
     </TreeViewNode>
   </OperationNode>
-  
-  
+
+
   <ReportNode text="Report">
     <!--<treeViewNode text ="Report" navigateUrl="#">-->
-      <TreeViewNode Text="Generate" NavigateUrl="#" />
-    <!--</treeViewNode>-->
+    <TreeViewNode Text="Generate" NavigateUrl="">
+      <TreeViewNode Text="All Account" NavigateUrl="~/official/Operation.aspx" />
+    </TreeViewNode>
   </ReportNode>
 </Nodes>

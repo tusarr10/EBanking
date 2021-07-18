@@ -32,92 +32,38 @@ Partial Public Class Operation
     Protected WithEvents NodesDataSource As Global.System.Web.UI.WebControls.XmlDataSource
     
     '''<summary>
-    '''ciftb control.
+    '''PageToolbar control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ciftb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents PageToolbar As Global.DevExpress.Web.ASPxMenu
     
     '''<summary>
-    '''LinkButton5 control.
+    '''FilterPanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents LinkButton5 As Global.System.Web.UI.WebControls.LinkButton
+    Protected WithEvents FilterPanel As Global.DevExpress.Web.ASPxPanel
     
     '''<summary>
-    '''TextBox1 control.
+    '''SearchButtonEdit control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox1 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents SearchButtonEdit As Global.DevExpress.Web.ASPxButtonEdit
     
     '''<summary>
-    '''LinkButton1 control.
+    '''ASPxGridView1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents LinkButton1 As Global.System.Web.UI.WebControls.LinkButton
-    
-    '''<summary>
-    '''TextBox2 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents TextBox2 As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''LinkButton2 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents LinkButton2 As Global.System.Web.UI.WebControls.LinkButton
-    
-    '''<summary>
-    '''nominiregcb control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents nominiregcb As Global.System.Web.UI.WebControls.DropDownList
-    
-    '''<summary>
-    '''DropDownList1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents DropDownList1 As Global.System.Web.UI.WebControls.DropDownList
-    
-    '''<summary>
-    '''Button3 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Button3 As Global.System.Web.UI.WebControls.Button
-    
-    '''<summary>
-    '''BGridView1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents BGridView1 As Global.DevExpress.Web.Bootstrap.BootstrapGridView
+    Protected WithEvents ASPxGridView1 As Global.DevExpress.Web.ASPxGridView
 End Class

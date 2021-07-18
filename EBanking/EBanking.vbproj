@@ -168,6 +168,13 @@
       <DependentUpon>addcif.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="Official\AllOpenAccount.aspx.designer.vb">
+      <DependentUpon>AllOpenAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\AllOpenAccount.aspx.vb">
+      <DependentUpon>AllOpenAccount.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Official\class\AccountOperateModeHelper.vb" />
     <Compile Include="Official\class\AddAccountHelper.vb" />
     <Compile Include="Official\class\CifHelper.vb" />
@@ -382,6 +389,7 @@
     <Content Include="DATA\Sign\vter123Sign19062021710.png" />
     <Content Include="Official\addAccount.aspx" />
     <Content Include="Official\addcif.aspx" />
+    <Content Include="Official\AllOpenAccount.aspx" />
     <Content Include="Official\Default.aspx" />
     <Content Include="Official\newopentransction.aspx" />
     <Content Include="Official\openAccount.aspx" />
@@ -455,13 +463,13 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1056</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:1056/</IISUrl>
+          <IISUrl>http://localhost:9999/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
           </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
-          <servers defaultServer="SelfHostServer">
+          <servers defaultServer="">
             <server name="SelfHostServer" exePath="" cmdArgs="" url="http://localhost:1056/" workingDir="" />
           </servers>
         </WebProjectProperties>

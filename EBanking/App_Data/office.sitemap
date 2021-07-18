@@ -1,17 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   <siteMapNode url="" title=""  description="">
-    <siteMapNode url="~/official/" title="Home"  description="" />
-    <siteMapNode url="~/official/transction.aspx" title="Transction"  description="" >
-      <siteMapNode url="#" title=" Saving Bank"  description="" >
+    <siteMapNode url="~/official/" title="Home"  description="" >
+    </siteMapNode>
+
+    <siteMapNode url="" title="Transction"  description="" >
+      <siteMapNode url="~/Official/transction.aspx" title="All Transction"  description="" />
+      <siteMapNode url="" title="Saving Bank"  description="" >
         <siteMapNode url="~/official/sbDeposit.aspx" title=" Deposit"  description=""/>
         <siteMapNode url="~/official/sbWithdraw.aspx" title=" Withdraw"  description=""/>
         <siteMapNode url="~/official/sbInterest.aspx" title=" Interest"  description=""/>
       </siteMapNode>
+      <siteMapNode url="" title="RD " description="">
+        <siteMapNode url="~/Official/rdDeposit.aspx" description="" title="Deposit" />
+      </siteMapNode>
+      <siteMapNode url="" title="SSA " description="">
+        <siteMapNode url="~/Official/ssaDeposit.aspx" description="" title="Deposit" />
+      </siteMapNode>
     </siteMapNode>
-
     <siteMapNode url="" title="Accounts"  description="" />
-    <siteMapNode url="~/official/operation.aspx" title="Operation"  description="" />
-    <siteMapNode url="" title="Report"  description="" />
+    <siteMapNode url="" title="Operation"  description="" >
+      <siteMapNode description="" title="CIF" url="">
+        <siteMapNode description="" title="New" url="~/official/addcif.aspx" />
+        <siteMapNode description="" title="Edit Cif" url="" />
+      </siteMapNode>
+      <siteMapNode description="" title="Account" url="">
+        <siteMapNode title="Add Account" url="~\Official\addAccount.aspx" description=""/>
+        <siteMapNode title="New Account" description="" url="">
+          <siteMapNode title="Open New " description="" url="~\Official\openAccount.aspx" />
+          <siteMapNode title="Funding  " description="" url="~/official/newopentransction.aspx" />
+          <siteMapNode title="Pending  " description="" url="~\Official\pendingAccount.aspx" />
+          <siteMapNode title="Status  " description="" url="~\Official\statusAccount.aspx" />
+        </siteMapNode>
+        <siteMapNode title="Mod" url="" description="" />
+        <siteMapNode title="Delete " url="" description="" />
+      </siteMapNode>
+    </siteMapNode>
+    <siteMapNode url="" title="Report"  description="">
+      <siteMapNode title="All Account" url="~\Official\Operation.aspx" description=""/>
+      <siteMapNode title="New Account" url="~\Official\AllOpenAccount.aspx" description=""/>
+      <siteMapNode title="Transction" url="" description="">
+        <siteMapNode title="All Transction" url="~\Official\AllTrnsction.aspx" description=""/>
+        <siteMapNode title="Sb Transction" url="~\Official\AllSbTranstion.aspx" description=""/>
+        <siteMapNode title="RD Transction" url="~\Official\AllRdTranstion.aspx" description=""/>
+        <siteMapNode title="SSA Transction" url="~\Official\AllSsaTranstion.aspx" description=""/>
+        <siteMapNode title="Td Transction" url="~\Official\AlltdTranstion.aspx" description=""/>
+        <siteMapNode title="RLI Transction" url="~\Official\AllrpliTranstion.aspx" description=""/>
+        <siteMapNode title="IPPB Transction" url="~\Official\AllIppbTranstion.aspx" description=""/>
+      </siteMapNode >
+    </siteMapNode >
   </siteMapNode>
 </siteMap>

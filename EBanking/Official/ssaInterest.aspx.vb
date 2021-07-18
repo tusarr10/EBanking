@@ -19,10 +19,24 @@ Public Class ssaInterest
             MyMessageBox.Show(Me, "Choose Transction Type .. ")
         End If
     End Sub
+    Private Sub btnFindAccountClick()
+        Dim accountnumber As String
+        accountnumber = AcnoTb.Text.Trim
+        GetDataOfAccount(accountnumber)
+        'after successful search 
+    End Sub
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If datetb.Text = Nothing Then
             datetb.Text = DateAndTime.Now().ToString("yyyy-MM-dd")
         End If
+        Try
+            If Request.QueryString("value") IsNot Nothing Then
+                AcnoTb.Text = Request.QueryString("value").ToString
+                btnFindAccountClick()
+            End If
+        Catch ex As Exception
+
+        End Try
     End Sub
     Protected Sub LinkButton2_Click(sender As Object, e As EventArgs) Handles LinkButton2.Click
         DoCalculate()
@@ -62,10 +76,7 @@ Public Class ssaInterest
     End Sub 'Get Account Information Then Insert data in view
     Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
         'fo rsearch account number 
-        Dim accountnumber As String
-        accountnumber = AcnoTb.Text.Trim
-        GetDataOfAccount(accountnumber)
-        'after successful search 
+        btnFindAccountClick()
 
 
     End Sub

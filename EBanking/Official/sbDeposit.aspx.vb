@@ -32,6 +32,15 @@ Public Class sbDeposit
         Catch
 
         End Try
+        Try
+            If Request.QueryString("value") IsNot Nothing Then
+                accIdTb.Text = Request.QueryString("value").ToString
+                btnFindAccountClick()
+            End If
+        Catch ex As Exception
+
+        End Try
+
     End Sub
 
     Private Sub FillDataInView() 'get and put data from liveaccount
@@ -120,7 +129,7 @@ Public Class sbDeposit
         End Try
 
     End Sub
-    Private Sub GetDataOfAccount(ByVal accountnumber As String)
+    Private Sub GetDataOfAccount(ByVal accountnumber As String, cif As String)
         Try
             AccountSearch(accountnumber)
         Catch
@@ -133,7 +142,7 @@ Public Class sbDeposit
             If getAccountProductType(0) = "Saving" Then
                 If getAccountStatus(0) = "Active" Then
                     FillDataInView()
-                    FIllDataInCif(accountnumber)
+                    FIllDataInCif(getAccountCif(0))
                     FilldataInDLT(accountnumber)
                 Else
                     MyMessageBox.Show(Me, "This Is a Inactive Account ..")
@@ -148,10 +157,13 @@ Public Class sbDeposit
         End If
 
     End Sub
-    Protected Sub btnFindAccount_Click(sender As Object, e As EventArgs) Handles btnFindAccount.Click
+    Private Sub btnFindAccountClick()
         Dim accountnumber As String
         accountnumber = accIdTb.Text.Trim
-        GetDataOfAccount(accountnumber)
+        GetDataOfAccount(accountnumber, "")
+    End Sub
+    Protected Sub btnFindAccount_Click(sender As Object, e As EventArgs) Handles btnFindAccount.Click
+        btnFindAccountClick()
     End Sub
 
     Private Sub DoCalculate()

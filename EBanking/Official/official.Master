@@ -173,12 +173,5 @@
         </dx:ASPxGlobalEvents>
     </form>
 
-
-
-    <dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="ASPxLabel"></dx:ASPxLabel>
-
-
-
-
 </body>
 </html>

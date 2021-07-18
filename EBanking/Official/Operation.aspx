@@ -1,10 +1,12 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Official/official.Master" CodeBehind="Operation.aspx.vb" Inherits="TWEB.Operation" %>
 
-<%@ Register Assembly="DevExpress.Web.Bootstrap.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
+<%@ Register Assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
+    <link rel="stylesheet" type="text/css" href='<%# ResolveUrl("~/Content/GridView.css") %>' />
+    <script type="text/javascript" src='<%# ResolveUrl("~/Content/GridView.js") %>'></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="LeftPanelContent" runat="server">
-     <h3 class="leftpanel-section section-caption">Operation Type</h3>
+    <h3 class="leftpanel-section section-caption">Operation Type</h3>
     <dx:ASPxTreeView runat="server" ID="TableOfContentsTreeView" ClientInstanceName="tableOfContentsTreeView"
         EnableNodeTextWrapping="true" AllowSelectNode="true" Width="100%" SyncSelectionMode="None" DataSourceID="NodesDataSource" NodeLinkMode="ContentBounds">
         <Styles>
@@ -14,156 +16,115 @@
         <ClientSideEvents NodeClick="function (s, e) { HideLeftPanelIfRequired(); }" />
     </dx:ASPxTreeView>
 
-<asp:XmlDataSource ID="NodesDataSource" runat="server" DataFile="~/App_Data/DefaultLeft.xml" XPath="//Nodes/OperationNode/*" />
+    <asp:XmlDataSource ID="NodesDataSource" runat="server" DataFile="~/App_Data/DefaultLeft.xml" XPath="//Nodes/ReportNode/*" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="RightPanelContent" runat="server">
 </asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="PageToolbar" runat="server">
+<asp:Content runat="server" ContentPlaceHolderID="PageToolbar">
+
+    <dx:ASPxMenu runat="server" ID="PageToolbar" ClientInstanceName="pageToolbar"
+        ItemAutoWidth="false" ApplyItemStyleToTemplates="true" ItemWrap="false"
+        AllowSelectItem="false" SeparatorWidth="0"
+        Width="100%" CssClass="page-toolbar">
+
+        <ClientSideEvents ItemClick="onPageToolbarItemClick" />
+        <SettingsAdaptivity Enabled="true" EnableAutoHideRootItems="false"
+            EnableCollapseRootItemsToIcons="true" CollapseRootItemsToIconsAtWindowInnerWidth="600" />
+        <ItemStyle CssClass="item" VerticalAlign="Middle" />
+        <ItemImage Width="16px" Height="16px" />
+        <Items>
+            <dx:MenuItem Enabled="false">
+                <Template>
+                    <h1>Grid View</h1>
+                </Template>
+            </dx:MenuItem>
+            <dx:MenuItem Name="Deposit" Text="Deposit" Alignment="Right" AdaptivePriority="2">
+                <Image Url="../Content/Images/add.svg" />
+            </dx:MenuItem>
+            <dx:MenuItem Name="Withdraw" Text="Withdraw" Alignment="Right" AdaptivePriority="2">
+                <Image Url="../Content/Images/edit.svg" />
+            </dx:MenuItem>
+            <dx:MenuItem Name="View" Text="View" Alignment="Right" AdaptivePriority="2">
+                <Image Url="../Content/Images/delete.svg" />
+            </dx:MenuItem>
+            <dx:MenuItem Name="Export" Text="Export" Alignment="Right" AdaptivePriority="2">
+                <Image Url="../Content/Images/export.svg" />
+            </dx:MenuItem>
+            <dx:MenuItem Name="ToggleFilterPanel" Text="" GroupName="Filter" Alignment="Right" AdaptivePriority="1">
+                <Image Url="../Content/Images/search.svg" UrlChecked="../Content/Images/search-selected.svg" />
+            </dx:MenuItem>
+        </Items>
+    </dx:ASPxMenu>
+    <dx:ASPxPanel runat="server" ID="FilterPanel" ClientInstanceName="filterPanel"
+        Collapsible="true" CssClass="filter-panel">
+        <SettingsCollapsing ExpandEffect="Slide" AnimationType="Slide" ExpandButton-Visible="false" />
+        <PanelCollection>
+            <dx:PanelContent>
+                <dx:ASPxButtonEdit runat="server" ID="SearchButtonEdit" ClientInstanceName="searchButtonEdit" ClearButton-DisplayMode="Always" Caption="Search" Width="100%" />
+            </dx:PanelContent>
+        </PanelCollection>
+        <ClientSideEvents Expanded="onFilterPanelExpanded" Collapsed="adjustPageControls" />
+    </dx:ASPxPanel>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="PageContent" runat="server">
+    <div class="card ">
+        <dx:ASPxGridView ID="ASPxGridView1" runat="server" ClientInstanceName="gridView" EnablePagingGestures="False" CssClass="grid-view" Width="100%" OnCustomCallback="GridView_CustomCallback" KeyFieldName="accountnumber" AutoGenerateColumns="False">
+            <Columns>
+                <dx:GridViewCommandColumn ShowSelectCheckbox="True" SelectAllCheckboxMode="AllPages" VisibleIndex="0" Width="52"></dx:GridViewCommandColumn>
+                <dx:GridViewDataColumn FieldName="n_ame" Name="n_ame" Caption="Name" Width="250" VisibleIndex="2">
+                    <Settings FilterMode="DisplayText"></Settings>
+                </dx:GridViewDataColumn>
+                <dx:GridViewDataComboBoxColumn FieldName="producttype" Name="producttype" Width="150" Caption="Product Type" VisibleIndex="3">
+                    <PropertiesComboBox>
+                        <Columns>
+                            <dx:ListBoxColumn FieldName="Saving" Name="Saving" Caption="Saving Bank"></dx:ListBoxColumn>
+                            <dx:ListBoxColumn FieldName="RD" Name="RD" Caption="RD"></dx:ListBoxColumn>
+                            <dx:ListBoxColumn FieldName="SSA" Name="SSA" Caption="SSA"></dx:ListBoxColumn>
+                            <dx:ListBoxColumn FieldName="TD" Name="TD" Caption="TD"></dx:ListBoxColumn>
+                        </Columns>
+                    </PropertiesComboBox>
 
+                    <Settings FilterMode="DisplayText"></Settings>
+                </dx:GridViewDataComboBoxColumn>
+                <dx:GridViewDataDateColumn FieldName="accountnumber" Name="accountnumber" Caption="Account Number" VisibleIndex="1" Width="180"></dx:GridViewDataDateColumn>
 
-<div class="card ">
-        <div class="card-body ">
-            <div class="row ">
-                <div class="col-md-3">
-                    <label>Search By Account Number </label>
-                    <div class="input-group  ">
-                        <asp:TextBox CssClass="form-control" ID="ciftb" runat="server" placeholder="Eneter Account Number " ReadOnly="false"></asp:TextBox>
-                        <asp:LinkButton class="btn btn-primary" ID="LinkButton5" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <label>Search By CIF</label>
-                    <div class="input-group  ">
-                        <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" placeholder="Enter CIF ID" ReadOnly="false"></asp:TextBox>
-                        <asp:LinkButton class="btn btn-primary" ID="LinkButton1" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <label>Search By Name</label>
-                    <div class="input-group ">
-                        <asp:TextBox CssClass="form-control" ID="TextBox2" runat="server" placeholder="Enter Name " ReadOnly="false"></asp:TextBox>
-                        <asp:LinkButton class="btn btn-primary" ID="LinkButton2" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <hr />
-            </div>
-        </div>
-        <div class="card-body">
-            <div class="row ">
-                <div class="col-md-3">
-                    <label>Filter By Type </label>
-                    <div class="form-group">
-                        <asp:DropDownList CssClass="form-control" ID="nominiregcb" runat="server" placeholder="Nomini" Enabled="true" AutoPostBack="true">
-                            <asp:ListItem Text="All" Value="All"></asp:ListItem>
-                            <asp:ListItem Text="Saving" Value="Saving" />
-                            <asp:ListItem Text="RD" Value="RD" />
-                            <asp:ListItem Text="SSA" Value="SSA"></asp:ListItem>
-                            <asp:ListItem Text="TD" Value="TD"></asp:ListItem>
+                <dx:GridViewDataComboBoxColumn FieldName="acctype" Name="acctype" Caption="Account Type" Width="100" VisibleIndex="5">
+                    <PropertiesComboBox>
+                        <Columns>
+                            <dx:ListBoxColumn FieldName="Self" Name="Self" Caption="Self"></dx:ListBoxColumn>
+                            <dx:ListBoxColumn FieldName="Minor" Name="Minor" Caption="Minor"></dx:ListBoxColumn>
+                            <dx:ListBoxColumn FieldName="JointA" Name="JointA" Caption="Joint A"></dx:ListBoxColumn>
+                            <dx:ListBoxColumn FieldName="JointB" Name="JointB" Caption="Joint B"></dx:ListBoxColumn>
+                        </Columns>
+                    </PropertiesComboBox>
+                </dx:GridViewDataComboBoxColumn>
+                <dx:GridViewDataTextColumn FieldName="cif" Width="150" Name="cif" Caption="CIF Id" VisibleIndex="2"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="jointname" Name="jointname" Caption="Joint Holder Name" VisibleIndex="6" Width="200"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="guardianname" Name="guardianname" Caption="Guardian Nmae" VisibleIndex="7" Width="200"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="balance" Name="balance" Caption="Balance " Width="100" VisibleIndex="8"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="status" Name="status" Caption="Status" Width="100" VisibleIndex="9"></dx:GridViewDataTextColumn>
+            </Columns>
 
-                        </asp:DropDownList>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <label>Filter By Status </label>
-                    <div class="form-group">
-                        <asp:DropDownList CssClass="form-control" ID="DropDownList1" runat="server" placeholder="Nomini" Enabled="true" AutoPostBack="true">
-                            <asp:ListItem Text="All" Value="All"></asp:ListItem>
-                            <asp:ListItem Text="Approved" Value="Approved" />
-                            <asp:ListItem Text="Rejected" Value="Rejected" />
-                            <asp:ListItem Text="Pending" Value="Pending"></asp:ListItem>
-
-
-                        </asp:DropDownList>
-                    </div>
-                </div>
-                <div class="col-4 mx-auto ">
-                    <label></label>
-                    <div class="form-group">
-                        <asp:Button ID="Button3" class="btn-outline-success" runat="server" Enabled="true" Text="Filter" /></div>
-                </div>
-            </div>
-
-        </div>
-        <div class="row">
-            <div class="col">
-                <hr />
-            </div>
-        </div>
-
-        <%--<div class="card-body">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered border-primary  table-hover table-responsive ">
-
-                <Columns>
-                    <asp:BoundField DataField="accountnumber" HeaderText="Account Number" SortExpression="accountnumber"></asp:BoundField>
-                    <asp:BoundField DataField="cif" HeaderText="CIF" SortExpression="cif"></asp:BoundField>
-                    <asp:BoundField DataField="n_ame" HeaderText="Name" SortExpression="n_ame"></asp:BoundField>
-                    <asp:BoundField DataField="producttype" HeaderText="Product Type" SortExpression="producttype"></asp:BoundField>
-                    <asp:BoundField DataField="nominireg" HeaderText="nomini reg" SortExpression="nominireg"></asp:BoundField>
-                    <asp:BoundField DataField="acctype" HeaderText="Account Type" SortExpression="acctype"></asp:BoundField>
-                    <asp:BoundField DataField="jointname" HeaderText="jointname" SortExpression="jointname"></asp:BoundField>
-                    <asp:BoundField DataField="guardianname" HeaderText="Guardian Name" SortExpression="guardianname"></asp:BoundField>
-                    <asp:BoundField DataField="balance" HeaderText="Balance" SortExpression="balance"></asp:BoundField>
-                    <asp:BoundField DataField="status" HeaderText="Status" SortExpression="status"></asp:BoundField>
-
-                    <asp:TemplateField HeaderText="Account Number" sortExpression="accountnumber">
-                        <ItemTemplate>
-                         <asp:Button ID="try" OnClick="lblexamIsPaid_Click" runat="server" Text='<%# Eval("accountnumber") %>'></asp:Button>
-                            <dx:BootstrapButton ID="lblexamIsPaid" OnClick="lblexamIsPaid_Click" runat="server" AutoPostBack="false" Text='<%# Eval("accountnumber") %>'></dx:BootstrapButton>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-            </asp:GridView>
-        </div>--%>
-      
-        <div class="card-body ">
-            <dx:BootstrapGridView ID="BGridView1" runat="server"  AutoGenerateColumns="False">
-                <Settings ShowFilterRow="True" ShowFooter="True"></Settings>
-                <Columns>
-                    <dx:BootstrapGridViewCommandColumn ShowClearFilterButton="True" VisibleIndex="0"></dx:BootstrapGridViewCommandColumn>
-                    <dx:BootstrapGridViewTextColumn FieldName="n_ame" Name="n_ame" Caption="Name" VisibleIndex="3">
-                        <Settings FilterMode="DisplayText"></Settings>
-                    </dx:BootstrapGridViewTextColumn>
-                    <dx:BootstrapGridViewTextColumn FieldName="producttype" Name="producttype" Caption="Product Type" VisibleIndex="4">
-                        <Settings FilterMode="DisplayText"></Settings>
-                    </dx:BootstrapGridViewTextColumn>
-                    <dx:BootstrapGridViewTextColumn FieldName="nominireg" Name="nominireg" Caption="Nomini Register" VisibleIndex="5"></dx:BootstrapGridViewTextColumn>
-                    <dx:BootstrapGridViewTextColumn FieldName="acctype" Name="acctype" Caption="Account Type" VisibleIndex="6">
-                        <Settings FilterMode="DisplayText"></Settings>
-                    </dx:BootstrapGridViewTextColumn>
-                    <dx:BootstrapGridViewTextColumn FieldName="jointname" Name="jointname" Caption="Joint Account Holder Name" VisibleIndex="7"></dx:BootstrapGridViewTextColumn>
-                    <dx:BootstrapGridViewTextColumn FieldName="guardianname" Name="guardianname" Caption="Guardian Name" VisibleIndex="8"></dx:BootstrapGridViewTextColumn>
-                    <dx:BootstrapGridViewTextColumn FieldName="status" Name="status" Caption="Status" VisibleIndex="10"></dx:BootstrapGridViewTextColumn>
-                    <dx:BootstrapGridViewTextColumn Name="accountnumber" Caption="Account Number" FieldName="accountnumber" VisibleIndex="1">
-                        <DataItemTemplate>
-                            <dx:BootstrapButton ID="lblexamIsPaid" OnClick="lblexamIsPaid_Click" runat="server" AutoPostBack="false" Text='<%# Eval("accountnumber") %>'></dx:BootstrapButton>
-
-                        </DataItemTemplate>
-                    </dx:BootstrapGridViewTextColumn>
-                    <dx:BootstrapGridViewTextColumn FieldName="cif" Name="cif" Caption="CIF" VisibleIndex="2">
-                        <PropertiesTextEdit DisplayFormatString="{0}" EnableClientSideAPI="True"></PropertiesTextEdit>
-                    </dx:BootstrapGridViewTextColumn>
-
-                    <dx:BootstrapGridViewTextColumn Name="balance" Caption="Balance" FieldName="balance" VisibleIndex="9">
-                        <PropertiesTextEdit DisplayFormatString="{0}"></PropertiesTextEdit>
-                        <DataItemTemplate>
-
-                            <asp:LinkButton ID="link1" runat="server" OnClick="link1_Click" AutoPostBack="false" Text='<%# Eval("balance") %>'>LinkButton</asp:LinkButton>
-                        </DataItemTemplate>
-
-                    </dx:BootstrapGridViewTextColumn>
-                    
-                </Columns>
-                <TotalSummary>
-                    <dx:ASPxSummaryItem SummaryType="Sum" FieldName="balance" ShowInColumn="balance" ShowInGroupFooterColumn="balance"></dx:ASPxSummaryItem>
-                </TotalSummary>
-            </dx:BootstrapGridView>
-        </div>
+            <SettingsBehavior AllowFocusedRow="true" AllowSelectByRowClick="true" AllowEllipsisInText="true" AllowDragDrop="false" />
+            <SettingsEditing Mode="PopupEditForm" EditFormColumnCount="2" />
+            <SettingsSearchPanel CustomEditorID="SearchButtonEdit" />
+            <Settings VerticalScrollBarMode="Hidden" HorizontalScrollBarMode="Auto" ShowHeaderFilterButton="true" />
+            <SettingsPager PageSize="15" EnableAdaptivity="true">
+                <PageSizeItemSettings Visible="true"></PageSizeItemSettings>
+            </SettingsPager>
+            <SettingsExport EnableClientSideExportAPI="true" ExportSelectedRowsOnly="true" />
+            <SettingsPopup>
+                <EditForm>
+                    <SettingsAdaptivity MaxWidth="800" Mode="Always" VerticalAlign="WindowCenter" />
+                </EditForm>
+            </SettingsPopup>
+            <Styles>
+                <Cell Wrap="false" />
+                <PagerBottomPanel CssClass="pager" />
+                <FocusedRow CssClass="focused" />
+            </Styles>
+            <ClientSideEvents Init="onGridViewInit" SelectionChanged="onGridViewSelectionChanged" />
+        </dx:ASPxGridView>
     </div>
 
 </asp:Content>

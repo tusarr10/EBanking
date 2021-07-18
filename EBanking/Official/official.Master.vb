@@ -9,9 +9,25 @@ Imports TWEB.Model
 Public Class official
     Inherits System.Web.UI.MasterPage
 
+    Private privateEnableBackButton As Boolean
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If (Not String.IsNullOrEmpty(Page.Header.Title)) Then
+            Page.Header.Title &= " - "
+        End If
+        Page.Header.Title = Page.Header.Title & "E Banking"
+
+        Page.Header.DataBind()
+
         UpdateUserMenuItemsVisible()
     End Sub
+    Public Property EnableBackButton() As Boolean
+        Get
+            Return privateEnableBackButton
+        End Get
+        Set(ByVal value As Boolean)
+            privateEnableBackButton = value
+        End Set
+    End Property
     Protected Sub UpdateUserMenuItemsVisible()
         Dim isAuthenticated = AuthHelper.IsAuthenticated()
         RightAreaMenu.Items.FindByName("SignInItem").Visible = Not isAuthenticated

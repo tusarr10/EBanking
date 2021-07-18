@@ -24,11 +24,24 @@ Public Class sbWithdraw
     Dim accounttype As String
     Dim dlt As String
 
+    Private Sub btnFindAccountClick()
+        Dim accountnumber As String
+        accountnumber = accIdTb.Text.Trim
+        GetDataOfAccount(accountnumber)
+    End Sub
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
             GetworkingDate = DateAndTime.Now().ToString("yyyy-MM-dd")
             DateofTransction.Text = GetworkingDate
         Catch
+
+        End Try
+        Try
+            If Request.QueryString("value") IsNot Nothing Then
+                accIdTb.Text = Request.QueryString("value").ToString
+                btnFindAccountClick()
+            End If
+        Catch ex As Exception
 
         End Try
     End Sub
@@ -131,7 +144,7 @@ Public Class sbWithdraw
             If getAccountProductType(0) = "Saving" Then
                 If getAccountStatus(0) = "Active" Then
                     FillDataInView()
-                    FIllDataInCif(accountnumber)
+                    FIllDataInCif(getAccountCif(0))
                     FilldataInDLT(accountnumber)
                 Else
                     MyMessageBox.Show(Me, "Account Inactive ")
@@ -148,9 +161,7 @@ Public Class sbWithdraw
     End Sub
 
     Protected Sub btnFindAccount_Click(sender As Object, e As EventArgs) Handles btnFindAccount.Click
-        Dim accountnumber As String
-        accountnumber = accIdTb.Text.Trim
-        GetDataOfAccount(accountnumber)
+        btnFindAccountClick()
     End Sub
     Private Sub DoCalculate()
         ''TODO Calculate do validation >500 must be balance

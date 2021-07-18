@@ -50,6 +50,15 @@ Partial Public Class transction
     Protected WithEvents journalGridView As Global.DevExpress.Web.ASPxGridView
     
     '''<summary>
+    '''ASPxRoundPanel1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ASPxRoundPanel1 As Global.DevExpress.Web.ASPxRoundPanel
+    
+    '''<summary>
     '''sbjournalGridView control.
     '''</summary>
     '''<remarks>
@@ -57,6 +66,15 @@ Partial Public Class transction
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sbjournalGridView As Global.DevExpress.Web.Bootstrap.BootstrapGridView
+    
+    '''<summary>
+    '''ASPxRoundPanel2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ASPxRoundPanel2 As Global.DevExpress.Web.ASPxRoundPanel
     
     '''<summary>
     '''RdJournalGridView control.
@@ -68,6 +86,15 @@ Partial Public Class transction
     Protected WithEvents RdJournalGridView As Global.DevExpress.Web.Bootstrap.BootstrapGridView
     
     '''<summary>
+    '''ASPxRoundPanel3 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ASPxRoundPanel3 As Global.DevExpress.Web.ASPxRoundPanel
+    
+    '''<summary>
     '''ssaJournalGridView control.
     '''</summary>
     '''<remarks>
@@ -75,6 +102,15 @@ Partial Public Class transction
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents ssaJournalGridView As Global.DevExpress.Web.Bootstrap.BootstrapGridView
+    
+    '''<summary>
+    '''ASPxRoundPanel4 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ASPxRoundPanel4 As Global.DevExpress.Web.ASPxRoundPanel
     
     '''<summary>
     '''BootstrapGridView3 control.

@@ -1,4 +1,6 @@
 ﻿Imports System.Runtime.CompilerServices
+Imports DevExpress.Web
+
 Module DataInformation
 
     Public ciftable As String = "cifdb"
@@ -43,3 +45,4 @@ Module myMsgBox
         page.ClientScript.RegisterStartupScript(page.GetType(), "SuccessMessage", script, True)
     End Sub
 End Module
+

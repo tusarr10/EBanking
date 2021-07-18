@@ -11,33 +11,43 @@
     }
     function updateToolbarButtonsState() {
         var enabled = gridView.GetSelectedRowCount() > 0;
-        pageToolbar.GetItemByName("Delete").SetEnabled(enabled);
+        pageToolbar.GetItemByName("View").SetEnabled(enabled);
         pageToolbar.GetItemByName("Export").SetEnabled(enabled);
-
-        pageToolbar.GetItemByName("Edit").SetEnabled(gridView.GetFocusedRowIndex() !== -1);
+        pageToolbar.GetItemByName("Deposit").SetEnabled(enabled);
+        pageToolbar.GetItemByName("Withdraw").SetEnabled(enabled);
     }
     function onPageToolbarItemClick(s, e) {
         switch(e.item.name) {
             case "ToggleFilterPanel":
                 toggleFilterPanel();
                 break;
-            case "New":
-                gridView.AddNewRow();
+            case "Deposit":
+                DepositSelectedRecord();
                 break;
-            case "Edit":
-                gridView.StartEditRow(gridView.GetFocusedRowIndex());
+            case "Withdraw":
+               WithdrawSelectedRecord();
                 break;
-            case "Delete":
-                deleteSelectedRecords();
+            case "View":
+                ViewSelectedRecord();
                 break;
             case "Export":
                 gridView.ExportTo(ASPxClientGridViewExportFormat.Xlsx);
                 break;
         }
     }
-    function deleteSelectedRecords() {
-        if(confirm('Confirm Delete?')) {
-            gridView.PerformCallback('delete');
+    function WithdrawSelectedRecord() {
+        if (confirm('Do You Want To Withdraw... ')) {
+            gridView.PerformCallback('withdraw');
+        }
+    }
+    function DepositSelectedRecord() {
+        if (confirm('Do You Want To Deposit... ')) {
+            gridView.PerformCallback('deposit');
+        }
+    }
+    function ViewSelectedRecord() {
+        if (confirm('Do You Want To Open Profile... ')) {
+            gridView.PerformCallback('view');
         }
     }
     function onFiltersNavBarItemClick(s, e) {

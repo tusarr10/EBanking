@@ -24,6 +24,19 @@ Public Class sbInterest
         If datetb.Text = Nothing Then
             datetb.Text = DateAndTime.Now().ToString("yyyy-MM-dd")
         End If
+        Try
+            If Request.QueryString("value") IsNot Nothing Then
+                AcnoTb.Text = Request.QueryString("value").ToString
+                btnFindAccountClick()
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+    Private Sub btnFindAccountClick()
+        Dim accountnumber As String
+        accountnumber = AcnoTb.Text.Trim
+        GetDataOfAccount(accountnumber)
     End Sub
     Private Sub FillDataInView()
         baltb.Text = getAccountBalance(0)
@@ -61,9 +74,7 @@ Public Class sbInterest
     End Sub 'Get Account Information Then 
     Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
         'fo rsearch account number 
-        Dim accountnumber As String
-        accountnumber = AcnoTb.Text.Trim
-        GetDataOfAccount(accountnumber)
+        btnFindAccountClick()
         'after successful search 
 
 

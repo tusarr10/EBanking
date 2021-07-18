@@ -138,13 +138,4 @@ Partial Public Class official
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents ApplicationMenuDataSource As Global.DevExpress.Web.ASPxSiteMapDataSource
-    
-    '''<summary>
-    '''ASPxLabel1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ASPxLabel1 As Global.DevExpress.Web.ASPxLabel
 End Class
