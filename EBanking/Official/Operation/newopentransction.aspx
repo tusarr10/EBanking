@@ -4,6 +4,7 @@
 
 <%@ Register Assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
+        <link rel="stylesheet" type="text/css" href='<%# ResolveUrl("~/Content/GridView.css") %>' />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="LeftPanelContent" runat="server">
        
@@ -48,10 +49,10 @@
                         </div>
                        
                         <div class="col-md-8">
-                            <dx:BootstrapGridView ID="BootstrapGridView1" runat="server" AutoGenerateColumns="False" Width="100%">
+                  <%--          <dx:BootstrapGridView ID="gsgfdf" runat="server" AutoGenerateColumns="False" Width="100%">
                                 <Columns>
                                     <dx:BootstrapGridViewTextColumn FieldName="n_ame" Name="n_ame" Caption="Name" VisibleIndex="2" Width="36%" MinWidth="280" MaxWidth="450"></dx:BootstrapGridViewTextColumn>
-                                    <%--  <dx:BootstrapGridViewTextColumn FieldName="address" Name="Address" Caption="Address" VisibleIndex="3" MinWidth="150" MaxWidth="250" Width="20%"></dx:BootstrapGridViewTextColumn>--%>
+                                    <%--  <dx:BootstrapGridViewTextColumn FieldName="address" Name="Address" Caption="Address" VisibleIndex="3" MinWidth="150" MaxWidth="250" Width="20%"></dx:BootstrapGridViewTextColumn>
                                     <dx:BootstrapGridViewTextColumn FieldName="pr" Name="pr" Caption="PR" VisibleIndex="4" MinWidth="150" MaxWidth="250" Width="20%"></dx:BootstrapGridViewTextColumn>
                                     <dx:BootstrapGridViewTextColumn FieldName="reffno" Name="reffno" Caption="Reff. No." VisibleIndex="6" MinWidth="150" MaxWidth="250" Width="20%"></dx:BootstrapGridViewTextColumn>
 
@@ -70,7 +71,47 @@
                                 <Settings HorizontalScrollBarMode="Auto" />
                                 <Settings VerticalScrollBarMode="Auto" VerticalScrollableHeight="100" />
 
-                            </dx:BootstrapGridView>
+                            </dx:BootstrapGridView>--%>
+
+                            <dx:ASPxGridView ID="BootstrapGridView1" OnInit="ASPxGridView1_Init" CssClass="grid-view" Width="100%" KeyFieldName="reffno" runat="server" AutoGenerateColumns="False">
+
+                                <Columns>
+                                  
+                                      <dx:GridViewDataTextColumn FieldName="n_ame" Name="n_ame" Caption="Name" VisibleIndex="2" Width="36%" MinWidth="280" MaxWidth="450"></dx:GridViewDataTextColumn>
+                                    <%--  <dx:BootstrapGridViewTextColumn FieldName="address" Name="Address" Caption="Address" VisibleIndex="3" MinWidth="150" MaxWidth="250" Width="20%"></dx:BootstrapGridViewTextColumn>--%>
+                                    <dx:GridViewDataTextColumn FieldName="pr" Name="pr" Caption="PR" VisibleIndex="4" MinWidth="150" MaxWidth="250" Width="20%"></dx:GridViewDataTextColumn>
+                                    <dx:GridViewDataTextColumn FieldName="reffno" Name="reffno" Caption="Reff. No." VisibleIndex="6" MinWidth="150" MaxWidth="250" Width="20%"></dx:GridViewDataTextColumn>
+
+                                    <dx:GridViewDataTextColumn Name="get" Caption="Control" VisibleIndex="0">
+                                        <DataItemTemplate>
+                                            <dx:BootstrapButton ID="BootstrapButton1" runat="server" AutoPostBack="false" Text="View"></dx:BootstrapButton>
+                                        </DataItemTemplate>
+                                    </dx:GridViewDataTextColumn>
+                                    <dx:GridViewDataTextColumn Name="get" Caption="Option" VisibleIndex="1">
+                                        <DataItemTemplate>
+                                            <dx:BootstrapButton ID="BootstrapButton2" runat="server" AutoPostBack="false" Text="Get"></dx:BootstrapButton>
+                                        </DataItemTemplate>
+                                    </dx:GridViewDataTextColumn>
+                                    <dx:GridViewDataTextColumn FieldName="producttype" Name="producttype" Caption="Account Type" VisibleIndex="6" MinWidth="150" MaxWidth="250" Width="20%"></dx:GridViewDataTextColumn>
+                                </Columns>
+                                <SettingsBehavior AllowFocusedRow="true" AllowSelectByRowClick="true" AllowEllipsisInText="true" AllowDragDrop="false" />
+
+                                <Settings VerticalScrollBarMode="Hidden" HorizontalScrollBarMode="Auto" ShowHeaderFilterButton="true" />
+
+                                <SettingsPager PageSize="3">
+                                    <PageSizeItemSettings Visible="true" ShowAllItem="true" />
+                                </SettingsPager>
+
+                                <Styles>
+                                    <Cell Wrap="false" />
+                                    <PagerBottomPanel CssClass="pager" />
+                                    <FocusedRow CssClass="focused" />
+                                </Styles>
+
+                            </dx:ASPxGridView>
+
+
+
                         </div>
 
                     </div>

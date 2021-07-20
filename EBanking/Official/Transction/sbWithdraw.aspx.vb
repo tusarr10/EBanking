@@ -1,11 +1,11 @@
 ﻿Imports System.Data.SqlClient
-Public Class sbDeposit
+Public Class sbWithdraw
     Inherits System.Web.UI.Page
 
+    Dim currentBalnce As Double = 00
 
-    Dim currentBalnce As Double
-    Dim TransctionAmount As Double
-    Dim NewBalance As Double
+    Dim TransctionAmount As Double = 00
+    Dim NewBalance As Double = 00
 
 
     Dim accountNumber As String
@@ -24,7 +24,11 @@ Public Class sbDeposit
     Dim accounttype As String
     Dim dlt As String
 
-
+    Private Sub btnFindAccountClick()
+        Dim accountnumber As String
+        accountnumber = accIdTb.Text.Trim
+        GetDataOfAccount(accountnumber)
+    End Sub
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
             GetworkingDate = DateAndTime.Now().ToString("yyyy-MM-dd")
@@ -40,7 +44,6 @@ Public Class sbDeposit
         Catch ex As Exception
 
         End Try
-
     End Sub
 
     Private Sub FillDataInView() 'get and put data from liveaccount
@@ -129,7 +132,7 @@ Public Class sbDeposit
         End Try
 
     End Sub
-    Private Sub GetDataOfAccount(ByVal accountnumber As String, cif As String)
+    Private Sub GetDataOfAccount(ByVal accountnumber As String)
         Try
             AccountSearch(accountnumber)
         Catch
@@ -138,36 +141,30 @@ Public Class sbDeposit
 
         End Try
         If IsAccountIdExist(accountnumber) Then
-
             If getAccountProductType(0) = "Saving" Then
                 If getAccountStatus(0) = "Active" Then
                     FillDataInView()
                     FIllDataInCif(getAccountCif(0))
                     FilldataInDLT(accountnumber)
                 Else
-                    MyMessageBox.Show(Me, "This Is a Inactive Account ..")
+                    MyMessageBox.Show(Me, "Account Inactive ")
                 End If
-            Else
-                MyMessageBox.Show(Me, "This is not a Saving Account .This Is a " & getAccountProductType(0) & " Account")
-            End If
 
+            Else
+                MyMessageBox.Show(Me, "This is not a Saving Account ")
+            End If
         Else
-            MyMessageBox.Show(Me, "Account Does not Exist ..")
+            MyMessageBox.Show(Me, "Account Number Does Not Exist ")
 
         End If
 
     End Sub
-    Private Sub btnFindAccountClick()
-        Dim accountnumber As String
-        accountnumber = accIdTb.Text.Trim
-        GetDataOfAccount(accountnumber, "")
-    End Sub
+
     Protected Sub btnFindAccount_Click(sender As Object, e As EventArgs) Handles btnFindAccount.Click
         btnFindAccountClick()
     End Sub
-
     Private Sub DoCalculate()
-        ''TODO Calculate
+        ''TODO Calculate do validation >500 must be balance
         currentBalnce = getAccountBalance(0)
         Try
             TransctionAmount = "0" + DepositAmounttb.Text.Trim
@@ -175,8 +172,16 @@ Public Class sbDeposit
             MyMessageBox.Show(Me, "Enter Number Only In INR ")
             Exit Sub
         End Try
+
+        If currentBalnce > 500 Then
+            MyMessageBox.Show(Me, "You Can withdraw maximum " + currentBalnce - 500 - TransctionAmount + " Amount")
+        Else
+            MyMessageBox.Show(Me, "Low Balance ")
+            Exit Sub
+        End If
+
         Try
-            NewBalance = currentBalnce + TransctionAmount
+            NewBalance = currentBalnce - TransctionAmount
             newbalancetb.Text = NewBalance
         Catch
             MyMessageBox.Show(Me, "Unable to Calculate")
@@ -185,9 +190,7 @@ Public Class sbDeposit
     End Sub
     Protected Sub Calculatebtn_Click(sender As Object, e As EventArgs) Handles Calculatebtn.Click
         DoCalculate()
-
     End Sub
-
     Private Sub GetDataFromView()
         'data validation pending...
 
@@ -201,7 +204,7 @@ Public Class sbDeposit
         details = detailstb.Text.Trim
 
         'from hardcode
-        transctiontype = "Deposit"
+        transctiontype = "Withdraw"
         status = "Pending"
         office = OfficeName ' to be change in login system
         userName = Getusername ' to be change in Login system
@@ -225,10 +228,10 @@ Public Class sbDeposit
             command.Connection = databaseconnection
             command.Transaction = transction
             Try
-                command.CommandText = "insert into " & sbjournaltbl & " (accountnumber ,depositername,da_te,bbt,transctiontype,amount,bat,trid,status,office,u_ser ,details)values('" & accountNumber & "','" & depositername & "','" & da_te & "','" & bbt & "','" & transctiontype & "','" & amount & "','" & bat & "','" & Trid & "','" & status & "','" & office & "','" & userName & "','" & details & "')"
+                command.CommandText = "insert into " & sbjournaltbl & " (accountnumber ,depositername,da_te,bbt,transctiontype,amount,bat,trid,status,office,u_ser,Details )values('" & accountNumber & "','" & depositername & "','" & da_te & "','" & bbt & "','" & transctiontype & "','" & amount & "','" & bat & "','" & Trid & "','" & status & "','" & office & "','" & userName & "','" & details & "')"
                 command.ExecuteNonQuery()
 
-                command.CommandText = "insert into journal (da_te,accounttype ,accountnumber,na_me,deposit,withdraw,dlt,trid,balance,status,office,u_ser ) values('" & da_te & "','" & accounttype & "','" & accountNumber & "','" & depositername & "','" & amount & "','" & "00" & "','" & dlt & "','" & Trid & "','" & bat & "','" & status & "','" & office & "','" & userName & "')"
+                command.CommandText = "insert into journal (da_te,accounttype ,accountnumber,na_me,deposit,withdraw,dlt,trid,balance,status,office,u_ser ) values('" & da_te & "','" & accounttype & "','" & accountNumber & "','" & depositername & "','" & "00" & "','" & amount & "','" & dlt & "','" & Trid & "','" & bat & "','" & status & "','" & office & "','" & userName & "')"
                 command.ExecuteNonQuery()
 
                 transction.Commit()
@@ -239,7 +242,6 @@ Public Class sbDeposit
                 MyMessageBox.Show(Me, "  Message: {0}" + ex.Message)
                 Try
                     transction.Rollback()
-
                     MyMessageBox.Show(Me, "Data Not Saved Successfully")
                 Catch ex2 As Exception
                     MyMessageBox.Show(Me, "Rollback Exception Type: {0}" + ex2.Message())
@@ -254,7 +256,14 @@ Public Class sbDeposit
             MyMessageBox.Show(Me, "  Message: {0}" + ex.Message)
         End Try
     End Sub
+
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        DoTransction()
+        If Len(transctiontb.Text) > 2 Then
+            DoTransction()
+        Else
+            MyMessageBox.Show(Me, "Enter Valid Transaction ID ")
+        End If
+
     End Sub
+
 End Class

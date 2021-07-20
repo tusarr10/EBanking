@@ -3,50 +3,57 @@
   <siteMapNode url="" title=""  description="">
     <siteMapNode url="~/official/" title="Home"  description="" >
     </siteMapNode>
-
     <siteMapNode url="" title="Transction"  description="" >
-      <siteMapNode url="~/Official/transction.aspx" title="All Transction"  description="" />
+      <siteMapNode url="~/Official/Transction/transction.aspx" title="All Transction"  description="" />
       <siteMapNode url="" title="Saving Bank"  description="" >
-        <siteMapNode url="~/official/sbDeposit.aspx" title=" Deposit"  description=""/>
-        <siteMapNode url="~/official/sbWithdraw.aspx" title=" Withdraw"  description=""/>
-        <siteMapNode url="~/official/sbInterest.aspx" title=" Interest"  description=""/>
+        <siteMapNode url="~/official/Transction/sbDeposit.aspx" title=" Deposit"  description=""/>
+        <siteMapNode url="~/official/Transction/sbWithdraw.aspx" title=" Withdraw"  description=""/>
+        <siteMapNode url="~/official/Transction/sbInterest.aspx" title=" Interest"  description=""/>
       </siteMapNode>
       <siteMapNode url="" title="RD " description="">
-        <siteMapNode url="~/Official/rdDeposit.aspx" description="" title="Deposit" />
+        <siteMapNode url="~/Official/Transction/rdDeposit.aspx" description="" title="Deposit" />
       </siteMapNode>
       <siteMapNode url="" title="SSA " description="">
-        <siteMapNode url="~/Official/ssaDeposit.aspx" description="" title="Deposit" />
+        <siteMapNode url="~/Official/Transction/ssaDeposit.aspx" description="" title="Deposit" />
+      </siteMapNode>
+      <siteMapNode url="" title="RPLI " description="">
+        <siteMapNode url="~/Official/Transction/rpliDeposit.aspx" description="" title="Deposit" />
+        <siteMapNode url="~/Official/Transction/rpliAllDeposit.aspx" description="" title="All Deposit" />
       </siteMapNode>
     </siteMapNode>
     <siteMapNode url="" title="Accounts"  description="" />
     <siteMapNode url="" title="Operation"  description="" >
       <siteMapNode description="" title="CIF" url="">
-        <siteMapNode description="" title="New" url="~/official/addcif.aspx" />
+        <siteMapNode description="" title="New" url="~/official/Operation/addcif.aspx" />
         <siteMapNode description="" title="Edit Cif" url="" />
       </siteMapNode>
       <siteMapNode description="" title="Account" url="">
-        <siteMapNode title="Add Account" url="~\Official\addAccount.aspx" description=""/>
+        <siteMapNode title="Add Account" url="~/Official/Operation/addAccount.aspx" description=""/>
         <siteMapNode title="New Account" description="" url="">
-          <siteMapNode title="Open New " description="" url="~\Official\openAccount.aspx" />
-          <siteMapNode title="Funding  " description="" url="~/official/newopentransction.aspx" />
-          <siteMapNode title="Pending  " description="" url="~\Official\pendingAccount.aspx" />
-          <siteMapNode title="Status  " description="" url="~\Official\statusAccount.aspx" />
+          <siteMapNode title="Open New " description="" url="~/Official/Operation/openAccount.aspx" />
+          <siteMapNode title="Funding  " description="" url="~/official/Operation/newopentransction.aspx" />
+          <siteMapNode title="Pending  " description="" url="~/Official/Operation/pendingAccount.aspx" />
+          <siteMapNode title="Status  " description="" url="~/Official/Operation/statusAccount.aspx" />
         </siteMapNode>
         <siteMapNode title="Mod" url="" description="" />
         <siteMapNode title="Delete " url="" description="" />
       </siteMapNode>
+      <siteMapNode title="Rpli" url="" description="">
+        <siteMapNode title="Index" url="~/Official/Operation/rpliIndex.aspx" description=""  />
+        <siteMapNode title="All" url="~/Official/Operation/AllRpliIndex.aspx" description="" />
+      </siteMapNode>
     </siteMapNode>
     <siteMapNode url="" title="Report"  description="">
-      <siteMapNode title="All Account" url="~\Official\Operation.aspx" description=""/>
-      <siteMapNode title="New Account" url="~\Official\AllOpenAccount.aspx" description=""/>
+      <siteMapNode title="All Account" url="~/Official/Reports/Operation.aspx" description=""/>
+      <siteMapNode title="New Account" url="~/Official/Reports/AllOpenAccount.aspx" description=""/>
       <siteMapNode title="Transction" url="" description="">
-        <siteMapNode title="All Transction" url="~\Official\AllTrnsction.aspx" description=""/>
-        <siteMapNode title="Sb Transction" url="~\Official\AllSbTranstion.aspx" description=""/>
-        <siteMapNode title="RD Transction" url="~\Official\AllRdTranstion.aspx" description=""/>
-        <siteMapNode title="SSA Transction" url="~\Official\AllSsaTranstion.aspx" description=""/>
-        <siteMapNode title="Td Transction" url="~\Official\AlltdTranstion.aspx" description=""/>
-        <siteMapNode title="RLI Transction" url="~\Official\AllrpliTranstion.aspx" description=""/>
-        <siteMapNode title="IPPB Transction" url="~\Official\AllIppbTranstion.aspx" description=""/>
+        <siteMapNode title="All Transction" url="~/Official/Reports/AllTrnsction.aspx" description=""/>
+        <siteMapNode title="Sb Transction" url="~/Official/Reports/AllSbTranstion.aspx" description=""/>
+        <siteMapNode title="RD Transction" url="~/Official/Reports/AllRdTranstion.aspx" description=""/>
+        <siteMapNode title="SSA Transction" url="~/Official/Reports/AllSsaTranstion.aspx" description=""/>
+        <siteMapNode title="Td Transction" url="~/Official/Reports/AlltdTranstion.aspx" description=""/>
+        <siteMapNode title="RLI Transction" url="~/Official/Reports/AllrpliTranstion.aspx" description=""/>
+        <siteMapNode title="IPPB Transction" url="~/Official/Reports/AllIppbTranstion.aspx" description=""/>
       </siteMapNode >
     </siteMapNode >
   </siteMapNode>

@@ -63,11 +63,11 @@ Public Class Operation
     Private Sub GoToDeposit(sender As Object)
 
         If producttype = "Saving" Then
-            redirect("sbDeposit.aspx", acno)
+            redirect("~/official/Transction/sbDeposit.aspx", acno)
         ElseIf producttype = "RD" Then
-            redirect("rdDeposit.aspx", acno)
+            redirect("~/official/Transction/rdDeposit.aspx", acno)
         ElseIf producttype = "SSA" Then
-            redirect("ssaDeposit.aspx", acno)
+            redirect("~/official/Transction/ssaDeposit.aspx", acno)
         Else
             MyMessageBox.Show(Me, "Do Manually")
 
@@ -75,7 +75,7 @@ Public Class Operation
     End Sub
     Private Sub GoToWithdraw(sender As Object)
         If producttype = "Saving" Then
-            redirect("sbWithdraw.aspx", acno)
+            redirect("~/official/Transction/sbWithdraw.aspx", acno)
         ElseIf producttype = "RD" Then
             MyMessageBox.Show(Me, "Do Manually")
         ElseIf producttype = "SSA" Then

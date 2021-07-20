@@ -12,7 +12,7 @@ Option Explicit On
 
 
 Partial Public Class newopentransction
-
+    
     '''<summary>
     '''TableOfContentsTreeView control.
     '''</summary>
@@ -21,7 +21,7 @@ Partial Public Class newopentransction
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents TableOfContentsTreeView As Global.DevExpress.Web.ASPxTreeView
-
+    
     '''<summary>
     '''NodesDataSource control.
     '''</summary>
@@ -30,7 +30,7 @@ Partial Public Class newopentransction
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents NodesDataSource As Global.System.Web.UI.WebControls.XmlDataSource
-
+    
     '''<summary>
     '''nametb control.
     '''</summary>
@@ -39,7 +39,7 @@ Partial Public Class newopentransction
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents nametb As Global.System.Web.UI.WebControls.TextBox
-
+    
     '''<summary>
     '''LinkButton1 control.
     '''</summary>
@@ -48,7 +48,7 @@ Partial Public Class newopentransction
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents LinkButton1 As Global.System.Web.UI.WebControls.LinkButton
-
+    
     '''<summary>
     '''BootstrapGridView1 control.
     '''</summary>
@@ -56,8 +56,8 @@ Partial Public Class newopentransction
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents BootstrapGridView1 As Global.DevExpress.Web.Bootstrap.BootstrapGridView
-
+    Protected WithEvents BootstrapGridView1 As Global.DevExpress.Web.ASPxGridView
+    
     '''<summary>
     '''reffNumberTb control.
     '''</summary>
@@ -66,7 +66,7 @@ Partial Public Class newopentransction
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents reffNumberTb As Global.System.Web.UI.WebControls.TextBox
-
+    
     '''<summary>
     '''LinkButton4 control.
     '''</summary>
@@ -75,7 +75,7 @@ Partial Public Class newopentransction
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents LinkButton4 As Global.System.Web.UI.WebControls.LinkButton
-
+    
     '''<summary>
     '''fullnametb control.
     '''</summary>
@@ -84,7 +84,7 @@ Partial Public Class newopentransction
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents fullnametb As Global.System.Web.UI.WebControls.TextBox
-
+    
     '''<summary>
     '''datetb control.
     '''</summary>
@@ -93,7 +93,7 @@ Partial Public Class newopentransction
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents datetb As Global.System.Web.UI.WebControls.TextBox
-
+    
     '''<summary>
     '''amounttb control.
     '''</summary>
@@ -102,7 +102,7 @@ Partial Public Class newopentransction
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents amounttb As Global.System.Web.UI.WebControls.TextBox
-
+    
     '''<summary>
     '''AccountStatusApproveBtn control.
     '''</summary>
@@ -111,7 +111,7 @@ Partial Public Class newopentransction
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents AccountStatusApproveBtn As Global.System.Web.UI.WebControls.LinkButton
-
+    
     '''<summary>
     '''tridtb control.
     '''</summary>
@@ -120,7 +120,7 @@ Partial Public Class newopentransction
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents tridtb As Global.System.Web.UI.WebControls.TextBox
-
+    
     '''<summary>
     '''Button1 control.
     '''</summary>
@@ -129,7 +129,7 @@ Partial Public Class newopentransction
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
-
+    
     '''<summary>
     '''Button3 control.
     '''</summary>
@@ -138,7 +138,7 @@ Partial Public Class newopentransction
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Button3 As Global.System.Web.UI.WebControls.Button
-
+    
     '''<summary>
     '''Button2 control.
     '''</summary>
@@ -147,7 +147,7 @@ Partial Public Class newopentransction
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Button2 As Global.System.Web.UI.WebControls.Button
-
+    
     '''<summary>
     '''Errortb control.
     '''</summary>

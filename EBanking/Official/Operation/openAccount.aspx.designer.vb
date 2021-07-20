@@ -50,103 +50,13 @@ Partial Public Class openAccount
     Protected WithEvents LinkButton1 As Global.System.Web.UI.WebControls.LinkButton
     
     '''<summary>
-    '''BootstrapGridView1 control.
+    '''ASPxGridView1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents BootstrapGridView1 As Global.DevExpress.Web.Bootstrap.BootstrapGridView
-    
-    '''<summary>
-    '''reffNumberTb control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents reffNumberTb As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''LinkButton4 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents LinkButton4 As Global.System.Web.UI.WebControls.LinkButton
-    
-    '''<summary>
-    '''TextBox1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents TextBox1 As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''accountTb control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents accountTb As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''AccOpenStatustb control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents AccOpenStatustb As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''AccountStatusApproveBtn control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents AccountStatusApproveBtn As Global.System.Web.UI.WebControls.LinkButton
-    
-    '''<summary>
-    '''AccountStatusPendingBtn control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents AccountStatusPendingBtn As Global.System.Web.UI.WebControls.LinkButton
-    
-    '''<summary>
-    '''AccountStatusFreezBtn control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents AccountStatusFreezBtn As Global.System.Web.UI.WebControls.LinkButton
-    
-    '''<summary>
-    '''acnotb control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents acnotb As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''LinkButton2 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents LinkButton2 As Global.System.Web.UI.WebControls.LinkButton
+    Protected WithEvents ASPxGridView1 As Global.DevExpress.Web.ASPxGridView
     
     '''<summary>
     '''photophoto control.
@@ -264,6 +174,96 @@ Partial Public Class openAccount
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents signphoto As Global.DevExpress.Web.ASPxImage
+    
+    '''<summary>
+    '''reffNumberTb control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents reffNumberTb As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''LinkButton4 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents LinkButton4 As Global.System.Web.UI.WebControls.LinkButton
+    
+    '''<summary>
+    '''TextBox1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TextBox1 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''accountTb control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents accountTb As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''AccOpenStatustb control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents AccOpenStatustb As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''AccountStatusApproveBtn control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents AccountStatusApproveBtn As Global.System.Web.UI.WebControls.LinkButton
+    
+    '''<summary>
+    '''AccountStatusPendingBtn control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents AccountStatusPendingBtn As Global.System.Web.UI.WebControls.LinkButton
+    
+    '''<summary>
+    '''AccountStatusFreezBtn control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents AccountStatusFreezBtn As Global.System.Web.UI.WebControls.LinkButton
+    
+    '''<summary>
+    '''acnotb control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents acnotb As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''LinkButton2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents LinkButton2 As Global.System.Web.UI.WebControls.LinkButton
     
     '''<summary>
     '''Modetb control.

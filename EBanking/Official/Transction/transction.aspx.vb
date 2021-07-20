@@ -83,7 +83,7 @@ Public Class transction
 
         End Try
     End Sub
-    Function data(sender As Object, tablename As String)
+    Private Function data(sender As Object, tablename As String)
         Dim btn As Bootstrap.BootstrapButton = sender
         Dim container As Object = btn.NamingContainer
 
@@ -195,4 +195,19 @@ Public Class transction
         End Try
     End Sub
 
+    Protected Sub journalgridview_Init(sender As Object, e As EventArgs)
+        allDatafromJournalDB(GetworkingDate)
+    End Sub
+
+    Protected Sub sbjournalGridView_Init(sender As Object, e As EventArgs)
+        allDataFromSbTransctiondb(GetworkingDate)
+    End Sub
+
+    Protected Sub ASPxGridView1_Init(sender As Object, e As EventArgs)
+        allDatafromRDTransctionDB(GetworkingDate)
+    End Sub
+
+    Protected Sub ASPxGridView1_Init1(sender As Object, e As EventArgs)
+        alldatafromSSAJournalDB(GetworkingDate)
+    End Sub
 End Class

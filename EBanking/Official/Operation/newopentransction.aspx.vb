@@ -24,7 +24,7 @@ Public Class newopentransction
         getAccountData.guardianname = getNewAccountguardianname(row)
         getAccountData.jointname = getNewAccountJointName(row)
         getAccountData.relation = ""
-        getAccountData.acstatus = "Pending"
+        getAccountData.acstatus = getAccountStatus(row)
         getAccountData.address = getNewAccountAddress(row)
         getAccountData.mobile = getNewAccountmobile(row)
         getAccountData.email = getNewAccountEmail(row)
@@ -74,14 +74,15 @@ Public Class newopentransction
 
         command.Connection = databaseconnection
         command.Transaction = transction
-
-
-
+        If acstatus IsNot "Pending" Then
+            MyMessageBox.Show(Me, "Already Payment Done ")
+            Exit Sub
+        End If
         'Implement Verification
         If bal IsNot Nothing Then
             Try
 
-                command.CommandText = "update newacdb set balance='" & bal & "' , trid='" & trid1 & "' where reffno='" & reffno & "'"
+                command.CommandText = "update newacdb set balance='" & bal & "',status='Approve' , trid='" & trid1 & "' where reffno='" & reffno & "'"
                 command.ExecuteNonQuery()
 
                 'update trdtatus from sb journal
@@ -154,6 +155,23 @@ Public Class newopentransction
             _name1 = nametb.Text.Trim
             If _name1 = Nothing Then
                 MyMessageBox.Show(Me, "Enter Name ...")
+                Exit Sub
+
+            End If
+
+
+            findDataFromAccountDatabase(_name1)
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Protected Sub ASPxGridView1_Init(sender As Object, e As EventArgs)
+        Try
+            ' for search name 
+            _name1 = nametb.Text.Trim
+            If _name1 = Nothing Then
+
                 Exit Sub
 
             End If

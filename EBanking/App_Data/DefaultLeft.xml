@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Nodes>
   <TransctionNode text="Transction" >
-    <TreeViewNode Text="All Transctions" NavigateUrl="~/official/transction.aspx"/>
+    <TreeViewNode Text="All Transctions" NavigateUrl="~/official/Transction/transction.aspx"/>
     <TreeViewNode Text="SB Transctions" NavigateUrl="">
-      <TreeViewNode Text="Sb Deposit" NavigateUrl="sbDeposit.aspx" />
-      <TreeViewNode Text="Sb Withdraw" NavigateUrl="sbWithdraw.aspx" />
-      <TreeViewNode Text="Sb Interest" NavigateUrl="sbInterest.aspx" />
-      <TreeViewNode Text="SB Transfer " NavigateUrl="sbTransfer.aspx" />
+      <TreeViewNode Text="Sb Deposit" NavigateUrl="~/official/Transction/sbDeposit.aspx" />
+      <TreeViewNode Text="Sb Withdraw" NavigateUrl="~/official/Transction/sbWithdraw.aspx" />
+      <TreeViewNode Text="Sb Interest" NavigateUrl="~/official/Transction/sbInterest.aspx" />
+      <TreeViewNode Text="SB Transfer " NavigateUrl="~/official/Transction/sbTransfer.aspx" />
     </TreeViewNode>
     <TreeViewNode Text="RD" NavigateUrl="">
-      <TreeViewNode Text="RD Deposit" NavigateUrl="rdDeposit.aspx" />
+      <TreeViewNode Text="RD Deposit" NavigateUrl="~/official/Transction/rdDeposit.aspx" />
       <TreeViewNode Text="RD Withdraw" NavigateUrl="#" />
       <TreeViewNode Text="RD Transfer" NavigateUrl="#" />
       <TreeViewNode Text="Loan" NavigateUrl="#" />
     </TreeViewNode>
     <TreeViewNode Text="SSA" NavigateUrl="">
-      <TreeViewNode Text="SSA Deposit" NavigateUrl="ssaDeposit.aspx" />
+      <TreeViewNode Text="SSA Deposit" NavigateUrl="~/official/Transction/ssaDeposit.aspx" />
       <TreeViewNode Text="SSA Withdraw" NavigateUrl="#" />
-      <TreeViewNode Text="SSA Interest" NavigateUrl="ssaInterest.aspx" />
+      <TreeViewNode Text="SSA Interest" NavigateUrl="~/official/Transction/ssaInterest.aspx" />
       <TreeViewNode Text="Loan" NavigateUrl="#" />
     </TreeViewNode>
     <TreeViewNode Text="TD" NavigateUrl="">
@@ -25,6 +25,10 @@
       <TreeViewNode Text="TD Withdraw" NavigateUrl="#" />
       <TreeViewNode Text="TD Transfer" NavigateUrl="#" />
       <TreeViewNode Text="Loan" NavigateUrl="#" />
+    </TreeViewNode>
+    <TreeViewNode Text="RPLI" NavigateUrl="">
+      <TreeViewNode Text="RPLI Deposit" NavigateUrl="~/official/Transction/rpliDeposit.apx" />
+      <TreeViewNode Text="RPLI All" NavigateUrl="~/official/Transction/rpliAllDeposit.aspx" />
     </TreeViewNode>
   </TransctionNode>
 
@@ -36,21 +40,25 @@
 
   <OperationNode text="Operation">
     <TreeViewNode Text="CIF" NavigateUrl="">
-      <TreeViewNode Text="ADD" NavigateUrl="addcif.aspx" />
+      <TreeViewNode Text="ADD" NavigateUrl="~/Official/Operation/addcif.aspx" />
       <TreeViewNode Text="NEW" NavigateUrl="#" />
       <TreeViewNode Text="EDIT" NavigateUrl="# "/>
       <TreeViewNode Text="Delete  " NavigateUrl="#" />
     </TreeViewNode>
     <TreeViewNode Text="Account" NavigateUrl="">
-      <TreeViewNode Text="ADD" NavigateUrl="addAccount.aspx" />
+      <TreeViewNode Text="ADD" NavigateUrl="~/Official/Operation/addAccount.aspx" />
       <TreeViewNode Text="NEW" NavigateUrl="">
-        <TreeViewNode Text="Open  " NavigateUrl="openAccount.aspx" />
-        <TreeViewNode Text="Funding" NavigateUrl="newopentransction.aspx" />
-        <TreeViewNode Text="Pending" NavigateUrl="pendingAccount.aspx" />
-        <TreeViewNode Text="Status" NavigateUrl="StatusAccount.aspx" />
+        <TreeViewNode Text="Open  " NavigateUrl="~/Official/Operation/openAccount.aspx" />
+        <TreeViewNode Text="Funding" NavigateUrl="~/Official/Operation/newopentransction.aspx" />
+        <TreeViewNode Text="Pending" NavigateUrl="~/Official/Operation/pendingAccount.aspx" />
+        <TreeViewNode Text="Status" NavigateUrl="~/Official/Operation/StatusAccount.aspx" />
       </TreeViewNode>
       <TreeViewNode Text="Mod" NavigateUrl="#" />
       <TreeViewNode Text="Delete" NavigateUrl="#" />
+    </TreeViewNode>
+    <TreeViewNode Text="RPLI" NavigateUrl="">
+      <TreeViewNode Text="Index" NavigateUrl="~/Official/Operation/rpliIndex.aspx" />
+      <TreeViewNode Text="Show" NavigateUrl="~/Official/Operation/AllRpliindex.aspx" />
     </TreeViewNode>
   </OperationNode>
 
@@ -58,7 +66,7 @@
   <ReportNode text="Report">
     <!--<treeViewNode text ="Report" navigateUrl="#">-->
     <TreeViewNode Text="Generate" NavigateUrl="">
-      <TreeViewNode Text="All Account" NavigateUrl="~/official/Operation.aspx" />
+      <TreeViewNode Text="All Account" NavigateUrl="~/official/Reports/Operation.aspx" />
     </TreeViewNode>
   </ReportNode>
 </Nodes>

@@ -2,10 +2,12 @@
 
 <%@ Register Assembly="DevExpress.Web.Bootstrap.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
+    <link rel="stylesheet" type="text/css" href='<%# ResolveUrl("~/Content/GridView.css") %>' />
+    <%--  <script type="text/javascript" src='<%# ResolveUrl("~/Content/GridView.js") %>'></script>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="LeftPanelContent" runat="server">
 
-       
+
     <h3 class="leftpanel-section section-caption">OPERATION</h3>
     <dx:ASPxTreeView runat="server" ID="TableOfContentsTreeView" ClientInstanceName="tableOfContentsTreeView"
         EnableNodeTextWrapping="true" AllowSelectNode="true" Width="100%" SyncSelectionMode="None" DataSourceID="NodesDataSource" NodeLinkMode="ContentBounds">
@@ -29,62 +31,62 @@
 
     <div class="card ">
         <div class="card-body ">
-           
-           
+
+
 
 
             <div class="card ">
                 <div class="card-body">
                     <div class="row">
-                        
+
                         <div class="col-md-4">
                             <label>Account Holder Name</label>
                             <div class="input-group  ">
                                 <asp:TextBox CssClass="form-control" ID="nametb" runat="server" placeholder="Name" ReadOnly="false"></asp:TextBox>
-                                 <asp:LinkButton class="btn btn-primary" ID="LinkButton1" runat="server">
+                                <asp:LinkButton class="btn btn-primary" ID="LinkButton1" runat="server">
                                      <i class="fas fa-check-circle">                                                                        </i>
-                                 </asp:LinkButton>
+                                </asp:LinkButton>
                             </div>
                         </div>
-                       <div class="col-md-8">
-                           <dx:BootstrapGridView ID="BootstrapGridView1" runat="server" AutoGenerateColumns="False" Width="100%">
-                               <Columns>
-                                   <dx:BootstrapGridViewTextColumn FieldName="n_ame" Name="n_ame" Caption="Name" VisibleIndex="2" Width="36%" MinWidth="280" MaxWidth="450"></dx:BootstrapGridViewTextColumn>
-                                 <%--  <dx:BootstrapGridViewTextColumn FieldName="address" Name="Address" Caption="Address" VisibleIndex="3" MinWidth="150" MaxWidth="250" Width="20%"></dx:BootstrapGridViewTextColumn>--%>
-                                   <dx:BootstrapGridViewTextColumn FieldName="cif" Name="cif" Caption="cif" VisibleIndex="4" MinWidth="150" MaxWidth="250" Width="20%"></dx:BootstrapGridViewTextColumn>
-                                   <dx:BootstrapGridViewTextColumn FieldName="accountnumber" Name="accountnumber" Caption="accountNumber" VisibleIndex="6" MinWidth="150" MaxWidth="250" Width="20%"></dx:BootstrapGridViewTextColumn>
+                        <div class="col-md-8">
 
-                                   <dx:BootstrapGridViewButtonEditColumn Name="get" Caption="Control" VisibleIndex="0">
-                                       <DataItemTemplate>
-                                           <dx:BootstrapButton ID="BootstrapButton1" runat="server" AutoPostBack="false" Text="View"></dx:BootstrapButton>
-                                       </DataItemTemplate>
-                                   </dx:BootstrapGridViewButtonEditColumn>
-                                   <dx:BootstrapGridViewButtonEditColumn Name="get" Caption="Option" VisibleIndex="1">
-                                       <DataItemTemplate>
-                                           <dx:BootstrapButton ID="BootstrapButton2" runat="server" AutoPostBack="false" Text="Get"></dx:BootstrapButton>
-                                       </DataItemTemplate>
-                                   </dx:BootstrapGridViewButtonEditColumn>
-                                   <dx:BootstrapGridViewTextColumn FieldName="producttype" Name="producttype" Caption="Account Type" VisibleIndex="6" MinWidth="150" MaxWidth="250" Width="20%"></dx:BootstrapGridViewTextColumn>
-                               </Columns>
-                                <Settings HorizontalScrollBarMode="Auto" />
-                               <Settings VerticalScrollBarMode="Auto" VerticalScrollableHeight="100" />
-                            
-                           </dx:BootstrapGridView>
-                       </div>
+
+
+                            <dx:ASPxGridView ID="ASPxGridView1" runat="server" ClientInstanceName="gridView" CssClass="grid-view" Width="100%" AutoGenerateColumns="False" OnInit="ASPxGridView1_Init">
+                                <Columns>
+
+                                    <dx:GridViewDataColumn FieldName="n_ame" Name="n_ame" Caption="Name" Width="250" VisibleIndex="1">
+                                        <Settings FilterMode="DisplayText"></Settings>
+                                    </dx:GridViewDataColumn>
+                                    <dx:GridViewDataColumn FieldName="cif" Name="cif" Caption="CIF" VisibleIndex="2" MinWidth="150" MaxWidth="250" Width="20%"></dx:GridViewDataColumn>
+                                    <dx:GridViewDataTextColumn FieldName="accountnumber" Name="accountnumber" Caption="Account Number" VisibleIndex="3" MinWidth="150" MaxWidth="250" Width="20%"></dx:GridViewDataTextColumn>
+                                    <dx:GridViewDataTextColumn FieldName="producttype" Name="producttype" Caption="Account Type" VisibleIndex="4" MinWidth="150" MaxWidth="250" Width="20%"></dx:GridViewDataTextColumn>
+                                    <dx:GridViewDataButtonEditColumn VisibleIndex="0" Caption="Get">
+                                        <DataItemTemplate>
+                                            <dx:ASPxButton ID="ASPxButton1" runat="server" AutoPostBack="false" Text="Get" OnClick="ASPxButton1_Click"></dx:ASPxButton>
+                                        </DataItemTemplate>
+                                    </dx:GridViewDataButtonEditColumn>
+                                </Columns>
+
+                                <SettingsBehavior AllowFocusedRow="true" AllowSelectByRowClick="true" AllowEllipsisInText="true" AllowDragDrop="false" />
+
+                                <Settings VerticalScrollBarMode="Hidden" HorizontalScrollBarMode="Auto" ShowHeaderFilterButton="true" />
+
+                                <SettingsPager PageSize="3">
+                                    <PageSizeItemSettings Visible="true" ShowAllItem="true" />
+                                </SettingsPager>
+
+                                <Styles>
+                                    <Cell Wrap="false" />
+                                    <PagerBottomPanel CssClass="pager" />
+                                    <FocusedRow CssClass="focused" />
+                                </Styles>
+
+                            </dx:ASPxGridView>
+                        </div>
 
                     </div>
 
-                  <%--    <div class="row">
-
-                       
-                       
-                      <div class="col-md-4">
-                            <label>Guardian Name</label>
-                            <div class="form-group  ">
-                                <asp:TextBox CssClass="form-control" ID="Guardiantb" runat="server" placeholder="Guardian Name" ReadOnly="true"></asp:TextBox>
-                            </div>
-                        </div>
-                    </div>--%>
 
                     <div class="row">
                         <div class="col">
@@ -99,76 +101,8 @@
                     <hr />
                 </div>
             </div>
-            
-             <div class="card ">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label>Refference Number</label>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <asp:TextBox CssClass="form-control" ID="reffNumberTb" runat="server" placeholder="Refference Number" ReadOnly="true" ></asp:TextBox>
-                                    <asp:LinkButton class="btn btn-primary" ID="LinkButton4" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
-                                </div>
-                            </div>
-                        </div>
-                         <div class="col-md-4">
-                            <label>PR Number</label>
-                            <div class="form-group  ">
-                                <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" placeholder="Pr Number ex. BookNumber,RecptNumber" ReadOnly="true" ></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <label>Date</label>
-                            <div class="form-group  ">
-                                <asp:TextBox CssClass="form-control" ID="accountTb" runat="server" placeholder="" ReadOnly="true" type="date"></asp:TextBox>
-                            </div>
-                        </div>
 
-                        <div class="col-md-5">
-                            <label>Account Opening Status</label>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <asp:TextBox CssClass="form-control mr-1" ID="AccOpenStatustb" runat="server" placeholder="Account Open Status" Text="Pending" ReadOnly="True">
-
-                                    </asp:TextBox>
-                                    <asp:LinkButton class="btn btn-success mr-1" ID="AccountStatusApproveBtn" runat="server">
-                                        <i class="fas fa-check-circle">
-
-                                        </i>
-
-                                    </asp:LinkButton>
-                                    <asp:LinkButton class="btn btn-warning mr-1" ID="AccountStatusPendingBtn" runat="server">
-                                        <i class="far fa-pause-circle">
-      </i>
-
-                                    </asp:LinkButton>
-                                    <asp:LinkButton class="btn btn-danger mr-1" ID="AccountStatusFreezBtn" runat="server">
-                                        <i class="fas fa-times-circle">
-
-                                        </i>
-
-                                    </asp:LinkButton>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <label>Refference Number</label>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <asp:TextBox CssClass="form-control" ID="acnotb" runat="server" placeholder="Account Number" ReadOnly="true" ></asp:TextBox>
-                                    <asp:LinkButton class="btn btn-primary" ID="LinkButton2" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <hr />
-                </div>
-            </div>
+     
 
 
             <div class="card">
@@ -197,7 +131,7 @@
                             <label>Cif</label>
                             <div class="input-group  ">
                                 <asp:TextBox CssClass="form-control" ID="ciftb" runat="server" placeholder="CIF ID" Text="" ReadOnly="true"></asp:TextBox>
-                               <asp:LinkButton class="btn btn-primary" ID="LinkButton5" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
+                                <asp:LinkButton class="btn btn-primary" ID="LinkButton5" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
                             </div>
                         </div>
 
@@ -205,7 +139,7 @@
                             <label>Full Name</label>
                             <div class="form-group  ">
                                 <asp:TextBox CssClass="form-control" ID="NameInfo" runat="server" placeholder="Full Name" ReadOnly="True"></asp:TextBox>
-                                
+
                             </div>
                         </div>
                         <div class="col-md-5">
@@ -213,7 +147,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <asp:TextBox CssClass="form-control mr-1" Text="Pending" ID="CifStatustb" runat="server" placeholder="Account Status" ReadOnly="True"></asp:TextBox>
-                                     
+
 
                                 </div>
                             </div>
@@ -229,7 +163,7 @@
                         <div class="col-md-4">
                             <label>Gender</label>
                             <div class="form-group">
-                                <asp:DropDownList CssClass="form-control" ID="genderlb" runat="server" placeholder="Gender" ReadOnly="false" >
+                                <asp:DropDownList CssClass="form-control" ID="genderlb" runat="server" placeholder="Gender" ReadOnly="false">
                                     <asp:ListItem Text="Choose ..." Value="" />
                                     <asp:ListItem Text="Male" Value="Male" />
                                     <asp:ListItem Text="Female" Value="Female" />
@@ -296,10 +230,80 @@
                     <hr />
                 </div>
             </div>
+
+                   <div class="card ">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Refference Number</label>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <asp:TextBox CssClass="form-control" ID="reffNumberTb" runat="server" placeholder="Refference Number" ReadOnly="true"></asp:TextBox>
+                                    <asp:LinkButton class="btn btn-primary" ID="LinkButton4" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>PR Number</label>
+                            <div class="form-group  ">
+                                <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" placeholder="Pr Number ex. BookNumber,RecptNumber" ReadOnly="true"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Date</label>
+                            <div class="form-group  ">
+                                <asp:TextBox CssClass="form-control" ID="accountTb" runat="server" placeholder="" ReadOnly="true" type="date"></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5">
+                            <label>Account Opening Status</label>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <asp:TextBox CssClass="form-control mr-1" ID="AccOpenStatustb" runat="server" placeholder="Account Open Status" Text="Pending" ReadOnly="True">
+
+                                    </asp:TextBox>
+                                    <asp:LinkButton class="btn btn-success mr-1" ID="AccountStatusApproveBtn" runat="server">
+                                        <i class="fas fa-check-circle">
+
+                                        </i>
+
+                                    </asp:LinkButton>
+                                    <asp:LinkButton class="btn btn-warning mr-1" ID="AccountStatusPendingBtn" runat="server">
+                                        <i class="far fa-pause-circle">
+      </i>
+
+                                    </asp:LinkButton>
+                                    <asp:LinkButton class="btn btn-danger mr-1" ID="AccountStatusFreezBtn" runat="server">
+                                        <i class="fas fa-times-circle">
+
+                                        </i>
+
+                                    </asp:LinkButton>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Refference Number</label>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <asp:TextBox CssClass="form-control" ID="acnotb" runat="server" placeholder="Account Number" ReadOnly="true"></asp:TextBox>
+                                    <asp:LinkButton class="btn btn-primary" ID="LinkButton2" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <hr />
+                </div>
+            </div>
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                         <div class="col-md-2">
+                        <div class="col-md-2">
                             <label>Mode Of Operation</label>
                             <div class="form-group">
                                 <asp:DropDownList CssClass="form-control" ID="Modetb" runat="server" placeholder="Mode" Enabled="true" OnTextChanged="Modetb_TextChanged" AutoPostBack="true">
@@ -317,7 +321,7 @@
                                 <asp:TextBox CssClass="form-control" ID="GuardianNametb" runat="server" placeholder="Guardian" ReadOnly="True"></asp:TextBox>
                             </div>
                         </div>
-                         <div class="col-md-4">
+                        <div class="col-md-4">
                             <label>Second Account Holder Name</label>
                             <div class="form-group  ">
                                 <asp:TextBox CssClass="form-control" ID="name2tb" runat="server" placeholder="Joint Acc Holder Name" ReadOnly="true"></asp:TextBox>
@@ -381,7 +385,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                       <div class="col-md-2">
+                        <div class="col-md-2">
                             <label>Nomini Register</label>
                             <div class="form-group">
                                 <asp:DropDownList CssClass="form-control" ID="nominiregcb" runat="server" placeholder="Nomini" Enabled="true" OnTextChanged="nominiregcb_TextChanged1" AutoPostBack="true">
@@ -430,11 +434,11 @@
             <div class="card ">
                 <div class="card-body">
                     <div class="row">
-                      
+
                         <div class="col-4 mx-auto">
                             <asp:Button ID="Button3" class="btn btn-lg btn-block btn-info" runat="server" Enabled="true" Text="Print" />
                         </div>
-                          <div class="col-4 mx-auto">
+                        <div class="col-4 mx-auto">
                             <asp:Button ID="Button1" class="btn btn-lg btn-block btn-success" runat="server" Enabled="false" Text="Add" />
                         </div>
                         <div class="col-4 mx-auto">

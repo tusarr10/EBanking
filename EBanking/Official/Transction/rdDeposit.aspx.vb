@@ -1,19 +1,24 @@
 ﻿Imports System.Data.SqlClient
-Public Class ssaDeposit
+Public Class rdDeposit
     Inherits System.Web.UI.Page
 
-    Dim currentBalnce As Double
-    Dim TransctionAmount As Double
-    Dim NewBalance As Double
+
+    Dim currentBalnce As Double = 00
+
+    Dim TransctionAmount As Double = 00
     Dim fine As Double = 00
+    Dim NewBalance As Double = 00
     Dim totalDeposit As Double = 00
 
     Dim accountNumber As String
     Dim depositername As String
+    Dim tillDate As String
     Dim da_te As String
     Dim bbt As String
     Dim transctiontype As String
     Dim amount As String
+
+
     Dim bat As String
     Dim Trid As String
     Dim status As String
@@ -23,6 +28,7 @@ Public Class ssaDeposit
 
     Dim accounttype As String
     Dim dlt As String
+
     Private Sub btnFindAccountClick()
         Dim accountnumber As String
         accountnumber = accIdTb.Text.Trim
@@ -45,17 +51,6 @@ Public Class ssaDeposit
         End Try
     End Sub
 
-    Protected Sub btnFindAccount_Click(sender As Object, e As EventArgs) Handles btnFindAccount.Click
-        btnFindAccountClick()
-    End Sub
-
-    Protected Sub Calculatebtn_Click(sender As Object, e As EventArgs) Handles Calculatebtn.Click
-        DoCalculate()
-    End Sub
-
-    Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        DoTransction()
-    End Sub
 
     Private Sub FillDataInView() 'get and put data from liveaccount
         balanceTb.Text = getAccountBalance(0)
@@ -64,10 +59,9 @@ Public Class ssaDeposit
         Acctypetb.Text = getAccountAccType(0)
         ciftb.Text = getAccountCif(0)
         nametb.Text = getAccountName(0)
-        Gnametb.Text = getAccountGuardianName(0)
+        nametb2.Text = getAccountJointName(0)
 
     End Sub
-
     Private Sub FIllDataInCif(accountnumber As String)
         Try
             cifsearch(accountnumber)
@@ -123,7 +117,7 @@ Public Class ssaDeposit
         Finally
 
         End Try
-    End Sub 'fill data in cif View
+    End Sub
     Private Sub FilldataInDLT(accountnumber As String)
         Dim dlt, dlt2 As String
         Try
@@ -143,7 +137,7 @@ Public Class ssaDeposit
             MyMessageBox.Show(Me, "Unable to convert dlt to date")
         End Try
 
-    End Sub 'Get Dlt information From DataBase
+    End Sub
     Private Sub GetDataOfAccount(ByVal accountnumber As String)
         Try
             AccountSearch(accountnumber)
@@ -153,8 +147,7 @@ Public Class ssaDeposit
 
         End Try
         If IsAccountIdExist(accountnumber) Then
-
-            If getAccountProductType(0) = "SSA" Then
+            If getAccountProductType(0) = "RD" Then
                 If getAccountStatus(0) = "Active" Then
                     FillDataInView()
                     FIllDataInCif(getAccountCif(0))
@@ -163,35 +156,77 @@ Public Class ssaDeposit
                     MyMessageBox.Show(Me, "This Is a Inactive Account ..")
                 End If
             Else
-                MyMessageBox.Show(Me, "This is not a Saving Account .This Is a " & getAccountProductType(0) & " Account")
+                MyMessageBox.Show(Me, "This Is Not A RD Account This is a " & getAccountProductType(0) & " Account ..")
             End If
 
         Else
-            MyMessageBox.Show(Me, "Account Does not Exist ..")
-
+            MyMessageBox.Show(Me, "Account Number Does Not Exist ..")
         End If
 
-    End Sub 'Get Account Information Then Insert data in view
+    End Sub
+    Protected Sub btnFindAccount_Click(sender As Object, e As EventArgs) Handles btnFindAccount.Click
+        btnFindAccountClick()
+
+    End Sub
+    Function IsAmountCorrect() As Boolean
+
+        Dim strAllowedChars As String = "0123456789() -+ "
+        If Len(TransctionAmount) = 0 Then
+            Return False
+        ElseIf TransctionAmount > 0
+            Return True
+
+        Else
+            For i = 0 To Len(TransctionAmount) - 1
+                If InStr(1, strAllowedChars, TransctionAmount.ToString(i)) = 0 Then
+                    Return False
+                Else
+                    Return True
+                End If
+            Next
+        End If
+
+        Return False
+
+    End Function
+
+
     Private Sub DoCalculate()
         ''TODO Calculate
         currentBalnce = getAccountBalance(0)
         Try
             TransctionAmount = "0" + DepositAmounttb.Text.Trim
             fine = "0" + DepositFine.Text.Trim
+
         Catch
             MyMessageBox.Show(Me, "Enter Number Only In INR ")
             Exit Sub
         End Try
         Try
-            NewBalance = currentBalnce + TransctionAmount
-            newbalancetb.Text = NewBalance
-            totalDeposit = TransctionAmount + fine
+            If TransctionAmount < 0 Then
+                MyMessageBox.Show(Me, "Enter Transction Amount >0")
+                Exit Sub
+            Else
 
+            End If
+        Catch ex As Exception
+
+        End Try
+        Try
+            NewBalance = currentBalnce + TransctionAmount
+            totalDeposit = TransctionAmount + fine
+            newbalancetb.Text = NewBalance
+            'in fiture modal popup show here 
         Catch
             MyMessageBox.Show(Me, "Unable to Calculate")
         End Try
 
     End Sub
+    Protected Sub Calculatebtn_Click(sender As Object, e As EventArgs) Handles Calculatebtn.Click
+        DoCalculate()
+
+    End Sub
+
     Private Sub GetDataFromView()
         'data validation pending...
 
@@ -201,8 +236,10 @@ Public Class ssaDeposit
         depositername = nametb.Text.Trim
         amount = "0" + DepositAmounttb.Text.Trim
         fine = "0" + DepositFine.Text.Trim
+        'add total deposit in alltransction
         bat = newbalancetb.Text.Trim
         Trid = transctiontb.Text.Trim
+        tillDate = tillDateTB.Text.Trim
         details = detailstb.Text.Trim
 
         'from hardcode
@@ -212,12 +249,30 @@ Public Class ssaDeposit
         userName = Getusername ' to be change in Login system
 
         'for journal
-        accounttype = "SSA"
+        accounttype = "RD"
         dlt = dlttb.Text
 
     End Sub
     Private Sub DoTransction()
-        GetDataFromView()
+        Try
+            'Search TRID If exist
+
+        Catch ex As Exception
+
+        End Try
+        Try
+            GetDataFromView()
+        Catch ex As Exception
+            MyMessageBox.Show(Me, "Error I Get Data From View ")
+            Exit Sub
+        End Try
+        Try
+            DoCalculate()
+        Catch ex As Exception
+            MyMessageBox.Show(Me, "Error In Doing Calculate ..")
+            Exit Sub
+
+        End Try
         Try
             Dim cs As String = connectionhelper.connectionstring()
             databaseconnection = New SqlConnection(cs)
@@ -225,15 +280,15 @@ Public Class ssaDeposit
             Dim command As SqlCommand = databaseconnection.CreateCommand()
             Dim transction As SqlTransaction
 
-            transction = databaseconnection.BeginTransaction("AddSSATransctions")
+            transction = databaseconnection.BeginTransaction("AddRdTransctions")
 
             command.Connection = databaseconnection
             command.Transaction = transction
             Try
-                command.CommandText = "insert into " & ssajournaltbl & " (accountnumber ,depositername,da_te,bbt,transctiontype,amount,bat,trid,status,office,u_ser,fine ,details )values('" & accountNumber & "','" & depositername & "','" & da_te & "','" & bbt & "','" & transctiontype & "','" & amount & "','" & bat & "','" & Trid & "','" & status & "','" & office & "','" & userName & "','" & fine & "','" & details & "')"
+                command.CommandText = "insert into " & rdjournaltbl & " (accountnumber ,depositername,da_te,bbt,transctiontype,amount,bat,trid,status,office,u_ser ,fine,mo_nth )values('" & accountNumber & "','" & depositername & "','" & da_te & "','" & bbt & "','" & transctiontype & "','" & amount & "','" & bat & "','" & Trid & "','" & status & "','" & office & "','" & userName & "','" & fine & "','" & tillDate & "')"
                 command.ExecuteNonQuery()
 
-                command.CommandText = "insert into journal (da_te,accounttype ,accountnumber,na_me,deposit,withdraw,dlt,trid,balance,status,office,u_ser ) values('" & da_te & "','" & accounttype & "','" & accountNumber & "','" & depositername & "','" & TransctionAmount & "','" & "00" & "','" & dlt & "','" & Trid & "','" & bat & "','" & status & "','" & office & "','" & userName & "')"
+                command.CommandText = "insert into journal (da_te,accounttype ,accountnumber,na_me,deposit,withdraw,dlt,trid,balance,status,office,u_ser ) values('" & da_te & "','" & accounttype & "','" & accountNumber & "','" & depositername & "','" & totalDeposit & "','" & "00" & "','" & dlt & "','" & Trid & "','" & bat & "','" & status & "','" & office & "','" & userName & "')"
                 command.ExecuteNonQuery()
 
                 transction.Commit()
@@ -244,7 +299,6 @@ Public Class ssaDeposit
                 MyMessageBox.Show(Me, "  Message: {0}" + ex.Message)
                 Try
                     transction.Rollback()
-
                     MyMessageBox.Show(Me, "Data Not Saved Successfully")
                 Catch ex2 As Exception
                     MyMessageBox.Show(Me, "Rollback Exception Type: {0}" + ex2.Message())
@@ -259,8 +313,16 @@ Public Class ssaDeposit
             MyMessageBox.Show(Me, "  Message: {0}" + ex.Message)
         End Try
     End Sub
+    Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If Len(transctiontb.Text.ToString) > 2 And DepositAmounttb.Text > 1 Then
 
+            DoTransction()
 
+        Else
+            MyMessageBox.Show(Me, "Check transction amount and ID ")
+        End If
+
+    End Sub
 
 
 End Class

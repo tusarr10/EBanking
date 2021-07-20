@@ -132,6 +132,13 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+    Function getNewAccountStatus(ByVal currentrow) As String
+        Try
+            Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("status"), String)
+        Catch
+            Return Nothing
+        End Try
+    End Function
     Function getNewAccountAddress(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("address"), String)

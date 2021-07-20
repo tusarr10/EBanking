@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports DevExpress.Web
 
 Public Class openAccount
     Inherits System.Web.UI.Page
@@ -6,6 +7,16 @@ Public Class openAccount
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
     End Sub
+
+    Function data(sender As Object, tablename As String) 'For retrive data from Table
+        Dim btn As Bootstrap.BootstrapButton = sender
+        Dim container As Object = btn.NamingContainer
+
+        Return container.Grid.GetRowValues(container.VisibleIndex, tablename).ToString
+
+    End Function
+
+
     Protected Sub ProductCb_TextChanged(sender As Object, e As EventArgs) Handles ProductCb.TextChanged
         Try
             If ProductCb.Text = "Saving" Then
@@ -104,6 +115,149 @@ Public Class openAccount
 
     Dim _reffNumber, _PrNumber, _OpenDate, _AccountStatus, _Name, _ModeOfOperation, _secondName, _guardianName, _cif, _cifStatus, _Dob, _gender, _MobileNumber, _EmailId, _Pan, _Adhar, _Address, _Relation, _product, _term, _Value, _nominiReg, _NominiName, _NominiRelation, _NominiDOB, _NominiAddress, _Photo, _sign, _fullName, _accountNumber As String
 
+    Private Sub btnclickcifsearch(cif As String) ' fill cif data from database to view
+
+
+        Try
+            CifHelper.cifsearch(cif)
+            If IsIdExist(cif) = True Then
+                Try
+                    ' do fill in box
+                    loadData()
+                    If CifHelper.cifupdate = True Then
+                        ' responselbl.Text = "Everything OK. ID Found."
+                        ' responselbl.ForeColor = Drawing.Color.Green
+
+                    Else
+                        ' responselbl.Text = "Incomplect Profile. ID Found."
+                        ' responselbl.ForeColor = Drawing.Color.Yellow
+                        ' clearNocif()
+                    End If
+                Catch
+
+                    ' responselbl.Text = "Id Found But Error In Getting Data(Contact DEVELOPER ERROR EB-CifUpdatefrmm-10). ID Found."
+
+                End Try
+            Else
+                'responselbl.Text = "O NO. ID Not Found."
+                ' responselbl.ForeColor = Drawing.Color.Red
+                CifHelper.cifupdate = False
+                ' clearNocif()
+            End If
+        Catch ex As Exception
+            ' responselbl.Text = "error" + ex.Message
+        Finally
+        End Try
+    End Sub
+    Sub loadData()
+        Try
+            If CifHelper.getcif(0) = Nothing Then
+                ' ciftb.readonly = userNotAdmin
+            Else
+                ciftb.Text = CifHelper.getcif(0)
+                '  ciftb.ReadOnly = userNotAdmin
+
+            End If
+            If CifHelper.getcifname(0) IsNot Nothing Then
+                nametb.Text = CifHelper.getcifname(0)
+                '  nametb.ReadOnly = userNotAdmin
+
+            End If
+            If CifHelper.getcifemail(0) IsNot Nothing Then
+                emailtb.Text = CifHelper.getcifemail(0)
+                '   emailtb.ReadOnly = userNotAdmin
+
+            End If
+            If CifHelper.getcifmobile(0) IsNot Nothing Then
+                mobiletb.Text = CifHelper.getcifmobile(0)
+                '  mobiletb.ReadOnly = userNotAdmin
+
+            End If
+            If CifHelper.getcifpan(0) IsNot Nothing Then
+                pantb.Text = CifHelper.getcifpan(0)
+                '  pantb.ReadOnly = userNotAdmin
+
+            End If
+            If CifHelper.getcifadhar(0) IsNot Nothing Then
+                adhartb.Text = CifHelper.getcifadhar(0)
+                '  adhartb.ReadOnly = userNotAdmin
+
+            End If
+            If CifHelper.getcifdob(0) IsNot Nothing Then
+                dobtb.Text = CifHelper.getcifdob(0)
+                '  dobtb.ReadOnly = userNotAdmin
+            End If
+            If CifHelper.getcifgender(0) IsNot Nothing Then
+                'If CifHelper.getcifgender(0) = "Male" Then
+                '    gendertb.SelectedIndex = 0
+                'ElseIf CifHelper.getcifgender(0) = "Female" Then
+                '    RadioGroup1.SelectedIndex = 1
+                'ElseIf CifHelper.getcifgender(0) = "Other" Then
+                '    RadioGroup1.SelectedIndex = 2
+                'End If
+                genderlb.SelectedValue = CifHelper.getcifgender(0)
+                '  genderlb.Enabled = Not (userNotAdmin)
+
+            End If
+            If CifHelper.getcifaddress(0) IsNot Nothing Then
+                addresstb.Text = CifHelper.getcifaddress(0)
+                ' addresstb.ReadOnly = userNotAdmin
+
+            End If
+            If CifHelper.getcifStatus(0) IsNot Nothing Then
+                CifStatustb.Text = CifHelper.getcifStatus(0)
+                ' statustb.ReadOnly = userNotAdmin
+
+            End If
+            If CifHelper.getcifphoto(0) IsNot Nothing Then
+                photophoto.ImageUrl = CifHelper.getcifphoto(0)
+                photoPath = photophoto.ImageUrl
+                Debug.WriteLine(photophoto.ImageUrl)
+
+            End If
+            If CifHelper.getcifsign(0) IsNot Nothing Then
+                signphoto.ImageUrl = CifHelper.getcifsign(0)
+                signPath = signphoto.ImageUrl
+                Debug.WriteLine(signphoto.ImageUrl)
+            End If
+
+            'or we can 
+            ' status ="Approve"
+            'then cifhelper.cifupdated =true
+
+        Catch ex As Exception
+            CifHelper.cifupdate = False
+        Finally
+
+        End Try
+    End Sub
+    Protected Sub ASPxButton1_Click(sender As Object, e As EventArgs)
+        Try
+            Dim btn = sender
+            Dim container = btn.NamingContainer
+            Dim value As String = container.Grid.GetRowValues(container.VisibleIndex, "cif").ToString
+            ciftb.Text = value
+            If ciftb.Text IsNot Nothing Then
+                btnclickcifsearch(ciftb.Text.Trim)
+            End If
+        Catch ex As Exception
+        End Try
+
+    End Sub
+
+    Protected Sub ASPxGridView1_Init(sender As Object, e As EventArgs)
+        Try
+            loadDataTable()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Protected Sub LinkButton5_Click(sender As Object, e As EventArgs) Handles LinkButton5.Click
+        ' search cif if exist
+        btnclickcifsearch(ciftb.Text.Trim)
+    End Sub
+
     Protected Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
 
     End Sub
@@ -134,13 +288,20 @@ Public Class openAccount
         addresstb.ReadOnly = False
 
     End Sub
+    Protected Sub GridView_CustomCallback(sender As Object, e As ASPxGridViewCustomCallbackEventArgs)
+
+
+    End Sub
+    Private Sub loadDataTable()
+        ASPxGridView1.DataSource = getAccountOpenDataTable()
+        ASPxGridView1.DataBind()
+    End Sub
     Private Sub findDataFromAccountDatabase(name As String)
         'get data from liveaccount database 
         'get data from accountOpen Database
         Try
             AddAccountHelper.AccountNameSearch(name)
-            BootstrapGridView1.DataSource = getAccountOpenDataTable()
-            BootstrapGridView1.DataBind()
+            loadDataTable()
         Catch ex As Exception
 
         End Try

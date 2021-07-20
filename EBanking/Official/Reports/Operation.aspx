@@ -39,19 +39,19 @@
                 </Template>
             </dx:MenuItem>
             <dx:MenuItem Name="Deposit" Text="Deposit" Alignment="Right" AdaptivePriority="2">
-                <Image Url="../Content/Images/add.svg" />
+                <Image Url="~/Content/Images/add.svg" />
             </dx:MenuItem>
             <dx:MenuItem Name="Withdraw" Text="Withdraw" Alignment="Right" AdaptivePriority="2">
-                <Image Url="../Content/Images/edit.svg" />
+                <Image Url="~/Content/Images/edit.svg" />
             </dx:MenuItem>
             <dx:MenuItem Name="View" Text="View" Alignment="Right" AdaptivePriority="2">
-                <Image Url="../Content/Images/delete.svg" />
+                <Image Url="~/Content/Images/delete.svg" />
             </dx:MenuItem>
             <dx:MenuItem Name="Export" Text="Export" Alignment="Right" AdaptivePriority="2">
-                <Image Url="../Content/Images/export.svg" />
+                <Image Url="~/Content/Images/export.svg" />
             </dx:MenuItem>
             <dx:MenuItem Name="ToggleFilterPanel" Text="" GroupName="Filter" Alignment="Right" AdaptivePriority="1">
-                <Image Url="../Content/Images/search.svg" UrlChecked="../Content/Images/search-selected.svg" />
+                <Image Url="~/Content/Images/search.svg" UrlChecked="~/Content/Images/search-selected.svg" />
             </dx:MenuItem>
         </Items>
     </dx:ASPxMenu>

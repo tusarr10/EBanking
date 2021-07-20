@@ -154,24 +154,24 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Official\addAccount.aspx.designer.vb">
+    <Compile Include="Official\Operation\addAccount.aspx.designer.vb">
       <DependentUpon>addAccount.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Official\addAccount.aspx.vb">
+    <Compile Include="Official\Operation\addAccount.aspx.vb">
       <DependentUpon>addAccount.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Official\addcif.aspx.designer.vb">
+    <Compile Include="Official\Operation\addcif.aspx.designer.vb">
       <DependentUpon>addcif.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Official\addcif.aspx.vb">
+    <Compile Include="Official\Operation\addcif.aspx.vb">
       <DependentUpon>addcif.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Official\AllOpenAccount.aspx.designer.vb">
+    <Compile Include="Official\Reports\AllOpenAccount.aspx.designer.vb">
       <DependentUpon>AllOpenAccount.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Official\AllOpenAccount.aspx.vb">
+    <Compile Include="Official\Reports\AllOpenAccount.aspx.vb">
       <DependentUpon>AllOpenAccount.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
@@ -195,10 +195,10 @@
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Official\newopentransction.aspx.designer.vb">
+    <Compile Include="Official\Operation\newopentransction.aspx.designer.vb">
       <DependentUpon>newopentransction.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Official\newopentransction.aspx.vb">
+    <Compile Include="Official\Operation\newopentransction.aspx.vb">
       <DependentUpon>newopentransction.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
@@ -209,17 +209,17 @@
       <DependentUpon>official.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Official\openAccount.aspx.designer.vb">
+    <Compile Include="Official\Operation\openAccount.aspx.designer.vb">
       <DependentUpon>openAccount.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Official\openAccount.aspx.vb">
+    <Compile Include="Official\Operation\openAccount.aspx.vb">
       <DependentUpon>openAccount.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Official\Operation.aspx.designer.vb">
+    <Compile Include="Official\Reports\Operation.aspx.designer.vb">
       <DependentUpon>Operation.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Official\Operation.aspx.vb">
+    <Compile Include="Official\Reports\Operation.aspx.vb">
       <DependentUpon>Operation.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
@@ -230,59 +230,73 @@
       <DependentUpon>OpenAccountCheck.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Official\rdDeposit.aspx.designer.vb">
+    <Compile Include="Official\Transction\rdDeposit.aspx.designer.vb">
       <DependentUpon>rdDeposit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Official\rdDeposit.aspx.vb">
+    <Compile Include="Official\Transction\rdDeposit.aspx.vb">
       <DependentUpon>rdDeposit.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Official\sbDeposit.aspx.designer.vb">
+    <Compile Include="Official\Transction\rpliAllDeposit.aspx.designer.vb">
+      <DependentUpon>rpliAllDeposit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Transction\rpliAllDeposit.aspx.vb">
+      <DependentUpon>rpliAllDeposit.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\Transction\rpliDeposit.aspx.designer.vb">
+      <DependentUpon>rpliDeposit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Transction\rpliDeposit.aspx.vb">
+      <DependentUpon>rpliDeposit.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\Transction\sbDeposit.aspx.designer.vb">
       <DependentUpon>sbDeposit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Official\sbDeposit.aspx.vb">
+    <Compile Include="Official\Transction\sbDeposit.aspx.vb">
       <DependentUpon>sbDeposit.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Official\sbInterest.aspx.designer.vb">
+    <Compile Include="Official\Transction\sbInterest.aspx.designer.vb">
       <DependentUpon>sbInterest.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Official\sbInterest.aspx.vb">
+    <Compile Include="Official\Transction\sbInterest.aspx.vb">
       <DependentUpon>sbInterest.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Official\sbWithdraw.aspx.designer.vb">
+    <Compile Include="Official\Transction\sbWithdraw.aspx.designer.vb">
       <DependentUpon>sbWithdraw.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Official\sbWithdraw.aspx.vb">
+    <Compile Include="Official\Transction\sbWithdraw.aspx.vb">
       <DependentUpon>sbWithdraw.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Official\ssaDeposit.aspx.designer.vb">
+    <Compile Include="Official\Transction\ssaDeposit.aspx.designer.vb">
       <DependentUpon>ssaDeposit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Official\ssaDeposit.aspx.vb">
+    <Compile Include="Official\Transction\ssaDeposit.aspx.vb">
       <DependentUpon>ssaDeposit.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Official\ssaInterest.aspx.designer.vb">
+    <Compile Include="Official\Transction\ssaInterest.aspx.designer.vb">
       <DependentUpon>ssaInterest.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Official\ssaInterest.aspx.vb">
+    <Compile Include="Official\Transction\ssaInterest.aspx.vb">
       <DependentUpon>ssaInterest.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Official\transction.aspx.designer.vb">
+    <Compile Include="Official\Transction\transction.aspx.designer.vb">
       <DependentUpon>transction.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Official\transction.aspx.vb">
+    <Compile Include="Official\Transction\transction.aspx.vb">
       <DependentUpon>transction.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Official\TransctionStatusApprove.aspx.designer.vb">
+    <Compile Include="Official\Transction\TransctionStatusApprove.aspx.designer.vb">
       <DependentUpon>TransctionStatusApprove.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Official\TransctionStatusApprove.aspx.vb">
+    <Compile Include="Official\Transction\TransctionStatusApprove.aspx.vb">
       <DependentUpon>TransctionStatusApprove.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
@@ -387,22 +401,24 @@
     <Content Include="DATA\Sign\tre1234Sign190620211023.png" />
     <Content Include="DATA\Sign\tre1234Sign190620211028.png" />
     <Content Include="DATA\Sign\vter123Sign19062021710.png" />
-    <Content Include="Official\addAccount.aspx" />
-    <Content Include="Official\addcif.aspx" />
-    <Content Include="Official\AllOpenAccount.aspx" />
+    <Content Include="Official\Operation\addAccount.aspx" />
+    <Content Include="Official\Operation\addcif.aspx" />
+    <Content Include="Official\Reports\AllOpenAccount.aspx" />
     <Content Include="Official\Default.aspx" />
-    <Content Include="Official\newopentransction.aspx" />
-    <Content Include="Official\openAccount.aspx" />
-    <Content Include="Official\Operation.aspx" />
+    <Content Include="Official\Operation\newopentransction.aspx" />
+    <Content Include="Official\Operation\openAccount.aspx" />
+    <Content Include="Official\Reports\Operation.aspx" />
     <Content Include="Official\Print\OpenAccountCheck.aspx" />
-    <Content Include="Official\rdDeposit.aspx" />
-    <Content Include="Official\sbDeposit.aspx" />
-    <Content Include="Official\sbInterest.aspx" />
-    <Content Include="Official\sbWithdraw.aspx" />
-    <Content Include="Official\ssaDeposit.aspx" />
-    <Content Include="Official\ssaInterest.aspx" />
-    <Content Include="Official\transction.aspx" />
-    <Content Include="Official\TransctionStatusApprove.aspx" />
+    <Content Include="Official\Transction\rdDeposit.aspx" />
+    <Content Include="Official\Transction\rpliAllDeposit.aspx" />
+    <Content Include="Official\Transction\rpliDeposit.aspx" />
+    <Content Include="Official\Transction\sbDeposit.aspx" />
+    <Content Include="Official\Transction\sbInterest.aspx" />
+    <Content Include="Official\Transction\sbWithdraw.aspx" />
+    <Content Include="Official\Transction\ssaDeposit.aspx" />
+    <Content Include="Official\Transction\ssaInterest.aspx" />
+    <Content Include="Official\Transction\transction.aspx" />
+    <Content Include="Official\Transction\TransctionStatusApprove.aspx" />
     <Content Include="Resour\bootstrap\css\bootstrap.min.css" />
     <Content Include="Resour\css\customStyleSheet.css" />
     <Content Include="Resour\datatable\css\jquery.dataTables.min.css" />
