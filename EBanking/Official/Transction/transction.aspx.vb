@@ -5,6 +5,7 @@ Public Class transction
 
 
 
+    Dim filterdate As String = GetworkingDate
 
     Private Sub allDataFromSbTransctiondb(dat As String)
         Try
@@ -52,18 +53,19 @@ Public Class transction
 
         End Try
     End Sub
-    Private Sub LoadDataFromServer()
-        allDataFromSbTransctiondb(GetworkingDate)
-        allDatafromJournalDB(GetworkingDate)
-        allDatafromRDTransctionDB(GetworkingDate)
-        alldatafromSSAJournalDB(GetworkingDate)
+    Private Sub LoadDataFromServer(filterdate As String)
+        allDataFromSbTransctiondb(filterdate)
+        allDatafromJournalDB(filterdate)
+        allDatafromRDTransctionDB(filterdate)
+        alldatafromSSAJournalDB(filterdate)
 
     End Sub
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
         If (IsPostBack = False) Then
             'Load Data From Server
-            LoadDataFromServer()
+            datetb.Text = GetworkingDate
+            LoadDataFromServer(GetworkingDate)
         End If
     End Sub
     Protected Sub btnAction_Init(sender As Object, e As EventArgs)
@@ -196,18 +198,46 @@ Public Class transction
     End Sub
 
     Protected Sub journalgridview_Init(sender As Object, e As EventArgs)
-        allDatafromJournalDB(GetworkingDate)
+        allDatafromJournalDB(filterdate)
     End Sub
 
     Protected Sub sbjournalGridView_Init(sender As Object, e As EventArgs)
-        allDataFromSbTransctiondb(GetworkingDate)
+        allDataFromSbTransctiondb(filterdate)
     End Sub
 
     Protected Sub ASPxGridView1_Init(sender As Object, e As EventArgs)
-        allDatafromRDTransctionDB(GetworkingDate)
+        allDatafromRDTransctionDB(filterdate)
     End Sub
 
     Protected Sub ASPxGridView1_Init1(sender As Object, e As EventArgs)
-        alldatafromSSAJournalDB(GetworkingDate)
+        alldatafromSSAJournalDB(filterdate)
+    End Sub
+
+    Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
+        Try
+            filterdate = datetb.Text.ToString
+            LoadDataFromServer(filterdate)
+        Catch
+            MyMessageBox.Show(Me, "Enter Valid Date In  {yyyy-MM-dd} formate ")
+        End Try
+
+    End Sub
+
+    Protected Sub LinkButton2_Click(sender As Object, e As EventArgs) Handles LinkButton2.Click
+        Try
+            filterdate = datetb.Text.ToString
+            LoadDataFromServer("")
+        Catch
+            MyMessageBox.Show(Me, "Enter Valid Date In  {yyyy-MM-dd} formate ")
+        End Try
+    End Sub
+
+    Protected Sub LinkButton3_Click(sender As Object, e As EventArgs) Handles LinkButton3.Click
+        Try
+            filterdate = datetb.Text.ToString
+            LoadDataFromServer(GetworkingDate)
+        Catch
+            MyMessageBox.Show(Me, "Enter Valid Date In  {yyyy-MM-dd} formate ")
+        End Try
     End Sub
 End Class

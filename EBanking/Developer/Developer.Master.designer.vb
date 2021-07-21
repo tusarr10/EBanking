@@ -11,140 +11,131 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class transction
+Partial Public Class Developer
     
     '''<summary>
-    '''TableOfContentsTreeView control.
+    '''head control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TableOfContentsTreeView As Global.DevExpress.Web.ASPxTreeView
+    Protected WithEvents head As Global.System.Web.UI.WebControls.ContentPlaceHolder
     
     '''<summary>
-    '''NodesDataSource control.
+    '''form1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents NodesDataSource As Global.System.Web.UI.WebControls.XmlDataSource
+    Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
     
     '''<summary>
-    '''datetb control.
+    '''HeaderPanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents datetb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents HeaderPanel As Global.DevExpress.Web.ASPxPanel
     
     '''<summary>
-    '''LinkButton1 control.
+    '''LeftAreaMenu control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents LinkButton1 As Global.System.Web.UI.WebControls.LinkButton
+    Protected WithEvents LeftAreaMenu As Global.DevExpress.Web.ASPxMenu
     
     '''<summary>
-    '''LinkButton2 control.
+    '''RightAreaMenu control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents LinkButton2 As Global.System.Web.UI.WebControls.LinkButton
+    Protected WithEvents RightAreaMenu As Global.DevExpress.Web.ASPxMenu
     
     '''<summary>
-    '''LinkButton3 control.
+    '''ApplicationMenu control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents LinkButton3 As Global.System.Web.UI.WebControls.LinkButton
+    Protected WithEvents ApplicationMenu As Global.DevExpress.Web.ASPxMenu
     
     '''<summary>
-    '''journalgridview control.
+    '''LeftPanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents journalgridview As Global.DevExpress.Web.ASPxGridView
+    Protected WithEvents LeftPanel As Global.DevExpress.Web.ASPxPanel
     
     '''<summary>
-    '''ASPxRoundPanel1 control.
+    '''LeftPanelContent control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ASPxRoundPanel1 As Global.DevExpress.Web.ASPxRoundPanel
+    Protected WithEvents LeftPanelContent As Global.System.Web.UI.WebControls.ContentPlaceHolder
     
     '''<summary>
-    '''sbjournalGridView control.
+    '''RightPanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents sbjournalGridView As Global.DevExpress.Web.ASPxGridView
+    Protected WithEvents RightPanel As Global.DevExpress.Web.ASPxPanel
     
     '''<summary>
-    '''ASPxRoundPanel2 control.
+    '''RightPanelContent control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ASPxRoundPanel2 As Global.DevExpress.Web.ASPxRoundPanel
+    Protected WithEvents RightPanelContent As Global.System.Web.UI.WebControls.ContentPlaceHolder
     
     '''<summary>
-    '''RdJournalGridView control.
+    '''PageToolbarPanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents RdJournalGridView As Global.DevExpress.Web.ASPxGridView
+    Protected WithEvents PageToolbarPanel As Global.DevExpress.Web.ASPxPanel
     
     '''<summary>
-    '''ASPxRoundPanel3 control.
+    '''PageToolbar control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ASPxRoundPanel3 As Global.DevExpress.Web.ASPxRoundPanel
+    Protected WithEvents PageToolbar As Global.System.Web.UI.WebControls.ContentPlaceHolder
     
     '''<summary>
-    '''ssaJournalGridView control.
+    '''PageContent control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ssaJournalGridView As Global.DevExpress.Web.ASPxGridView
+    Protected WithEvents PageContent As Global.System.Web.UI.WebControls.ContentPlaceHolder
     
     '''<summary>
-    '''ASPxRoundPanel4 control.
+    '''ApplicationMenuDataSource control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ASPxRoundPanel4 As Global.DevExpress.Web.ASPxRoundPanel
-    
-    '''<summary>
-    '''BootstrapGridView3 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents BootstrapGridView3 As Global.DevExpress.Web.Bootstrap.BootstrapGridView
+    Protected WithEvents ApplicationMenuDataSource As Global.DevExpress.Web.ASPxSiteMapDataSource
 End Class

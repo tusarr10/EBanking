@@ -3,6 +3,7 @@
 <%@ Register Assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
+  <%--  <link rel="stylesheet" href="~/Content/Custom/css/validationEngine.jquery.css" type="text/css" />--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="LeftPanelContent" runat="server">
 
@@ -38,7 +39,7 @@
                             <label>Account ID</label>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <asp:TextBox CssClass="form-control" ID="accIdTb" runat="server" placeholder="Account ID"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control " ID="accIdTb" runat="server" placeholder="Account ID"></asp:TextBox>
                                     <asp:LinkButton class="btn btn-primary" ID="LinkButton4" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
                                 </div>
                             </div>
@@ -488,4 +489,6 @@
                 </div>
             </div>
         </div>
+
+    
 </asp:Content>

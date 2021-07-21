@@ -34,7 +34,16 @@
         <div class="card ">
             <div class="card-body ">
                 <div class="row">
-                    control here
+                    <div class="col-md-4 ">
+                        <label>Date </label>
+                        <div class="input-group  ">
+                            <asp:TextBox CssClass="form-control" ID="datetb" runat="server" placeholder="Date" TextMode="Date" ReadOnly="False"></asp:TextBox>
+                            <asp:LinkButton class="btn btn-primary mr-1" ID="LinkButton1" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
+                             <asp:LinkButton class="btn btn-info  mr-1" ID="LinkButton2" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
+                             <asp:LinkButton class="btn btn-outline-primary" ID="LinkButton3" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
@@ -53,9 +62,9 @@
             <div class="card-body ">
 
                 <div class="content">
-                    <div class="card-body">
+                  <%--  <div class="card-body">
                         <dx:BootstrapButton ID="BootstrapButton1" runat="server" AutoPostBack="false" Text="Verify All"></dx:BootstrapButton>
-                    </div>
+                    </div>--%>
                     <div class="col">
                         <dx:ASPxGridView ID="journalgridview" CssClass="grid-view" OnInit="journalgridview_Init" runat="server" AutoGenerateColumns="False" KeyFieldName="accountnumber" Width="100%">
 
@@ -81,7 +90,7 @@
                                 <PageSizeItemSettings Visible="true" ShowAllItem="true" />
                             </SettingsPager>
                             <SettingsBehavior AllowFocusedRow="true" AllowSelectByRowClick="true" AllowEllipsisInText="true" AllowDragDrop="false" />
-                             <Settings VerticalScrollBarMode="Hidden" HorizontalScrollBarMode="Auto" ShowHeaderFilterButton="true" />
+                            <Settings VerticalScrollBarMode="Hidden" HorizontalScrollBarMode="Auto" ShowHeaderFilterButton="true" />
 
                             <Styles>
                                 <Cell Wrap="false" />
@@ -104,8 +113,8 @@
                         <dx:PanelContent>
 
 
-                            <div >
-                             
+                            <div>
+
                                 <dx:ASPxGridView ID="sbjournalGridView" OnInit="sbjournalGridView_Init" runat="server" CssClass="grid-view" AutoGenerateColumns="False" KeyFieldName="accountnumber" Width="100%">
 
                                     <Columns>
@@ -134,7 +143,7 @@
                                     </SettingsPager>
                                     <SettingsBehavior AllowFocusedRow="true" AllowSelectByRowClick="true" AllowEllipsisInText="true" AllowDragDrop="false" />
 
-                                     <Settings VerticalScrollBarMode="Hidden" HorizontalScrollBarMode="Auto" ShowHeaderFilterButton="true" />
+                                    <Settings VerticalScrollBarMode="Hidden" HorizontalScrollBarMode="Auto" ShowHeaderFilterButton="true" />
                                     <Styles>
                                         <Cell Wrap="false" />
                                         <PagerBottomPanel CssClass="pager" />
@@ -158,14 +167,14 @@
                         <dx:PanelContent>
 
 
-                            <div >
-                             
+                            <div>
+
                                 <dx:ASPxGridView ID="RdJournalGridView" OnInit="ASPxGridView1_Init" Width="100%" CssClass="grid-view" KeyFieldName="accountnumber" runat="server" AutoGenerateColumns="False">
 
                                     <Columns>
-                                       
-                                         <dx:GridViewDataTextColumn FieldName="accountnumber" Name="accountnumber" Caption="account number" VisibleIndex="1"></dx:GridViewDataTextColumn>
-                                         <dx:GridViewDataTextColumn FieldName="depositername" Name="depositername" Caption="depositer name" VisibleIndex="2"></dx:GridViewDataTextColumn>
+
+                                        <dx:GridViewDataTextColumn FieldName="accountnumber" Name="accountnumber" Caption="account number" VisibleIndex="1"></dx:GridViewDataTextColumn>
+                                        <dx:GridViewDataTextColumn FieldName="depositername" Name="depositername" Caption="depositer name" VisibleIndex="2"></dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="da_te" Name="da_te" Caption="Date" VisibleIndex="3"></dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn Name="bbt" FieldName="bbt" Caption="Balance Before Transction" VisibleIndex="4"></dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="transctiontype" Name="transctiontype" Caption="transction type" VisibleIndex="5"></dx:GridViewDataTextColumn>
@@ -176,7 +185,7 @@
                                         <dx:GridViewDataTextColumn FieldName="office" Name="office" Caption="office" VisibleIndex="12" Visible="false"></dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="u_ser" Name="u_ser" Caption="User" Visible="False" VisibleIndex="13"></dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="Details" Name="Details" Caption="Details" Visible="true" VisibleIndex="14"></dx:GridViewDataTextColumn>
-                                         <dx:GridViewDataTextColumn Name="ActionClick" Caption="Action" VisibleIndex="0">
+                                        <dx:GridViewDataTextColumn Name="ActionClick" Caption="Action" VisibleIndex="0">
 
                                             <DataItemTemplate>
                                                 <dx:BootstrapButton ID="BootstrapButton2" runat="server" AutoPostBack="false" Text="Verify" OnClick="btnAction_Click1"></dx:BootstrapButton>
@@ -187,13 +196,13 @@
                                         <dx:GridViewDataTextColumn FieldName="mo_nth" Name="mo_nth" Caption="Till Date" VisibleIndex="6"></dx:GridViewDataTextColumn>
 
                                     </Columns>
-                                    
+
                                     <SettingsPager PageSize="5">
                                         <PageSizeItemSettings Visible="true" ShowAllItem="true" />
                                     </SettingsPager>
                                     <SettingsBehavior AllowFocusedRow="true" AllowSelectByRowClick="true" AllowEllipsisInText="true" AllowDragDrop="false" />
 
-                                     <Settings VerticalScrollBarMode="Hidden" HorizontalScrollBarMode="Auto" ShowHeaderFilterButton="true" />
+                                    <Settings VerticalScrollBarMode="Hidden" HorizontalScrollBarMode="Auto" ShowHeaderFilterButton="true" />
                                     <Styles>
                                         <Cell Wrap="false" />
                                         <PagerBottomPanel CssClass="pager" />
@@ -216,7 +225,7 @@
                         <dx:PanelContent>
 
                             <div class="content">
-                               <%-- <dx:BootstrapGridView ID="ssaJournalGridViewaaa" runat="server" AutoGenerateColumns="False">
+                                <%-- <dx:BootstrapGridView ID="ssaJournalGridViewaaa" runat="server" AutoGenerateColumns="False">
 
                                     <%--  <Settings VerticalScrollBarMode="Visible" VerticalScrollableHeight="500" />
                                     <SettingsAdaptivity AdaptivityMode="HideDataCellsWindowLimit" HideDataCellsAtWindowInnerWidth="780" AllowOnlyOneAdaptiveDetailExpanded="true" AdaptiveDetailColumnCount="2"></SettingsAdaptivity>
@@ -249,10 +258,10 @@
 
                                 </dx:BootstrapGridView>--%>
                                 <dx:ASPxGridView ID="ssaJournalGridView" runat="server" Width="100%" OnInit="ASPxGridView1_Init1" CssClass="grid-view" KeyFieldName="accountnumber">
-                                     <Columns>
-                                       
-                                         <dx:GridViewDataTextColumn FieldName="accountnumber" Name="accountnumber" Caption="account number" VisibleIndex="1"></dx:GridViewDataTextColumn>
-                                         <dx:GridViewDataTextColumn FieldName="depositername" Name="depositername" Caption="depositer name" VisibleIndex="2"></dx:GridViewDataTextColumn>
+                                    <Columns>
+
+                                        <dx:GridViewDataTextColumn FieldName="accountnumber" Name="accountnumber" Caption="account number" VisibleIndex="1"></dx:GridViewDataTextColumn>
+                                        <dx:GridViewDataTextColumn FieldName="depositername" Name="depositername" Caption="depositer name" VisibleIndex="2"></dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="da_te" Name="da_te" Caption="Date" VisibleIndex="3"></dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn Name="bbt" FieldName="bbt" Caption="Balance Before Transction" VisibleIndex="4"></dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="transctiontype" Name="transctiontype" Caption="transction type" VisibleIndex="5"></dx:GridViewDataTextColumn>
@@ -263,7 +272,7 @@
                                         <dx:GridViewDataTextColumn FieldName="office" Name="office" Caption="office" VisibleIndex="12" Visible="false"></dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="u_ser" Name="u_ser" Caption="User" Visible="False" VisibleIndex="13"></dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="Details" Name="Details" Caption="Details" Visible="true" VisibleIndex="14"></dx:GridViewDataTextColumn>
-                                         <dx:GridViewDataTextColumn Name="ActionClick" Caption="Action" VisibleIndex="0">
+                                        <dx:GridViewDataTextColumn Name="ActionClick" Caption="Action" VisibleIndex="0">
 
                                             <DataItemTemplate>
                                                 <dx:BootstrapButton ID="BootstrapButton2" runat="server" AutoPostBack="false" Text="Verify" OnClick="btnAction_Click1"></dx:BootstrapButton>
@@ -271,16 +280,16 @@
 
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="fine" Name="fine" Caption="Fine" VisibleIndex="8"></dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataTextColumn  Name="mo_nth" Caption="Date" VisibleIndex="6"></dx:GridViewDataTextColumn>
+                                        <dx:GridViewDataTextColumn Name="mo_nth" Caption="Date" VisibleIndex="6"></dx:GridViewDataTextColumn>
 
                                     </Columns>
-                                    
+
                                     <SettingsPager PageSize="5">
                                         <PageSizeItemSettings Visible="true" ShowAllItem="true" />
                                     </SettingsPager>
                                     <SettingsBehavior AllowFocusedRow="true" AllowSelectByRowClick="true" AllowEllipsisInText="true" AllowDragDrop="false" />
 
-                                     <Settings VerticalScrollBarMode="Hidden" HorizontalScrollBarMode="Auto" ShowHeaderFilterButton="true" />
+                                    <Settings VerticalScrollBarMode="Hidden" HorizontalScrollBarMode="Auto" ShowHeaderFilterButton="true" />
                                     <Styles>
                                         <Cell Wrap="false" />
                                         <PagerBottomPanel CssClass="pager" />
