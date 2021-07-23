@@ -23,11 +23,12 @@
         gridView.AdjustControl();
     }
     function updateToolbarButtonsState() {
+       
         var enabled = gridView.GetSelectedRowCount() > 0;
         pageToolbar.GetItemByName("View").SetEnabled(enabled);
         pageToolbar.GetItemByName("Export").SetEnabled(enabled);
-        pageToolbar.GetItemByName("Send").SetEnabled(enabled);
-        pageToolbar.GetItemByName("SendAll").SetEnabled(enabled);
+        //pageToolbar.GetItemByName("Send").SetEnabled(enabled);
+        //pageToolbar.GetItemByName("SendAll").SetEnabled(enabled);
     }
     function onPageToolbarItemClick(s, e) {
         switch (e.item.name) {
@@ -48,19 +49,22 @@
                 break;
         }
     }
-    function WithdrawSelectedRecord() {
-        if (confirm('Do You Want To Withdraw... ')) {
-            gridView.PerformCallback('SendAll');
 
+    function WithdrawSelectedRecord() {
+        if (confirm('Do You Want To Transfer All Selected Document ... ')) {
+            gridView.PerformCallback('SendAll');
+            
         }
     }
     function DepositSelectedRecord() {
-        if (confirm('Do You Want To Deposit... ')) {
+        if (confirm('Do You Want To Transfer First Document... ')) {
             gridView.PerformCallback('Send');
+           // ShowDetails();
+           
         }
     }
     function ViewSelectedRecord() {
-        if (confirm('Do You Want To Open Profile... ')) {
+        if (confirm('Not Yet Implement ... ')) {
             gridView.PerformCallback('view');
         }
     }

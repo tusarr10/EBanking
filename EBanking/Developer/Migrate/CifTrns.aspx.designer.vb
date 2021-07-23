@@ -41,6 +41,15 @@ Partial Public Class CifTrns
     Protected WithEvents SearchButtonEdit As Global.DevExpress.Web.ASPxButtonEdit
     
     '''<summary>
+    '''ScriptManager1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ScriptManager1 As Global.System.Web.UI.ScriptManager
+    
+    '''<summary>
     '''ASPxGridView1 control.
     '''</summary>
     '''<remarks>
@@ -48,4 +57,49 @@ Partial Public Class CifTrns
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents ASPxGridView1 As Global.DevExpress.Web.ASPxGridView
+    
+    '''<summary>
+    '''UPN1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents UPN1 As Global.System.Web.UI.UpdatePanel
+    
+    '''<summary>
+    '''ASPxButton1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ASPxButton1 As Global.DevExpress.Web.ASPxButton
+    
+    '''<summary>
+    '''btn1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btn1 As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''ASPxMemo1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ASPxMemo1 As Global.DevExpress.Web.ASPxMemo
+    
+    '''<summary>
+    '''LoadingPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents LoadingPanel As Global.DevExpress.Web.ASPxLoadingPanel
 End Class
