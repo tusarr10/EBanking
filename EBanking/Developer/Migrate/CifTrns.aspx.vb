@@ -158,37 +158,7 @@ Public Class CifTrns
         End Try
     End Sub
 
-    Private Sub InsertDataIntoSqlCIFDB()
-        Dim x As Integer = 0
-        _name = ASPxGridView1.GetSelectedFieldValues("CustmorName")(X).ToString
-        _cif = ASPxGridView1.GetSelectedFieldValues("Email")(X).ToString
-        _mobile = ASPxGridView1.GetSelectedFieldValues("MobileNo")(X).ToString
-        _pan = ASPxGridView1.GetSelectedFieldValues("PAN")(X).ToString
-        _adhar = ASPxGridView1.GetSelectedFieldValues("Adhar")(X).ToString
-        _address = ASPxGridView1.GetSelectedFieldValues("Address")(X).ToString
-        _dob = ASPxGridView1.GetSelectedFieldValues("DOB")(X).ToString
-        _gender = ASPxGridView1.GetSelectedFieldValues("Gender")(x).ToString
-        logmsg = logmsg & timeme & " : Getting Data from DB CIF- " & _cif.ToString() & Environment.NewLine
-        ASPxMemo1.Text = logmsg
-        UPN1.Update()
 
-        Try
-            cifsearch(_cif)
-            If IsIdExist(_cif) = False Then
-                logmsg = logmsg & timeme & " : Inserting Data Please wait... " & Environment.NewLine
-                ASPxMemo1.Text = logmsg
-                UPN1.Update()
-                InsertIntoDB(_name, _cif, _mobile, _pan, _adhar, _address, _dob, _gender)
-            Else
-                logmsg = logmsg & timeme & " : Cif Id Already Exist in Database  " & Environment.NewLine & Environment.NewLine
-                ASPxMemo1.Text = logmsg
-                UPN1.Update()
-
-            End If
-        Catch ex As Exception
-
-        End Try
-    End Sub
     Protected Sub GridView_CustomCallback(sender As Object, e As ASPxGridViewCustomCallbackEventArgs)
 
         Dim i As Integer
@@ -214,8 +184,8 @@ Public Class CifTrns
         End If
     End Sub
     Protected Sub btn1_Click(sender As Object, e As EventArgs)
-        logmsg = Nothing
-        InsertDataIntoSqlCIFDB()
+        ' logmsg = Nothing
+        'InsertDataIntoSqlCIFDB()
     End Sub
     Dim timeme As String = DateAndTime.Now.ToLongTimeString
 

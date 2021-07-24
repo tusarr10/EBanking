@@ -157,6 +157,55 @@
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="Developer\Migrate\dlttrns.aspx.designer.vb">
+      <DependentUpon>dlttrns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Developer\Migrate\dlttrns.aspx.vb">
+      <DependentUpon>dlttrns.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Developer\Migrate\journaltrns.aspx.designer.vb">
+      <DependentUpon>journaltrns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Developer\Migrate\journaltrns.aspx.vb">
+      <DependentUpon>journaltrns.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Developer\Migrate\newactrns.aspx.designer.vb">
+      <DependentUpon>newactrns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Developer\Migrate\newactrns.aspx.vb">
+      <DependentUpon>newactrns.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Developer\Migrate\rdjournaltrns.aspx.designer.vb">
+      <DependentUpon>rdjournaltrns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Developer\Migrate\rdjournaltrns.aspx.vb">
+      <DependentUpon>rdjournaltrns.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Developer\Migrate\sbjournaltrns.aspx.designer.vb">
+      <DependentUpon>sbjournaltrns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Developer\Migrate\sbjournaltrns.aspx.vb">
+      <DependentUpon>sbjournaltrns.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Developer\Migrate\sbtrns.aspx.designer.vb">
+      <DependentUpon>sbtrns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Developer\Migrate\sbtrns.aspx.vb">
+      <DependentUpon>sbtrns.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Developer\Migrate\ssajournaltrns.aspx.designer.vb">
+      <DependentUpon>ssajournaltrns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Developer\Migrate\ssajournaltrns.aspx.vb">
+      <DependentUpon>ssajournaltrns.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="UserControls\UploadedFilesContainer.ascx.designer.vb">
       <DependentUpon>UploadedFilesContainer.ascx</DependentUpon>
     </Compile>
@@ -489,6 +538,13 @@
     <Content Include="DATA\Sign\vter123Sign19062021710.png" />
     <Content Include="Developer\Migrate\CifTrns.aspx" />
     <Content Include="Developer\Migrate\Default.aspx" />
+    <Content Include="Developer\Migrate\dlttrns.aspx" />
+    <Content Include="Developer\Migrate\journaltrns.aspx" />
+    <Content Include="Developer\Migrate\newactrns.aspx" />
+    <Content Include="Developer\Migrate\rdjournaltrns.aspx" />
+    <Content Include="Developer\Migrate\sbjournaltrns.aspx" />
+    <Content Include="Developer\Migrate\sbtrns.aspx" />
+    <Content Include="Developer\Migrate\ssajournaltrns.aspx" />
     <Content Include="UserControls\UploadedFilesContainer.ascx" />
     <Content Include="Official\Operation\addAccount.aspx" />
     <Content Include="Official\Operation\addcif.aspx" />

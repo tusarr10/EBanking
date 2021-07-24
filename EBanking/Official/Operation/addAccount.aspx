@@ -108,6 +108,7 @@
                                                     <label>Nomini Register</label>
                                                     <div class="form-group">
                                                         <asp:DropDownList CssClass="form-control" ID="nominiregcb" runat="server" placeholder="Nomini" Enabled="False" OnTextChanged="nominiregcb_TextChanged" AutoPostBack="true">
+                                                             <asp:ListItem Text="Chose .." Value="" />
                                                             <asp:ListItem Text="Yes" Value="Yes" />
                                                             <asp:ListItem Text="No" Value="No" />
                                                         </asp:DropDownList>
@@ -119,7 +120,8 @@
                                                         <asp:DropDownList CssClass="form-control" ID="ProductCb" runat="server" placeholder="Account Type" Enabled="false" OnTextChanged="ProductCb_TextChanged" AutoPostBack="true">
                                                             <%--https://www.aspsnippets.com/Articles/Disable-DropDownList-Item-Option-in-ASPNet-using-C-and-VBNet.aspx--%>
                                                             <%--example--%>
-                                                            <asp:ListItem Text="Saving" Value="Saving" />
+                                                            <asp:ListItem Text="Chose .." Value="" />
+                                                             <asp:ListItem Text="Saving" Value="Saving" />
                                                             <asp:ListItem Text="RD" Value="RD" />
                                                             <asp:ListItem Text="SSA" Value="SSA" />
                                                             <asp:ListItem Text="TD" Value="TD" />
@@ -133,6 +135,7 @@
                                                     <label>Mode Of Operation</label>
                                                     <div class="form-group">
                                                         <asp:DropDownList CssClass="form-control" ID="Modetb" runat="server" placeholder="Mode" Enabled="false" OnTextChanged="Modetb_textChanged1" AutoPostBack="true">
+                                                             <asp:ListItem Text="Chose .." Value="" />
                                                             <asp:ListItem Text="Self" Value="Self" />
                                                             <asp:ListItem Text="Minor" Value="Minor" />
                                                             <asp:ListItem Text="JointA" Value="JointA" />
@@ -149,7 +152,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col">
-                                                    <hr>
+                                                    <hr />
                                                 </div>
                                             </div>
                                         </div>
@@ -237,6 +240,7 @@
                                                     <label>Gender</label>
                                                     <div class="form-group">
                                                         <asp:DropDownList CssClass="form-control" ID="genderlb" runat="server" placeholder="Gender" ReadOnly="True" Enabled="False">
+                                                             <asp:ListItem Text="Chose .." Value="" />
                                                             <asp:ListItem Text="Male" Value="Male" />
                                                             <asp:ListItem Text="Female" Value="Female" />
                                                             <asp:ListItem Text="Other" Value="Other" />
