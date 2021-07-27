@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Developer/Developer.Master" CodeBehind="dlttrns.aspx.vb" Inherits="TWEB.dlttrns" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Official/official.Master" CodeBehind="AllRpliIndex.aspx.vb" Inherits="TWEB.AllRpliIndex" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
     <link rel="stylesheet" type="text/css" href='<%# ResolveUrl("~/Content/GridView.css") %>' />
     <script type="text/javascript" src='<%# ResolveUrl("~/Content/GridView1.js") %>'></script>
 </asp:Content>
@@ -9,6 +9,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="RightPanelContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="PageToolbar" runat="server">
+
     <dx:ASPxMenu runat="server" ID="PageToolbar" ClientInstanceName="pageToolbar"
         ItemAutoWidth="false" ApplyItemStyleToTemplates="true" ItemWrap="false"
         AllowSelectItem="false" SeparatorWidth="0"
@@ -53,9 +54,11 @@
         </PanelCollection>
         <ClientSideEvents Expanded="onFilterPanelExpanded" Collapsed="adjustPageControls" />
     </dx:ASPxPanel>
+
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="PageContent" runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
+     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="card ">
         <dx:ASPxGridView ID="ASPxGridView1" runat="server" ClientInstanceName="gridView" EnablePagingGestures="False" CssClass="grid-view" Width="100%" OnCustomCallback="GridView_CustomCallback" KeyFieldName="AcNo" AutoGenerateColumns="False">
             <Columns>
@@ -104,29 +107,5 @@
 
     </div>
 
-    <div class="card">
-        <div class="card-view">
-            <asp:UpdatePanel runat="server" ID="UPN1" UpdateMode="Conditional">
-                <ContentTemplate>
-                    <%--    <asp:Button runat="server" ID="Button1xyz" Text="Submit" OnClick="btn2_Click" />--%>
-                    <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Submit" OnClick="btn2_Click" AutoPostBack="False">
-                        <%-- <ClientSideEvents Click="function(s, e) {
-                        Callback.PerformCallback();
-                        LoadingPanel.Show();
-                    }" />--%>
-                    </dx:ASPxButton>
-                    <asp:Button runat="server" ID="btn1" Text="Submit" OnClick="btn1_Click" Visible="False" />
-
-                    <dx:ASPxMemo ID="ASPxMemo1" runat="server" Height="140px" ReadOnly="true" Width="100%"></dx:ASPxMemo>
-                </ContentTemplate>
-
-            </asp:UpdatePanel>
-
-
-        </div>
-    </div>
-    <dx:ASPxLoadingPanel ID="LoadingPanel" runat="server" ClientInstanceName="LoadingPanel"
-        Modal="True">
-    </dx:ASPxLoadingPanel>
 
 </asp:Content>

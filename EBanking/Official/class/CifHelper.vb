@@ -10,7 +10,7 @@ Module CifHelper
         Catch
 
         End Try
-        Dim cs As String = connectionhelper.connectionstring()
+        Dim cs As String = connectionhelper.connectionstringaccount()
         databaseconnection = New SqlConnection(cs)
         databaseconnection.Open()
         currentrow = 0

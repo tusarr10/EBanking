@@ -494,7 +494,7 @@ Public Class openAccount
         command = "INSERT INTO newacdb (VirtualId, cif, accountnumber, n_ame, producttype, productterm, productvalue, nominireg, nomininame, nominiage, nominiaddress, nominirelation, acoperatemode, guardianname, jointname, address, mobile, email, dob, gender, adhar, pan, photo, sign, doo, reffno, pr)
   VALUES ( '" & verid & "','" & _cif & "', '" & _accountNumber & "', '" & _Name & "', '" & _product & "', '" & _term & "', '" & _Value & "', '" & _nominiReg & "', '" & _NominiName & "', '" & _NominiDOB & "', '" & _NominiAddress & "', '" & _NominiRelation & "', '" & _ModeOfOperation & "', '" & _guardianName & "', '" & _secondName & "', '" & _Address & "', '" & _MobileNumber & "', '" & _EmailId & "', '" & _Dob & "', '" & _gender & "', '" & _Adhar & "', '" & _Pan & "', '" & _Photo & "', '" & _sign & "', '" & _OpenDate & "', '" & _reffNumber & "', '" & _PrNumber & "')"
         Try
-            Dim cs As String = connectionhelper.connectionstring()
+            Dim cs As String = connectionhelper.connectionstringaccount()
             databaseconnection = New SqlConnection(cs)
             databaseconnection.Open()
             Dim comd As SqlCommand = databaseconnection.CreateCommand()

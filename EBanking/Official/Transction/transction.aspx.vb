@@ -6,7 +6,6 @@ Public Class transction
 
 
     Dim filterdate As String = GetworkingDate
-
     Private Sub allDataFromSbTransctiondb(dat As String)
         Try
             AllTeansctionFromSBJournal(dat)
@@ -23,8 +22,8 @@ Public Class transction
         Try
             AllTeansctionFromJournal(dat)
             Dim tables As DataTable
-            tables = getjournalDataTable()
-            journalGridView.DataSource = tables
+            tables = JournalHelper.getjournalDataTable()
+            journalgridview.DataSource = tables
             journalGridView.DataBind()
         Catch
 
@@ -64,8 +63,10 @@ Public Class transction
 
         If (IsPostBack = False) Then
             'Load Data From Server
-            datetb.Text = GetworkingDate
+            GetworkingDate = datetb.Text
             LoadDataFromServer(GetworkingDate)
+        Else
+
         End If
     End Sub
     Protected Sub btnAction_Init(sender As Object, e As EventArgs)
@@ -211,6 +212,7 @@ Public Class transction
 
     Protected Sub ASPxGridView1_Init1(sender As Object, e As EventArgs)
         alldatafromSSAJournalDB(filterdate)
+
     End Sub
 
     Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
@@ -225,7 +227,7 @@ Public Class transction
 
     Protected Sub LinkButton2_Click(sender As Object, e As EventArgs) Handles LinkButton2.Click
         Try
-            filterdate = datetb.Text.ToString
+            ' filterdate = datetb.Text.ToString
             LoadDataFromServer("")
         Catch
             MyMessageBox.Show(Me, "Enter Valid Date In  {yyyy-MM-dd} formate ")

@@ -3,7 +3,7 @@ Public Class TransctionStatusApprove
     Inherits System.Web.UI.Page
 
     ' all Variable Declare
-    Dim cs As String = connectionhelper.connectionstring()
+    Dim cs As String = connectionhelper.connectionstringaccount()
     Dim dlt1 As String = Nothing
     Dim dlt2 As String = Nothing
     Dim updatedlt As String

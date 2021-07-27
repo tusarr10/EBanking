@@ -109,7 +109,7 @@ Public Class addcif
         End Try
         Try
             commandstring = "insert into cifdb(cif,n_ame,mobile,email,pan,adhar,photo,sign,address,dob,gender,status)values('" & ciftb.Text.Trim & "','" & nametb.Text.Trim & "','" & mobiletb.Text.Trim & "','" & emailtb.Text.Trim & "','" & pantb.Text.Trim & "','" & adhartb.Text.Trim & "','" & photoPath & "','" & signPath & "','" & addresstb.Text.Trim & "','" & dobtb.Text.Trim & "','" & genderlb.SelectedItem.Value.ToString.Trim & "','" & statustb.Text.Trim & "')"
-            databaseconnection = New SqlConnection(connectionhelper.connectionstring())
+            databaseconnection = New SqlConnection(connectionhelper.connectionstringaccount())
             datacommand = New SqlCommand(commandstring, databaseconnection)
             databaseconnection.Open()
             Dim i
@@ -144,7 +144,7 @@ Public Class addcif
         Try
             ',[cif]      ,[n_ame]      ,[mobile]      ,[email]      ,[pan]      ,[adhar]      ,[photo]      ,[sign]      ,[address]      ,[dob] ,gender]      ,[status]
             commandstring = "Update cifdb set n_ame='" & nametb.Text.Trim & "',mobile= '" & mobiletb.Text.Trim & "',email='" & emailtb.Text.Trim & "',pan='" & pantb.Text.Trim & "',adhar='" & adhartb.Text.Trim & "',photo='" & photoPath & "',sign='" & signPath & "',address='" & addresstb.Text.Trim & "',dob='" & dobtb.Text.Trim & "',gender='" & genderlb.SelectedItem.Value.ToString.Trim & "',status='" & statustb.Text.Trim & "'  where cif='" & ciftb.Text.Trim & "'"
-            databaseconnection = New SqlConnection(connectionhelper.connectionstring())
+            databaseconnection = New SqlConnection(connectionhelper.connectionstringaccount())
             datacommand = New SqlCommand(commandstring, databaseconnection)
             databaseconnection.Open()
             Dim i
@@ -167,7 +167,7 @@ Public Class addcif
         Dim commandstring As String
         Try
             commandstring = "delete cifdb where cif='" & cifid & "'"
-            databaseconnection = New SqlConnection(connectionhelper.connectionstring())
+            databaseconnection = New SqlConnection(connectionhelper.connectionstringaccount())
             datacommand = New SqlCommand(commandstring, databaseconnection)
             databaseconnection.Open()
             Dim i
@@ -389,7 +389,7 @@ Public Class addcif
         End Try
         If IsIdExist(cifId) Then
             Try
-                databaseconnection = New SqlConnection(connectionstring())
+                databaseconnection = New SqlConnection(connectionstringaccount())
                 datacommand = New SqlCommand("UPDATE " & ciftable & " set status ='" & v & "' where cif='" & cifId & "'", databaseconnection)
                 databaseconnection.Open()
                 Dim i = datacommand.ExecuteNonQuery()

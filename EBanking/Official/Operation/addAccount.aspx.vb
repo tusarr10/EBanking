@@ -63,7 +63,7 @@ Public Class addAccount
     Private Sub DoTransctionAddData()
         GetDataFromView()
         Try
-            Dim cs As String = connectionhelper.connectionstring()
+            Dim cs As String = connectionhelper.connectionstringaccount()
             databaseconnection = New SqlConnection(cs)
             databaseconnection.Open()
             Dim command As SqlCommand = databaseconnection.CreateCommand()
@@ -430,7 +430,7 @@ Public Class addAccount
         End Try
         If IsAccountIdExist(accountId) Then
             Try
-                databaseconnection = New SqlConnection(connectionstring())
+                databaseconnection = New SqlConnection(connectionstringaccount())
                 datacommand = New SqlCommand("UPDATE " & liveAccountTable & " set status ='" & status & "' where accountnumber='" & accountId & "'", databaseconnection)
                 databaseconnection.Open()
                 Dim i = datacommand.ExecuteNonQuery()

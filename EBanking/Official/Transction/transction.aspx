@@ -38,9 +38,9 @@
                         <label>Date </label>
                         <div class="input-group  ">
                             <asp:TextBox CssClass="form-control" ID="datetb" runat="server" placeholder="Date" TextMode="Date" ReadOnly="False"></asp:TextBox>
-                            <asp:LinkButton class="btn btn-primary mr-1" ID="LinkButton1" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
-                             <asp:LinkButton class="btn btn-info  mr-1" ID="LinkButton2" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
-                             <asp:LinkButton class="btn btn-outline-primary" ID="LinkButton3" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
+                            <asp:LinkButton class="btn btn-primary mr-1" ID="LinkButton1" Text="Search" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
+                             <asp:LinkButton class="btn btn-info  mr-1" ID="LinkButton2" Text="all" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
+                             <asp:LinkButton class="btn btn-outline-primary" ID="LinkButton3" Text="WorkingDate" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
                         </div>
                     </div>
 

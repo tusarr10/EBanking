@@ -136,6 +136,7 @@
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Developer\class\dtrnsreportHelper.vb" />
     <Compile Include="Developer\Developer.Master.designer.vb">
       <DependentUpon>Developer.Master</DependentUpon>
     </Compile>
@@ -204,6 +205,21 @@
     </Compile>
     <Compile Include="Developer\Migrate\ssajournaltrns.aspx.vb">
       <DependentUpon>ssajournaltrns.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\class\rpliIndexHelper.vb" />
+    <Compile Include="Official\Operation\AllRpliIndex.aspx.designer.vb">
+      <DependentUpon>AllRpliIndex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Operation\AllRpliIndex.aspx.vb">
+      <DependentUpon>AllRpliIndex.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\Operation\rpliIndex.aspx.designer.vb">
+      <DependentUpon>rpliIndex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Operation\rpliIndex.aspx.vb">
+      <DependentUpon>rpliIndex.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="UserControls\UploadedFilesContainer.ascx.designer.vb">
@@ -545,6 +561,8 @@
     <Content Include="Developer\Migrate\sbjournaltrns.aspx" />
     <Content Include="Developer\Migrate\sbtrns.aspx" />
     <Content Include="Developer\Migrate\ssajournaltrns.aspx" />
+    <Content Include="Official\Operation\AllRpliIndex.aspx" />
+    <Content Include="Official\Operation\rpliIndex.aspx" />
     <Content Include="UserControls\UploadedFilesContainer.ascx" />
     <Content Include="Official\Operation\addAccount.aspx" />
     <Content Include="Official\Operation\addcif.aspx" />
@@ -573,7 +591,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Official\official.Master" />
-    <Content Include="App_Data\office.sitemap" />
+    <Content Include="App_Data\office.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

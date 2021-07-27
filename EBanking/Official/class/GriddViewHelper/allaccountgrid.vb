@@ -8,7 +8,7 @@ Module allaccountgrid
         Catch
 
         End Try
-        Dim cs As String = connectionhelper.connectionstring()
+        Dim cs As String = connectionhelper.connectionstringaccount()
         databaseconnection = New SqlConnection(cs)
         databaseconnection.Open()
         dataadapter = New SqlDataAdapter("SELECT * FROM " & liveAccountTable & "", databaseconnection)

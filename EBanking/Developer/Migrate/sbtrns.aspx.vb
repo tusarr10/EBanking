@@ -89,7 +89,7 @@ Public Class sbtrns
     Private Sub InsertIntoDB(ByVal acNo As String, ByVal cif As String, ByVal name As String, ByVal producttype As String, ByVal nominireg As String, ByVal acctype As String, ByVal guardianName As String, ByVal accountBalance As String, ByVal nomininame As String)
         Dim cmdstr As String
         Try
-            Dim cs As String = connectionhelper.connectionstring()
+            Dim cs As String = connectionhelper.connectionstringaccount()
             databaseconnection = New SqlConnection(cs)
             databaseconnection.Open()
             Dim command As SqlCommand = databaseconnection.CreateCommand()

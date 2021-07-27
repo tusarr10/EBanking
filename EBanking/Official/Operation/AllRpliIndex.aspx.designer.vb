@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class newactrns
+Partial Public Class AllRpliIndex
     
     '''<summary>
     '''PageToolbar control.
@@ -57,40 +57,4 @@ Partial Public Class newactrns
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents ASPxGridView1 As Global.DevExpress.Web.ASPxGridView
-    
-    '''<summary>
-    '''UPN1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents UPN1 As Global.System.Web.UI.UpdatePanel
-    
-    '''<summary>
-    '''ASPxButton1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ASPxButton1 As Global.DevExpress.Web.ASPxButton
-    
-    '''<summary>
-    '''ASPxMemo1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ASPxMemo1 As Global.DevExpress.Web.ASPxMemo
-    
-    '''<summary>
-    '''LoadingPanel control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents LoadingPanel As Global.DevExpress.Web.ASPxLoadingPanel
 End Class

@@ -53,7 +53,7 @@ Public Class newopentransction
         Button2.Enabled = True
 
     End Sub
-    Dim cs As String = connectionhelper.connectionstring()
+    Dim cs As String = connectionhelper.connectionstringaccount()
     Private Sub updateDataInOpenAccount()
         'TODO
         'Update transctionJopurnal

@@ -9,6 +9,15 @@ Public Class dlttrns
     Dim resultFileUrl As String
     Dim resultFilePath As String
 
+    Dim _acNo As String
+    Dim _dlt As String
+    Dim _dlt1 As String
+    ' Dim _nominireg As String
+    ' Dim _acctype As String
+    '  Dim _GuardianName As String
+    Dim _AccountBalance As String
+    ' Dim _nomininame As String
+
     ' for Calculation 
     Dim _totaldata As String
     Dim _totalinsert As String
@@ -89,6 +98,120 @@ Public Class dlttrns
         logmsg = Nothing
     End Sub
     Dim timeme As String = DateAndTime.Now.ToLongTimeString
+    Private Sub DLTACCOUNTSEARCH(ByVal acNo As String)
+        Try
+            datasetcifdb.Tables(dlttable).Clear()
+        Catch
+
+        End Try
+        Dim cs As String = connectionhelper.connectionstringaccount()
+        databaseconnection = New SqlConnection(cs)
+        databaseconnection.Open()
+        currentrow = 0
+        dataadapter = New SqlDataAdapter("SELECT * FROM " & dlttable & " where accountnumber='" & acNo & "'", databaseconnection)
+
+        dataadapter.Fill(datasetcifdb, dlttable)
+        'ShowData(currentrow)
+
+        databaseconnection.Close()
+
+    End Sub
+    Function IsIdExistdlt(ByVal matchingcif As String) As Boolean
+
+        Dim Str, Str1 As String
+        Dim i As Integer
+
+        Str = matchingcif ' searchciftb.Text
+        i = 0
+        While i <> datasetcifdb.Tables(dlttable).Rows.Count
+            Str1 = CType(datasetcifdb.Tables(dlttable).Rows(i)("accountnumber"), String)
+
+            If Str = Str1 Then
+                Return True
+
+            End If
+            i += 1
+
+        End While
+        Return False
+    End Function
+    Private Sub InsertDataIntoSqlCIFDB(ByVal i As Integer)
+        Dim x As Integer
+
+
+        For x = 0 To i - 1
+            _acNo = ASPxGridView1.GetSelectedFieldValues("AcNo")(x).ToString
+            If Len(_acNo) > 2 Then
+                '  _acNo = Regex.Replace(_acNo, "[^A-Za-z\-/]", "")
+                _acNo = _acNo.Replace("ACNO-", "")
+                _acNo = _acNo.Trim
+            Else
+                _acNo = ""
+            End If
+            _dlt = ASPxGridView1.GetSelectedFieldValues("DLT")(x).ToString
+            _dlt1 = ASPxGridView1.GetSelectedFieldValues("DLT2")(x).ToString ' For cif
+            _AccountBalance = ASPxGridView1.GetSelectedFieldValues("Acbal")(x).ToString
+            logmsg = logmsg & timeme & " : Getting Data from DB Acno- " & _acNo.ToString() & Environment.NewLine
+            ASPxMemo1.Text = logmsg
+            UPN1.Update()
+            Try
+                If Len(_acNo) > 6 Then
+                    'cifsearch(_cif)
+                    DLTACCOUNTSEARCH(_acNo)
+                    If IsIdExistdlt(_acNo) = False Then
+                        logmsg = logmsg & timeme & " : Inserting Data Please wait... " & Environment.NewLine
+                        ASPxMemo1.Text = logmsg
+                        UPN1.Update()
+                        InsertIntoDB(_acNo, _dlt, _dlt1, _AccountBalance)
+                    Else
+                        n += 1
+
+                        logmsg = logmsg & timeme & " : Account Id Already Exist in Database  " & Environment.NewLine & Environment.NewLine
+                        ASPxMemo1.Text = logmsg
+                        UPN1.Update()
+                    End If
+                Else
+                    y += 1
+                    logmsg = logmsg & timeme & " : Account ID Does Not Correct For Name - " & _acNo & " ... " & Environment.NewLine & Environment.NewLine
+                    ASPxMemo1.Text = logmsg
+                    UPN1.Update()
+
+                End If
+            Catch ex As Exception
+
+            End Try
+
+        Next
+
+    End Sub
+
+    Private Sub InsertIntoDB(_acNo As String, _dlt As String, _dlt1 As String, _AccountBalance As String)
+        Dim cmdstr As String
+        Try
+            cmdstr = "insert into dlt(accountnumber , accountbalance ,dlt ,dlt2)values('" & _acNo & "','" & _AccountBalance & "','" & _dlt & "','" & _dlt1 & "')"
+            databaseconnection = New SqlConnection(connectionhelper.connectionstringaccount())
+            datacommand = New SqlCommand(cmdstr, databaseconnection)
+            databaseconnection.Open()
+            Dim i
+            i = datacommand.ExecuteNonQuery()
+            If i > 0 Then
+                logmsg = logmsg & timeme & " :  Record successfully saved .." & Environment.NewLine & Environment.NewLine
+                z += 1
+                ASPxMemo1.Text = logmsg
+                UPN1.Update()
+
+            Else
+                logmsg = logmsg & timeme & " : Record Not saved " & Environment.NewLine & Environment.NewLine
+                y += 1
+                ASPxMemo1.Text = logmsg
+                UPN1.Update()
+            End If
+            databaseconnection.Close()
+        Catch ex As Exception
+            databaseconnection.Close()
+        End Try
+    End Sub
+
     Protected Sub btn2_Click(sender As Object, e As EventArgs)
         Dim i As Integer
         Try
@@ -108,7 +231,7 @@ Public Class dlttrns
         y = 0
         z = 0
         n = 0
-        'InsertDataIntoSqlCIFDB(i)
+        InsertDataIntoSqlCIFDB(i)
         _totalSkip = y.ToString
         _totalinsert = z.ToString
         _exist = n.ToString

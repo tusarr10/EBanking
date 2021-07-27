@@ -274,7 +274,7 @@ Public Class rdDeposit
 
         End Try
         Try
-            Dim cs As String = connectionhelper.connectionstring()
+            Dim cs As String = connectionhelper.connectionstringaccount()
             databaseconnection = New SqlConnection(cs)
             databaseconnection.Open()
             Dim command As SqlCommand = databaseconnection.CreateCommand()

@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
-    <siteMapNode url="" title=""  description="">
-      <siteMapNode url="~/Developer/Migrate/Default.aspx" title="Home"  description="" />
-        <siteMapNode url="~/Developer/Migrate/CifTrns.aspx" title="CIF"  description="" />
-        <siteMapNode url="~/Developer/Migrate/sbtrns.aspx" title="Account"  description="" />
-      <siteMapNode url="" title="Transction"  description="" />
-      <siteMapNode url="" title="DalyAccount"  description="" />
-    </siteMapNode>
+  <siteMapNode url="" title=""  description="">
+    <siteMapNode url="~/Developer/Migrate/Default.aspx" title="Home"  description="" />
+    <siteMapNode url="~/Developer/Migrate/CifTrns.aspx" title="CIF"  description="" />
+    <siteMapNode url="~/Developer/Migrate/sbtrns.aspx" title="Account"  description="" />
+    <siteMapNode url="~/Developer/Migrate/dlttrns.aspx" title="DLT"  description="" />
+    <siteMapNode url="~/Developer/Migrate/newactrns.aspx" title="New Account"  description="" />
+    <siteMapNode url="" title="Transction"  description="" />
+    <siteMapNode url="" title="DalyAccount"  description="" />
+  </siteMapNode>
 </siteMap>

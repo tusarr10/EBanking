@@ -135,7 +135,7 @@ Public Class CifTrns
         Dim cmdstr As String
         Try
             cmdstr = "insert into cifdb(cif,n_ame,mobile,pan,adhar,address,dob,gender,status)values('" & _cif & "','" & _name & "','" & _mobile & "','" & _pan & "','" & _adhar & "','" & _address & "','" & _dob & "','" & _gender & "','Pending')"
-            databaseconnection = New SqlConnection(connectionhelper.connectionstring())
+            databaseconnection = New SqlConnection(connectionhelper.connectionstringaccount())
             datacommand = New SqlCommand(cmdstr, databaseconnection)
             databaseconnection.Open()
             Dim i

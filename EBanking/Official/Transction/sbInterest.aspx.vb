@@ -156,7 +156,7 @@ Public Class sbInterest
         DoCalculate()
         DoTransction()
     End Sub
-    Dim cs As String = connectionhelper.connectionstring()
+    Dim cs As String = connectionhelper.connectionstringaccount()
     Private Sub DoTransction()
         Dim sbjournalcmd As String = "INSERT INTO sbjournal (accountnumber, depositername, da_te, bbt, transctiontype, amount, bat, trid, status, office, u_ser, Details)
   VALUES ('" & _accountNumber & "', '" & _name & "', '" & _date & "', '" & _bbt & "', '" & _transctiontype & "', '" & _amount & "', '" & _bat & "', '" & _trid & "', '" & _status & "', '" & _office & "', '" & _user & "', '" & _details & "')"
