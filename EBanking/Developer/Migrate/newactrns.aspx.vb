@@ -80,6 +80,23 @@ Public Class newactrns
 
     Dim timeme As String = DateAndTime.Now.ToLongTimeString
 
+    Private Sub InsertDataIntoSqlnewactrns(ByVal i As Integer)
+        Dim x As Integer
+
+        For x = 0 To i - 1
+            _acNo = ASPxGridView1.GetSelectedFieldValues("ACNO")(x).ToString
+            If Len(_acNo) > 2 Then
+                _acNo = _acNo.Replace("ACNO-", "")
+                _acNo = _acNo.Trim
+            Else
+                _acNo = Nothing
+
+            End If
+            _name = ASPxGridView1.GetSelectedFieldValues("N_AME")(x).ToString
+
+
+        Next
+    End Sub
     Protected Sub btn2_Click(sender As Object, e As EventArgs)
         Dim i As Integer
         Try
@@ -97,7 +114,7 @@ Public Class newactrns
         z = 0
         n = 0
 
-        '  InsertDataIntoSqlCIFDB(i)
+        InsertDataIntoSqlnewactrns(i)
 
         _totalSkip = y.ToString
         _totalinsert = z.ToString

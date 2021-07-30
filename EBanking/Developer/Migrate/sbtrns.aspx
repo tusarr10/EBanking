@@ -56,21 +56,15 @@
 
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="PageContent" runat="server">
-
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-
-
-    <div class="card ">
-
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <div class="card ">
         <dx:ASPxGridView ID="ASPxGridView1" runat="server" ClientInstanceName="gridView" EnablePagingGestures="False" CssClass="grid-view" Width="100%" OnCustomCallback="GridView_CustomCallback" KeyFieldName="AcNo" AutoGenerateColumns="False">
             <Columns>
                 <dx:GridViewCommandColumn ShowSelectCheckbox="True" SelectAllCheckboxMode="AllPages" VisibleIndex="0" Width="52"></dx:GridViewCommandColumn>
                 <dx:GridViewDataColumn FieldName="CustmorName" Name="CustmorName" Caption="Name" Width="250" VisibleIndex="2">
                     <Settings FilterMode="DisplayText"></Settings>
                 </dx:GridViewDataColumn> <%--ForNAme--%>
-
-
-                <dx:GridViewDataDateColumn FieldName="AcNo" Name="AcNo" Caption="Account Number" VisibleIndex="1" Width="180"></dx:GridViewDataDateColumn> <%--FOR ACON--%>
+                                <dx:GridViewDataDateColumn FieldName="AcNo" Name="AcNo" Caption="Account Number" VisibleIndex="1" Width="180"></dx:GridViewDataDateColumn> <%--FOR ACON--%>
 
                 <dx:GridViewDataComboBoxColumn FieldName="AcType" ShowInCustomizationForm="True" Name="AcType" Width="150px" Caption="AcType" VisibleIndex="4">
                 </dx:GridViewDataComboBoxColumn> <%--FOR Producttype--%>
@@ -85,9 +79,7 @@
                 <dx:GridViewDataTextColumn FieldName="FatherName" ShowInCustomizationForm="True" Name="FatherName" Width="200px" Caption="guardin name" VisibleIndex="7"></dx:GridViewDataTextColumn> <%--Guardian Name--%>
 
                 <dx:GridViewDataTextColumn FieldName="AcBal" ShowInCustomizationForm="True" Name="AcBal" Width="100px" Caption="AcBal" VisibleIndex="8"></dx:GridViewDataTextColumn> <%--Account Balaance--%>
-
-                
-            </Columns>
+                            </Columns>
 
             <SettingsBehavior AllowFocusedRow="true" AllowSelectByRowClick="true" AllowEllipsisInText="true" AllowDragDrop="false" />
             <SettingsEditing Mode="PopupEditForm" EditFormColumnCount="2" />
@@ -97,8 +89,7 @@
                 <PageSizeItemSettings Visible="true"></PageSizeItemSettings>
             </SettingsPager>
             <SettingsExport EnableClientSideExportAPI="true" ExportSelectedRowsOnly="true" />
-            <Columns>
-            </Columns>
+         
 
             <SettingsPopup>
                 <EditForm>

@@ -316,11 +316,11 @@
                     <div class="card-body ">
                         <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Submit" OnClick="ASPxButton1_Click" AutoPostBack="False" Enabled="true"></dx:ASPxButton>
                         <dx:ASPxButton ID="ASPxButton2" runat="server" Text="Paid" OnClick="ASPxButton2_Click" AutoPostBack="False" Enabled="false"></dx:ASPxButton>
-                         <dx:ASPxButton ID="ASPxButton3" runat="server" Text="Print" OnClick="ASPxButton3_Click" AutoPostBack="False" Enabled="false"></dx:ASPxButton>
+                        <dx:ASPxButton ID="ASPxButton3" runat="server" Text="Print" OnClick="ASPxButton3_Click" AutoPostBack="False" Enabled="false"></dx:ASPxButton>
                     </div>
                     <br />
                     <div class="row ">
-                        <dx:ASPxMemo ID="logtb" runat="server" Height="71px" Width="100%" ReadOnly="true" ></dx:ASPxMemo>
+                        <dx:ASPxMemo ID="logtb" runat="server" Height="71px" Width="100%" ReadOnly="true"></dx:ASPxMemo>
 
                     </div>
                 </div>

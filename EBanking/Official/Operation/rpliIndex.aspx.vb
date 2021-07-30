@@ -76,30 +76,25 @@ Public Class rpliIndex
     End Sub
 
     Private Function verifyData() As Boolean
-
-        'Datra Verification 
-
-        Return True 'it false now for testing 
+        'Data Verification 
+        Return True 'it (false) now its true  for testing 
     End Function
     Protected Sub ASPxButton1_Click(sender As Object, e As EventArgs)
         log = ""
         getdatafromview()
-
         If verifyData() = True Then
             insertdataIntoDb()
         Else
             log = log & " ErrorData Verification " & Environment.NewLine
             logtb.Text = log
         End If
-
-
     End Sub
 
     Private Sub insertintotransction()
         Dim commandstring As String
         Try
             commandstring = "INSERT INTO dbo.pli_transction (id, policyNo, proposalno, amount, month, dat_e, name, recno, gst, totalrec, type)
-  VALUES ('" & idrp & "', '" & "" & "', '" & proposalnorp & "', '" & premrp & "', '" & "Initial" & "', '" & proposaldaterp & "', '" & custanamerp & "', '" & recnorp & "', '" & "00" & "', '" & premrp & "', '" & "Index" & "')"
+  VALUES ('" & idrp & "', '" & "" & "', '" & proposalnorp & "', '" & premrp & "', '" & "Initial" & "', '" & proposaldaterp & "', '" & custanamerp & "', '" & recnorp & "', '" & totalgst & "', '" & premrp & "', '" & "Index" & "')"
             databaseconnection = New SqlConnection(connectionhelper.connectionstringRpli())
             datacommand = New SqlCommand(commandstring, databaseconnection)
             databaseconnection.Open()
@@ -124,8 +119,28 @@ Public Class rpliIndex
         End Try
     End Sub
     Protected Sub ASPxButton2_Click(sender As Object, e As EventArgs)
+        getFunctionData()
         insertintotransction()
+    End Sub
 
+
+    Dim cgst As String
+    Dim sgst As String
+    Dim totalgst As String
+    Dim totalvalue As Integer
+    Dim gstrate As Double = 4.5
+
+    Function fun(ByVal totalvalue As Double) As String
+        Return (totalvalue) - (totalvalue * 100 / (100 + gstrate))
+    End Function
+    Function centreGst(ByVal x As String) As String
+        Return fun(x) / 2
+    End Function
+    Function Stategst(ByVal x As String) As String
+        Return fun(x) / 2
+    End Function
+    Sub getFunctionData()
+        totalgst = fun(premrp)
     End Sub
     Private Sub insertdataIntoDb()
         Dim commandstring As String
@@ -139,7 +154,6 @@ Public Class rpliIndex
             i = datacommand.ExecuteNonQuery()
             If i > 0 Then
                 log = log & " Record successfully saved for Proposal No -  " & proposalnorp & Environment.NewLine
-
                 logtb.Text = log
                 ASPxButton2.Enabled = True
             Else
@@ -151,10 +165,7 @@ Public Class rpliIndex
             log = log & " Error" + ex.Message & Environment.NewLine
             logtb.Text = log
             databaseconnection.Close()
-
         End Try
-
-
     End Sub
 
     Protected Sub ASPxButton3_Click(sender As Object, e As EventArgs)

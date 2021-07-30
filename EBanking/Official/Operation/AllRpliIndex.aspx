@@ -58,22 +58,12 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="PageContent" runat="server">
 
-     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="card ">
-        <dx:ASPxGridView ID="ASPxGridView1" runat="server" ClientInstanceName="gridView" EnablePagingGestures="False" CssClass="grid-view" Width="100%" OnCustomCallback="GridView_CustomCallback" KeyFieldName="AcNo" AutoGenerateColumns="False">
+        <dx:ASPxGridView ID="ASPxGridView1" runat="server" ClientInstanceName="gridView" EnablePagingGestures="False" CssClass="grid-view" Width="100%" OnCustomCallback="GridView_CustomCallback" KeyFieldName="proposalno" AutoGenerateColumns="False">
             <Columns>
                 <dx:GridViewCommandColumn ShowSelectCheckbox="True" SelectAllCheckboxMode="AllPages" VisibleIndex="0" Width="52"></dx:GridViewCommandColumn>
 
-                <dx:GridViewDataDateColumn FieldName="AcNo" Name="AcNo" Caption="Account Number" VisibleIndex="1" Width="280"></dx:GridViewDataDateColumn>
-                <%--FOR ACON--%>
-                <dx:GridViewDataTextColumn FieldName="DLT" ShowInCustomizationForm="True" Name="DLT" Width="250px" Caption="DLT" VisibleIndex="6"></dx:GridViewDataTextColumn>
-                <%--dlt--%>
-
-                <dx:GridViewDataTextColumn FieldName="DLT2" ShowInCustomizationForm="True" Name="DLT2" Width="250px" Caption="DLT2" VisibleIndex="7"></dx:GridViewDataTextColumn>
-                <%--Gdlt2--%>
-
-                <dx:GridViewDataTextColumn FieldName="Acbal" ShowInCustomizationForm="True" Name="Acbal" Width="200px" Caption="Acbal" VisibleIndex="8"></dx:GridViewDataTextColumn>
-                <%--Account Balaance--%>
             </Columns>
 
             <SettingsBehavior AllowFocusedRow="true" AllowSelectByRowClick="true" AllowEllipsisInText="true" AllowDragDrop="false" />
@@ -85,6 +75,29 @@
             </SettingsPager>
             <SettingsExport EnableClientSideExportAPI="true" ExportSelectedRowsOnly="true" />
             <Columns>
+                <dx:GridViewDataTextColumn VisibleIndex="1" Caption="id" FieldName="id" Name="id"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn VisibleIndex="2" Caption="agentId" FieldName="agentId" Name="agentId"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn VisibleIndex="3" Caption="boid" FieldName="boid" Name="boid"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn VisibleIndex="4" Caption="RecDate" FieldName="RecDate" Name="RecDate"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn VisibleIndex="5" Caption="agentSA" FieldName="agentSA" Name="agentSA"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn VisibleIndex="6" Caption="agentPremium" FieldName="agentPremium" Name="agentPremium"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn VisibleIndex="7" Caption="AgentMobile" FieldName="AgentMobile" Name="AgentMobile"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn VisibleIndex="8" Caption="CustName" FieldName="CustName" Name="CustName"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn VisibleIndex="9" Caption="custmordob" FieldName="custmordob" Name="custmordob"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn VisibleIndex="10" Caption="custmobile" FieldName="custmobile" Name="custmobile"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn VisibleIndex="11" Caption="custmornotes" FieldName="custmornotes" Name="custmornotes"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn VisibleIndex="12" Caption="custaddress" FieldName="custaddress" Name="custaddress"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn VisibleIndex="14" Caption="proposaldate" FieldName="proposaldate" Name="proposaldate"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn VisibleIndex="15" Caption="proposaltype" FieldName="proposaltype" Name="proposaltype"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn VisibleIndex="16" Caption="productcat" FieldName="productcat" Name="productcat"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn VisibleIndex="17" Caption="prefrq" FieldName="prefrq" Name="prefrq"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn VisibleIndex="18" Caption="matage" FieldName="matage" Name="matage"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn VisibleIndex="19" Caption="proposalno" FieldName="proposalno" Name="proposalno"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn VisibleIndex="20" Caption="recno" FieldName="recno" Name="recno"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn VisibleIndex="21" Caption="sa" FieldName="sa" Name="sa"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn VisibleIndex="22" Caption="premium" FieldName="premium" Name="premium"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn VisibleIndex="23" Caption="indexbo" FieldName="indexbo" Name="indexbo"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn VisibleIndex="24" Caption="userid" FieldName="userid" Name="userid"></dx:GridViewDataTextColumn>
             </Columns>
 
             <SettingsPopup>

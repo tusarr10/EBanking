@@ -40,7 +40,6 @@ Public Class journaltrns
     Private Sub LoadCiffromdb()
         Try
             datasetcifdb.Tables("Accesstrnsdetail").Clear()
-
         Catch
         End Try
         Try
@@ -48,20 +47,15 @@ Public Class journaltrns
             Dim databaseconnection1 As OleDbConnection = New OleDbConnection(cs)
             databaseconnection1.Open()
             Dim dataadapter1 As OleDbDataAdapter = New OleDbDataAdapter(New OleDbCommand("SELECT * FROM " & "transdetail" & "", databaseconnection1))
-
             dataadapter1.Fill(datasetcifdb, "Accesstrnsdetail")
             'ShowData(currentrow)
-
             databaseconnection1.Close()
         Catch ex As Exception
             MyMessageBox.Show(Me, "Unable to load Database Mak sure Your Data Base Upload to ....." + ex.Message)
         End Try
-
-
     End Sub
     Sub loaddatafromserver()
         Try
-
             resultFileUrl = UploadDirectory & "Database1.accdb"
             resultFilePath = MapPath(resultFileUrl)
 
@@ -70,9 +64,7 @@ Public Class journaltrns
             table = getCifAccessDataTable()
             ASPxGridView1.DataSource = table
             ASPxGridView1.DataBind()
-
         Catch ex As Exception
-
         End Try
     End Sub
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -97,7 +89,6 @@ Public Class journaltrns
             withdrow = ASPxGridView1.GetSelectedFieldValues("withdrow")(x).ToString
             dlt = ASPxGridView1.GetSelectedFieldValues("DLT")(x).ToString
             remark = ASPxGridView1.GetSelectedFieldValues("remark")(x).ToString
-
             logmsg = logmsg & timeme & " : Getting Data from DB Acno- " & _acNo.ToString() & Environment.NewLine
             ASPxMemo1.Text = logmsg
             UPN1.Update()

@@ -13,7 +13,6 @@
         ItemAutoWidth="false" ApplyItemStyleToTemplates="true" ItemWrap="false"
         AllowSelectItem="false" SeparatorWidth="0"
         Width="100%" CssClass="page-toolbar">
-
         <ClientSideEvents ItemClick="onPageToolbarItemClick" />
         <SettingsAdaptivity Enabled="true" EnableAutoHideRootItems="false"
             EnableCollapseRootItemsToIcons="true" CollapseRootItemsToIconsAtWindowInnerWidth="600" />
@@ -22,8 +21,7 @@
         <Items>
             <dx:MenuItem Enabled="false">
                 <Template>
-                    <h1>All User From Access DB</h1>
-
+                    <h1>All New User From Access DB</h1>
                 </Template>
             </dx:MenuItem>
             <dx:MenuItem Name="Send" Text="Send" Alignment="Right" AdaptivePriority="2" Visible="false">
