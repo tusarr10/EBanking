@@ -127,6 +127,11 @@
     <Compile Include="Classes\DataInformation.vb" />
     <Compile Include="Classes\ErrorText.vb" />
     <Compile Include="Classes\getApproveInfo.vb" />
+    <Compile Include="Classes\MVC\cif\ClassCif.vb" />
+    <Compile Include="Classes\MVC\PLI\ClassCifRepo.vb" />
+    <Compile Include="Classes\MVC\PLI\ClassCifService.vb" />
+    <Compile Include="Classes\MVC\PLI\ClassPliIndex.vb" />
+    <Compile Include="Classes\MVC\PLI\ICif.vb" />
     <Compile Include="Code\AuthHelper.vb" />
     <Compile Include="Code\DBContext.vb" />
     <Compile Include="Default.aspx.designer.vb">
@@ -610,6 +615,7 @@
     <Content Include="Global.asax" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Classes\MVC\Account\" />
     <Folder Include="Content\Images\Overview\" />
     <Folder Include="Content\Photo\" />
     <Folder Include="Developer\Data\" />
