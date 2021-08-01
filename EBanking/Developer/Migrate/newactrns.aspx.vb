@@ -79,7 +79,7 @@ Public Class newactrns
     Dim n As Integer
 
     Dim timeme As String = DateAndTime.Now.ToLongTimeString
-
+    'ok 
     Private Sub InsertDataIntoSqlnewactrns(ByVal i As Integer)
         Dim x As Integer
 
