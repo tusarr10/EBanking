@@ -1,5 +1,7 @@
 ﻿Public Class ClassCifService
     Private _repo As ICif
+
+    ' this reffer to logic form 
     Public Sub New()
         _repo = New ClassCifRepo()
     End Sub

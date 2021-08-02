@@ -1,6 +1,7 @@
 ﻿Imports System.Data.OleDb
 Imports System.Data.SqlClient
 Imports DevExpress.Web
+Imports Dapper
 
 Public Class CifTrns
     Inherits System.Web.UI.Page
@@ -29,7 +30,6 @@ Public Class CifTrns
             Dim databaseconnection1 As OleDbConnection = New OleDbConnection(cs)
             databaseconnection1.Open()
             Dim dataadapter1 As OleDbDataAdapter = New OleDbDataAdapter(New OleDbCommand("SELECT * FROM " & "Custmor" & "", databaseconnection1))
-
             dataadapter1.Fill(datasetcifdb, "AccessCif")
             'ShowData(currentrow)
 
