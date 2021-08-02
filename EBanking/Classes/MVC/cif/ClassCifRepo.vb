@@ -36,7 +36,6 @@ Public Class ClassCifRepo
         Catch generatedExceptionName As Exception
             Return False
         End Try
-
         Return True
     End Function
 

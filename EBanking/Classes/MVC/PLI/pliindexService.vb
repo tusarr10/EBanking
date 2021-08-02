@@ -7,4 +7,16 @@
     Public Function GetAll() As List(Of ClassPliIndex)
         Return _repo.GetAll()
     End Function
+    Public Function AddCustmor(custmor As ClassPliIndex) As Boolean
+        Return _repo.AddCustmor(custmor)
+    End Function
+    Public Function GetByName(name As String) As List(Of ClassPliIndex)
+        Return _repo.GetByName(name)
+    End Function
+    Public Function FindByid(id As String) As ClassPliIndex
+        Return _repo.FindById(id)
+    End Function
+    Public Function DeleteByPNO(pno As String) As Boolean
+        Return _repo.DeleteCustmor(pno)
+    End Function
 End Class

@@ -146,6 +146,10 @@
     <Compile Include="Classes\MVC\PLI\IPliIndex.vb" />
     <Compile Include="Classes\MVC\PLI\PliIndexRepo.vb" />
     <Compile Include="Classes\MVC\PLI\pliindexService.vb" />
+    <Compile Include="Classes\MVC\PLI\Transction\classPliTransction.vb" />
+    <Compile Include="Classes\MVC\PLI\Transction\IPliTransction.vb" />
+    <Compile Include="Classes\MVC\PLI\Transction\PliTransctionRepo.vb" />
+    <Compile Include="Classes\MVC\PLI\Transction\PliTransctionService.vb" />
     <Compile Include="Code\AuthHelper.vb" />
     <Compile Include="Code\DBContext.vb" />
     <Compile Include="Default.aspx.designer.vb">
