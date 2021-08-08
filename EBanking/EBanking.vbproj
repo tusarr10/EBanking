@@ -138,18 +138,6 @@
     <Compile Include="Classes\DataInformation.vb" />
     <Compile Include="Classes\ErrorText.vb" />
     <Compile Include="Classes\getApproveInfo.vb" />
-    <Compile Include="Classes\MVC\cif\ClassCif.vb" />
-    <Compile Include="Classes\MVC\cif\ClassCifRepo.vb" />
-    <Compile Include="Classes\MVC\cif\ClassCifService.vb" />
-    <Compile Include="Classes\MVC\PLI\ClassPliIndex.vb" />
-    <Compile Include="Classes\MVC\cif\ICif.vb" />
-    <Compile Include="Classes\MVC\PLI\IPliIndex.vb" />
-    <Compile Include="Classes\MVC\PLI\PliIndexRepo.vb" />
-    <Compile Include="Classes\MVC\PLI\pliindexService.vb" />
-    <Compile Include="Classes\MVC\PLI\Transction\classPliTransction.vb" />
-    <Compile Include="Classes\MVC\PLI\Transction\IPliTransction.vb" />
-    <Compile Include="Classes\MVC\PLI\Transction\PliTransctionRepo.vb" />
-    <Compile Include="Classes\MVC\PLI\Transction\PliTransctionService.vb" />
     <Compile Include="Code\AuthHelper.vb" />
     <Compile Include="Code\DBContext.vb" />
     <Compile Include="Default.aspx.designer.vb">
@@ -633,10 +621,15 @@
     <Content Include="Global.asax" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Classes\MVC\Account\" />
     <Folder Include="Content\Images\Overview\" />
     <Folder Include="Content\Photo\" />
     <Folder Include="Developer\Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataBaseHelper\DataBaseHelper.vbproj">
+      <Project>{8eee01e8-b238-4d93-9f7c-44d22e65918c}</Project>
+      <Name>DataBaseHelper</Name>
+    </ProjectReference>
   </ItemGroup>
   <!--<ItemGroup>
     <Folder Include="App_Data\" />

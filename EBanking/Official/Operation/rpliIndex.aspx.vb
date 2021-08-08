@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports DataBaseHelper
 
 Public Class rpliIndex
     Inherits System.Web.UI.Page
@@ -6,10 +7,11 @@ Public Class rpliIndex
     Dim result As Boolean = False
     Dim log As String
     Private Custmorfiles As ClassPliIndex
-    Private CustmorService As New pliindexService()
+    Private CustmorService As New pliindexService(connectionstringRpli())
+    Dim listOfCustmor As List(Of ClassPliIndex)
 
     Private TranstionFiles As classPliTransction
-    Private plitransctionservice As New PliTransctionService()
+    Private plitransctionservice As New PliTransctionService(connectionstringRpli())
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not (Page.IsPostBack) Then
@@ -132,8 +134,31 @@ Public Class rpliIndex
 
         usidrp = "Tusar"
         Custmorfiles.userid = "Tusar"
-    End Sub
+    End Sub 'insert data to pli transction class
+    Sub insertDataaInView()
+        agentidtb.Text = Custmorfiles.agentId
+        boidtb.Text = Custmorfiles.boid
+        rcdatetb.Text = Custmorfiles.RecDate
+        agentsa.Text = Custmorfiles.agentSA
+        agentpremtb.Text = Custmorfiles.agentPremium
+        custnametb.Text = Custmorfiles.CustName
+        custdobtb.Text = Custmorfiles.custmordob
+        custmobiletb.Text = Custmorfiles.custmobile
+        custnotestb.Text = Custmorfiles.custmornotes
+        custaddresstb.Text = Custmorfiles.custaddress
+        proposaldatetb.Text = Custmorfiles.proposaldate
+        producttype.Text = Custmorfiles.proposaltype
+        DropDownList1.Text = Custmorfiles.productcat
+        DropDownList3.Text = Custmorfiles.prefrq
+        matagetb.Text = Custmorfiles.matage
+        propnotb.Text = Custmorfiles.proposalno
+        recnotb.Text = Custmorfiles.recno
+        satb.Text = Custmorfiles.sa
+        premtb.Text = Custmorfiles.premium
+        officeidtb.Text = Custmorfiles.indexbo
+        usernametb.Text = Custmorfiles.userid 'total 21
 
+    End Sub
     Private Function verifyData() As Boolean
         'Data Verification 
         Return True 'it (false) now its true  for testing 
@@ -142,15 +167,18 @@ Public Class rpliIndex
         log = ""
         getdatafromview()
         If verifyData() = True Then
-            'insertdataIntoDb()
-            'do dapper insert
-            result = CustmorService.AddCustmor(Custmorfiles)
-            If result Then
-                log = log & "Successfully Added A New Recored " & Environment.NewLine
-                logtb.Text = log
-                ASPxButton2.Enabled = True
+            If CustmorService.IsProposalExist(Custmorfiles.proposalno) = False Then
+                result = CustmorService.AddCustmor(Custmorfiles)
+                If result Then
+                    log = log & "Successfully Added A New Recored " & Environment.NewLine
+                    logtb.Text = log
+                    ASPxButton2.Enabled = True
+                Else
+                    log = log & "Failed Adding Recored " & Environment.NewLine
+                    logtb.Text = log
+                End If
             Else
-                log = log & "Failed Adding Recored " & Environment.NewLine
+                log = log & "Proposal Number already EXIST ..With Proposal Number " & Custmorfiles.proposalno & " ." & Environment.NewLine
                 logtb.Text = log
             End If
         Else
@@ -159,38 +187,9 @@ Public Class rpliIndex
         End If
     End Sub
 
-    '  Private Sub insertintotransction()
-    '      Dim commandstring As String
-    '      Try
-    '          commandstring = "INSERT INTO dbo.pli_transction (id, policyNo, proposalno, amount, month, dat_e, name, recno, gst, totalrec, type)
-    'VALUES ('" & idrp & "', '" & "" & "', '" & proposalnorp & "', '" & premrp & "', '" & "Initial" & "', '" & proposaldaterp & "', '" & custanamerp & "', '" & recnorp & "', '" & totalgst & "', '" & premrp & "', '" & "Index" & "')"
-    '          databaseconnection = New SqlConnection(connectionhelper.connectionstringRpli())
-    '          datacommand = New SqlCommand(commandstring, databaseconnection)
-    '          databaseconnection.Open()
-    '          Dim i
-    '          i = datacommand.ExecuteNonQuery()
-    '          If i > 0 Then
-    '              log = log & " Record successfully saved for Proposal No -  " & proposalnorp & Environment.NewLine
 
-    '              logtb.Text = log
-    '              ASPxButton3.Enabled = True
-
-    '          Else
-    '              log = log & " Record Not saved for Proposal No -  " & proposalnorp & Environment.NewLine
-    '              logtb.Text = log
-    '          End If
-    '          databaseconnection.Close()
-    '      Catch ex As Exception
-    '          log = log & " Error" + ex.Message & Environment.NewLine
-    '          logtb.Text = log
-    '          databaseconnection.Close()
-
-    '      End Try
-    '  End Sub
     Protected Sub ASPxButton2_Click(sender As Object, e As EventArgs) 'insert transction data to db
         getFunctionData()
-        'insertintotransction()
-        'dapper command
         log = ""
         getdatafromview()
         If verifyData() = True Then
@@ -229,31 +228,7 @@ Public Class rpliIndex
     Sub getFunctionData()
         totalgst = fun(premtb.Text.Trim)
     End Sub
-    '  Private Sub insertdataIntoDb()
-    '      Dim commandstring As String
-    '      Try
-    '          commandstring = "INSERT INTO dbo.Pli_Indexing (id, agentId, boid, RecDate, agentSA, agentPremium, AgentMobile, CustName, custmordob, custmobile, custmornotes, custaddress, proposaldate, proposaltype, productcat, prefrq, matage, proposalno, recno, sa, premium, indexbo, userid)
-    'VALUES ('" & idrp & "', '" & agentidrp & "', '" & boidrp & "', '" & recdaterp & "', '" & agentsarp & "', '" & agentpremrp & "', '" & agentmobilerp & "', '" & custanamerp & "', '" & custdobrp & "', '" & custmobilerp & "', '" & custnotesrp & "', '" & custaddressrp & "', '" & proposaldaterp & "', '" & proposaltyperp & "', '" & productcatrp & "', '" & prefqrp & "', '" & matagerp & "', '" & proposalnorp & "', '" & recnorp & "', '" & sarp & "', '" & premrp & "', '" & indexborp & "', '" & usidrp & "')"
-    '          databaseconnection = New SqlConnection(connectionhelper.connectionstringRpli())
-    '          datacommand = New SqlCommand(commandstring, databaseconnection)
-    '          databaseconnection.Open()
-    '          Dim i
-    '          i = datacommand.ExecuteNonQuery()
-    '          If i > 0 Then
-    '              log = log & " Record successfully saved for Proposal No -  " & proposalnorp & Environment.NewLine
-    '              logtb.Text = log
-    '              ASPxButton2.Enabled = True
-    '          Else
-    '              log = log & " Record Not saved for Proposal No -  " & proposalnorp & Environment.NewLine
-    '              logtb.Text = log
-    '          End If
-    '          databaseconnection.Close()
-    '      Catch ex As Exception
-    '          log = log & " Error" + ex.Message & Environment.NewLine
-    '          logtb.Text = log
-    '          databaseconnection.Close()
-    '      End Try
-    '  End Sub
+
 
     Protected Sub ASPxButton3_Click(sender As Object, e As EventArgs)
         Response.Redirect(Request.Url.AbsoluteUri)
@@ -262,6 +237,13 @@ Public Class rpliIndex
 
     Protected Sub LinkButton4_Click(sender As Object, e As EventArgs) 'Search Proposal Number
         Dim pno As String = psearchtb.Text.Trim
-        rpliIndexHelper.searchpliindex(pno)
+        If CustmorService.IsProposalExist(pno) Then
+            Custmorfiles = CustmorService.FindByid(pno)
+            'Dim x = Custmorfiles.agentId
+            insertDataaInView()
+        Else
+            'my message = Proposal Number Not Found 
+        End If
+
     End Sub
 End Class

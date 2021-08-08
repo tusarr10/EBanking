@@ -27,7 +27,7 @@
       <TreeViewNode Text="Loan" NavigateUrl="#" />
     </TreeViewNode>
     <TreeViewNode Text="RPLI" NavigateUrl="">
-      <TreeViewNode Text="RPLI Deposit" NavigateUrl="~/official/Transction/rpliDeposit.apx" />
+      <TreeViewNode Text="RPLI Deposit" NavigateUrl="~/official/Transction/rpliDeposit.aspx" />
       <TreeViewNode Text="RPLI All" NavigateUrl="~/official/Transction/rpliAllDeposit.aspx" />
     </TreeViewNode>
   </TransctionNode>

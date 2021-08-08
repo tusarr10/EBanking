@@ -23,7 +23,7 @@
         <Items>
             <dx:MenuItem Enabled="false">
                 <Template>
-                    <h1>All User From Access DB</h1>
+                    <h1>All RPLI Index Report</h1>
 
                 </Template>
             </dx:MenuItem>

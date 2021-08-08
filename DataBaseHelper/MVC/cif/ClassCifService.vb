@@ -2,8 +2,8 @@
     Private _repo As ICif
 
     ' this reffer to logic form 
-    Public Sub New()
-        _repo = New ClassCifRepo()
+    Public Sub New(ByVal ConnectionString As String)
+        _repo = New ClassCifRepo(ConnectionString)
     End Sub
     Public Function GetAll() As List(Of ClassCif)
         Return _repo.GetAll()

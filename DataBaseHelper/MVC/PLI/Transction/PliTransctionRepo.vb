@@ -7,8 +7,8 @@ Public Class PliTransctionRepo
 
     Private _db As IDbConnection
 
-    Public Sub New()
-        _db = New SqlConnection(connectionstringRpli())
+    Public Sub New(ByVal connectionString As String)
+        _db = New SqlConnection(connectionString)
     End Sub
     Public Function AddTransaction(transction As classPliTransction) As Boolean Implements IPliTransction.AddTransaction
         Dim parm As SqlParameter() = {

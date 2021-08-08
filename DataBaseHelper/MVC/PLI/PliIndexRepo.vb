@@ -7,8 +7,8 @@ Public Class PliIndexRepo
 
     Private _db As IDbConnection
 
-    Public Sub New()
-        _db = New SqlConnection(connectionstringRpli())
+    Public Sub New(ByVal connectionString As String)
+        _db = New SqlConnection(connectionString)
 
     End Sub
     Public Function AddCustmor(custmor As ClassPliIndex) As Boolean Implements IPliIndex.AddCustmor
@@ -60,9 +60,17 @@ Public Class PliIndexRepo
     End Function
 
     Public Function FindById(id As String) As ClassPliIndex Implements IPliIndex.FindById
-        Return Me._db.Query(Of ClassPliIndex)("select * from Pli_Indexing where proposalno=@pno", New With {Key .pno = id}).FirstOrDefault()
-    End Function
+        Return Me._db.Query(Of ClassPliIndex)("select * from Pli_Indexing where proposalno=@pno", New With {Key .pno = id}).FirstOrDefault
 
+    End Function
+    Public Function IsProposalExist(Proposal As String) As Boolean Implements IPliIndex.IsProposalExist
+        Dim x = Me._db.Query(Of ClassPliIndex)("select * from Pli_Indexing where proposalno='" & Proposal & "'").ToList().Count
+        If x > 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
     Public Function GetAll() As List(Of ClassPliIndex) Implements IPliIndex.GetAll
         Return Me._db.Query(Of ClassPliIndex)("SELECT * FROM Pli_Indexing").ToList()
     End Function

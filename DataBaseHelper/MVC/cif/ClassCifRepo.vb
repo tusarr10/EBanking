@@ -6,8 +6,8 @@ Public Class ClassCifRepo
 
     Private _db As IDbConnection
 
-    Public Sub New()
-        _db = New SqlConnection(connectionstringaccount())
+    Public Sub New(ByVal ConnectionString As String)
+        _db = New SqlConnection(ConnectionString) 'connectionstringaccount()
     End Sub
 
     Public Function AddCif(custmor As ClassCif) As Boolean Implements ICif.AddCif
