@@ -21,11 +21,11 @@ Module connectionhelper
     Dim databasesourceaccount As String = ConfigurationSettings.AppSettings("dbsource").ToString()
     Dim databasesourcerpli As String = ConfigurationSettings.AppSettings("plidbsrc").ToString()
     Function connectionstringaccount() As String
-        databaseconnectionstring = "server=tmedia ; database=" & databasesourceaccount.ToString & ";user=tusar;password=tusarranjan"
+        databaseconnectionstring = "server=TMEDIA\TMEDIA ; database=" & databasesourceaccount.ToString & ";user=tusar;password=tusarranjan"
         Return databaseconnectionstring
     End Function
     Function connectionstringRpli() As String
-        databaseconnectionstring = "server=tmedia ; database=" & databasesourcerpli.ToString & ";user=tusar;password=tusarranjan"
+        databaseconnectionstring = "server=TMEDIA\TMEDIA ; database=" & databasesourcerpli.ToString & ";user=tusar;password=tusarranjan"
         Return databaseconnectionstring
     End Function
 End Module

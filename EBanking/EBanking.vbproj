@@ -26,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <UpgradeBackupLocation />
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -423,6 +424,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\DefaultLeft.xml" />
+    <Content Include="App_Data\Overview.html" />
+    <Content Include="App_Data\OverviewContents.xml" />
     <Content Include="Content\Common.css" />
     <Content Include="Content\Custom\css\customMessages.css" />
     <Content Include="Content\Custom\css\releasenotes.plugin.css" />
