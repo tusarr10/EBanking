@@ -17,6 +17,7 @@ Module connectionhelper
         databaseconnectionstring = "server=tmedia ; database=" & databasename & ";user=tusar;password=tusarranjan"
         Return databaseconnectionstring
     End Function
+
     Dim databasesourceaccount As String = ConfigurationSettings.AppSettings("dbsource").ToString()
     Dim databasesourcerpli As String = ConfigurationSettings.AppSettings("plidbsrc").ToString()
     Function connectionstringaccount() As String

@@ -10,11 +10,17 @@
     Public Function AddCustmor(custmor As ClassPliIndex) As Boolean
         Return _repo.AddCustmor(custmor)
     End Function
+    Public Function UpdateCustmor(custmor As ClassPliIndex) As Boolean
+        Return _repo.UpdateCustmor(custmor)
+    End Function
     Public Function GetByName(name As String) As List(Of ClassPliIndex)
         Return _repo.GetByName(name)
     End Function
-    Public Function FindByid(id As String) As ClassPliIndex
+    Public Function FindById(id As String) As ClassPliIndex
         Return _repo.FindById(id)
+    End Function
+    Public Function FindByIdNo(id As String) As ClassPliIndex
+        Return _repo.FindByIdNo(id)
     End Function
     Public Function DeleteByPNO(pno As String) As Boolean
         Return _repo.DeleteCustmor(pno)

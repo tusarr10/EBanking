@@ -8,4 +8,6 @@ Public Interface IPliIndex
     Function UpdateCustmor(custmor As ClassPliIndex) As Boolean
     Function DeleteCustmor(pno As String) As Boolean
     Function IsProposalExist(Proposal As String) As Boolean
+    Function FindByIdNo(id As String) As ClassPliIndex
+
 End Interface

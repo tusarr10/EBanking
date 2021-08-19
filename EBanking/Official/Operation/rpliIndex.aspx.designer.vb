@@ -14,6 +14,24 @@ Option Explicit On
 Partial Public Class rpliIndex
     
     '''<summary>
+    '''TableOfContentsTreeView control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TableOfContentsTreeView As Global.DevExpress.Web.ASPxTreeView
+    
+    '''<summary>
+    '''NodesDataSource control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents NodesDataSource As Global.System.Web.UI.WebControls.XmlDataSource
+    
+    '''<summary>
     '''psearchtb control.
     '''</summary>
     '''<remarks>
@@ -30,6 +48,24 @@ Partial Public Class rpliIndex
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents LinkButton4 As Global.System.Web.UI.WebControls.LinkButton
+    
+    '''<summary>
+    '''TextBox1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TextBox1 As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''LinkButton1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents LinkButton1 As Global.System.Web.UI.WebControls.LinkButton
     
     '''<summary>
     '''ScriptManager2 control.
@@ -320,6 +356,15 @@ Partial Public Class rpliIndex
     Protected WithEvents ASPxButton1 As Global.DevExpress.Web.ASPxButton
     
     '''<summary>
+    '''ASPxButton4 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ASPxButton4 As Global.DevExpress.Web.ASPxButton
+    
+    '''<summary>
     '''ASPxButton2 control.
     '''</summary>
     '''<remarks>
@@ -336,6 +381,15 @@ Partial Public Class rpliIndex
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents ASPxButton3 As Global.DevExpress.Web.ASPxButton
+    
+    '''<summary>
+    '''ASPxButton5 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ASPxButton5 As Global.DevExpress.Web.ASPxButton
     
     '''<summary>
     '''logtb control.

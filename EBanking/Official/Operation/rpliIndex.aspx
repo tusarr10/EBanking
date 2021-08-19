@@ -3,6 +3,18 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="LeftPanelContent" runat="server">
+     <h3 class="leftpanel-section section-caption">Type</h3>
+    <dx:ASPxTreeView runat="server" ID="TableOfContentsTreeView" ClientInstanceName="tableOfContentsTreeView"
+        EnableNodeTextWrapping="true" AllowSelectNode="true" Width="100%" SyncSelectionMode="None" DataSourceID="NodesDataSource" NodeLinkMode="ContentBounds">
+        <Styles>
+            <Elbow CssClass="tree-view-elbow" />
+            <Node CssClass="tree-view-node" HoverStyle-CssClass="hovered" />
+        </Styles>
+        <ClientSideEvents NodeClick="function (s, e) { HideLeftPanelIfRequired(); }" />
+    </dx:ASPxTreeView>
+    <asp:XmlDataSource ID="NodesDataSource" runat="server" DataFile="~/App_Data/DefaultLeft.xml" XPath="//Nodes/OperationNode/*" />
+
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="RightPanelContent" runat="server">
 </asp:Content>
@@ -20,6 +32,15 @@
                         <div class="input-group">
                             <asp:TextBox CssClass="form-control" ID="psearchtb" runat="server" placeholder="Proposal No"></asp:TextBox>
                             <asp:LinkButton class="btn btn-primary" ID="LinkButton4" runat="server" OnClick="LinkButton4_Click"><i class="fas fa-check-circle"></i></asp:LinkButton>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-3">
+                    <label>Enter ID  To search </label>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" placeholder="Proposal ID"></asp:TextBox>
+                            <asp:LinkButton class="btn btn-primary" ID="LinkButton1" OnClick="LinkButton1_Click" runat="server" ><i class="fas fa-check-circle"></i></asp:LinkButton>
                         </div>
                     </div>
                 </div>
@@ -314,9 +335,12 @@
                     </dx:ASPxRoundPanel>
                     <br />
                     <div class="card-body ">
-                        <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Submit" OnClick="ASPxButton1_Click" AutoPostBack="False" Enabled="true"></dx:ASPxButton>
+                        
+                        <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Next" OnClick="ASPxButton1_Click" AutoPostBack="False" Enabled="true"></dx:ASPxButton>
+                         <dx:ASPxButton ID="ASPxButton4" runat="server" Text="Submit" OnClick="ASPxButton4_Click" AutoPostBack="False" Enabled="false"></dx:ASPxButton>
                         <dx:ASPxButton ID="ASPxButton2" runat="server" Text="Paid" OnClick="ASPxButton2_Click" AutoPostBack="False" Enabled="false"></dx:ASPxButton>
-                        <dx:ASPxButton ID="ASPxButton3" runat="server" Text="Print" OnClick="ASPxButton3_Click" AutoPostBack="False" Enabled="false"></dx:ASPxButton>
+                        <dx:ASPxButton ID="ASPxButton3" runat="server" Text="Print"  AutoPostBack="False" Enabled="false"></dx:ASPxButton>
+                        <dx:ASPxButton ID="ASPxButton5" runat="server" Text="New" OnClick="ASPxButton3_Click" AutoPostBack="False" Enabled="true"></dx:ASPxButton>
                     </div>
                     <br />
                     <div class="row ">

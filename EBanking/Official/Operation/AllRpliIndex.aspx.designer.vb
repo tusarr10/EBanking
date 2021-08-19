@@ -14,6 +14,24 @@ Option Explicit On
 Partial Public Class AllRpliIndex
     
     '''<summary>
+    '''TableOfContentsTreeView control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TableOfContentsTreeView As Global.DevExpress.Web.ASPxTreeView
+    
+    '''<summary>
+    '''NodesDataSource control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents NodesDataSource As Global.System.Web.UI.WebControls.XmlDataSource
+    
+    '''<summary>
     '''PageToolbar control.
     '''</summary>
     '''<remarks>

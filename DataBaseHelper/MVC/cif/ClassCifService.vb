@@ -8,7 +8,7 @@
     Public Function GetAll() As List(Of ClassCif)
         Return _repo.GetAll()
     End Function
-    Public Function FindBuId(cif As String) As ClassCif
+    Public Function FindById(cif As String) As ClassCif
         Return _repo.FindById(cif)
     End Function
     Public Function AddCif(custmor As ClassCif) As Boolean

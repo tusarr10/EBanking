@@ -72,6 +72,10 @@
     <Compile Include="MVC\cif\ClassCifRepo.vb" />
     <Compile Include="MVC\cif\ClassCifService.vb" />
     <Compile Include="MVC\cif\ICif.vb" />
+    <Compile Include="MVC\operateMode\ClassOperateMode.vb" />
+    <Compile Include="MVC\operateMode\IOperateMode.vb" />
+    <Compile Include="MVC\operateMode\operateModeRepo.vb" />
+    <Compile Include="MVC\operateMode\OperateModeService.vb" />
     <Compile Include="MVC\PLI\ClassPliIndex.vb" />
     <Compile Include="MVC\PLI\IPliIndex.vb" />
     <Compile Include="MVC\PLI\PliIndexRepo.vb" />
@@ -80,6 +84,8 @@
     <Compile Include="MVC\PLI\Transction\IPliTransction.vb" />
     <Compile Include="MVC\PLI\Transction\PliTransctionRepo.vb" />
     <Compile Include="MVC\PLI\Transction\PliTransctionService.vb" />
+    <Compile Include="MVC\Transctions\AddAccountTransctionRepo.vb" />
+    <Compile Include="MVC\Transctions\AddAccountTransctionService.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

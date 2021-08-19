@@ -1,0 +1,677 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{0EC9050B-A32B-4D1E-ACF8-358CC98A711B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>TWEB</RootNamespace>
+    <AssemblyName>EBanking</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <MyType>Custom</MyType>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>EBanking.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>EBanking.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=20.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.20.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.Bootstrap.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.Resources.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="DevExpress.Data.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.ASPxThemes.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v20.1.Export, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.ASPxScheduler.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Collections.Specialized" />
+    <Import Include="System.Configuration" />
+    <Import Include="System.Text" />
+    <Import Include="System.Text.RegularExpressions" />
+    <Import Include="System.Web" />
+    <Import Include="System.Web.Caching" />
+    <Import Include="System.Web.SessionState" />
+    <Import Include="System.Web.Security" />
+    <Import Include="System.Web.Profile" />
+    <Import Include="System.Web.UI" />
+    <Import Include="System.Web.UI.WebControls" />
+    <Import Include="System.Web.UI.WebControls.WebParts" />
+    <Import Include="System.Web.UI.HtmlControls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\Register.aspx.designer.vb">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.vb">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\SignIn.aspx.designer.vb">
+      <DependentUpon>SignIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\SignIn.aspx.vb">
+      <DependentUpon>SignIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Article.aspx.designer.vb">
+      <DependentUpon>Article.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Article.aspx.vb">
+      <DependentUpon>Article.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Classes\ConnectionHelper.vb" />
+    <Compile Include="Classes\connectionhelper1.vb" />
+    <Compile Include="Classes\DataInformation.vb" />
+    <Compile Include="Classes\ErrorText.vb" />
+    <Compile Include="Classes\getApproveInfo.vb" />
+    <Compile Include="Classes\MVC\cif\ClassCif.vb" />
+    <Compile Include="Classes\MVC\cif\ClassCifRepo.vb" />
+    <Compile Include="Classes\MVC\cif\ClassCifService.vb" />
+    <Compile Include="Classes\MVC\PLI\ClassPliIndex.vb" />
+    <Compile Include="Classes\MVC\cif\ICif.vb" />
+    <Compile Include="Classes\MVC\PLI\PliIndexRepo.vb" />
+    <Compile Include="Code\AuthHelper.vb" />
+    <Compile Include="Code\DBContext.vb" />
+    <Compile Include="Default.aspx.designer.vb">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.vb">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Developer\class\dtrnsreportHelper.vb" />
+    <Compile Include="Developer\Developer.Master.designer.vb">
+      <DependentUpon>Developer.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Developer\Developer.Master.vb">
+      <DependentUpon>Developer.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Developer\Migrate\CifTrns.aspx.designer.vb">
+      <DependentUpon>CifTrns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Developer\Migrate\CifTrns.aspx.vb">
+      <DependentUpon>CifTrns.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Developer\Migrate\Default.aspx.designer.vb">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Developer\Migrate\Default.aspx.vb">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Developer\Migrate\dlttrns.aspx.designer.vb">
+      <DependentUpon>dlttrns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Developer\Migrate\dlttrns.aspx.vb">
+      <DependentUpon>dlttrns.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Developer\Migrate\journaltrns.aspx.designer.vb">
+      <DependentUpon>journaltrns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Developer\Migrate\journaltrns.aspx.vb">
+      <DependentUpon>journaltrns.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Developer\Migrate\newactrns.aspx.designer.vb">
+      <DependentUpon>newactrns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Developer\Migrate\newactrns.aspx.vb">
+      <DependentUpon>newactrns.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Developer\Migrate\rdjournaltrns.aspx.designer.vb">
+      <DependentUpon>rdjournaltrns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Developer\Migrate\rdjournaltrns.aspx.vb">
+      <DependentUpon>rdjournaltrns.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Developer\Migrate\sbjournaltrns.aspx.designer.vb">
+      <DependentUpon>sbjournaltrns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Developer\Migrate\sbjournaltrns.aspx.vb">
+      <DependentUpon>sbjournaltrns.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Developer\Migrate\sbtrns.aspx.designer.vb">
+      <DependentUpon>sbtrns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Developer\Migrate\sbtrns.aspx.vb">
+      <DependentUpon>sbtrns.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Developer\Migrate\ssajournaltrns.aspx.designer.vb">
+      <DependentUpon>ssajournaltrns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Developer\Migrate\ssajournaltrns.aspx.vb">
+      <DependentUpon>ssajournaltrns.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\class\rpliIndexHelper.vb" />
+    <Compile Include="Official\Operation\AllRpliIndex.aspx.designer.vb">
+      <DependentUpon>AllRpliIndex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Operation\AllRpliIndex.aspx.vb">
+      <DependentUpon>AllRpliIndex.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\Operation\rpliIndex.aspx.designer.vb">
+      <DependentUpon>rpliIndex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Operation\rpliIndex.aspx.vb">
+      <DependentUpon>rpliIndex.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\UploadedFilesContainer.ascx.designer.vb">
+      <DependentUpon>UploadedFilesContainer.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UploadedFilesContainer.ascx.vb">
+      <DependentUpon>UploadedFilesContainer.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Global.asax.vb">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Official\Operation\addAccount.aspx.designer.vb">
+      <DependentUpon>addAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Operation\addAccount.aspx.vb">
+      <DependentUpon>addAccount.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\Operation\addcif.aspx.designer.vb">
+      <DependentUpon>addcif.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Operation\addcif.aspx.vb">
+      <DependentUpon>addcif.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\Reports\AllOpenAccount.aspx.designer.vb">
+      <DependentUpon>AllOpenAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Reports\AllOpenAccount.aspx.vb">
+      <DependentUpon>AllOpenAccount.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\class\AccountOperateModeHelper.vb" />
+    <Compile Include="Official\class\AddAccountHelper.vb" />
+    <Compile Include="Official\class\CifHelper.vb" />
+    <Compile Include="Official\class\dltHelper.vb" />
+    <Compile Include="Official\class\GriddViewHelper\allaccountgrid.vb" />
+    <Compile Include="Official\class\IntersetHelper.vb" />
+    <Compile Include="Official\class\JournalHelper.vb" />
+    <Compile Include="Official\class\newaccounthelper.vb" />
+    <Compile Include="Official\class\NominiInfoHelper.vb" />
+    <Compile Include="Official\class\ProductTypeHelper.vb" />
+    <Compile Include="Official\class\RdJournalHelper.vb" />
+    <Compile Include="Official\class\SbJournalHelper.vb" />
+    <Compile Include="Official\class\SSAJournalHelper.vb" />
+    <Compile Include="Official\Default.aspx.designer.vb">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Default.aspx.vb">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\Operation\newopentransction.aspx.designer.vb">
+      <DependentUpon>newopentransction.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Operation\newopentransction.aspx.vb">
+      <DependentUpon>newopentransction.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\official.Master.designer.vb">
+      <DependentUpon>official.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Official\official.Master.vb">
+      <DependentUpon>official.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Official\Operation\openAccount.aspx.designer.vb">
+      <DependentUpon>openAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Operation\openAccount.aspx.vb">
+      <DependentUpon>openAccount.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\Reports\Operation.aspx.designer.vb">
+      <DependentUpon>Operation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Reports\Operation.aspx.vb">
+      <DependentUpon>Operation.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\Print\OpenAccountCheck.aspx.designer.vb">
+      <DependentUpon>OpenAccountCheck.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Print\OpenAccountCheck.aspx.vb">
+      <DependentUpon>OpenAccountCheck.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Official\Transction\rdDeposit.aspx.designer.vb">
+      <DependentUpon>rdDeposit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Transction\rdDeposit.aspx.vb">
+      <DependentUpon>rdDeposit.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\Transction\rpliAllDeposit.aspx.designer.vb">
+      <DependentUpon>rpliAllDeposit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Transction\rpliAllDeposit.aspx.vb">
+      <DependentUpon>rpliAllDeposit.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\Transction\rpliDeposit.aspx.designer.vb">
+      <DependentUpon>rpliDeposit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Transction\rpliDeposit.aspx.vb">
+      <DependentUpon>rpliDeposit.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\Transction\sbDeposit.aspx.designer.vb">
+      <DependentUpon>sbDeposit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Transction\sbDeposit.aspx.vb">
+      <DependentUpon>sbDeposit.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\Transction\sbInterest.aspx.designer.vb">
+      <DependentUpon>sbInterest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Transction\sbInterest.aspx.vb">
+      <DependentUpon>sbInterest.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\Transction\sbWithdraw.aspx.designer.vb">
+      <DependentUpon>sbWithdraw.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Transction\sbWithdraw.aspx.vb">
+      <DependentUpon>sbWithdraw.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\Transction\ssaDeposit.aspx.designer.vb">
+      <DependentUpon>ssaDeposit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Transction\ssaDeposit.aspx.vb">
+      <DependentUpon>ssaDeposit.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\Transction\ssaInterest.aspx.designer.vb">
+      <DependentUpon>ssaInterest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Transction\ssaInterest.aspx.vb">
+      <DependentUpon>ssaInterest.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\Transction\transction.aspx.designer.vb">
+      <DependentUpon>transction.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Transction\transction.aspx.vb">
+      <DependentUpon>transction.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\Transction\TransctionStatusApprove.aspx.designer.vb">
+      <DependentUpon>TransctionStatusApprove.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Transction\TransctionStatusApprove.aspx.vb">
+      <DependentUpon>TransctionStatusApprove.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Root.master.designer.vb">
+      <DependentUpon>Root.master</DependentUpon>
+    </Compile>
+    <Compile Include="Root.master.vb">
+      <DependentUpon>Root.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\DefaultLeft.xml" />
+    <Content Include="Content\Common.css" />
+    <Content Include="Content\Custom\css\customMessages.css" />
+    <Content Include="Content\Custom\css\releasenotes.plugin.css" />
+    <Content Include="Content\Custom\css\screenshot.png" />
+    <Content Include="Content\Custom\css\style.css" />
+    <Content Include="Content\Custom\css\template.css" />
+    <Content Include="Content\Custom\css\validationEngine.jquery.css" />
+    <Content Include="Content\Custom\js\contrib\other-validations.js" />
+    <Content Include="Content\Custom\js\jquery-1.8.2.min.js" />
+    <Content Include="Content\Custom\js\jquery-3.4.1.min.js" />
+    <Content Include="Content\Custom\js\jquery.validationEngine.js" />
+    <Content Include="Content\Custom\js\jquery.validationEngine.min.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-ar.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-ca.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-cz.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-da.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-de.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-el.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-en.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-es.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-et.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-fa.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-fi.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-fr.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-he.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-hr.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-hu.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-id.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-it.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-ja.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-lt.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-nl.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-no.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-pl.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-pt.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-pt_BR.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-ro.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-ru.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-sr_Cyrl.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-sr_Latn.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-sv.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-th.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-tr.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-uk_UA.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-vi.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-zh_CN.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-zh_HK.js" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-zh_TW.js" />
+    <Content Include="Content\Custom\js\libs\jquery-1.7.1.min.js" />
+    <Content Include="Content\Custom\js\libs\marked.js" />
+    <Content Include="Content\Custom\js\libs\modernizr-2.0.6.min.js" />
+    <Content Include="Content\Custom\js\releasenotes.js" />
+    <Content Include="Content\Demo.js" />
+    <Content Include="Content\GridView1.js" />
+    <Content Include="Content\Images\adaptive-menu.svg" />
+    <Content Include="Content\Images\add.svg" />
+    <Content Include="Content\Images\application.svg" />
+    <Content Include="Content\Images\Article-white.svg" />
+    <Content Include="Content\Images\Article.svg" />
+    <Content Include="Content\Images\back.svg" />
+    <Content Include="Content\Images\BACKGROUND.png" />
+    <Content Include="Content\Images\delete.svg" />
+    <Content Include="Content\Images\double-close.svg" />
+    <Content Include="Content\Images\double.svg" />
+    <Content Include="Content\Images\edit.svg" />
+    <Content Include="Content\Images\export.svg" />
+    <Content Include="Content\Images\eye-button-hide.svg" />
+    <Content Include="Content\Images\eye-button.svg" />
+    <Content Include="Content\Images\GridView-white.svg" />
+    <Content Include="Content\Images\GridView.svg" />
+    <Content Include="Content\Images\Home-white.svg" />
+    <Content Include="Content\Images\Home.svg" />
+    <Content Include="Content\Images\image-sample.png" />
+    <Content Include="Content\Images\kind1-white.svg" />
+    <Content Include="Content\Images\kind1.svg" />
+    <Content Include="Content\Images\kind2-white.svg" />
+    <Content Include="Content\Images\kind2.svg" />
+    <Content Include="Content\Images\logo-small.svg" />
+    <Content Include="Content\Images\logo.svg" />
+    <Content Include="Content\Images\logo1.svg" />
+    <Content Include="Content\Images\menu.svg" />
+    <Content Include="Content\Images\MyLogo.png" />
+    <Content Include="Content\Images\print.svg" />
+    <Content Include="Content\Images\priority1-white.svg" />
+    <Content Include="Content\Images\priority1.svg" />
+    <Content Include="Content\Images\priority2-white.svg" />
+    <Content Include="Content\Images\priority2.svg" />
+    <Content Include="Content\Images\priority3-white.svg" />
+    <Content Include="Content\Images\priority3.svg" />
+    <Content Include="Content\Images\Scheduler-white.svg" />
+    <Content Include="Content\Images\Scheduler.svg" />
+    <Content Include="Content\Images\search-selected.svg" />
+    <Content Include="Content\Images\search.svg" />
+    <Content Include="Content\Images\sign-out.svg" />
+    <Content Include="Content\Images\small-logo.svg" />
+    <Content Include="Content\Images\user.svg" />
+    <Content Include="App_Data\ApplicationMenuDataSource.sitemap" />
+    <Content Include="DATA\Image\1560Photo190620211227" />
+    <Content Include="DATA\Image\1560PhotoDD06YYY1224" />
+    <Content Include="DATA\Image\156312PhotoDD06YYY1224" />
+    <Content Include="DATA\Image\bgv44354Photo190620211228" />
+    <Content Include="Content\Custom\js\languages\jquery.validationEngine-uk" />
+    <Content Include="Developer\Developer.Master" />
+    <Content Include="App_Data\Developer.sitemap" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\PublishProfiles\localhost.pubxml" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <Content Include="Account\Register.aspx" />
+    <Content Include="Article.aspx" />
+    <Content Include="Content\GridView.css" />
+    <Content Include="Content\GridView.js" />
+    <Content Include="Content\Layout.css" />
+    <Content Include="Content\Scheduler.css" />
+    <Content Include="Content\Scheduler.js" />
+    <Content Include="Content\Script.js" />
+    <Content Include="Content\SignInRegister.css" />
+    <Content Include="Content\SignInRegister.js" />
+    <Content Include="DATA\Image\1234343Photo190620211008.png" />
+    <Content Include="DATA\Image\123456789Photo270620211126.jpg" />
+    <Content Include="DATA\Image\customer Details.png" />
+    <Content Include="DATA\Image\tre1234Photo190620211007.png" />
+    <Content Include="DATA\Image\tre1234Photo190620211026.png" />
+    <Content Include="DATA\Image\tre1234Photo190620211033.png" />
+    <Content Include="DATA\Image\vter123Photo19062021710.png" />
+    <Content Include="DATA\Sign\1234343Sign190620211008.png" />
+    <Content Include="DATA\Sign\123456789Sign270620211126.jpg" />
+    <Content Include="DATA\Sign\1560Sign190620211227.png" />
+    <Content Include="DATA\Sign\bgv44354Sign190620211228.png" />
+    <Content Include="DATA\Sign\customer registration.png" />
+    <Content Include="DATA\Sign\tre1234Sign190620211007.png" />
+    <Content Include="DATA\Sign\tre1234Sign190620211023.png" />
+    <Content Include="DATA\Sign\tre1234Sign190620211028.png" />
+    <Content Include="DATA\Sign\vter123Sign19062021710.png" />
+    <Content Include="Developer\Migrate\CifTrns.aspx" />
+    <Content Include="Developer\Migrate\Default.aspx" />
+    <Content Include="Developer\Migrate\dlttrns.aspx" />
+    <Content Include="Developer\Migrate\journaltrns.aspx" />
+    <Content Include="Developer\Migrate\newactrns.aspx" />
+    <Content Include="Developer\Migrate\rdjournaltrns.aspx" />
+    <Content Include="Developer\Migrate\sbjournaltrns.aspx" />
+    <Content Include="Developer\Migrate\sbtrns.aspx" />
+    <Content Include="Developer\Migrate\ssajournaltrns.aspx" />
+    <Content Include="Official\Operation\AllRpliIndex.aspx" />
+    <Content Include="Official\Operation\rpliIndex.aspx" />
+    <Content Include="UserControls\UploadedFilesContainer.ascx" />
+    <Content Include="Official\Operation\addAccount.aspx" />
+    <Content Include="Official\Operation\addcif.aspx" />
+    <Content Include="Official\Reports\AllOpenAccount.aspx" />
+    <Content Include="Official\Default.aspx" />
+    <Content Include="Official\Operation\newopentransction.aspx" />
+    <Content Include="Official\Operation\openAccount.aspx" />
+    <Content Include="Official\Reports\Operation.aspx" />
+    <Content Include="Official\Print\OpenAccountCheck.aspx" />
+    <Content Include="Official\Transction\rdDeposit.aspx" />
+    <Content Include="Official\Transction\rpliAllDeposit.aspx" />
+    <Content Include="Official\Transction\rpliDeposit.aspx" />
+    <Content Include="Official\Transction\sbDeposit.aspx" />
+    <Content Include="Official\Transction\sbInterest.aspx" />
+    <Content Include="Official\Transction\sbWithdraw.aspx" />
+    <Content Include="Official\Transction\ssaDeposit.aspx" />
+    <Content Include="Official\Transction\ssaInterest.aspx" />
+    <Content Include="Official\Transction\transction.aspx" />
+    <Content Include="Official\Transction\TransctionStatusApprove.aspx" />
+    <Content Include="Resour\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Resour\css\customStyleSheet.css" />
+    <Content Include="Resour\datatable\css\jquery.dataTables.min.css" />
+    <Content Include="Resour\fontawesome\css\all.css" />
+    <Content Include="Root.master" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Official\official.Master" />
+    <Content Include="App_Data\office.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <!--<Content Include="Site.Master" />-->
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\SignIn.aspx" />
+    <Content Include="Content\Content.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Classes\MVC\Account\" />
+    <Folder Include="Content\Images\Overview\" />
+    <Folder Include="Content\Photo\" />
+    <Folder Include="Developer\Data\" />
+  </ItemGroup>
+  <!--<ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>-->
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1056</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:9999/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <servers defaultServer="">
+            <server name="SelfHostServer" exePath="" cmdArgs="" url="http://localhost:1056/" workingDir="" />
+          </servers>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
