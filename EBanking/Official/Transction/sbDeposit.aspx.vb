@@ -1,12 +1,11 @@
 ﻿Imports System.Data.SqlClient
+
 Public Class sbDeposit
     Inherits System.Web.UI.Page
-
 
     Dim currentBalnce As Double
     Dim TransctionAmount As Double
     Dim NewBalance As Double
-
 
     Dim accountNumber As String
     Dim depositername As String
@@ -23,7 +22,6 @@ Public Class sbDeposit
 
     Dim accounttype As String
     Dim dlt As String
-
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
@@ -53,6 +51,7 @@ Public Class sbDeposit
         nametb2.Text = getAccountJointName(0)
 
     End Sub
+
     Private Sub FIllDataInCif(accountnumber As String)
         Try
             cifsearch(accountnumber)
@@ -102,18 +101,17 @@ Public Class sbDeposit
             If CifHelper.getcifsign(0) IsNot Nothing Then
                 photosign.ImageUrl = CifHelper.getcifsign(0)
             End If
-
         Catch ex As Exception
             MyMessageBox.Show(Me, "Unable to load Cif Information")
         Finally
 
         End Try
     End Sub
+
     Private Sub FilldataInDLT(accountnumber As String)
         Dim dlt, dlt2 As String
         Try
             dltInformation(accountnumber)
-
         Catch
             MyMessageBox.Show(Me, "NO DATA FOUND IN DLT TABLE")
             Exit Sub
@@ -129,6 +127,7 @@ Public Class sbDeposit
         End Try
 
     End Sub
+
     Private Sub GetDataOfAccount(ByVal accountnumber As String, cif As String)
         Try
             AccountSearch(accountnumber)
@@ -150,18 +149,19 @@ Public Class sbDeposit
             Else
                 MyMessageBox.Show(Me, "This is not a Saving Account .This Is a " & getAccountProductType(0) & " Account")
             End If
-
         Else
             MyMessageBox.Show(Me, "Account Does not Exist ..")
 
         End If
 
     End Sub
+
     Private Sub btnFindAccountClick()
         Dim accountnumber As String
         accountnumber = accIdTb.Text.Trim
         GetDataOfAccount(accountnumber, "")
     End Sub
+
     Protected Sub btnFindAccount_Click(sender As Object, e As EventArgs) Handles btnFindAccount.Click
         btnFindAccountClick()
     End Sub
@@ -177,11 +177,11 @@ Public Class sbDeposit
         End Try
 
         If TransctionAmount <= 0 Then
-                MyMessageBox.Show(Me, "Enter Number > 0 ")
-                Exit Sub
-            Else
+            MyMessageBox.Show(Me, "Enter Number > 0 ")
+            Exit Sub
+        Else
 
-            End If
+        End If
 
         Try
             NewBalance = currentBalnce + TransctionAmount
@@ -191,6 +191,7 @@ Public Class sbDeposit
         End Try
 
     End Sub
+
     Protected Sub Calculatebtn_Click(sender As Object, e As EventArgs) Handles Calculatebtn.Click
         DoCalculate()
 
@@ -219,6 +220,7 @@ Public Class sbDeposit
         dlt = dlttb.Text
 
     End Sub
+
     Private Sub DoTransction()
 
         Try
@@ -254,14 +256,11 @@ Public Class sbDeposit
                     MyMessageBox.Show(Me, "  Message: {0}" + ex2.Message)
                 End Try
             End Try
-
-
-
-
         Catch ex As Exception
             MyMessageBox.Show(Me, "  Message: {0}" + ex.Message)
         End Try
     End Sub
+
     Dim Isverification As Boolean = False
 
     Private Sub btnpost_click()
@@ -273,9 +272,10 @@ Public Class sbDeposit
             MyMessageBox.Show(Me, "Enter Valid Transction ID")
         End If
 
-
     End Sub
+
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         btnpost_click()
     End Sub
+
 End Class

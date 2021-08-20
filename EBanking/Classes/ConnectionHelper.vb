@@ -1,6 +1,4 @@
-﻿Imports Dapper
-Imports System.Data.SqlClient
-Imports System.Configuration
+﻿Imports System.Data.SqlClient
 
 Module connectionhelper
     Public databaseconnection As SqlConnection = Nothing
@@ -9,10 +7,12 @@ Module connectionhelper
     Public dataadapter As SqlDataAdapter
     Public databasesource As String = ConfigurationSettings.AppSettings("dbsource").ToString()
     Public datacommand As SqlCommand = Nothing
+
     Function connectionString(ByVal databasename As String, ByVal databasepassword As String) As String
         databaseconnectionstring = "server=tmedia ; database=" & databasename & ";user=tusar;password=tusarranjan"
         Return databaseconnectionstring
     End Function
+
     Function connectionString(ByVal databasename As String) As String
         databaseconnectionstring = "server=tmedia ; database=" & databasename & ";user=tusar;password=tusarranjan"
         Return databaseconnectionstring
@@ -20,12 +20,15 @@ Module connectionhelper
 
     Dim databasesourceaccount As String = ConfigurationSettings.AppSettings("dbsource").ToString()
     Dim databasesourcerpli As String = ConfigurationSettings.AppSettings("plidbsrc").ToString()
+
     Function connectionstringaccount() As String
         databaseconnectionstring = "server=TMEDIA\TMEDIA ; database=" & databasesourceaccount.ToString & ";user=tusar;password=tusarranjan"
         Return databaseconnectionstring
     End Function
+
     Function connectionstringRpli() As String
         databaseconnectionstring = "server=TMEDIA\TMEDIA ; database=" & databasesourcerpli.ToString & ";user=tusar;password=tusarranjan"
         Return databaseconnectionstring
     End Function
+
 End Module

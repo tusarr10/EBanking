@@ -11,7 +11,7 @@
                     "alertTextCheckboxe": "* Ovaj odabir je obavezan",
                     "alertTextDateRange": "* Oba datuma su obavezna"
                 },
-                "requiredInFunction": { 
+                "requiredInFunction": {
                     "func": function(field, rules, i, options){
                         return (field.val() == "test") ? true : false;
                     },
@@ -174,7 +174,6 @@
                     "alertText4": "gggg-mm-dd hh:mm:ss "
 	            }
             };
-
         }
     };
     $.validationEngineLanguage.newLang();

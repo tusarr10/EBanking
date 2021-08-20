@@ -1,10 +1,12 @@
 ﻿Imports System.Data.SqlClient
+
 Public Class newopentransction
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
     End Sub
+
     Private Sub getdataFromDB() '31
         '1
         getAccountData.VertualId = getNewAccountVirtualid(row)
@@ -43,6 +45,7 @@ Public Class newopentransction
         getAccountData.trid = getNewAccounttrid(row)
 
     End Sub
+
     Protected Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         'getdata Function
         newOpenAccountSearch(reffNumberTb.Text.Trim)
@@ -53,7 +56,9 @@ Public Class newopentransction
         Button2.Enabled = True
 
     End Sub
+
     Dim cs As String = connectionhelper.connectionstringaccount()
+
     Private Sub updateDataInOpenAccount()
         'TODO
         'Update transctionJopurnal
@@ -90,9 +95,7 @@ Public Class newopentransction
                 command.CommandText = "insert into journal (da_te,accounttype,accountnumber,na_me,deposit,withdraw,dlt,trid,balance,status,office,u_ser) values ('" & datetb.Text.Trim & "','" & producttype1 & "','" & reffno & "','" & name & "','" & bal & "','" & "00" & "','" & "NewAccount" & "','" & trid1 & "','" & bal & "','" & "Approved" & "','" & OfficeName & "','" & Getusername & "')"
                 command.ExecuteNonQuery()
 
-                'update alljournalstatus 
-
-
+                'update alljournalstatus
 
                 transction.Commit()
                 MyMessageBox.Show(Me, "Data Saved Successfully")
@@ -107,19 +110,15 @@ Public Class newopentransction
                     MyMessageBox.Show(Me, "  Message: {0}" + ex2.Message)
                 End Try
             End Try
-
         Else
             MyMessageBox.Show(Me, "Account Balance Not Update Check In All User ...")
         End If
-
-
-
-
 
         '*************END***************
         Button3.Enabled = True
 
     End Sub
+
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         updateDataInOpenAccount()
     End Sub
@@ -127,6 +126,7 @@ Public Class newopentransction
     Protected Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         MyMessageBox.Show(Me, "Successfully Done ")
     End Sub
+
     Dim row As Integer = 0
 
     Protected Sub LinkButton4_Click(sender As Object, e As EventArgs) Handles LinkButton4.Click
@@ -134,12 +134,13 @@ Public Class newopentransction
             newOpenAccountSearch(reffNumberTb.Text.Trim)
             fullnametb.Text = getNewAccountName(row)
             datetb.Text = getNewAccountdoo(row)
-
         Catch ex As Exception
 
         End Try
     End Sub
+
     Dim _name1 As String
+
     Private Sub findDataFromAccountDatabase(ByVal name1 As String)
         Try
             newaccounthelper.NewAccountNameSearch(name1)
@@ -149,16 +150,16 @@ Public Class newopentransction
 
         End Try
     End Sub
+
     Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
         Try
-            ' for search name 
+            ' for search name
             _name1 = nametb.Text.Trim
             If _name1 = Nothing Then
                 MyMessageBox.Show(Me, "Enter Name ...")
                 Exit Sub
 
             End If
-
 
             findDataFromAccountDatabase(_name1)
         Catch ex As Exception
@@ -168,7 +169,7 @@ Public Class newopentransction
 
     Protected Sub ASPxGridView1_Init(sender As Object, e As EventArgs)
         Try
-            ' for search name 
+            ' for search name
             _name1 = nametb.Text.Trim
             If _name1 = Nothing Then
 
@@ -176,10 +177,10 @@ Public Class newopentransction
 
             End If
 
-
             findDataFromAccountDatabase(_name1)
         Catch ex As Exception
 
         End Try
     End Sub
+
 End Class

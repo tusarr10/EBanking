@@ -1,10 +1,11 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Official/official.Master" CodeBehind="rpliAllDeposit.aspx.vb" Inherits="TWEB.rpliAllDeposit" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
-     <link rel="stylesheet" type="text/css" href='<%# ResolveUrl("~/Content/GridView.css") %>' />
+    <link rel="stylesheet" type="text/css" href='<%# ResolveUrl("~/Content/GridView.css") %>' />
     <script type="text/javascript" src='<%# ResolveUrl("~/Content/GridView1.js") %>'></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="LeftPanelContent" runat="server">
-     <h3 class="leftpanel-section section-caption">Transction Type</h3>
+    <h3 class="leftpanel-section section-caption">Transction Type</h3>
     <dx:ASPxTreeView runat="server" ID="TableOfContentsTreeView" ClientInstanceName="tableOfContentsTreeView"
         EnableNodeTextWrapping="true" AllowSelectNode="true" Width="100%" SyncSelectionMode="None" DataSourceID="NodesDataSource" NodeLinkMode="ContentBounds">
         <Styles>
@@ -33,7 +34,6 @@
             <dx:MenuItem Enabled="false">
                 <Template>
                     <h1>All RPLI Deposits </h1>
-
                 </Template>
             </dx:MenuItem>
             <dx:MenuItem Name="Send" Text="Send" Alignment="Right" AdaptivePriority="2" Visible="false">
@@ -63,18 +63,15 @@
         </PanelCollection>
         <ClientSideEvents Expanded="onFilterPanelExpanded" Collapsed="adjustPageControls" />
     </dx:ASPxPanel>
-
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="PageContent" runat="server">
-    
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="card ">
         <dx:ASPxGridView ID="ASPxGridView1" runat="server" ClientInstanceName="gridView" EnablePagingGestures="False" CssClass="grid-view" Width="100%" OnCustomCallback="GridView_CustomCallback" KeyFieldName="policyno" AutoGenerateColumns="False" DataSourceID="rpliAllDepositDataSet">
             <Columns>
                 <dx:GridViewCommandColumn ShowSelectCheckbox="True" SelectAllCheckboxMode="AllPages" VisibleIndex="0" Width="52"></dx:GridViewCommandColumn>
-
             </Columns>
-           
 
             <SettingsBehavior AllowFocusedRow="true" AllowSelectByRowClick="true" AllowEllipsisInText="true" AllowDragDrop="false" />
             <SettingsEditing Mode="PopupEditForm" EditFormColumnCount="2" />
@@ -85,7 +82,6 @@
             </SettingsPager>
             <SettingsExport EnableClientSideExportAPI="true" ExportSelectedRowsOnly="true" />
             <Columns>
-
             </Columns>
 
             <SettingsPopup>
@@ -105,10 +101,5 @@
         <div class="TopPadding">
             Selected count: <span id="selCount" style="font-weight: bold">0</span>
         </div>
-
-
     </div>
-
-
-
 </asp:Content>

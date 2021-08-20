@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
 
 Module RdJournalHelper
+
     Sub AllTeansctionFromRDJournal(datee As String)
         Try
             datasetcifdb.Tables(rdjournaltbl).Clear()
@@ -26,6 +27,5 @@ Module RdJournalHelper
             Return Nothing
         End Try
     End Function
-
 
 End Module

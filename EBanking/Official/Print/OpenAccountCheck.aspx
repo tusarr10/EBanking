@@ -17,7 +17,6 @@
     <link href="../Resour/fontawesome/css/all.css" rel="stylesheet" />
     <link href="../Resour/datatable/css/jquery.dataTables.min.css" rel="stylesheet" />
 
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
@@ -38,30 +37,29 @@
             return false;
         }
     </script>
-    </head>
+</head>
 <body>
     <form id="form1" runat="server">
         <asp:Panel ID="pnl1" runat="server">
             <br />
             <div class="row">
                 <div class="col">
-                    <hr/>
+                    <hr />
                 </div>
             </div>
             <table class="w-100">
                 <tr>
                     <td>
                         <centre>
-                    <asp:Label ID="Label1" runat="server" Text="Account Holder Name : "></asp:Label>
-                                        <asp:Label ID="lbacname" runat="server" Text="xyzanything"></asp:Label>
-               
-                </centre>
+                            <asp:Label ID="Label1" runat="server" Text="Account Holder Name : "></asp:Label>
+                            <asp:Label ID="lbacname" runat="server" Text="xyzanything"></asp:Label>
+                        </centre>
                     </td>
                 </tr>
             </table>
             <div class="row">
                 <div class="col">
-                    <hr/>
+                    <hr />
                 </div>
             </div>
             <table class="w-100">
@@ -96,61 +94,58 @@
                     </td>
                 </tr>
             </table>
-            
 
-
-             <div class="row">
+            <div class="row">
                 <div class="col">
-                    <hr/>
+                    <hr />
                 </div>
             </div>
             <table class="w-100">
-                <tr >
+                <tr>
                     <td>
                         <asp:Label ID="Label2" runat="server" Text="Date Of Birth : "></asp:Label>
-                                                 <asp:Label ID="lbdob" runat="server" Text=""></asp:Label>
+                        <asp:Label ID="lbdob" runat="server" Text=""></asp:Label>
                     </td>
                     <td>
                         <asp:Label ID="Label4" runat="server" Text="Gender : "></asp:Label>
-                                                 <asp:Label ID="lbgender" runat="server" Text=""></asp:Label>
+                        <asp:Label ID="lbgender" runat="server" Text=""></asp:Label>
                     </td>
                 </tr>
-                <tr >
+                <tr>
                     <td class="w-50">
                         <asp:Label ID="Label6" runat="server" Text="Mobile Number : "></asp:Label>
-                                                 <asp:Label ID="lbmobile" runat="server" Text=""></asp:Label>
+                        <asp:Label ID="lbmobile" runat="server" Text=""></asp:Label>
                     </td>
                     <td class="w-50">
                         <asp:Label ID="Label7" runat="server" Text="Email Id : "></asp:Label>
-                                                 <asp:Label ID="lbemail" runat="server" Text=""></asp:Label>
+                        <asp:Label ID="lbemail" runat="server" Text=""></asp:Label>
                     </td>
                 </tr>
                 <tr>
                     <td class="w-50 ">
                         <asp:Label ID="Label10" runat="server" Text="Aadhaar Card Number : "></asp:Label>
-                                                <asp:Label ID="lbadhar" runat="server" Text=" "></asp:Label>
+                        <asp:Label ID="lbadhar" runat="server" Text=" "></asp:Label>
                     </td>
                     <td class="w-50 ">
                         <asp:Label ID="Label12" runat="server" Text="PAN Number : "></asp:Label>
-                                                 <asp:Label ID="lbpan" runat="server" Text=""></asp:Label>
+                        <asp:Label ID="lbpan" runat="server" Text=""></asp:Label>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <asp:Label ID="Label14" runat="server" Text="Address : "></asp:Label>
-                                                <asp:Label ID="lbaddress" runat="server" Text=""></asp:Label>
+                        <asp:Label ID="lbaddress" runat="server" Text=""></asp:Label>
                     </td>
-
                 </tr>
             </table>
             <div class="row">
                 <div class="col">
-                    <hr/>
+                    <hr />
                 </div>
             </div>
 
             <table class="w-100">
-                <tr >
+                <tr>
                     <td class="w-50 ">
                         <asp:Label ID="Label15" runat="server" Text="Product : "></asp:Label>
                         <asp:Label ID="lbproduct" runat="server" Text=""></asp:Label>
@@ -160,21 +155,18 @@
                         <asp:Label ID="lbterm" runat="server" Text=""></asp:Label>
                     </td>
                 </tr>
-                <tr >
+                <tr>
                     <td>
                         <asp:Label ID="Label19" runat="server" Text="Value : "></asp:Label>
                         <asp:Label ID="lbValue" runat="server" Text=""></asp:Label>
                     </td>
-
                 </tr>
-
             </table>
             <div class="row">
                 <div class="col">
-                    <hr/>
+                    <hr />
                 </div>
             </div>
-
 
             <table class="w-100">
                 <tr>
@@ -201,10 +193,9 @@
 
             <div class="row">
                 <div class="col">
-                    <hr/>
+                    <hr />
                 </div>
             </div>
-
 
             <table class="w-100">
                 <tr>
@@ -232,22 +223,21 @@
                         <asp:Label ID="Label35" runat="server" Text="Nomini Address : "></asp:Label>
                         <asp:Label ID="lbnominiaddress" runat="server" Text=""></asp:Label>
                     </td>
-                    
                 </tr>
             </table>
             <div class="row">
                 <div class="col">
-                    <hr/>
+                    <hr />
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <hr/>
+                    <hr />
                 </div>
             </div>
         </asp:Panel>
 
-               <%-- <div class="card ">
+        <%-- <div class="card ">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-4 mx-auto">

@@ -21,7 +21,6 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="PageContent" runat="server">
 
-
     <div class="card">
 
         <div class="card-body">
@@ -38,7 +37,6 @@
                 </div>
             </div>
 
-
             <div class="row">
                 <div class="col-md-3">
                     <label>Account ID</label>
@@ -47,9 +45,7 @@
                             <asp:TextBox CssClass="form-control" ID="accIdTb" runat="server" placeholder="Account ID"></asp:TextBox>
                             <asp:LinkButton class="btn btn-primary" ID="btnFindAccount" runat="server">
                                 <i class="fas fa-check-circle">
-
                                 </i>
-
                             </asp:LinkButton>
                         </div>
                     </div>
@@ -119,20 +115,20 @@
                                     <div class="row">
                                         <div class="col">
                                             <center>
-                           <h4>Details</h4>
-                        </center>
+                                                <h4>Details</h4>
+                                            </center>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
                                             <center>
-                                   
-                                     <dx:ASPxImage ID="photophoto" runat="server" ShowLoadingImage="true" Theme="Material" AlternateText="Photo" Height="100px" Width="100px">
-                                         <Border BorderColor="#33CC33" BorderStyle="Solid" BorderWidth="1px" />
-                                     </dx:ASPxImage> 
-                                   
-                           <%--<img width="100px" src="../Resour/Images/generaluser.png" alt="Photo" />--%>
-                        </center>
+
+                                                <dx:ASPxImage ID="photophoto" runat="server" ShowLoadingImage="true" Theme="Material" AlternateText="Photo" Height="100px" Width="100px">
+                                                    <border bordercolor="#33CC33" borderstyle="Solid" borderwidth="1px" />
+                                                </dx:ASPxImage>
+
+                                                <%--<img width="100px" src="../Resour/Images/generaluser.png" alt="Photo" />--%>
+                                            </center>
                                         </div>
                                     </div>
 
@@ -147,8 +143,6 @@
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <asp:TextBox CssClass="form-control" ID="CifInfo" runat="server" placeholder="CIF ID" ReadOnly="True"></asp:TextBox>
-
-
                                                 </div>
                                             </div>
                                         </div>
@@ -163,7 +157,6 @@
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <asp:TextBox CssClass="form-control mr-1" ID="CifStatustb" runat="server" placeholder="Account Status" ReadOnly="True"></asp:TextBox>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -211,7 +204,6 @@
                                                 <asp:TextBox CssClass="form-control" ID="adhartb" runat="server" placeholder="Adhar Card No" ReadOnly="True"></asp:TextBox>
                                             </div>
                                         </div>
-
                                     </div>
 
                                     <div class="row">
@@ -225,22 +217,17 @@
                                     <div class="row">
                                         <div class="col">
                                             <center>
-                                      <%--  <img width="100px" src="../Resour/Images/generalSign.png" alt="Signiture" />--%>
-                                    <dx:ASPxImage ID="photosign" runat="server" ShowLoadingImage="true" AlternateText="Signiture" Theme="Material" Border-BorderColor="#33CC33" Border-BorderStyle="Solid" Border-BorderWidth="1px" Width="100px" Height="50px"></dx:ASPxImage>
-                                   </center>
+                                                <%--  <img width="100px" src="../Resour/Images/generalSign.png" alt="Signiture" />--%>
+                                                <dx:ASPxImage ID="photosign" runat="server" ShowLoadingImage="true" AlternateText="Signiture" Theme="Material" Border-BorderColor="#33CC33" Border-BorderStyle="Solid" Border-BorderWidth="1px" Width="100px" Height="50px"></dx:ASPxImage>
+                                            </center>
                                         </div>
-
                                     </div>
-
                                 </div>
                             </div>
-
                         </div>
-
                     </dx:PanelContent>
                 </PanelCollection>
             </dx:ASPxRoundPanel>
-
         </div>
 
         <div class="row">
@@ -309,7 +296,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     <div class="row">
         <div class="col">
@@ -329,12 +315,4 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
 </asp:Content>

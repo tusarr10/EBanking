@@ -10,7 +10,7 @@
                     "alertTextCheckboxMultiple": "* Lütfen bir seçeneği işaretleyiniz",
                     "alertTextCheckboxe": "* Bu onay kutusu zorunludur"
                 },
-                "requiredInFunction": { 
+                "requiredInFunction": {
                     "func": function(field, rules, i, options){
                         return (field.val() == "test") ? true : false;
                     },
@@ -47,8 +47,7 @@
                     "regex": "none",
                     "alertText": "* Lütfen ",
                     "alertText2": " tarihinden daha geri bir tarih giriniz "
-
-                },	
+                },
                 "maxCheckbox": {
                     "regex": "none",
                     "alertText": "* En fazla ",
@@ -153,7 +152,6 @@
                     "alertText": "* Lütfen 'HELLO' yazın"
                 }
             };
-            
         }
     };
     $.validationEngineLanguage.newLang();

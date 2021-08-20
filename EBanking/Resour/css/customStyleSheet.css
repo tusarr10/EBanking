@@ -3,7 +3,7 @@
     text-decoration: none !important;
 }
 
-.footerlinks:hover {
+    .footerlinks:hover {
         color: #ffd800;
     }
 
@@ -14,68 +14,73 @@
 #footer2 {
     background: #531f00;
 }
-.lidisn{
-    background-color:cornflowerblue;
-    border:solid 1px white;
-    width:120px;
-    height:35px;
-}
-.lia{
-   position:absolute;
- display:none;
 
+.lidisn {
+    background-color: cornflowerblue;
+    border: solid 1px white;
+    width: 120px;
+    height: 35px;
 }
+
+.lia {
+    position: absolute;
+    display: none;
+}
+
 .body1 {
-   background: url("../Images/banking.jpg") center no-repeat;
-    height:100vh;
-    background-size:cover;
-    margin:auto;
- 
+    background: url("../Images/banking.jpg") center no-repeat;
+    height: 100vh;
+    background-size: cover;
+    margin: auto;
 }
-.menudropdown1{
-    width:95%;
-    height:100px;
-    margin:0px auto;
- 
-}
-.menudropdown1 ul{
-    padding:0px;
-     text-decoration:none;
-       background-color:black;
 
+.menudropdown1 {
+    width: 95%;
+    height: 100px;
+    margin: 0px auto;
 }
-.menudropdown1 ul li {
-    float:left;
-    background-color:black;
-    color:white;
-    width:200px;
-    list-style:none;
-    line-height:40px;
-    font-size:18px;
-    text-align:center;
-    opacity:0.6;
-  
- }
-.menudropdown1 ul li ul {
-    display:none;
-}
-.menudropdown1 ul li:hover > ul {
-        display: block;
-}
-.menudropdown1 ul li:hover {
-    background-color:#32cd32;
-    opacity:0.9;
-}
-.menudropdown1 ul li ul li {
-    position:relative;
 
-}
-.menudropdown1 ul li ul li ul {
-    position:absolute;
-    left:200px;
-    top:0px;
+    .menudropdown1 ul {
+        padding: 0px;
+        text-decoration: none;
+        background-color: black;
+    }
 
-}
+        .menudropdown1 ul li {
+            float: left;
+            background-color: black;
+            color: white;
+            width: 200px;
+            list-style: none;
+            line-height: 40px;
+            font-size: 18px;
+            text-align: center;
+            opacity: 0.6;
+        }
+
+            .menudropdown1 ul li ul {
+                display: none;
+            }
+
+            .menudropdown1 ul li:hover > ul {
+                display: block;
+            }
+
+            .menudropdown1 ul li:hover {
+                background-color: #32cd32;
+                opacity: 0.9;
+            }
+
+            .menudropdown1 ul li ul li {
+                position: relative;
+            }
+
+                .menudropdown1 ul li ul li ul {
+                    position: absolute;
+                    left: 200px;
+                    top: 0px;
+                }
+
 .positions {
-    margin:0px;
+    margin: 0px;
 }

@@ -1,14 +1,10 @@
-Imports Microsoft.VisualBasic
-Imports System
-Imports System.Web.UI
-Imports System.Web.UI.HtmlControls
-
 Imports DevExpress.Web
 Imports TWEB.Model
 
 Partial Public Class Root
     Inherits MasterPage
     Private privateEnableBackButton As Boolean
+
     Public Property EnableBackButton() As Boolean
         Get
             Return privateEnableBackButton
@@ -17,6 +13,7 @@ Partial Public Class Root
             privateEnableBackButton = value
         End Set
     End Property
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
         If (Not String.IsNullOrEmpty(Page.Header.Title)) Then
             Page.Header.Title &= " - "
@@ -100,4 +97,5 @@ Partial Public Class Root
         e.Item.Image.Url = String.Format("Content/Images/{0}.svg", e.Item.Text)
         e.Item.Image.UrlSelected = String.Format("Content/Images/{0}-white.svg", e.Item.Text)
     End Sub
+
 End Class

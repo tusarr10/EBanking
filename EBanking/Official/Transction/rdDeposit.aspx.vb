@@ -1,14 +1,14 @@
 ﻿Imports System.Data.SqlClient
+
 Public Class rdDeposit
     Inherits System.Web.UI.Page
 
+    Dim currentBalnce As Double = 0
 
-    Dim currentBalnce As Double = 00
-
-    Dim TransctionAmount As Double = 00
-    Dim fine As Double = 00
-    Dim NewBalance As Double = 00
-    Dim totalDeposit As Double = 00
+    Dim TransctionAmount As Double = 0
+    Dim fine As Double = 0
+    Dim NewBalance As Double = 0
+    Dim totalDeposit As Double = 0
 
     Dim accountNumber As String
     Dim depositername As String
@@ -17,7 +17,6 @@ Public Class rdDeposit
     Dim bbt As String
     Dim transctiontype As String
     Dim amount As String
-
 
     Dim bat As String
     Dim Trid As String
@@ -34,6 +33,7 @@ Public Class rdDeposit
         accountnumber = accIdTb.Text.Trim
         GetDataOfAccount(accountnumber)
     End Sub
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
             GetworkingDate = DateAndTime.Now().ToString("yyyy-MM-dd")
@@ -51,7 +51,6 @@ Public Class rdDeposit
         End Try
     End Sub
 
-
     Private Sub FillDataInView() 'get and put data from liveaccount
         balanceTb.Text = getAccountBalance(0)
         currentBalnce = getAccountBalance(0)
@@ -62,6 +61,7 @@ Public Class rdDeposit
         nametb2.Text = getAccountJointName(0)
 
     End Sub
+
     Private Sub FIllDataInCif(accountnumber As String)
         Try
             cifsearch(accountnumber)
@@ -111,18 +111,17 @@ Public Class rdDeposit
             If CifHelper.getcifsign(0) IsNot Nothing Then
                 photosign.ImageUrl = CifHelper.getcifsign(0)
             End If
-
         Catch ex As Exception
             MyMessageBox.Show(Me, "Unable to load Cif Information")
         Finally
 
         End Try
     End Sub
+
     Private Sub FilldataInDLT(accountnumber As String)
         Dim dlt, dlt2 As String
         Try
             dltInformation(accountnumber)
-
         Catch
             MyMessageBox.Show(Me, "NO DATA FOUND IN DLT TABLE")
             Exit Sub
@@ -138,6 +137,7 @@ Public Class rdDeposit
         End Try
 
     End Sub
+
     Private Sub GetDataOfAccount(ByVal accountnumber As String)
         Try
             AccountSearch(accountnumber)
@@ -158,24 +158,24 @@ Public Class rdDeposit
             Else
                 MyMessageBox.Show(Me, "This Is Not A RD Account This is a " & getAccountProductType(0) & " Account ..")
             End If
-
         Else
             MyMessageBox.Show(Me, "Account Number Does Not Exist ..")
         End If
 
     End Sub
+
     Protected Sub btnFindAccount_Click(sender As Object, e As EventArgs) Handles btnFindAccount.Click
         btnFindAccountClick()
 
     End Sub
+
     Function IsAmountCorrect() As Boolean
 
         Dim strAllowedChars As String = "0123456789() -+ "
         If Len(TransctionAmount) = 0 Then
             Return False
-        ElseIf TransctionAmount > 0
+        ElseIf TransctionAmount > 0 Then
             Return True
-
         Else
             For i = 0 To Len(TransctionAmount) - 1
                 If InStr(1, strAllowedChars, TransctionAmount.ToString(i)) = 0 Then
@@ -190,14 +190,12 @@ Public Class rdDeposit
 
     End Function
 
-
     Private Sub DoCalculate()
         ''TODO Calculate
         currentBalnce = getAccountBalance(0)
         Try
             TransctionAmount = "0" + DepositAmounttb.Text.Trim
             fine = "0" + DepositFine.Text.Trim
-
         Catch
             MyMessageBox.Show(Me, "Enter Number Only In INR ")
             Exit Sub
@@ -216,12 +214,13 @@ Public Class rdDeposit
             NewBalance = currentBalnce + TransctionAmount
             totalDeposit = TransctionAmount + fine
             newbalancetb.Text = NewBalance
-            'in fiture modal popup show here 
+            'in fiture modal popup show here
         Catch
             MyMessageBox.Show(Me, "Unable to Calculate")
         End Try
 
     End Sub
+
     Protected Sub Calculatebtn_Click(sender As Object, e As EventArgs) Handles Calculatebtn.Click
         DoCalculate()
 
@@ -253,10 +252,10 @@ Public Class rdDeposit
         dlt = dlttb.Text
 
     End Sub
+
     Private Sub DoTransction()
         Try
             'Search TRID If exist
-
         Catch ex As Exception
 
         End Try
@@ -305,24 +304,19 @@ Public Class rdDeposit
                     MyMessageBox.Show(Me, "  Message: {0}" + ex2.Message)
                 End Try
             End Try
-
-
-
-
         Catch ex As Exception
             MyMessageBox.Show(Me, "  Message: {0}" + ex.Message)
         End Try
     End Sub
+
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If Len(transctiontb.Text.ToString) > 2 And DepositAmounttb.Text > 1 Then
 
             DoTransction()
-
         Else
             MyMessageBox.Show(Me, "Check transction amount and ID ")
         End If
 
     End Sub
-
 
 End Class

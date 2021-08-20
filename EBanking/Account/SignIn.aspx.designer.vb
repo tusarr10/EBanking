@@ -7,72 +7,72 @@
 ' </auto-generated>
 '------------------------------------------------------------------------------
 
+Option Strict On
+Option Explicit On
 
-Imports Microsoft.VisualBasic
-Imports System
 
 Partial Public Class SignInModule
 
-    ''' <summary>
-    ''' SignInRegisterTabControl control.
-    ''' </summary>
-    ''' <remarks>
-    ''' Auto-generated field.
-    ''' To modify move field declaration from designer file to code-behind file.
-    ''' </remarks>
-    Protected SignInRegisterTabControl As Global.DevExpress.Web.ASPxTabControl
+    '''<summary>
+    '''SignInRegisterTabControl control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SignInRegisterTabControl As Global.DevExpress.Web.ASPxTabControl
 
-    ''' <summary>
-    ''' FormLayout control.
-    ''' </summary>
-    ''' <remarks>
-    ''' Auto-generated field.
-    ''' To modify move field declaration from designer file to code-behind file.
-    ''' </remarks>
-    Protected FormLayout As Global.DevExpress.Web.ASPxFormLayout
+    '''<summary>
+    '''FormLayout control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents FormLayout As Global.DevExpress.Web.ASPxFormLayout
 
-    ''' <summary>
-    ''' UserNameTextBox control.
-    ''' </summary>
-    ''' <remarks>
-    ''' Auto-generated field.
-    ''' To modify move field declaration from designer file to code-behind file.
-    ''' </remarks>
-    Protected UserNameTextBox As Global.DevExpress.Web.ASPxTextBox
+    '''<summary>
+    '''UserNameTextBox control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents UserNameTextBox As Global.DevExpress.Web.ASPxTextBox
 
-    ''' <summary>
-    ''' PasswordButtonEdit control.
-    ''' </summary>
-    ''' <remarks>
-    ''' Auto-generated field.
-    ''' To modify move field declaration from designer file to code-behind file.
-    ''' </remarks>
-    Protected PasswordButtonEdit As Global.DevExpress.Web.ASPxButtonEdit
+    '''<summary>
+    '''PasswordButtonEdit control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents PasswordButtonEdit As Global.DevExpress.Web.ASPxButtonEdit
 
-    ''' <summary>
-    ''' RememberMeCheckBox control.
-    ''' </summary>
-    ''' <remarks>
-    ''' Auto-generated field.
-    ''' To modify move field declaration from designer file to code-behind file.
-    ''' </remarks>
-    Protected RememberMeCheckBox As Global.DevExpress.Web.ASPxCheckBox
+    '''<summary>
+    '''RememberMeCheckBox control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RememberMeCheckBox As Global.DevExpress.Web.ASPxCheckBox
 
-    ''' <summary>
-    ''' GeneralErrorDiv control.
-    ''' </summary>
-    ''' <remarks>
-    ''' Auto-generated field.
-    ''' To modify move field declaration from designer file to code-behind file.
-    ''' </remarks>
-    Protected GeneralErrorDiv As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    '''<summary>
+    '''GeneralErrorDiv control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents GeneralErrorDiv As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
-    ''' <summary>
-    ''' SignInButton control.
-    ''' </summary>
-    ''' <remarks>
-    ''' Auto-generated field.
-    ''' To modify move field declaration from designer file to code-behind file.
-    ''' </remarks>
-    Protected SignInButton As Global.DevExpress.Web.ASPxButton
+    '''<summary>
+    '''SignInButton control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SignInButton As Global.DevExpress.Web.ASPxButton
 End Class

@@ -1,5 +1,4 @@
 ﻿Imports System.Data.OleDb
-Imports System.Data.SqlClient
 Imports DevExpress.Web
 
 Public Class journaltrns
@@ -20,8 +19,9 @@ Public Class journaltrns
     Dim dlt As String
     Dim remark As String
 
-    ' for Calculation 
+    ' for Calculation
     Dim _totaldata As String
+
     Dim _totalinsert As String
     Dim _totalSkip As String
     Dim _exist As String
@@ -29,6 +29,7 @@ Public Class journaltrns
     Dim z As Integer
 
     Dim n As Integer
+
     Function getCifAccessDataTable() As DataTable
         Try
             Return datasetcifdb.Tables("Accesstrnsdetail")
@@ -54,6 +55,7 @@ Public Class journaltrns
             MyMessageBox.Show(Me, "Unable to load Database Mak sure Your Data Base Upload to ....." + ex.Message)
         End Try
     End Sub
+
     Sub loaddatafromserver()
         Try
             resultFileUrl = UploadDirectory & "Database1.accdb"
@@ -67,9 +69,11 @@ Public Class journaltrns
         Catch ex As Exception
         End Try
     End Sub
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         loaddatafromserver()
     End Sub
+
     Private Sub InsertDataIntoSqltransctiondb(ByVal i As Integer)
         Dim x As Integer
         For x = 0 To i - 1
@@ -98,17 +102,16 @@ Public Class journaltrns
                     '     dtrnsreportHelper(_acNo)
                     '    If dtrnsreportHelper.IsIdExistdlt(_acNo) = False Then
                     logmsg = logmsg & timeme & " : Inserting Data Please wait... " & Environment.NewLine
-                        ASPxMemo1.Text = logmsg
-                        UPN1.Update()
+                    ASPxMemo1.Text = logmsg
+                    UPN1.Update()
                     '       InsertIntoDB(_acNo, _dlt, _dlt1, _AccountBalance)
                 Else
-                        n += 1
+                    n += 1
 
-                        logmsg = logmsg & timeme & " : Account Id Already Exist in Database  " & Environment.NewLine & Environment.NewLine
-                        ASPxMemo1.Text = logmsg
-                        UPN1.Update()
-                    End If
-
+                    logmsg = logmsg & timeme & " : Account Id Already Exist in Database  " & Environment.NewLine & Environment.NewLine
+                    ASPxMemo1.Text = logmsg
+                    UPN1.Update()
+                End If
             Catch ex As Exception
 
             End Try
@@ -116,7 +119,9 @@ Public Class journaltrns
         Next
 
     End Sub
+
     Dim timeme As String = DateAndTime.Now.ToLongTimeString
+
     Protected Sub btn2_Click(sender As Object, e As EventArgs)
         Dim i As Integer
         Try
@@ -128,7 +133,6 @@ Public Class journaltrns
                 Exit Sub
             End If
             _totaldata = i.ToString
-
         Catch ex As Exception
             Exit Sub
         End Try
@@ -147,6 +151,7 @@ Public Class journaltrns
 
         End If
     End Sub
+
     Protected Sub GridView_CustomCallback(sender As Object, e As ASPxGridViewCustomCallbackEventArgs)
 
         Dim i As Integer
@@ -157,7 +162,6 @@ Public Class journaltrns
         End Try
         If e.Parameters = "view" Then
 
-
         End If
         If e.Parameters = "Send" Then
 
@@ -166,4 +170,5 @@ Public Class journaltrns
 
         End If
     End Sub
+
 End Class

@@ -4,7 +4,6 @@
 	$.validationEngineLanguage = {
 		newLang : function() {
 			$.validationEngineLanguage.allRules = {
-
 				// global messages
 				"required" : { // Add your regex rules here, you can take
 								// telephone as an example
@@ -161,10 +160,8 @@
 					"alertText4" : "yyyy-mm-dd hh:mm:ss AM|PM"
 				}
 			};
-
 		}
 	};
 
 	$.validationEngineLanguage.newLang();
-
 })(jQuery);

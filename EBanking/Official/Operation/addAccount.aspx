@@ -3,10 +3,9 @@
 <%@ Register Assembly="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
-  <%--  <link rel="stylesheet" href="~/Content/Custom/css/validationEngine.jquery.css" type="text/css" />--%>
+    <%--  <link rel="stylesheet" href="~/Content/Custom/css/validationEngine.jquery.css" type="text/css" />--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="LeftPanelContent" runat="server">
-
 
     <h3 class="leftpanel-section section-caption">Type</h3>
     <dx:ASPxTreeView runat="server" ID="TableOfContentsTreeView" ClientInstanceName="tableOfContentsTreeView"
@@ -18,17 +17,12 @@
         <ClientSideEvents NodeClick="function (s, e) { HideLeftPanelIfRequired(); }" />
     </dx:ASPxTreeView>
     <asp:XmlDataSource ID="NodesDataSource" runat="server" DataFile="~/App_Data/DefaultLeft.xml" XPath="//Nodes/OperationNode/*" />
-
-
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="RightPanelContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="PageToolbar" runat="server">
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="PageContent" runat="server">
-
-
-
 
     <div class="card ">
         <div class="card-body ">
@@ -58,7 +52,6 @@
                                     <asp:LinkButton class="btn btn-success mr-1" ID="AccountStatusApproveBtn" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
                                     <asp:LinkButton class="btn btn-warning mr-1" ID="AccountStatusPendingBtn" runat="server"><i class="far fa-pause-circle"></i></asp:LinkButton>
                                     <asp:LinkButton class="btn btn-danger mr-1" ID="AccountStatusFreezBtn" runat="server"><i class="fas fa-times-circle"></i></asp:LinkButton>
-
                                 </div>
                             </div>
                         </div>
@@ -71,7 +64,6 @@
                     <hr />
                 </div>
             </div>
-
 
             <div class="card ">
                 <div class="card-body ">
@@ -108,7 +100,7 @@
                                                     <label>Nomini Register</label>
                                                     <div class="form-group">
                                                         <asp:DropDownList CssClass="form-control" ID="nominiregcb" runat="server" placeholder="Nomini" Enabled="False" OnTextChanged="nominiregcb_TextChanged" AutoPostBack="true">
-                                                             <asp:ListItem Text="Chose .." Value="" />
+                                                            <asp:ListItem Text="Chose .." Value="" />
                                                             <asp:ListItem Text="Yes" Value="Yes" />
                                                             <asp:ListItem Text="No" Value="No" />
                                                         </asp:DropDownList>
@@ -121,7 +113,7 @@
                                                             <%--https://www.aspsnippets.com/Articles/Disable-DropDownList-Item-Option-in-ASPNet-using-C-and-VBNet.aspx--%>
                                                             <%--example--%>
                                                             <asp:ListItem Text="Chose .." Value="" />
-                                                             <asp:ListItem Text="Saving" Value="Saving" />
+                                                            <asp:ListItem Text="Saving" Value="Saving" />
                                                             <asp:ListItem Text="RD" Value="RD" />
                                                             <asp:ListItem Text="SSA" Value="SSA" />
                                                             <asp:ListItem Text="TD" Value="TD" />
@@ -135,7 +127,7 @@
                                                     <label>Mode Of Operation</label>
                                                     <div class="form-group">
                                                         <asp:DropDownList CssClass="form-control" ID="Modetb" runat="server" placeholder="Mode" Enabled="false" OnTextChanged="Modetb_textChanged1" AutoPostBack="true">
-                                                             <asp:ListItem Text="Chose .." Value="" />
+                                                            <asp:ListItem Text="Chose .." Value="" />
                                                             <asp:ListItem Text="Self" Value="Self" />
                                                             <asp:ListItem Text="Minor" Value="Minor" />
                                                             <asp:ListItem Text="JointA" Value="JointA" />
@@ -182,18 +174,18 @@
                                             <div class="row">
                                                 <div class="col">
                                                     <center>
-                           <h4>CIF Details</h4>
-                        </center>
+                                                        <h4>CIF Details</h4>
+                                                    </center>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col">
                                                     <center>
-                                    <dx:ASPxImage ID="photophoto" runat="server" ShowLoadingImage="true" Width="100px" Height="100px" AlternateText="Photo">
-                                        <Border BorderColor="#33CC33" BorderStyle="Solid" BorderWidth="2px" />
-                                    </dx:ASPxImage>
-                           <%--<img width="100px" src="../Resour/Images/generaluser.png" alt="Photo" />--%>
-                        </center>
+                                                        <dx:ASPxImage ID="photophoto" runat="server" ShowLoadingImage="true" Width="100px" Height="100px" AlternateText="Photo">
+                                                            <border bordercolor="#33CC33" borderstyle="Solid" borderwidth="2px" />
+                                                        </dx:ASPxImage>
+                                                        <%--<img width="100px" src="../Resour/Images/generaluser.png" alt="Photo" />--%>
+                                                    </center>
                                                 </div>
                                             </div>
 
@@ -208,8 +200,6 @@
                                                     <div class="form-group">
                                                         <div class="input-group">
                                                             <asp:TextBox CssClass="form-control" ID="CifInfo" runat="server" placeholder="CIF ID" ReadOnly="True"></asp:TextBox>
-
-
                                                         </div>
                                                     </div>
                                                 </div>
@@ -224,7 +214,6 @@
                                                     <div class="form-group">
                                                         <div class="input-group">
                                                             <asp:TextBox CssClass="form-control mr-1" ID="CifStatustb" runat="server" placeholder="Account Status" ReadOnly="True"></asp:TextBox>
-
                                                         </div>
                                                     </div>
                                                 </div>
@@ -240,7 +229,7 @@
                                                     <label>Gender</label>
                                                     <div class="form-group">
                                                         <asp:DropDownList CssClass="form-control" ID="genderlb" runat="server" placeholder="Gender" ReadOnly="True" Enabled="False">
-                                                             <asp:ListItem Text="Chose .." Value="" />
+                                                            <asp:ListItem Text="Chose .." Value="" />
                                                             <asp:ListItem Text="Male" Value="Male" />
                                                             <asp:ListItem Text="Female" Value="Female" />
                                                             <asp:ListItem Text="Other" Value="Other" />
@@ -273,7 +262,6 @@
                                                         <asp:TextBox CssClass="form-control" ID="adhartb" runat="server" placeholder="Adhar Card No" ReadOnly="True"></asp:TextBox>
                                                     </div>
                                                 </div>
-
                                             </div>
 
                                             <div class="row">
@@ -287,12 +275,11 @@
                                             <div class="row">
                                                 <div class="col">
                                                     <center>
-                                      <%--  <img width="100px" src="../Resour/Images/generalSign.png" alt="Signiture" />--%>
-                                   <dx:ASPxImage ID="signphoto" runat="server" ShowLoadingImage="true" Width="100px" Height="50px" AlternateText="Signiture">
-                                       <Border BorderColor="#99FF99" BorderStyle="Solid" BorderWidth="2px" />
-                                      </dx:ASPxImage>
-                                   </center>
-
+                                                        <%--  <img width="100px" src="../Resour/Images/generalSign.png" alt="Signiture" />--%>
+                                                        <dx:ASPxImage ID="signphoto" runat="server" ShowLoadingImage="true" Width="100px" Height="50px" AlternateText="Signiture">
+                                                            <border bordercolor="#99FF99" borderstyle="Solid" borderwidth="2px" />
+                                                        </dx:ASPxImage>
+                                                    </center>
                                                 </div>
                                             </div>
                                         </div>
@@ -304,7 +291,7 @@
                 </div>
             </div>
 
-             <div class="row">
+            <div class="row">
                 <div class="col">
 
                     <hr />
@@ -313,7 +300,6 @@
 
             <div class="card ">
                 <div class="card-body ">
-
 
                     <dx:ASPxRoundPanel ID="ASPxRoundPanel3" runat="server" Width="100%" ClientInstanceName="roundpanel" HeaderText=" Mode Of Operation" AllowCollapsingByHeaderClick="True" ShowCollapseButton="True" LoadContentViaCallback="True" Collapsed="false" EnableAnimation="True">
                         <PanelCollection>
@@ -387,21 +373,18 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </dx:PanelContent>
                         </PanelCollection>
                     </dx:ASPxRoundPanel>
-
                 </div>
             </div>
 
-             <div class="row">
+            <div class="row">
                 <div class="col">
 
                     <hr />
                 </div>
             </div>
-
 
             <div class="card ">
                 <div class="card-body ">
@@ -448,51 +431,46 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </dx:PanelContent>
                         </PanelCollection>
                     </dx:ASPxRoundPanel>
-
-                    </div>
                 </div>
-             <div class="row">
+            </div>
+            <div class="row">
                 <div class="col">
 
                     <hr />
                 </div>
             </div>
 
-
-                    <div class="card ">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-4 mx-auto">
-                                    <asp:Button ID="Button1" class="btn btn-lg btn-block btn-success" runat="server" Enabled="false" Text="Add" />
-                                </div>
-                                <div class="col-4 mx-auto">
-                                    <asp:Button ID="Button3" class="btn btn-lg btn-block btn-info" runat="server" Enabled="false" Text="Update" />
-                                </div>
-                                <div class="col-4 mx-auto">
-                                    <asp:Button ID="Button2" class="btn btn-lg btn-block btn-danger" runat="server" Enabled="false" Text="Delete" />
-                                </div>
-                            </div>
+            <div class="card ">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4 mx-auto">
+                            <asp:Button ID="Button1" class="btn btn-lg btn-block btn-success" runat="server" Enabled="false" Text="Add" />
+                        </div>
+                        <div class="col-4 mx-auto">
+                            <asp:Button ID="Button3" class="btn btn-lg btn-block btn-info" runat="server" Enabled="false" Text="Update" />
+                        </div>
+                        <div class="col-4 mx-auto">
+                            <asp:Button ID="Button2" class="btn btn-lg btn-block btn-danger" runat="server" Enabled="false" Text="Delete" />
                         </div>
                     </div>
-             <div class="row">
+                </div>
+            </div>
+            <div class="row">
                 <div class="col">
 
                     <hr />
                 </div>
             </div>
-                
-                <div class="card-body ">
-                    <div class="form-group  ">
-                        <asp:TextBox CssClass="form-control" ID="Errortb" runat="server" placeholder="Type" ReadOnly="True"></asp:TextBox>
-                    </div>
+
+            <div class="card-body ">
+                <div class="form-group  ">
+                    <asp:TextBox CssClass="form-control" ID="Errortb" runat="server" placeholder="Type" ReadOnly="True"></asp:TextBox>
                 </div>
             </div>
         </div>
-
-    
+    </div>
 </asp:Content>

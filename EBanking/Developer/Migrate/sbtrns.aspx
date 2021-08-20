@@ -23,7 +23,6 @@
             <dx:MenuItem Enabled="false">
                 <Template>
                     <h1>All User From Access DB</h1>
-
                 </Template>
             </dx:MenuItem>
             <dx:MenuItem Name="Send" Text="Send" Alignment="Right" AdaptivePriority="2" Visible="false">
@@ -53,33 +52,40 @@
         </PanelCollection>
         <ClientSideEvents Expanded="onFilterPanelExpanded" Collapsed="adjustPageControls" />
     </dx:ASPxPanel>
-
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="PageContent" runat="server">
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <div class="card ">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <div class="card ">
         <dx:ASPxGridView ID="ASPxGridView1" runat="server" ClientInstanceName="gridView" EnablePagingGestures="False" CssClass="grid-view" Width="100%" OnCustomCallback="GridView_CustomCallback" KeyFieldName="AcNo" AutoGenerateColumns="False">
             <Columns>
                 <dx:GridViewCommandColumn ShowSelectCheckbox="True" SelectAllCheckboxMode="AllPages" VisibleIndex="0" Width="52"></dx:GridViewCommandColumn>
                 <dx:GridViewDataColumn FieldName="CustmorName" Name="CustmorName" Caption="Name" Width="250" VisibleIndex="2">
                     <Settings FilterMode="DisplayText"></Settings>
-                </dx:GridViewDataColumn> <%--ForNAme--%>
-                                <dx:GridViewDataDateColumn FieldName="AcNo" Name="AcNo" Caption="Account Number" VisibleIndex="1" Width="180"></dx:GridViewDataDateColumn> <%--FOR ACON--%>
+                </dx:GridViewDataColumn>
+                <%--ForNAme--%>
+                <dx:GridViewDataDateColumn FieldName="AcNo" Name="AcNo" Caption="Account Number" VisibleIndex="1" Width="180"></dx:GridViewDataDateColumn>
+                <%--FOR ACON--%>
 
                 <dx:GridViewDataComboBoxColumn FieldName="AcType" ShowInCustomizationForm="True" Name="AcType" Width="150px" Caption="AcType" VisibleIndex="4">
-                </dx:GridViewDataComboBoxColumn> <%--FOR Producttype--%>
+                </dx:GridViewDataComboBoxColumn>
+                <%--FOR Producttype--%>
 
                 <dx:GridViewDataComboBoxColumn FieldName="NominiName" ShowInCustomizationForm="True" Name="NominiName" Width="100px" Caption="NominiName" VisibleIndex="5">
-                </dx:GridViewDataComboBoxColumn> <%--FOR NOMINI--%>
+                </dx:GridViewDataComboBoxColumn>
+                <%--FOR NOMINI--%>
 
-                <dx:GridViewDataTextColumn FieldName="Email" ShowInCustomizationForm="True" Name="Email" Width="150px" Caption="CIF Id" VisibleIndex="3"></dx:GridViewDataTextColumn> <%--For cif--%>
+                <dx:GridViewDataTextColumn FieldName="Email" ShowInCustomizationForm="True" Name="Email" Width="150px" Caption="CIF Id" VisibleIndex="3"></dx:GridViewDataTextColumn>
+                <%--For cif--%>
 
-                <dx:GridViewDataTextColumn FieldName="Notes" ShowInCustomizationForm="True" Name="Notes" Width="200px" Caption="Notes" VisibleIndex="6"></dx:GridViewDataTextColumn> <%--AccountType--%>
+                <dx:GridViewDataTextColumn FieldName="Notes" ShowInCustomizationForm="True" Name="Notes" Width="200px" Caption="Notes" VisibleIndex="6"></dx:GridViewDataTextColumn>
+                <%--AccountType--%>
 
-                <dx:GridViewDataTextColumn FieldName="FatherName" ShowInCustomizationForm="True" Name="FatherName" Width="200px" Caption="guardin name" VisibleIndex="7"></dx:GridViewDataTextColumn> <%--Guardian Name--%>
+                <dx:GridViewDataTextColumn FieldName="FatherName" ShowInCustomizationForm="True" Name="FatherName" Width="200px" Caption="guardin name" VisibleIndex="7"></dx:GridViewDataTextColumn>
+                <%--Guardian Name--%>
 
-                <dx:GridViewDataTextColumn FieldName="AcBal" ShowInCustomizationForm="True" Name="AcBal" Width="100px" Caption="AcBal" VisibleIndex="8"></dx:GridViewDataTextColumn> <%--Account Balaance--%>
-                            </Columns>
+                <dx:GridViewDataTextColumn FieldName="AcBal" ShowInCustomizationForm="True" Name="AcBal" Width="100px" Caption="AcBal" VisibleIndex="8"></dx:GridViewDataTextColumn>
+                <%--Account Balaance--%>
+            </Columns>
 
             <SettingsBehavior AllowFocusedRow="true" AllowSelectByRowClick="true" AllowEllipsisInText="true" AllowDragDrop="false" />
             <SettingsEditing Mode="PopupEditForm" EditFormColumnCount="2" />
@@ -89,7 +95,6 @@
                 <PageSizeItemSettings Visible="true"></PageSizeItemSettings>
             </SettingsPager>
             <SettingsExport EnableClientSideExportAPI="true" ExportSelectedRowsOnly="true" />
-         
 
             <SettingsPopup>
                 <EditForm>
@@ -107,8 +112,6 @@
         <div class="TopPadding">
             Selected count: <span id="selCount" style="font-weight: bold">0</span>
         </div>
-
-
     </div>
 
     <div class="card">
@@ -126,14 +129,10 @@
 
                     <dx:ASPxMemo ID="ASPxMemo1" runat="server" Height="140px" ReadOnly="true" Width="100%"></dx:ASPxMemo>
                 </ContentTemplate>
-
             </asp:UpdatePanel>
-
-
         </div>
     </div>
     <dx:ASPxLoadingPanel ID="LoadingPanel" runat="server" ClientInstanceName="LoadingPanel"
         Modal="True">
     </dx:ASPxLoadingPanel>
-
 </asp:Content>

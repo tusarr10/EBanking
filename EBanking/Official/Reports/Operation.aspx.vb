@@ -3,7 +3,6 @@
 Public Class Operation
     Inherits System.Web.UI.Page
 
-
     Private Sub loadDataFromServer()
         Try
             LoadAllDataFromServer()
@@ -15,6 +14,7 @@ Public Class Operation
 
         End Try
     End Sub
+
     Function data(sender As Object, tablename As String)
         Dim btn = sender
         Dim container As Object = btn.NamingContainer
@@ -22,6 +22,7 @@ Public Class Operation
         Return container.Grid.GetRowValues(container.VisibleIndex, tablename).ToString
 
     End Function
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         loadDataFromServer()
     End Sub
@@ -48,6 +49,7 @@ Public Class Operation
         End Try
 
     End Sub
+
     Sub redirect(url As String, accountnumber As String)
         Dim TARGET_URL As String = url
         If Page.IsCallback Then
@@ -60,6 +62,7 @@ Public Class Operation
     Dim acno As String
     Dim actype As String
     Dim producttype As String
+
     Private Sub GoToDeposit(sender As Object)
 
         If producttype = "Saving" Then
@@ -73,6 +76,7 @@ Public Class Operation
 
         End If
     End Sub
+
     Private Sub GoToWithdraw(sender As Object)
         If producttype = "Saving" Then
             redirect("~/official/Transction/sbWithdraw.aspx", acno)
@@ -85,6 +89,7 @@ Public Class Operation
 
         End If
     End Sub
+
     Protected Sub GridView_CustomCallback(sender As Object, e As ASPxGridViewCustomCallbackEventArgs)
         Try
             '  acno = data(sender, "accountnumber")
@@ -92,7 +97,6 @@ Public Class Operation
 
             actype = ASPxGridView1.GetSelectedFieldValues("acctype")(0).ToString
             producttype = ASPxGridView1.GetSelectedFieldValues("producttype")(0).ToString
-
         Catch ex As Exception
             Exit Sub
         End Try
@@ -114,4 +118,5 @@ Public Class Operation
     Private Sub GoToView(sender As Object)
 
     End Sub
+
 End Class

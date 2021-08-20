@@ -1,12 +1,12 @@
 ﻿Imports System.Data.SqlClient
+
 Public Class sbWithdraw
     Inherits System.Web.UI.Page
 
-    Dim currentBalnce As Double = 00
+    Dim currentBalnce As Double = 0
 
-    Dim TransctionAmount As Double = 00
-    Dim NewBalance As Double = 00
-
+    Dim TransctionAmount As Double = 0
+    Dim NewBalance As Double = 0
 
     Dim accountNumber As String
     Dim depositername As String
@@ -29,6 +29,7 @@ Public Class sbWithdraw
         accountnumber = accIdTb.Text.Trim
         GetDataOfAccount(accountnumber)
     End Sub
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
             GetworkingDate = DateAndTime.Now().ToString("yyyy-MM-dd")
@@ -56,6 +57,7 @@ Public Class sbWithdraw
         nametb2.Text = getAccountJointName(0)
 
     End Sub
+
     Private Sub FIllDataInCif(accountnumber As String)
         Try
             cifsearch(accountnumber)
@@ -105,18 +107,17 @@ Public Class sbWithdraw
             If CifHelper.getcifsign(0) IsNot Nothing Then
                 photosign.ImageUrl = CifHelper.getcifsign(0)
             End If
-
         Catch ex As Exception
             MyMessageBox.Show(Me, "Unable to load Cif Information")
         Finally
 
         End Try
     End Sub
+
     Private Sub FilldataInDLT(accountnumber As String)
         Dim dlt, dlt2 As String
         Try
             dltInformation(accountnumber)
-
         Catch
             MyMessageBox.Show(Me, "NO DATA FOUND IN DLT TABLE")
             Exit Sub
@@ -132,6 +133,7 @@ Public Class sbWithdraw
         End Try
 
     End Sub
+
     Private Sub GetDataOfAccount(ByVal accountnumber As String)
         Try
             AccountSearch(accountnumber)
@@ -149,7 +151,6 @@ Public Class sbWithdraw
                 Else
                     MyMessageBox.Show(Me, "Account Inactive ")
                 End If
-
             Else
                 MyMessageBox.Show(Me, "This is not a Saving Account ")
             End If
@@ -163,6 +164,7 @@ Public Class sbWithdraw
     Protected Sub btnFindAccount_Click(sender As Object, e As EventArgs) Handles btnFindAccount.Click
         btnFindAccountClick()
     End Sub
+
     Private Sub DoCalculate()
         ''TODO Calculate do validation >500 must be balance
         currentBalnce = getAccountBalance(0)
@@ -188,9 +190,11 @@ Public Class sbWithdraw
         End Try
 
     End Sub
+
     Protected Sub Calculatebtn_Click(sender As Object, e As EventArgs) Handles Calculatebtn.Click
         DoCalculate()
     End Sub
+
     Private Sub GetDataFromView()
         'data validation pending...
 
@@ -214,6 +218,7 @@ Public Class sbWithdraw
         dlt = dlttb.Text
 
     End Sub
+
     Private Sub DoTransction()
         GetDataFromView()
         Try
@@ -248,10 +253,6 @@ Public Class sbWithdraw
                     MyMessageBox.Show(Me, "  Message: {0}" + ex2.Message)
                 End Try
             End Try
-
-
-
-
         Catch ex As Exception
             MyMessageBox.Show(Me, "  Message: {0}" + ex.Message)
         End Try

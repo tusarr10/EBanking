@@ -31,7 +31,6 @@
             <div class="card-body ">
                 SB Operation
             </div>
-
         </div>
         <div class="card card1  ">
             <div class="card-body ">
@@ -44,7 +43,6 @@
                                      <i class="fas fa-check-circle">                                                                        </i>
                             </asp:LinkButton>
                         </div>
-
                     </div>
 
                     <div class="col-md-4">
@@ -59,7 +57,6 @@
                             <asp:TextBox CssClass="form-control" ID="actypetb" runat="server" placeholder=" " ReadOnly="true"></asp:TextBox>
                         </div>
                     </div>
-
                 </div>
                 <div class="row ">
                     <div class="col-md-2">
@@ -92,10 +89,8 @@
                             <asp:LinkButton class="btn btn-primary" ID="LinkButton2" runat="server">
                                      <i class="fas fa-check-circle">                                                                        </i>
                             </asp:LinkButton>
-
                         </div>
                     </div>
-
 
                     <div class="col-md-2">
                         <label>Balance  </label>
@@ -136,9 +131,4 @@
             </div>
         </div>
     </div>
-
-
-
-
-
 </asp:Content>

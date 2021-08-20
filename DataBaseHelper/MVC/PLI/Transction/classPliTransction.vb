@@ -1,4 +1,5 @@
 ﻿Public Class classPliTransction
+
     Public Property id() As String
         Get
             Return m_id
@@ -7,6 +8,7 @@
             m_id = value
         End Set
     End Property
+
     Private m_id As String
 
     Public Property policyNo() As String
@@ -17,6 +19,7 @@
             m_plono = value
         End Set
     End Property
+
     Private m_plono As String
 
     Public Property proposalno() As String
@@ -27,6 +30,7 @@
             m_proposalno = value
         End Set
     End Property
+
     Private m_proposalno As String
 
     Public Property amount() As String
@@ -37,6 +41,7 @@
             m_amount = value
         End Set
     End Property
+
     Private m_amount As String
 
     Public Property month() As String
@@ -47,6 +52,7 @@
             m_month = value
         End Set
     End Property
+
     Private m_month As String
 
     Public Property dat_e() As String
@@ -57,6 +63,7 @@
             m_dat_e = value
         End Set
     End Property
+
     Private m_dat_e As String
 
     Public Property name() As String
@@ -67,6 +74,7 @@
             m_name = value
         End Set
     End Property
+
     Private m_name As String
 
     Public Property recno() As String
@@ -77,6 +85,7 @@
             m_recno = value
         End Set
     End Property
+
     Private m_recno As String
 
     Public Property gst() As String
@@ -87,6 +96,7 @@
             m_gst = value
         End Set
     End Property
+
     Private m_gst As String
 
     Public Property totalrec() As String
@@ -97,6 +107,7 @@
             m_totalrec = value
         End Set
     End Property
+
     Private m_totalrec As String
 
     Public Property type() As String
@@ -107,6 +118,7 @@
             m_type = value
         End Set
     End Property
+
     Private m_type As String
 
 End Class

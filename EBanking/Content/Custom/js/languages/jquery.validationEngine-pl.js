@@ -10,7 +10,7 @@
                     "alertTextCheckboxMultiple": "* Proszę wybrać opcję",
                     "alertTextCheckboxe": "* Pole wymagane"
                 },
-                "requiredInFunction": { 
+                "requiredInFunction": {
                     "func": function(field, rules, i, options){
                         return (field.val() == "test") ? true : false;
                     },
@@ -45,7 +45,7 @@
                 "future": {
                     "regex": "none",
                     "alertText": "* Data musi być późniejsza niż "
-                },	
+                },
                 "maxCheckbox": {
                     "regex": "none",
                     "alertText": "* Przekroczona maksymalna liczba opcji"
@@ -97,12 +97,12 @@
                         var verificator_nip = new Array(6,5,7,2,3,4,5,6,7);
                         if (nipNumber.length == 10) {
                             var n=0;
-                            for (var i=0; i<9; i++) 
+                            for (var i=0; i<9; i++)
                             {
-                                n += nipNumber[i] * verificator_nip[i]; 
+                                n += nipNumber[i] * verificator_nip[i];
                             }
                             n %= 11;
-                            if (n == nipNumber[9]) {return true;} 
+                            if (n == nipNumber[9]) {return true;}
                         }
                         return false;
                     },
@@ -120,7 +120,7 @@
                             peselCRC%=10;
                             if(peselCRC == 0) peselCRC=10;
                                 peselCRC = 10 - peselCRC;
-                            if(pesel[10]==peselCRC) return true; else return false;                            
+                            if(pesel[10]==peselCRC) return true; else return false;
                         }
                     },
                     "alertText": "* Nieprawidłowy numer PESEL"

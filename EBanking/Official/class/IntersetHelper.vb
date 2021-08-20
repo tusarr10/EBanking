@@ -1,4 +1,3 @@
-﻿Imports System.Data.SqlClient
-Module IntersetHelper
+﻿Module IntersetHelper
 
 End Module

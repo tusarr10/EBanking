@@ -16,7 +16,6 @@ Public Class openAccount
 
     End Function
 
-
     Protected Sub ProductCb_TextChanged(sender As Object, e As EventArgs) Handles ProductCb.TextChanged
         Try
             If ProductCb.Text = "Saving" Then
@@ -34,8 +33,6 @@ Public Class openAccount
 
             End If
 
-
-
             If ProductCb.Text = "TD" Then
                 Actermtb.ReadOnly = False
             Else
@@ -44,8 +41,6 @@ Public Class openAccount
 
             If ProductCb.Text = "SSA" Then
                 If Modetb.Text = "Minor" Then
-
-
                 Else
                     ProductCb.Text = "Choose Product"
                     MyMessageBox.Show(Me, "Operating MOde Must Be Minor")
@@ -63,7 +58,6 @@ Public Class openAccount
                 NominiRelationInfotb.ReadOnly = False
                 NominiAgeInfotb.ReadOnly = False
                 NominiAddressInfotb.ReadOnly = False
-
             Else
                 NominiNameInfotb.ReadOnly = True
                 NominiRelationInfotb.ReadOnly = True
@@ -80,7 +74,6 @@ Public Class openAccount
             If Modetb.Text = "JointA" Or Modetb.Text = "JointB" Then
 
                 name2tb.ReadOnly = False
-
             Else
 
                 name2tb.ReadOnly = True
@@ -95,13 +88,11 @@ Public Class openAccount
             End If
 
             If Modetb.Text = "JointA" Or Modetb.Text = "JointB" Or Modetb.Text = "Minor" Or Modetb.Text = "Self" Then
-
             Else
 
             End If
             If Modetb.Text = "Minor" Then
                 GuardianNametb.ReadOnly = False
-
             Else
                 GuardianNametb.ReadOnly = True
                 GuardianNametb.Text = ""
@@ -117,7 +108,6 @@ Public Class openAccount
 
     Private Sub btnclickcifsearch(cif As String) ' fill cif data from database to view
 
-
         Try
             CifHelper.cifsearch(cif)
             If IsIdExist(cif) = True Then
@@ -127,7 +117,6 @@ Public Class openAccount
                     If CifHelper.cifupdate = True Then
                         ' responselbl.Text = "Everything OK. ID Found."
                         ' responselbl.ForeColor = Drawing.Color.Green
-
                     Else
                         ' responselbl.Text = "Incomplect Profile. ID Found."
                         ' responselbl.ForeColor = Drawing.Color.Yellow
@@ -149,6 +138,7 @@ Public Class openAccount
         Finally
         End Try
     End Sub
+
     Sub loadData()
         Try
             If CifHelper.getcif(0) = Nothing Then
@@ -221,16 +211,16 @@ Public Class openAccount
                 Debug.WriteLine(signphoto.ImageUrl)
             End If
 
-            'or we can 
+            'or we can
             ' status ="Approve"
             'then cifhelper.cifupdated =true
-
         Catch ex As Exception
             CifHelper.cifupdate = False
         Finally
 
         End Try
     End Sub
+
     Protected Sub ASPxButton1_Click(sender As Object, e As EventArgs)
         Try
             Dim btn = sender
@@ -265,6 +255,7 @@ Public Class openAccount
     Private Sub OpenPrintPage()
         Page.ClientScript.RegisterStartupScript(Me.GetType(), "OpenWindow", "window.open('Print/OpenAccountCheck.aspx','_newtab');", True)
     End Sub
+
     Protected Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         VerifyInputData()
         GoForrword()
@@ -288,16 +279,18 @@ Public Class openAccount
         addresstb.ReadOnly = False
 
     End Sub
+
     Protected Sub GridView_CustomCallback(sender As Object, e As ASPxGridViewCustomCallbackEventArgs)
 
-
     End Sub
+
     Private Sub loadDataTable()
         ASPxGridView1.DataSource = getAccountOpenDataTable()
         ASPxGridView1.DataBind()
     End Sub
+
     Private Sub findDataFromAccountDatabase(name As String)
-        'get data from liveaccount database 
+        'get data from liveaccount database
         'get data from accountOpen Database
         Try
             AddAccountHelper.AccountNameSearch(name)
@@ -306,9 +299,10 @@ Public Class openAccount
 
         End Try
     End Sub
+
     Dim _name1 As String
 
-    Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click ' for search name 
+    Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click ' for search name
         _name1 = nametb.Text.Trim
         If _name1 = Nothing Then
             MyMessageBox.Show(Me, "Enter Name ...")
@@ -356,6 +350,7 @@ Public Class openAccount
         _NominiDOB = NominiAgeInfotb.Text.Trim
         _NominiAddress = NominiAddressInfotb.Text.Trim
     End Sub
+
     Private Sub VerifyInputData()
         'Get Data From View
         GetDataFromView()
@@ -445,7 +440,6 @@ Public Class openAccount
 
     End Sub
 
-
     Private Sub GoForrword()
         'send all data to a module then open print form
         VertualId = verid
@@ -481,9 +475,9 @@ Public Class openAccount
         balance = "00"
         trid = "NA" '31
 
-
         OpenPrintPage()
     End Sub
+
     'Submit Button
     Private Sub InsertDataTransction()
 
@@ -516,7 +510,6 @@ Public Class openAccount
                 Button2.Enabled = True
 
                 ' Response.Redirect("#")
-
             Catch ex As Exception
                 Errortb.Text = "Commit Exception Type: {0}" + ex.Message()
 
@@ -533,9 +526,11 @@ Public Class openAccount
             ''Error In Database Connection
         End Try
     End Sub
+
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         'check
         VerifyInputData()
         InsertDataTransction()
     End Sub
+
 End Class

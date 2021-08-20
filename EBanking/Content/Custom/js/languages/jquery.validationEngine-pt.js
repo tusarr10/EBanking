@@ -11,7 +11,7 @@
 		    "alertTextCheckboxe": "* Assinale a caixa de seleção",
                     "alertTextDateRange": "* Ambos os campos de datas são obrigatórios"
                 },
-                "requiredInFunction": { 
+                "requiredInFunction": {
                     "func": function(field, rules, i, options){
                         return (field.val() == "test") ? true : false;
                     },
@@ -56,7 +56,7 @@
                 "future": {
                     "regex": "none",
                     "alertText": "* Data posterior a "
-                },	
+                },
                 "maxCheckbox": {
                     "regex": "none",
 					"alertText": "* O número máximo ",
@@ -94,21 +94,21 @@
                     "regex": /^[\-\+]?((([0-9]{1,3})([,][0-9]{3})*)|([0-9]+))?([\.]([0-9]+))?$/,
                     "alertText": "* Não é um número decimal"
                 },
-                "date": {                    
+                "date": {
                     //	Check if date is valid by leap year
 			"func": function (field) {
 					var pattern = new RegExp(/^(\d{4})[\/\-\.](0?[1-9]|1[012])[\/\-\.](0?[1-9]|[12][0-9]|3[01])$/);
 					var match = pattern.exec(field.val());
 					if (match == null)
 					   return false;
-	
+
 					var year = match[1];
 					var month = match[2]*1;
-					var day = match[3]*1;					
+					var day = match[3]*1;
 					var date = new Date(year, month - 1, day); // because months starts from 0.
-	
+
 					return (date.getFullYear() == year && date.getMonth() == (month - 1) && date.getDate() == day);
-				},                		
+				},
 			 "alertText": "* Data inválida, o formato deve de ser AAAA-MM-DD (ex.2012-12-31)"
                 },
                 "ipv4": {
@@ -173,24 +173,22 @@
                 "validate2fields": {
 					"alertText": "* Por favor escreva HELLO"
                 },
-	            //tls warning:homegrown not fielded 
+	            //tls warning:homegrown not fielded
                 "dateFormat":{
                     "regex": /^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$|^(?:(?:(?:0?[13578]|1[02])(\/|-)31)|(?:(?:0?[1,3-9]|1[0-2])(\/|-)(?:29|30)))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(?:(?:0?[1-9]|1[0-2])(\/|-)(?:0?[1-9]|1\d|2[0-8]))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(0?2(\/|-)29)(\/|-)(?:(?:0[48]00|[13579][26]00|[2468][048]00)|(?:\d\d)?(?:0[48]|[2468][048]|[13579][26]))$/,
 					"alertText": "* Data inválida"
                 },
-                //tls warning:homegrown not fielded 
+                //tls warning:homegrown not fielded
 				"dateTimeFormat": {
 	                "regex": /^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])\s+(1[012]|0?[1-9]){1}:(0?[1-5]|[0-6][0-9]){1}:(0?[0-6]|[0-6][0-9]){1}\s+(am|pm|AM|PM){1}$|^(?:(?:(?:0?[13578]|1[02])(\/|-)31)|(?:(?:0?[1,3-9]|1[0-2])(\/|-)(?:29|30)))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^((1[012]|0?[1-9]){1}\/(0?[1-9]|[12][0-9]|3[01]){1}\/\d{2,4}\s+(1[012]|0?[1-9]){1}:(0?[1-5]|[0-6][0-9]){1}:(0?[0-6]|[0-6][0-9]){1}\s+(am|pm|AM|PM){1})$/,
 					"alertText": "* Data inválida ou mal formatada",
                     "alertText2": "Formato esperado: ",
-                    "alertText3": "mm/dd/aaaa hh:mm:ss AM|PM ou ", 
+                    "alertText3": "mm/dd/aaaa hh:mm:ss AM|PM ou ",
                     "alertText4": "aaaa-mm-dd hh:mm:ss AM|PM"
 	            }
             };
-            
         }
     };
 
     $.validationEngineLanguage.newLang();
-    
 })(jQuery);

@@ -12,6 +12,7 @@ Public Class ssajournaltrns
 
     Protected Sub GridView_CustomCallback(sender As Object, e As DevExpress.Web.ASPxGridViewCustomCallbackEventArgs)
     End Sub
+
     Private Sub LoadCiffromdb()
         Try
             datasetcifdb.Tables("Accessssatr").Clear()
@@ -29,6 +30,7 @@ Public Class ssajournaltrns
             MyMessageBox.Show(Me, "Unable to load Database Mak sure Your Data Base Upload to ....." + ex.Message)
         End Try
     End Sub
+
     Function getCifAccessDataTable() As DataTable
         Try
             Return datasetcifdb.Tables("Accessssatr")
@@ -36,9 +38,11 @@ Public Class ssajournaltrns
             Return Nothing
         End Try
     End Function
+
     Private Const UploadDirectory As String = "~/Developer/Data/"
     Dim resultFileUrl As String
     Dim resultFilePath As String
+
     Sub loaddatafromserver()
         Try
             resultFileUrl = UploadDirectory & "Database1.accdb"
@@ -51,4 +55,5 @@ Public Class ssajournaltrns
         Catch ex As Exception
         End Try
     End Sub
+
 End Class

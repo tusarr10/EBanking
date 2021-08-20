@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
 
 Module newaccounthelper
+
     Sub newOpenAccountSearch(ByVal reff As String)
         Try
             datasetcifdb.Tables(newaccounttable).Clear()
@@ -27,6 +28,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountVirtualid(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("VirtualId"), String)
@@ -34,6 +36,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountcif(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("cif"), String)
@@ -41,6 +44,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountacno(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("accountnumber"), String)
@@ -48,6 +52,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountName(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("n_ame"), String)
@@ -55,6 +60,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountproducttype(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("producttype"), String)
@@ -62,6 +68,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountProductTerm(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("productterm"), String)
@@ -69,6 +76,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountProductValue(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("productvalue"), String)
@@ -76,6 +84,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountNominiReg(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("nominireg"), String)
@@ -83,6 +92,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountNominiName(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("nomininame"), String)
@@ -90,6 +100,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountNominiAge(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("nominiage"), String)
@@ -97,6 +108,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountNominiaddress(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("nominiaddress"), String)
@@ -104,6 +116,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountNominiRelation(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("nominirelation"), String)
@@ -111,6 +124,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountMOP(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("acoperatemode"), String)
@@ -118,6 +132,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountguardianname(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("guardianname"), String)
@@ -125,6 +140,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountJointName(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("jointname"), String)
@@ -132,6 +148,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountStatus(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("status"), String)
@@ -139,6 +156,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountAddress(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("address"), String)
@@ -146,6 +164,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountmobile(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("mobile"), String)
@@ -153,6 +172,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountEmail(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("email"), String)
@@ -160,6 +180,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountdob(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("dob"), String)
@@ -167,6 +188,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountgender(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("gender"), String)
@@ -174,6 +196,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountadhar(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("adhar"), String)
@@ -181,6 +204,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountpan(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("pan"), String)
@@ -188,6 +212,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountphoto(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("photo"), String)
@@ -195,6 +220,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountsign(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("sign"), String)
@@ -202,6 +228,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountdoo(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("doo"), String)
@@ -209,6 +236,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountbalance(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("balance"), String)
@@ -216,6 +244,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountreffno(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("reffno"), String)
@@ -223,6 +252,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccountpr(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("pr"), String)
@@ -230,6 +260,7 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
+
     Function getNewAccounttrid(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(newaccounttable).Rows(currentrow)("trid"), String)
@@ -237,9 +268,6 @@ Module newaccounthelper
             Return Nothing
         End Try
     End Function
-
-
-
 
     Sub NewAccountNameSearch(ByVal Nmae As String)
         Try
@@ -255,8 +283,6 @@ Module newaccounthelper
         dataadapter = New SqlDataAdapter("SELECT * FROM " & newaccounttable & " where n_ame like '%" & Nmae & "%'", databaseconnection)
 
         dataadapter.Fill(datasetcifdb, newaccounttable)
-
-
 
         'ShowData(currentrow)
 

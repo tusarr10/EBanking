@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 <html>
-<head runat="server" EnableViewState="false">
+<head runat="server" enableviewstate="false">
     <meta charset="UTF-8" />
     <title></title>
     <meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0" />
@@ -40,7 +40,7 @@
                                 <ClientSideEvents ItemClick="onLeftMenuItemClick" />
                             </dx:ASPxMenu>
                         </div>
-                    
+
                         <div class="right-block">
                             <dx:ASPxMenu runat="server" ID="RightAreaMenu" ClientInstanceName="rightAreaMenu"
                                 ItemAutoWidth="false" ItemWrap="false" ShowPopOutImages="False"
@@ -86,7 +86,7 @@
 
                         <div class="menu-container">
                             <div>
-                                <dx:ASPxMenu runat="server" ID="ApplicationMenu" ClientInstanceName="applicationMenu" 
+                                <dx:ASPxMenu runat="server" ID="ApplicationMenu" ClientInstanceName="applicationMenu"
                                     DataSourceID="ApplicationMenuDataSource" ItemAutoWidth="false" EnableSubMenuScrolling="true"
                                     ShowPopOutImages="True" SeparatorWidth="0" ItemWrap="false"
                                     CssClass="header-menu application-menu" Width="100%" HorizontalAlign="Right" OnItemDataBound="ApplicationMenu_ItemDataBound">
@@ -148,9 +148,7 @@
                             <a class="footer-link" href="#">Terms of Service</a>
                             <a class="footer-link" href="Official/Default.aspx">For Office Login</a>
                         </span>
-                        <span class="footer-right">
-                            
-                        </span>
+                        <span class="footer-right"></span>
                     </div>
                 </div>
             </div>

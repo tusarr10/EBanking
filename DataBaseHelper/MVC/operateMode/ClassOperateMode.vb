@@ -1,4 +1,9 @@
-﻿Public Class ClassOperateMode
+﻿''' <summary>
+''' This Class Not In Use
+''' </summary>
+
+Public Class ClassOperateMode
+
     Private accountnumber As String
     Private accountoperatemode As String
     Private guardianname As String

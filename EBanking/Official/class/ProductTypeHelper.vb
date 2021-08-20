@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
 
 Module ProductTypeHelper
+
     Sub ProductType(ByVal AccountId As String)
         Try
             datasetcifdb.Tables(productTypeTable).Clear()
@@ -19,6 +20,7 @@ Module ProductTypeHelper
         databaseconnection.Close()
 
     End Sub
+
     Function getProductTypeNumber(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(productTypeTable).Rows(currentrow)("accountnumber"), String)
@@ -26,6 +28,7 @@ Module ProductTypeHelper
             Return Nothing
         End Try
     End Function
+
     Function getProductTypeType(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(productTypeTable).Rows(currentrow)("type"), String)
@@ -33,6 +36,7 @@ Module ProductTypeHelper
             Return Nothing
         End Try
     End Function
+
     Function getProductTypeTerm(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(productTypeTable).Rows(currentrow)("term"), String)
@@ -40,6 +44,7 @@ Module ProductTypeHelper
             Return Nothing
         End Try
     End Function
+
     Function getProductTypeValue(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(productTypeTable).Rows(currentrow)("v_alue"), String)
@@ -47,4 +52,5 @@ Module ProductTypeHelper
             Return Nothing
         End Try
     End Function
+
 End Module

@@ -10,7 +10,7 @@
                     "alertTextCheckboxMultiple": "* Bitte wählen Sie eine Option",
                     "alertTextCheckboxe": "* Dieses Feld ist ein Pflichtfeld"
                 },
-                "requiredInFunction": { 
+                "requiredInFunction": {
                     "func": function(field, rules, i, options){
                         return (field.val() == "test") ? true : false;
                     },
@@ -45,7 +45,7 @@
                 "future": {
                     "regex": "none",
                     "alertText": "* Datum nach "
-                },	
+                },
                 "maxCheckbox": {
                     "regex": "none",
                     "alertText": "* Maximale Anzahl Markierungen überschritten"
@@ -129,11 +129,7 @@
                     "alertText": "* Bitte HELLO eingeben"
                 }
             };
-            
         }
     };
     $.validationEngineLanguage.newLang();
 })(jQuery);
-
-
-    

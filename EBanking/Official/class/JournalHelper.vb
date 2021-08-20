@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
 
 Module JournalHelper
+
     Sub JournalSearchByTRID(ByVal AccountId As String)
         Try
             datasetcifdb.Tables(journaltbl).Clear()
@@ -37,6 +38,7 @@ Module JournalHelper
 
         databaseconnection.Close()
     End Sub
+
     Function getjournalDataTable() As DataTable
         Try
             Return datasetcifdb.Tables(journaltbl)
@@ -44,6 +46,7 @@ Module JournalHelper
             Return Nothing
         End Try
     End Function
+
     Function getJournalDate(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(journaltbl).Rows(currentrow)("da_te"), String)
@@ -52,6 +55,7 @@ Module JournalHelper
         End Try
 
     End Function
+
     Function getJournalAccountType(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(journaltbl).Rows(currentrow)("accounttype"), String)
@@ -60,6 +64,7 @@ Module JournalHelper
         End Try
 
     End Function
+
     Function getJournalNumber(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(journaltbl).Rows(currentrow)("accountnumber"), String)
@@ -67,6 +72,7 @@ Module JournalHelper
             Return Nothing
         End Try
     End Function
+
     Function getJournalName(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(journaltbl).Rows(currentrow)("na_me"), String)
@@ -74,6 +80,7 @@ Module JournalHelper
             Return Nothing
         End Try
     End Function
+
     Function getJournalDeposit(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(journaltbl).Rows(currentrow)("deposit"), String)
@@ -81,6 +88,7 @@ Module JournalHelper
             Return Nothing
         End Try
     End Function
+
     Function getJournalWithdraw(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(journaltbl).Rows(currentrow)("withdraw"), String)
@@ -88,6 +96,7 @@ Module JournalHelper
             Return Nothing
         End Try
     End Function
+
     Function getJournaldlt(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(journaltbl).Rows(currentrow)("dlt"), String)
@@ -95,6 +104,7 @@ Module JournalHelper
             Return Nothing
         End Try
     End Function
+
     Function getJournalTransctionID(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(journaltbl).Rows(currentrow)("trid"), String)
@@ -102,6 +112,7 @@ Module JournalHelper
             Return Nothing
         End Try
     End Function
+
     Function getJournalBalance(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(journaltbl).Rows(currentrow)("balance"), String)
@@ -109,6 +120,7 @@ Module JournalHelper
             Return Nothing
         End Try
     End Function
+
     Function getJournalStatus(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(journaltbl).Rows(currentrow)("status"), String)
@@ -116,6 +128,7 @@ Module JournalHelper
             Return Nothing
         End Try
     End Function
+
     Function getJournalOffice(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(journaltbl).Rows(currentrow)("office"), String)
@@ -123,6 +136,7 @@ Module JournalHelper
             Return Nothing
         End Try
     End Function
+
     Function getJournalUser(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(journaltbl).Rows(currentrow)("u_ser"), String)

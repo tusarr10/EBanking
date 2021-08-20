@@ -11,7 +11,7 @@
                     "alertTextCheckboxe": "* Optiune obligatorie",
                     "alertTextDateRange": "* Campurile data cu ajutorul carora se stabileste perioada sunt obligatorii"
                 },
-                "requiredInFunction": { 
+                "requiredInFunction": {
                     "func": function(field, rules, i, options){
                         return (field.val() == "test") ? true : false;
                     },
@@ -174,7 +174,6 @@
                     "alertText4": "yyyy-mm-dd hh:mm:ss AM|PM"
                 }
             };
-
         }
     };
     $.validationEngineLanguage.newLang();

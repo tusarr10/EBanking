@@ -197,10 +197,8 @@
                     "alertText4": "aaaa-mm-gg oo:mm:ss AM|PM"
                 }
             };
-
         }
     };
 
     $.validationEngineLanguage.newLang();
-
 })(jQuery);

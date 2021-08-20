@@ -51,7 +51,6 @@
         </PanelCollection>
         <ClientSideEvents Expanded="onFilterPanelExpanded" Collapsed="adjustPageControls" />
     </dx:ASPxPanel>
-
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="PageContent" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -104,8 +103,6 @@
         <div class="TopPadding">
             Selected count: <span id="selCount" style="font-weight: bold">0</span>
         </div>
-
-
     </div>
 
     <div class="card">
@@ -120,17 +117,12 @@
                     }" />--%>
                     </dx:ASPxButton>
 
-
                     <dx:ASPxMemo ID="ASPxMemo1" runat="server" Height="140px" ReadOnly="true" Width="100%"></dx:ASPxMemo>
                 </ContentTemplate>
-
             </asp:UpdatePanel>
-
-
         </div>
     </div>
     <dx:ASPxLoadingPanel ID="LoadingPanel" runat="server" ClientInstanceName="LoadingPanel"
         Modal="True">
     </dx:ASPxLoadingPanel>
-
 </asp:Content>

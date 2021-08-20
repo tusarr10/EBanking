@@ -134,7 +134,6 @@
 	                "alertText": "* Voer aub HELLO in"
 	            }
 	        };
-
 	    }
 	};
 	$.validationEngineLanguage.newLang();

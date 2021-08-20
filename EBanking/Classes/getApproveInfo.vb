@@ -11,8 +11,6 @@
     Public Property GetTransctionsType As String
     Public Property GetDetailsTransction As String
 
-
-
 End Module
 Module getAccountData
     Public Property VertualId As String

@@ -14,6 +14,7 @@ Public Class Developer
 
         UpdateUserMenuItemsVisible()
     End Sub
+
     Protected Sub UpdateUserMenuItemsVisible()
         Dim isAuthenticated = AuthHelper.IsAuthenticated()
         RightAreaMenu.Items.FindByName("SignInItem").Visible = Not isAuthenticated
@@ -28,8 +29,10 @@ Public Class Developer
             Response.Redirect("~/")
         End If
     End Sub
+
     Protected Sub ApplicationMenu_ItemDataBound(ByVal source As Object, ByVal e As MenuItemEventArgs)
         e.Item.Image.Url = String.Format("../Content/Images/{0}.svg", e.Item.Text)
         e.Item.Image.UrlSelected = String.Format("../Content/Images/{0}-white.svg", e.Item.Text)
     End Sub
+
 End Class

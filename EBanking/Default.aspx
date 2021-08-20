@@ -16,5 +16,5 @@
         <ClientSideEvents NodeClick="function (s, e) { HideLeftPanelIfRequired(); }" />
     </dx:ASPxTreeView>
 
-   <asp:XmlDataSource ID="NodesDataSource" runat="server" DataFile="~/App_Data/OverviewContents.xml" XPath="//Nodes/*" />
+    <asp:XmlDataSource ID="NodesDataSource" runat="server" DataFile="~/App_Data/OverviewContents.xml" XPath="//Nodes/*" />
 </asp:Content>

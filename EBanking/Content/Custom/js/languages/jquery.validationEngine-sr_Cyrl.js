@@ -11,7 +11,7 @@
                     "alertTextCheckboxe": "* Ово поље за потврду је обавезно",
                     "alertTextDateRange": "* Оба поља за распон датума су обавезна"
                 },
-                "requiredInFunction": { 
+                "requiredInFunction": {
                     "func": function(field, rules, i, options){
                         return (field.val() == "test") ? true : false;
                     },
@@ -58,7 +58,7 @@
                 "future": {
                     "regex": "none",
                     "alertText": "* Датум после "
-                },	
+                },
                 "maxCheckbox": {
                     "regex": "none",
                     "alertText": "* Највише ",
@@ -104,21 +104,21 @@
                     "regex": /^[\-\+]?((([0-9]{1,3})([,][0-9]{3})*)|([0-9]+))?([\.]([0-9]+))?$/,
                     "alertText": "* Децимални број није исправан"
                 },
-                "date": {                    
+                "date": {
                     //	Check if date is valid by leap year
 			"func": function (field) {
 					var pattern = new RegExp(/^(\d{4})[\/\-\.](0?[1-9]|1[012])[\/\-\.](0?[1-9]|[12][0-9]|3[01])$/);
 					var match = pattern.exec(field.val());
 					if (match == null)
 					   return false;
-	
+
 					var year = match[1];
 					var month = match[2]*1;
-					var day = match[3]*1;					
+					var day = match[3]*1;
 					var date = new Date(year, month - 1, day); // because months starts from 0.
-	
+
 					return (date.getFullYear() == year && date.getMonth() == (month - 1) && date.getDate() == day);
-				},                		
+				},
 			 "alertText": "* Неисправан датум, датум мора бити у YYYY-MM-DD формату"
                 },
                 "ipv4": {
@@ -183,24 +183,22 @@
                 "validate2fields": {
                     "alertText": "* Молимо унесите HELLO"
                 },
-	            //tls warning:homegrown not fielded 
+	            //tls warning:homegrown not fielded
                 "dateFormat":{
                     "regex": /^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$|^(?:(?:(?:0?[13578]|1[02])(\/|-)31)|(?:(?:0?[1,3-9]|1[0-2])(\/|-)(?:29|30)))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(?:(?:0?[1-9]|1[0-2])(\/|-)(?:0?[1-9]|1\d|2[0-8]))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(0?2(\/|-)29)(\/|-)(?:(?:0[48]00|[13579][26]00|[2468][048]00)|(?:\d\d)?(?:0[48]|[2468][048]|[13579][26]))$/,
                     "alertText": "* Неисправан датум"
                 },
-                //tls warning:homegrown not fielded 
+                //tls warning:homegrown not fielded
 				"dateTimeFormat": {
 	                "regex": /^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])\s+(0?[1-5]|[0-6][0-9]){1}:(1[012]|0?[1-9]){1}:(0?[0-6]|[0-6][0-9]){1}\s+$|^(?:(?:(?:0?[13578]|1[02])(\/|-)31)|(?:(?:0?[1,3-9]|1[0-2])(\/|-)(?:29|30)))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(0?[1-9]|[12][0-9]|3[01]){1}\/((1[012]|0?[1-9]){1}\/\d{2,4}\s+(0?[1-5]|[0-6][0-9]){1}:(1[012]|0?[1-9]){1}:(0?[0-6]|[0-6][0-9]){1}\s+)$/,
                     "alertText": "* Неисправан датум или формат датума",
                     "alertText2": "Очекивани формат: ",
-                    "alertText3": "mm/dd/yyyy hh:mm:ss или ", 
+                    "alertText3": "mm/dd/yyyy hh:mm:ss или ",
                     "alertText4": "yyyy-mm-dd hh:mm:ss"
 	            }
             };
-            
         }
     };
 
     $.validationEngineLanguage.newLang();
-    
 })(jQuery);

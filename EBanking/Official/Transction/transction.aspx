@@ -2,7 +2,6 @@
 
 <%@ Register Assembly="DevExpress.Web.Bootstrap.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
 
-
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
     <link rel="stylesheet" type="text/css" href='<%# ResolveUrl("~/Content/GridView.css") %>' />
 </asp:Content>
@@ -19,7 +18,6 @@
     </dx:ASPxTreeView>
 
     <asp:XmlDataSource ID="NodesDataSource" runat="server" DataFile="~/App_Data/DefaultLeft.xml" XPath="//Nodes/TransctionNode/*" />
-
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="RightPanelContent" runat="server">
 </asp:Content>
@@ -27,9 +25,7 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="PageContent" runat="server">
 
-
     <div>
-
 
         <div class="card ">
             <div class="card-body ">
@@ -39,17 +35,13 @@
                         <div class="input-group  ">
                             <asp:TextBox CssClass="form-control" ID="datetb" runat="server" placeholder="Date" TextMode="Date" ReadOnly="False"></asp:TextBox>
                             <asp:LinkButton class="btn btn-primary mr-1" ID="LinkButton1" Text="Search" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
-                             <asp:LinkButton class="btn btn-info  mr-1" ID="LinkButton2" Text="all" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
-                             <asp:LinkButton class="btn btn-outline-primary" ID="LinkButton3" Text="WorkingDate" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
+                            <asp:LinkButton class="btn btn-info  mr-1" ID="LinkButton2" Text="all" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
+                            <asp:LinkButton class="btn btn-outline-primary" ID="LinkButton3" Text="WorkingDate" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
                         </div>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
 
         <div class="row">
             <div class="col">
@@ -62,7 +54,7 @@
             <div class="card-body ">
 
                 <div class="content">
-                  <%--  <div class="card-body">
+                    <%--  <div class="card-body">
                         <dx:BootstrapButton ID="BootstrapButton1" runat="server" AutoPostBack="false" Text="Verify All"></dx:BootstrapButton>
                     </div>--%>
                     <div class="col">
@@ -99,7 +91,6 @@
                             </Styles>
                         </dx:ASPxGridView>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -112,7 +103,6 @@
                     <PanelCollection>
                         <dx:PanelContent>
 
-
                             <div>
 
                                 <dx:ASPxGridView ID="sbjournalGridView" OnInit="sbjournalGridView_Init" runat="server" CssClass="grid-view" AutoGenerateColumns="False" KeyFieldName="accountnumber" Width="100%">
@@ -122,7 +112,6 @@
                                             <DataItemTemplate>
                                                 <dx:BootstrapButton ID="btnAction" runat="server" AutoPostBack="false" Text="Verify" OnClick="btnAction_Click"></dx:BootstrapButton>
                                             </DataItemTemplate>
-
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn Caption="Account Number" FieldName="accountnumber" Name="accountnumber" VisibleIndex="1"></dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn Caption="Depositer Name" FieldName="depositername" Name="depositername" VisibleIndex="2"></dx:GridViewDataTextColumn>
@@ -151,11 +140,9 @@
                                     </Styles>
                                 </dx:ASPxGridView>
                             </div>
-
                         </dx:PanelContent>
                     </PanelCollection>
                 </dx:ASPxRoundPanel>
-
             </div>
         </div>
 
@@ -165,7 +152,6 @@
                 <dx:ASPxRoundPanel ID="ASPxRoundPanel2" runat="server" Width="100%" ClientInstanceName="roundpanel" HeaderText="RD Transction" AllowCollapsingByHeaderClick="True" ShowCollapseButton="True" LoadContentViaCallback="True" Collapsed="true">
                     <PanelCollection>
                         <dx:PanelContent>
-
 
                             <div>
 
@@ -190,11 +176,9 @@
                                             <DataItemTemplate>
                                                 <dx:BootstrapButton ID="BootstrapButton2" runat="server" AutoPostBack="false" Text="Verify" OnClick="btnAction_Click1"></dx:BootstrapButton>
                                             </DataItemTemplate>
-
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="fine" Name="fine" Caption="Fine" VisibleIndex="8"></dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="mo_nth" Name="mo_nth" Caption="Till Date" VisibleIndex="6"></dx:GridViewDataTextColumn>
-
                                     </Columns>
 
                                     <SettingsPager PageSize="5">
@@ -213,7 +197,6 @@
                         </dx:PanelContent>
                     </PanelCollection>
                 </dx:ASPxRoundPanel>
-
             </div>
         </div>
 
@@ -229,7 +212,6 @@
 
                                     <%--  <Settings VerticalScrollBarMode="Visible" VerticalScrollableHeight="500" />
                                     <SettingsAdaptivity AdaptivityMode="HideDataCellsWindowLimit" HideDataCellsAtWindowInnerWidth="780" AllowOnlyOneAdaptiveDetailExpanded="true" AdaptiveDetailColumnCount="2"></SettingsAdaptivity>
-
 
                                     <Columns>
                                         <dx:BootstrapGridViewTextColumn FieldName="accountnumber" Name="accountnumber" Caption="account number" VisibleIndex="2"></dx:BootstrapGridViewTextColumn>
@@ -249,13 +231,10 @@
                                             <DataItemTemplate>
                                                 <dx:BootstrapButton ID="BootstrapButton3" runat="server" AutoPostBack="false" Text="Verify" OnClick="btnAction_Click3"></dx:BootstrapButton>
                                             </DataItemTemplate>
-
                                         </dx:BootstrapGridViewTextColumn>
                                         <dx:BootstrapGridViewTextColumn FieldName="fine" Name="fine" Caption="Fine" VisibleIndex="8"></dx:BootstrapGridViewTextColumn>
                                     </Columns>
                                     <SettingsPager PageSize="30" NumericButtonCount="6" />
-
-
                                 </dx:BootstrapGridView>--%>
                                 <dx:ASPxGridView ID="ssaJournalGridView" runat="server" Width="100%" OnInit="ASPxGridView1_Init1" CssClass="grid-view" KeyFieldName="accountnumber">
                                     <Columns>
@@ -277,11 +256,9 @@
                                             <DataItemTemplate>
                                                 <dx:BootstrapButton ID="BootstrapButton2" runat="server" AutoPostBack="false" Text="Verify" OnClick="btnAction_Click1"></dx:BootstrapButton>
                                             </DataItemTemplate>
-
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="fine" Name="fine" Caption="Fine" VisibleIndex="8"></dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn Name="mo_nth" Caption="Date" VisibleIndex="6"></dx:GridViewDataTextColumn>
-
                                     </Columns>
 
                                     <SettingsPager PageSize="5">
@@ -297,7 +274,6 @@
                                     </Styles>
                                 </dx:ASPxGridView>
                             </div>
-
                         </dx:PanelContent>
                     </PanelCollection>
                 </dx:ASPxRoundPanel>
@@ -334,7 +310,6 @@
 
                                 <asp:Button ID="Button1" OnClick="btnAction_Init"  runat="server" Text="Button" />--%>
                             </DataItemTemplate>
-
                         </dx:BootstrapGridViewTextColumn>
                     </Columns>
                 </dx:BootstrapGridView>
@@ -342,11 +317,7 @@
                         </dx:PanelContent>
                     </PanelCollection>
                 </dx:ASPxRoundPanel>
-
             </div>
         </div>
-
     </div>
-
-
 </asp:Content>

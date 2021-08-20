@@ -7,21 +7,17 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="LeftPanelContent" runat="server">
 
-
     <h3 class="leftpanel-section section-caption">OPERATION</h3>
-    <dx:ASPxTreeView runat="server" ID="TableOfContentsTreeView" ClientInstanceName="tableOfContentsTreeView"
-        EnableNodeTextWrapping="true" AllowSelectNode="true" Width="100%" SyncSelectionMode="None" DataSourceID="NodesDataSource" NodeLinkMode="ContentBounds">
-        <Styles>
-            <Elbow CssClass="tree-view-elbow" />
-            <Node CssClass="tree-view-node" HoverStyle-CssClass="hovered" />
-        </Styles>
-        <ClientSideEvents NodeClick="function (s, e) { HideLeftPanelIfRequired(); }" />
-    </dx:ASPxTreeView>
+    <dx:aspxtreeview runat="server" id="TableOfContentsTreeView" clientinstancename="tableOfContentsTreeView"
+        enablenodetextwrapping="true" allowselectnode="true" width="100%" syncselectionmode="None" datasourceid="NodesDataSource" nodelinkmode="ContentBounds">
+        <styles>
+            <elbow cssclass="tree-view-elbow" />
+            <node cssclass="tree-view-node" hoverstyle-cssclass="hovered" />
+        </styles>
+        <clientsideevents nodeclick="function (s, e) { HideLeftPanelIfRequired(); }" />
+    </dx:aspxtreeview>
 
     <asp:XmlDataSource ID="NodesDataSource" runat="server" DataFile="~/App_Data/DefaultLeft.xml" XPath="//Nodes/OperationNode/*" />
-
-
-
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="RightPanelContent" runat="server">
 </asp:Content>
@@ -32,9 +28,6 @@
     <div class="card ">
         <div class="card-body ">
 
-
-
-
             <div class="card ">
                 <div class="card-body">
                     <div class="row">
@@ -44,49 +37,44 @@
                             <div class="input-group  ">
                                 <asp:TextBox CssClass="form-control" ID="nametb" runat="server" placeholder="Name" ReadOnly="false"></asp:TextBox>
                                 <asp:LinkButton class="btn btn-primary" ID="LinkButton1" runat="server">
-                                     <i class="fas fa-check-circle">                                                                        </i>
+                                    <i class="fas fa-check-circle"></i>
                                 </asp:LinkButton>
                             </div>
                         </div>
                         <div class="col-md-8">
 
+                            <dx:aspxgridview id="ASPxGridView1" runat="server" clientinstancename="gridView" cssclass="grid-view" width="100%" autogeneratecolumns="False" oninit="ASPxGridView1_Init">
+                                <columns>
 
+                                    <dx:gridviewdatacolumn fieldname="n_ame" name="n_ame" caption="Name" width="250" visibleindex="1">
+                                        <settings filtermode="DisplayText"></settings>
+                                    </dx:gridviewdatacolumn>
+                                    <dx:gridviewdatacolumn fieldname="cif" name="cif" caption="CIF" visibleindex="2" minwidth="150" maxwidth="250" width="20%"></dx:gridviewdatacolumn>
+                                    <dx:gridviewdatatextcolumn fieldname="accountnumber" name="accountnumber" caption="Account Number" visibleindex="3" minwidth="150" maxwidth="250" width="20%"></dx:gridviewdatatextcolumn>
+                                    <dx:gridviewdatatextcolumn fieldname="producttype" name="producttype" caption="Account Type" visibleindex="4" minwidth="150" maxwidth="250" width="20%"></dx:gridviewdatatextcolumn>
+                                    <dx:gridviewdatabuttoneditcolumn visibleindex="0" caption="Get">
+                                        <dataitemtemplate>
+                                            <dx:aspxbutton id="ASPxButton1" runat="server" autopostback="false" text="Get" onclick="ASPxButton1_Click"></dx:aspxbutton>
+                                        </dataitemtemplate>
+                                    </dx:gridviewdatabuttoneditcolumn>
+                                </columns>
 
-                            <dx:ASPxGridView ID="ASPxGridView1" runat="server" ClientInstanceName="gridView" CssClass="grid-view" Width="100%" AutoGenerateColumns="False" OnInit="ASPxGridView1_Init">
-                                <Columns>
+                                <settingsbehavior allowfocusedrow="true" allowselectbyrowclick="true" allowellipsisintext="true" allowdragdrop="false" />
 
-                                    <dx:GridViewDataColumn FieldName="n_ame" Name="n_ame" Caption="Name" Width="250" VisibleIndex="1">
-                                        <Settings FilterMode="DisplayText"></Settings>
-                                    </dx:GridViewDataColumn>
-                                    <dx:GridViewDataColumn FieldName="cif" Name="cif" Caption="CIF" VisibleIndex="2" MinWidth="150" MaxWidth="250" Width="20%"></dx:GridViewDataColumn>
-                                    <dx:GridViewDataTextColumn FieldName="accountnumber" Name="accountnumber" Caption="Account Number" VisibleIndex="3" MinWidth="150" MaxWidth="250" Width="20%"></dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataTextColumn FieldName="producttype" Name="producttype" Caption="Account Type" VisibleIndex="4" MinWidth="150" MaxWidth="250" Width="20%"></dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataButtonEditColumn VisibleIndex="0" Caption="Get">
-                                        <DataItemTemplate>
-                                            <dx:ASPxButton ID="ASPxButton1" runat="server" AutoPostBack="false" Text="Get" OnClick="ASPxButton1_Click"></dx:ASPxButton>
-                                        </DataItemTemplate>
-                                    </dx:GridViewDataButtonEditColumn>
-                                </Columns>
+                                <settings verticalscrollbarmode="Hidden" horizontalscrollbarmode="Auto" showheaderfilterbutton="true" />
 
-                                <SettingsBehavior AllowFocusedRow="true" AllowSelectByRowClick="true" AllowEllipsisInText="true" AllowDragDrop="false" />
+                                <settingspager pagesize="3">
+                                    <pagesizeitemsettings visible="true" showallitem="true" />
+                                </settingspager>
 
-                                <Settings VerticalScrollBarMode="Hidden" HorizontalScrollBarMode="Auto" ShowHeaderFilterButton="true" />
-
-                                <SettingsPager PageSize="3">
-                                    <PageSizeItemSettings Visible="true" ShowAllItem="true" />
-                                </SettingsPager>
-
-                                <Styles>
-                                    <Cell Wrap="false" />
-                                    <PagerBottomPanel CssClass="pager" />
-                                    <FocusedRow CssClass="focused" />
-                                </Styles>
-
-                            </dx:ASPxGridView>
+                                <styles>
+                                    <cell wrap="false" />
+                                    <pagerbottompanel cssclass="pager" />
+                                    <focusedrow cssclass="focused" />
+                                </styles>
+                            </dx:aspxgridview>
                         </div>
-
                     </div>
-
 
                     <div class="row">
                         <div class="col">
@@ -102,26 +90,22 @@
                 </div>
             </div>
 
-     
-
-
             <div class="card">
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
                             <center>
-                           <h4>CIF Details</h4>
-                        </center>
+                                <h4>CIF Details</h4>
+                            </center>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <center>
-                                    <dx:ASPxImage ID="photophoto" runat="server" ShowLoadingImage="true" Width="100px" Height="100px" AlternateText="Photo">
-                                        <Border BorderColor="#33CC33" BorderStyle="Solid" BorderWidth="2px" />
-                                    </dx:ASPxImage>
-                         
-                        </center>
+                                <dx:aspximage id="photophoto" runat="server" showloadingimage="true" width="100px" height="100px" alternatetext="Photo">
+                                    <border bordercolor="#33CC33" borderstyle="Solid" borderwidth="2px" />
+                                </dx:aspximage>
+                            </center>
                         </div>
                     </div>
 
@@ -139,7 +123,6 @@
                             <label>Full Name</label>
                             <div class="form-group  ">
                                 <asp:TextBox CssClass="form-control" ID="NameInfo" runat="server" placeholder="Full Name" ReadOnly="True"></asp:TextBox>
-
                             </div>
                         </div>
                         <div class="col-md-5">
@@ -147,8 +130,6 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <asp:TextBox CssClass="form-control mr-1" Text="Pending" ID="CifStatustb" runat="server" placeholder="Account Status" ReadOnly="True"></asp:TextBox>
-
-
                                 </div>
                             </div>
                         </div>
@@ -197,7 +178,6 @@
                                 <asp:TextBox CssClass="form-control" ID="adhartb" runat="server" placeholder="Adhar Card No" ReadOnly="false"></asp:TextBox>
                             </div>
                         </div>
-
                     </div>
 
                     <div class="row">
@@ -211,19 +191,15 @@
                     <div class="row">
                         <div class="col">
                             <center>
-                                      <%--  <img width="100px" src="../Resour/Images/generalSign.png" alt="Signiture" />--%>
-                                   <dx:ASPxImage ID="signphoto" runat="server" ShowLoadingImage="true" Width="100px" Height="50px" AlternateText="Signiture">
-                                       <Border BorderColor="#99FF99" BorderStyle="Solid" BorderWidth="2px" />
-                                      </dx:ASPxImage>
-                                   </center>
+                                <%--  <img width="100px" src="../Resour/Images/generalSign.png" alt="Signiture" />--%>
+                                <dx:aspximage id="signphoto" runat="server" showloadingimage="true" width="100px" height="50px" alternatetext="Signiture">
+                                    <border bordercolor="#99FF99" borderstyle="Solid" borderwidth="2px" />
+                                </dx:aspximage>
+                            </center>
                         </div>
-
                     </div>
-
                 </div>
             </div>
-
-
 
             <div class="row">
                 <div class="col">
@@ -231,7 +207,7 @@
                 </div>
             </div>
 
-                   <div class="card ">
+            <div class="card ">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3">
@@ -261,24 +237,15 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <asp:TextBox CssClass="form-control mr-1" ID="AccOpenStatustb" runat="server" placeholder="Account Open Status" Text="Pending" ReadOnly="True">
-
                                     </asp:TextBox>
                                     <asp:LinkButton class="btn btn-success mr-1" ID="AccountStatusApproveBtn" runat="server">
-                                        <i class="fas fa-check-circle">
-
-                                        </i>
-
+                                        <i class="fas fa-check-circle"></i>
                                     </asp:LinkButton>
                                     <asp:LinkButton class="btn btn-warning mr-1" ID="AccountStatusPendingBtn" runat="server">
-                                        <i class="far fa-pause-circle">
-      </i>
-
+                                        <i class="far fa-pause-circle"></i>
                                     </asp:LinkButton>
                                     <asp:LinkButton class="btn btn-danger mr-1" ID="AccountStatusFreezBtn" runat="server">
-                                        <i class="fas fa-times-circle">
-
-                                        </i>
-
+                                        <i class="fas fa-times-circle"></i>
                                     </asp:LinkButton>
                                 </div>
                             </div>
@@ -454,6 +421,4 @@
             </div>
         </div>
     </div>
-
-
 </asp:Content>

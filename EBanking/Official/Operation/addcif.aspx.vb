@@ -13,7 +13,7 @@ Public Class addcif
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         'check User Role and use to edit textbox in this form
-        'just for testing 
+        'just for testing
         userNotAdmin = False
 
         If "User" = "Admin" Then
@@ -34,6 +34,7 @@ Public Class addcif
         End Try
 
     End Sub
+
     ''' <summary>
     ''' ERROR CODE EB-CifUpdatefrmm-10
     ''' </summary>
@@ -50,7 +51,6 @@ Public Class addcif
                     If CifHelper.cifupdate = True Then
                         responselbl.Text = "Everything OK. ID Found."
                         responselbl.ForeColor = Drawing.Color.Green
-
                     Else
                         responselbl.Text = "Incomplect Profile. ID Found."
                         responselbl.ForeColor = Drawing.Color.Yellow
@@ -93,6 +93,7 @@ Public Class addcif
         End Try
 
     End Sub
+
     Sub incertCif() '"insert into cifdb(cif) values(" & "'" & cif & "')"
         Dim commandstring As String
 
@@ -103,7 +104,6 @@ Public Class addcif
             Else
                 upload(ciftb.Text.Trim)
             End If
-
         Catch
 
         End Try
@@ -116,7 +116,6 @@ Public Class addcif
             i = datacommand.ExecuteNonQuery()
             If i > 0 Then
                 replay = True ' "Record successfully saved "
-
             Else
                 replay = False '"Record Not saved "
             End If
@@ -137,7 +136,6 @@ Public Class addcif
             Else
                 upload(ciftb.Text.Trim)
             End If
-
         Catch
 
         End Try
@@ -151,7 +149,6 @@ Public Class addcif
             i = datacommand.ExecuteNonQuery()
             If i > 0 Then
                 replay = True ' "Record successfully saved "
-
             Else
                 replay = False '"Record Not saved "
             End If
@@ -162,6 +159,7 @@ Public Class addcif
 
         End Try
     End Sub
+
     Sub deleteCif(ByVal cifid As String)
 
         Dim commandstring As String
@@ -174,7 +172,6 @@ Public Class addcif
             i = datacommand.ExecuteNonQuery()
             If i > 0 Then
                 replay = True ' "Record successfully saved "
-
             Else
                 replay = False '"Record Not saved "
             End If
@@ -185,6 +182,7 @@ Public Class addcif
 
         End Try
     End Sub
+
     Sub clearall()
         ciftb.Text = ""
         nametb.Text = ""
@@ -200,6 +198,7 @@ Public Class addcif
         signphoto.ImageUrl = ""
 
     End Sub
+
     Sub clearNocif()
 
         nametb.Text = ""
@@ -213,6 +212,7 @@ Public Class addcif
         addresstb.Text = ""
 
     End Sub
+
     Sub loadData()
         Try
             If CifHelper.getcif(0) = Nothing Then
@@ -289,10 +289,9 @@ Public Class addcif
             Else
                 CifHelper.cifupdate = False
             End If
-            'or we can 
+            'or we can
             ' status ="Approve"
             'then cifhelper.cifupdated =true
-
         Catch ex As Exception
             CifHelper.cifupdate = False
         Finally
@@ -342,7 +341,7 @@ Public Class addcif
     Protected Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         replay1 = ""
         If userNotAdmin = False Then
-            ''Must Implectment Dialog 
+            ''Must Implectment Dialog
             deleteCif(ciftb.Text.Trim)
             CifHelper.cifsearch(ciftb.Text.Trim)
             If replay = True Then
@@ -350,7 +349,6 @@ Public Class addcif
                     responselbl.Text = "Record successfully Deleted : Successfully "
                     responselbl.ForeColor = Drawing.Color.Green
                     clearall()
-
                 Else
                     responselbl.Text = "Record successfully Deleted : No Confermation Check Again "
                     responselbl.ForeColor = Drawing.Color.YellowGreen
@@ -383,7 +381,7 @@ Public Class addcif
 
     Private Sub AccountStatusUpdate(v As String, cifId As String)
         Try
-            cifsearch(cifId) 'Get Data By Account Id 
+            cifsearch(cifId) 'Get Data By Account Id
         Catch
             'Id Not Found OR Account Does Not Exist
         End Try
@@ -396,7 +394,7 @@ Public Class addcif
                 If i > 0 Then
                     replay = True ' Data Update Successfully
                 Else
-                    replay = False 'Data Not Update 
+                    replay = False 'Data Not Update
 
                 End If
                 databaseconnection.Close()

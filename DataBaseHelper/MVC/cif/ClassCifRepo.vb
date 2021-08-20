@@ -49,6 +49,15 @@ Public Class ClassCifRepo
 
     End Function
 
+    Public Function IsCifExist(cif As String) As Boolean Implements ICif.IsCifExist
+        Dim x = Me._db.Query(Of ClassCif)("Select * from cifdb where cif=@cif", New With {Key .cif = cif}).ToList.Count
+        If x > 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
     Public Function GetAll() As IList(Of ClassCif) Implements ICif.GetAll
         Return Me._db.Query(Of ClassCif)("SELECT * From cifdb").ToList()
     End Function
@@ -84,4 +93,5 @@ Public Class ClassCifRepo
 
         Return True
     End Function
+
 End Class

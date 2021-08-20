@@ -17,7 +17,7 @@
                     "alertTextCheckboxMultiple": "* 選択してください",
                     "alertTextCheckboxe": "* チェックボックスをチェックしてください"
                 },
-                "requiredInFunction": { 
+                "requiredInFunction": {
                     "func": function(field, rules, i, options){
                         return (field.val() == "test") ? true : false;
                     },
@@ -56,7 +56,7 @@
                     "regex": "none",
                     "alertText": "* ",
                     "alertText2": " より最近の日付にしてください"
-                },	
+                },
                 "maxCheckbox": {
                     "regex": "none",
                     "alertText": "* チェックしすぎです"
@@ -139,11 +139,7 @@
                     "alertText": "* 『HELLO』と入力してください"
                 }
             };
-            
         }
     };
     $.validationEngineLanguage.newLang();
 })(jQuery);
-
-
-    

@@ -1,27 +1,27 @@
 ﻿Imports System.Data.SqlClient
+
 Public Class TransctionStatusApprove
     Inherits System.Web.UI.Page
 
     ' all Variable Declare
     Dim cs As String = connectionhelper.connectionstringaccount()
+
     Dim dlt1 As String = Nothing
     Dim dlt2 As String = Nothing
     Dim updatedlt As String
     Dim updatedlt2 As String
 
-
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
             getInfo()
-
         Catch ex As Exception
             MyMessageBox.Show(Me, ex.Message)
         End Try
     End Sub
+
     Sub getInfo()
         If getApproveInfo.GetAccountNumber IsNot Nothing Then
             tbacno.Text = getApproveInfo.GetAccountNumber
-
         Else
             tbacno.Text = "ERROR"
 
@@ -34,7 +34,6 @@ Public Class TransctionStatusApprove
 
         If getApproveInfo.GetStatus IsNot Nothing Then
             tbstatus.Text = getApproveInfo.GetStatus
-
         Else
             tbstatus.Text = "ERROR"
 
@@ -51,14 +50,12 @@ Public Class TransctionStatusApprove
 
         If getApproveInfo.GetBBT IsNot Nothing Then
             tbbbt.Text = getApproveInfo.GetBBT
-
         Else
             tbbbt.Text = "ERROR"
 
         End If
         If getApproveInfo.GetDetailsTransction IsNot Nothing Then
             detailstb.Text = getApproveInfo.GetDetailsTransction
-
         Else
             detailstb.Text = "ERROR"
 
@@ -71,7 +68,6 @@ Public Class TransctionStatusApprove
 
         If getApproveInfo.GetBAT IsNot Nothing Then
             tbbat.Text = getApproveInfo.GetBAT
-
         Else
             tbbat.Text = "ERROR"
 
@@ -85,7 +81,6 @@ Public Class TransctionStatusApprove
             tbname.Text = GetName
         Else tbname.Text = "Error"
         End If
-
 
     End Sub
 
@@ -110,8 +105,6 @@ Public Class TransctionStatusApprove
         command.Connection = databaseconnection
         command.Transaction = transction
 
-
-
         'Impliment Verification
         If bal IsNot Nothing Then
             Try
@@ -124,7 +117,7 @@ Public Class TransctionStatusApprove
                 command.CommandText = "update journal set status='Approved' where trid='" & tbtrid.Text.Trim & "'"
                 command.ExecuteNonQuery()
 
-                'update alljournalstatus 
+                'update alljournalstatus
 
                 command.CommandText = "update liveaccount set balance='" & bal & "' where accountnumber='" & getApproveInfo.GetAccountNumber & "'"
                 command.ExecuteNonQuery()
@@ -145,13 +138,12 @@ Public Class TransctionStatusApprove
                     MyMessageBox.Show(Me, "  Message: {0}" + ex2.Message)
                 End Try
             End Try
-
         Else
             MyMessageBox.Show(Me, "Account Balance Not Update Check In All User ...")
         End If
 
-
     End Sub
+
     Private Sub DoRDTransction()
         Dim bal As String = Nothing
         If GetBAT = tbbat.Text.Trim Then
@@ -169,8 +161,6 @@ Public Class TransctionStatusApprove
         command.Connection = databaseconnection
         command.Transaction = transction
 
-
-
         'Impliment Verification
         If bal IsNot Nothing Then
             Try
@@ -183,7 +173,7 @@ Public Class TransctionStatusApprove
                 command.CommandText = "update journal set status='Approved' where trid='" & tbtrid.Text.Trim & "'"
                 command.ExecuteNonQuery()
 
-                'update alljournalstatus 
+                'update alljournalstatus
 
                 command.CommandText = "update liveaccount set balance='" & bal & "' where accountnumber='" & getApproveInfo.GetAccountNumber & "'"
                 command.ExecuteNonQuery()
@@ -204,14 +194,12 @@ Public Class TransctionStatusApprove
                     MyMessageBox.Show(Me, "  Message: {0}" + ex2.Message)
                 End Try
             End Try
-
         Else
             MyMessageBox.Show(Me, "Account Balance Not Update Check In All User ...")
         End If
 
-
-
     End Sub
+
     Private Sub DoSSaTransction()
         Dim bal As String = Nothing
         If GetBAT = tbbat.Text.Trim Then
@@ -229,8 +217,6 @@ Public Class TransctionStatusApprove
         command.Connection = databaseconnection
         command.Transaction = transction
 
-
-
         'Impliment Verification
         If bal IsNot Nothing Then
             Try
@@ -243,7 +229,7 @@ Public Class TransctionStatusApprove
                 command.CommandText = "update journal set status='Approved' where trid='" & tbtrid.Text.Trim & "'"
                 command.ExecuteNonQuery()
 
-                'update alljournalstatus 
+                'update alljournalstatus
 
                 command.CommandText = "update liveaccount set balance='" & bal & "' where accountnumber='" & getApproveInfo.GetAccountNumber & "'"
                 command.ExecuteNonQuery()
@@ -264,18 +250,16 @@ Public Class TransctionStatusApprove
                     MyMessageBox.Show(Me, "  Message: {0}" + ex2.Message)
                 End Try
             End Try
-
         Else
             MyMessageBox.Show(Me, "Account Balance Not Update Check In All User ...")
         End If
 
-
-
     End Sub
+
     Private Sub DoTdTransction()
 
-
     End Sub
+
     Private Sub GetDltFirst()
         dltInformation(getApproveInfo.GetAccountNumber)
         dlt1 = getDltdlt(0)
@@ -283,6 +267,7 @@ Public Class TransctionStatusApprove
         updatedlt = getApproveInfo.GetDate
         updatedlt2 = dlt1
     End Sub
+
     Protected Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
         If getApproveInfo.GetStatus = "Pending" Then
 
@@ -296,7 +281,6 @@ Public Class TransctionStatusApprove
             ElseIf GetAcType = "TD" Then
                 DoTdTransction()
             End If
-
         Else
             MyMessageBox.Show(Me, "Already " & getApproveInfo.GetStatus)
         End If
@@ -312,8 +296,6 @@ Public Class TransctionStatusApprove
         command.Connection = databaseconnection
         command.Transaction = transction
 
-
-
         'Impliment Verification
 
         Try
@@ -324,7 +306,6 @@ Public Class TransctionStatusApprove
 
             command.CommandText = "update journal set status='Rejected' where trid='" & tbtrid.Text.Trim & "'"
             command.ExecuteNonQuery()
-
 
             transction.Commit()
             MyMessageBox.Show(Me, "Data Saved Successfully")
@@ -340,8 +321,8 @@ Public Class TransctionStatusApprove
             End Try
         End Try
 
-
     End Sub
+
     Protected Sub btnReject_Click(sender As Object, e As EventArgs) Handles btnReject.Click
 
         If getApproveInfo.GetStatus = "Pending" Then
@@ -356,13 +337,9 @@ Public Class TransctionStatusApprove
             ElseIf GetAcType = "TD" Then
                 DoTdTransction()
             End If
-
         Else
             MyMessageBox.Show(Me, "Already " & getApproveInfo.GetStatus)
         End If
-
-
-
 
     End Sub
 
@@ -376,8 +353,6 @@ Public Class TransctionStatusApprove
         command.Connection = databaseconnection
         command.Transaction = transction
 
-
-
         'Impliment Verification
 
         Try
@@ -388,7 +363,6 @@ Public Class TransctionStatusApprove
 
             command.CommandText = "update journal set status='Rejected' where trid='" & tbtrid.Text.Trim & "'"
             command.ExecuteNonQuery()
-
 
             transction.Commit()
             MyMessageBox.Show(Me, "Data Saved Successfully")
@@ -403,7 +377,6 @@ Public Class TransctionStatusApprove
                 MyMessageBox.Show(Me, "  Message: {0}" + ex2.Message)
             End Try
         End Try
-
 
     End Sub
 
@@ -417,8 +390,6 @@ Public Class TransctionStatusApprove
         command.Connection = databaseconnection
         command.Transaction = transction
 
-
-
         'Impliment Verification
 
         Try
@@ -429,7 +400,6 @@ Public Class TransctionStatusApprove
 
             command.CommandText = "update journal set status='Rejected' where trid='" & tbtrid.Text.Trim & "'"
             command.ExecuteNonQuery()
-
 
             transction.Commit()
             MyMessageBox.Show(Me, "Data Saved Successfully")
@@ -445,7 +415,6 @@ Public Class TransctionStatusApprove
             End Try
         End Try
 
-
-
     End Sub
+
 End Class

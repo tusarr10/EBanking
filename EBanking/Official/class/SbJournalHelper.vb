@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
 
 Module SbJournalHelper
+
     Sub AllTeansctionFromSBJournal(datee As String)
         Try
             datasetcifdb.Tables(sbjournaltbl).Clear()
@@ -26,7 +27,5 @@ Module SbJournalHelper
             Return Nothing
         End Try
     End Function
-
-
 
 End Module

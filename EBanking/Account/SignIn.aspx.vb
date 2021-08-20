@@ -1,11 +1,9 @@
-Imports Microsoft.VisualBasic
-Imports System
 Imports DevExpress.Web
-Imports DXWebApplication1.Model
 Imports TWEB.Model
 
 Partial Public Class SignInModule
     Inherits System.Web.UI.Page
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
     End Sub
 
@@ -21,4 +19,5 @@ Partial Public Class SignInModule
             End If
         End If
     End Sub
+
 End Class

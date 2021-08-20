@@ -11,11 +11,9 @@
  * Licensed under the MIT License
  */
  (function($) {
-
 	"use strict";
 
 	var methods = {
-
 		/**
 		 * Kind of the constructor, called before any action
 		 * @param options
@@ -40,7 +38,6 @@
 		* ie. jQuery("#formID1").validationEngine('attach', {promptPosition : "centerRight"});
 		*/
 		attach: function(userOptions) {
-
 			var form = this;
 			var options;
 
@@ -51,7 +48,6 @@
 
 			options.validateAttribute = (form.find("[data-validation-engine*=validate]").length) ? "data-validation-engine" : "class";
 			if (options.binded) {
-
 				// delegate fields
 				form.on(options.validationEventTrigger, "["+options.validateAttribute+"*=validate]:not([type=checkbox]):not([type=radio]):not(.datepicker)", methods._onFieldEvent);
 				form.on("click", "["+options.validateAttribute+"*=validate][type=checkbox],["+options.validateAttribute+"*=validate][type=radio]", methods._onFieldEvent);
@@ -74,7 +70,6 @@
 		* Unregisters any bindings that may point to jQuery.validaitonEngine
 		*/
 		detach: function() {
-
 			var form = this;
 			var options = form.data('jqv');
 
@@ -155,7 +150,6 @@
 		*  Redraw prompts position, useful when you change the DOM state when validating
 		*/
 		updatePromptsPosition: function(event) {
-
 			if (event && this == window) {
 				var form = event.data.formElem;
 				var noAnimation = event.data.noAnimation;
@@ -248,27 +242,18 @@
 			options.eventTrigger = "field";
 
             if (options.notEmpty == true){
-
                 if(field.val().length > 0){
                     // validate the current field
                     window.setTimeout(function() {
                         methods._validateField(field, options);
                     }, (event.data) ? event.data.delay : 0);
-
                 }
-
             }else{
-
                 // validate the current field
                 window.setTimeout(function() {
                     methods._validateField(field, options);
                 }, (event.data) ? event.data.delay : 0);
-
             }
-
-
-
-
 		},
 		/**
 		* Called when the form is submited, shows prompts accordingly
@@ -365,7 +350,6 @@
 						if (field.is(":hidden") && options.prettySelect)
 							first_err = field = form.find("#" + options.usePrefix + methods._jqSelector(field.attr('id')) + options.useSuffix);
 						else {
-
 							//Check if we need to adjust what element to show the prompt on
 							//and and such scroll to instead
 							if(field.data('jqv-prompt-at') instanceof jQuery ){
@@ -428,7 +412,6 @@
 						scrollContainer.animate({ scrollTop: destination }, 1100, function(){
 							if(options.focusFirstField) first_err.focus();
 						});
-
 					} else {
 						$("html, body").animate({
 							scrollTop: destination
@@ -437,7 +420,6 @@
 						});
 						$("html, body").animate({scrollLeft: fixleft},1100)
 					}
-
 				} else if(options.focusFirstField)
 					first_err.focus();
 				return false;
@@ -452,7 +434,6 @@
 		* @param {Map} options
 		*/
 		_validateFormWithAjax: function(form, options) {
-
 			var data = form.serialize();
 									var type = (options.ajaxFormValidationMethod) ? options.ajaxFormValidationMethod : "GET";
 			var url = (options.ajaxFormValidationURL) ? options.ajaxFormValidationURL : form.attr("action");
@@ -490,12 +471,10 @@
 
 							// make sure we found the element
 							if (errorField.length == 1) {
-
 								// promptText or selector
 								var msg = value[2];
 								// if the field is valid
 								if (value[1] == true) {
-
 									if (msg == ""  || !msg){
 										// if for some reason, status==true and error="", just close the prompt
 										methods._closePrompt(errorField);
@@ -523,10 +502,8 @@
 						options.onAjaxFormComplete(!errorInForm, form, json, options);
 					} else
 						options.onAjaxFormComplete(true, form, json, options);
-
 				}
 			});
-
 		},
 		/**
 		* Validates field, shows prompts accordingly
@@ -585,7 +562,6 @@
 			}
 
 			for (var i = 0, field_errors = 0; i < rules.length; i++) {
-
 				// If we are limiting errors, and have hit the max, break
 				if (limitErrors && field_errors >= options.maxErrorsPerField) {
 					// If we haven't hit a required yet, check to see if there is one in the validation rules for this
@@ -597,10 +573,8 @@
 					break;
 				}
 
-
 				var errorMsg = undefined;
 				switch (rules[i]) {
-
 					case "required":
 						required = true;
 						errorMsg = methods._getErrorMessage(form, field, rules[i], rules, i, options, methods._required);
@@ -614,10 +588,8 @@
 						var classGroup = "["+options.validateAttribute+"*=" +rules[i + 1] +"]";
 						var firstOfGroup = form.find(classGroup).eq(0);
 						if(firstOfGroup[0] != field[0]){
-
 							methods._validateField(firstOfGroup, options, skipAjaxValidation);
 							options.showArrow = true;
-
 						}
 						errorMsg = methods._getErrorMessage(form, field, rules[i], rules, i, options, methods._groupRequired);
 						if(errorMsg)  required = true;
@@ -861,7 +833,6 @@
 			 // Change the rule to the composite rule, if it was different from the original
 			 var alteredRule = rule;
 
-
 			 var element_classes = (field.attr("data-validation-engine")) ? field.attr("data-validation-engine") : field.attr("class");
 			 var element_classes_array = element_classes.split(" ");
 
@@ -880,7 +851,6 @@
 				 if (custom_message) errorMsg = custom_message;
 			 }
 			 return errorMsg;
-
 		 },
 		 _getCustomErrorMessage:function (field, classes, rule, options) {
 			var custom_message = false;
@@ -1045,7 +1015,6 @@
 					var pattern = new RegExp(ex);
 
 					if (!pattern.test(field.val())) return options.allrules[customRule].alertText;
-
 			} else if(rule["func"]) {
 				fn = rule["func"];
 
@@ -1088,7 +1057,6 @@
 				fn = window[functionName] || options.customFunctions[functionName];
 			if (typeof(fn) == 'function')
 				return fn(field, rules, i, options);
-
 		},
 		_funcCallRequired: function(field, rules, i, options) {
 			return methods._funcCall(field,rules,i,options);
@@ -1199,7 +1167,6 @@
 		* @return an error string if validation failed
 		*/
 		_past: function(form, field, rules, i, options) {
-
 			var p=rules[i + 1];
 			var fieldAlt = $(form.find("*[name='" + p.replace(/^#+/, '') + "']"));
 			var pdate;
@@ -1232,7 +1199,6 @@
 		* @return an error string if validation failed
 		*/
 		_future: function(form, field, rules, i, options) {
-
 			var p=rules[i + 1];
 			var fieldAlt = $(form.find("*[name='" + p.replace(/^#+/, '') + "']"));
 			var pdate;
@@ -1335,7 +1301,6 @@
 		* @return an error string if validation failed
 		*/
 		_maxCheckbox: function(form, field, rules, i, options) {
-
 			var nbCheck = rules[i + 1];
 			var groupname = field.attr("name");
 			var groupSize = form.find("input[name='" + groupname + "']:checked").length;
@@ -1357,7 +1322,6 @@
 		* @return an error string if validation failed
 		*/
 		_minCheckbox: function(form, field, rules, i, options) {
-
 			var nbCheck = rules[i + 1];
 			var groupname = field.attr("name");
 			var groupSize = form.find("input[name='" + groupname + "']:checked").length;
@@ -1383,7 +1347,6 @@
 
 			var numDigits = cardNumber.length;
 			if (numDigits >= 14 && numDigits <= 16 && parseInt(cardNumber) > 0) {
-
 				var sum = 0, i = numDigits - 1, pos = 1, digit, luhn = new String();
 				do {
 					digit = parseInt(cardNumber.charAt(i));
@@ -1408,7 +1371,6 @@
 		* @return nothing! the ajax validator handles the prompts itself
 		*/
 		 _ajax: function(field, rules, i, options) {
-
 			 var errorSelector = rules[i + 1];
 			 var rule = options.allrules[errorSelector];
 			 var extraData = rule.extraData;
@@ -1469,7 +1431,6 @@
 						}
 					 },
 					 success: function(json) {
-
 						 // asynchronously called on success, data is the json answer from the server
 						 var errorFieldId = json[0];
 						 //var errorField = $($("#" + errorFieldId)[0]);
@@ -1558,7 +1519,6 @@
 		* @param {String} d
 		*/
 		_parseDate: function(d) {
-
 			var dateParts = d.split("-");
 			if(dateParts==d)
 				dateParts = d.split("/");
@@ -1608,7 +1568,6 @@
 		* @param {Map} options user options
 		*/
 		_buildPrompt: function(field, promptText, type, ajaxed, options) {
-
 			// create the prompt
 			var prompt = $('<div>');
 			prompt.addClass(methods._getClassName(field.attr("id")) + "formError");
@@ -1717,7 +1676,6 @@
 				}).data("callerField", field);
 		    	}
 
-
 			if (options.autoHidePrompt) {
 				setTimeout(function(){
 					prompt.animate({
@@ -1740,7 +1698,6 @@
 		* @param {Map} options user options
 		*/
 		_updatePrompt: function(field, prompt, promptText, type, ajaxed, options, noAnimation) {
-
 			if (prompt) {
 				if (typeof type !== "undefined") {
 					if (type == "pass")
@@ -1856,7 +1813,6 @@
 		* @return positions
 		*/
 		_calculatePosition: function (field, promptElmt, options) {
-
 			var promptTopPosition, promptleftPosition, marginTopSize;
 			var fieldWidth 	= field.width();
 			var fieldLeft 	= field.position().left;
@@ -1864,12 +1820,10 @@
 			var fieldHeight 	=  field.height();
 			var promptHeight = promptElmt.height();
 
-
 			// is the form contained in an overflown container?
 			promptTopPosition = promptleftPosition = 0;
 			// compensation for the arrow
 			marginTopSize = -promptHeight;
-
 
 			//prompt positioning adjustment support
 			//now you can adjust prompt position
@@ -1902,10 +1856,8 @@
 
 					shiftX=parseInt(shift1);
 					if (isNaN(shift1)) shift1=0;
-
 				};
 			};
-
 
 			switch (positionType) {
 				default:
@@ -1947,8 +1899,6 @@
 					marginTopSize = 0;
 			};
 
-
-
 			//apply adjusments if any
 			promptleftPosition += shiftX;
 			promptTopPosition  += shiftY;
@@ -1969,7 +1919,6 @@
 		* @return the user options (extended from the defaults)
 		*/
 		 _saveOptions: function(form, options) {
-
 			 // is there a language localisation ?
 			 if ($.validationEngineLanguage)
 			 var allRules = $.validationEngineLanguage.allRules;
@@ -2047,19 +1996,16 @@
 	 *            method (optional) action
 	 */
 	 $.fn.validationEngine = function(method) {
-
 		 var form = $(this);
 		 if(!form[0]) return form;  // stop here if the form does not exist
 
 		 if (typeof(method) == 'string' && method.charAt(0) != '_' && methods[method]) {
-
 			 // make sure init is called once
 			 if(method != "showPrompt" && method != "hide" && method != "hideAll")
 			 methods.init.apply(form);
 
 			 return methods[method].apply(form, Array.prototype.slice.call(arguments, 1));
 		 } else if (typeof method == 'object' || !method) {
-
 			 // default constructor with or without arguments
 			 methods.init.apply(form, arguments);
 			 return methods.attach.apply(form);
@@ -2068,11 +2014,8 @@
 		 }
 	};
 
-
-
 	// LEAK GLOBAL OPTIONS
 	$.validationEngine= {fieldIdCounter: 0,defaults:{
-
 		// Name of the event triggering field validation
 		validationEventTrigger: "blur",
 		// Automatically scroll viewport to the first error

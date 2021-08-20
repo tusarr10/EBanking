@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+
 ''' <summary>
 ''' Date : 25.06.2021
 ''' Name : TUSAR RANJAN PRADHAN
@@ -24,6 +25,7 @@ Module NominiInfoHelper
         databaseconnection.Close()
 
     End Sub
+
     Function getNominiInfoId(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(nominitable).Rows(currentrow)("accountnumber"), String)
@@ -31,6 +33,7 @@ Module NominiInfoHelper
             Return Nothing
         End Try
     End Function
+
     Function getNominiInfoReg(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(nominitable).Rows(currentrow)("nominireg"), String)
@@ -38,6 +41,7 @@ Module NominiInfoHelper
             Return Nothing
         End Try
     End Function
+
     Function getNominiInfoNominiName(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(nominitable).Rows(currentrow)("nomininame"), String)
@@ -45,6 +49,7 @@ Module NominiInfoHelper
             Return Nothing
         End Try
     End Function
+
     Function getNominiInfoNominiAge(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(nominitable).Rows(currentrow)("nominiage"), String)
@@ -52,6 +57,7 @@ Module NominiInfoHelper
             Return Nothing
         End Try
     End Function
+
     Function getNominiInfoAddress(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(nominitable).Rows(currentrow)("noiminiaddress"), String)
@@ -59,6 +65,7 @@ Module NominiInfoHelper
             Return Nothing
         End Try
     End Function
+
     Function getNominiInfoRelation(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(nominitable).Rows(currentrow)("nominirelation"), String)
@@ -66,4 +73,5 @@ Module NominiInfoHelper
             Return Nothing
         End Try
     End Function
+
 End Module

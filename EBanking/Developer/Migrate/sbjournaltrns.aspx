@@ -24,7 +24,6 @@
             <dx:MenuItem Enabled="false">
                 <Template>
                     <h1>All sb transction From Access DB</h1>
-
                 </Template>
             </dx:MenuItem>
             <dx:MenuItem Name="Send" Text="Send" Alignment="Right" AdaptivePriority="2" Visible="false">
@@ -54,7 +53,6 @@
         </PanelCollection>
         <ClientSideEvents Expanded="onFilterPanelExpanded" Collapsed="adjustPageControls" />
     </dx:ASPxPanel>
-
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="PageContent" runat="server">
 
@@ -112,8 +110,6 @@
                     <dx:ASPxMemo ID="ASPxMemo1" runat="server" Height="140px" ReadOnly="true" Width="100%"></dx:ASPxMemo>
                 </ContentTemplate>
             </asp:UpdatePanel>
-
         </div>
     </div>
-
 </asp:Content>

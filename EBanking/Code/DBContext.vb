@@ -1,14 +1,11 @@
-Imports Microsoft.VisualBasic
-Imports System
-Imports System.Collections.Generic
-Imports System.Linq
-Imports System.Web
 Imports DevExpress.XtraScheduler
 
 Namespace Model
+
     ' Sample Data
     Public Class Issue
         Private privateId As Long
+
         Public Property Id() As Long
             Get
                 Return privateId
@@ -17,7 +14,9 @@ Namespace Model
                 privateId = value
             End Set
         End Property
+
         Private privateSubject As String
+
         Public Property Subject() As String
             Get
                 Return privateSubject
@@ -26,7 +25,9 @@ Namespace Model
                 privateSubject = value
             End Set
         End Property
+
         Private privateCustomer As Contact
+
         Public Property Customer() As Contact
             Get
                 Return privateCustomer
@@ -35,6 +36,7 @@ Namespace Model
                 privateCustomer = value
             End Set
         End Property
+
         Public Property CustomerId() As Long
             Get
                 Return If((Customer IsNot Nothing), Customer.Id, -1)
@@ -43,7 +45,9 @@ Namespace Model
                 Customer = DataProvider.GetContacts().Find(Function(contact) contact.Id = value)
             End Set
         End Property
+
         Private privateCreated As DateTime
+
         Public Property Created() As DateTime
             Get
                 Return privateCreated
@@ -52,7 +56,9 @@ Namespace Model
                 privateCreated = value
             End Set
         End Property
+
         Private privateUpdated As DateTime
+
         Public Property Updated() As DateTime
             Get
                 Return privateUpdated
@@ -61,7 +67,9 @@ Namespace Model
                 privateUpdated = value
             End Set
         End Property
+
         Private privateNotes As String
+
         Public Property Notes() As String
             Get
                 Return privateNotes
@@ -70,7 +78,9 @@ Namespace Model
                 privateNotes = value
             End Set
         End Property
+
         Private privateUnread As Boolean
+
         Public Property Unread() As Boolean
             Get
                 Return privateUnread
@@ -79,7 +89,9 @@ Namespace Model
                 privateUnread = value
             End Set
         End Property
+
         Private privateIsDraft As Boolean
+
         Public Property IsDraft() As Boolean
             Get
                 Return privateIsDraft
@@ -88,7 +100,9 @@ Namespace Model
                 privateIsDraft = value
             End Set
         End Property
+
         Private privateIsArchived As Boolean
+
         Public Property IsArchived() As Boolean
             Get
                 Return privateIsArchived
@@ -97,7 +111,9 @@ Namespace Model
                 privateIsArchived = value
             End Set
         End Property
+
         Private privateKind As Integer
+
         Public Property Kind() As Integer
             Get
                 Return privateKind
@@ -106,7 +122,9 @@ Namespace Model
                 privateKind = value
             End Set
         End Property
+
         Private privatePriority As Integer
+
         Public Property Priority() As Integer
             Get
                 Return privatePriority
@@ -115,7 +133,9 @@ Namespace Model
                 privatePriority = value
             End Set
         End Property
+
         Private privateStatus As Integer
+
         Public Property Status() As Integer
             Get
                 Return privateStatus
@@ -124,7 +144,9 @@ Namespace Model
                 privateStatus = value
             End Set
         End Property
+
         Private privateVotes As Integer
+
         Public Property Votes() As Integer
             Get
                 Return privateVotes
@@ -141,9 +163,11 @@ Namespace Model
             Priority = 1
             Customer = New Contact()
         End Sub
+
         Public Sub SetCustomer(ByVal value As Contact)
             Customer = value
         End Sub
+
         Public Sub Assign(ByVal src As Issue)
             Subject = src.Subject
             SetCustomer(src.Customer)
@@ -155,10 +179,12 @@ Namespace Model
             Priority = src.Priority
             Status = src.Status
         End Sub
+
     End Class
 
     Public Class Contact
         Private privateId As Long
+
         Public Property Id() As Long
             Get
                 Return privateId
@@ -167,7 +193,9 @@ Namespace Model
                 privateId = value
             End Set
         End Property
+
         Private privateFirstName As String
+
         Public Property FirstName() As String
             Get
                 Return privateFirstName
@@ -176,7 +204,9 @@ Namespace Model
                 privateFirstName = value
             End Set
         End Property
+
         Private privateLastName As String
+
         Public Property LastName() As String
             Get
                 Return privateLastName
@@ -185,12 +215,15 @@ Namespace Model
                 privateLastName = value
             End Set
         End Property
+
         Public ReadOnly Property FullName() As String
             Get
                 Return String.Format("{0} {1}", FirstName, LastName)
             End Get
         End Property
+
         Private privateAddressBook As String
+
         Public Property AddressBook() As String
             Get
                 Return privateAddressBook
@@ -199,7 +232,9 @@ Namespace Model
                 privateAddressBook = value
             End Set
         End Property
+
         Private privateEmail As String
+
         Public Property Email() As String
             Get
                 Return privateEmail
@@ -208,7 +243,9 @@ Namespace Model
                 privateEmail = value
             End Set
         End Property
+
         Private privatePhotoFileName As String
+
         Public Property PhotoFileName() As String
             Get
                 Return privatePhotoFileName
@@ -217,12 +254,15 @@ Namespace Model
                 privatePhotoFileName = value
             End Set
         End Property
+
         Public ReadOnly Property PhotoUrl() As String
             Get
                 Return String.Format("Content/Photo/{0}", PhotoFileName)
             End Get
         End Property
+
         Private privateCountry As String
+
         Public Property Country() As String
             Get
                 Return privateCountry
@@ -231,7 +271,9 @@ Namespace Model
                 privateCountry = value
             End Set
         End Property
+
         Private privateCity As String
+
         Public Property City() As String
             Get
                 Return privateCity
@@ -240,7 +282,9 @@ Namespace Model
                 privateCity = value
             End Set
         End Property
+
         Private privateAddress As String
+
         Public Property Address() As String
             Get
                 Return privateAddress
@@ -249,7 +293,9 @@ Namespace Model
                 privateAddress = value
             End Set
         End Property
+
         Private privatePhone As String
+
         Public Property Phone() As String
             Get
                 Return privatePhone
@@ -258,7 +304,9 @@ Namespace Model
                 privatePhone = value
             End Set
         End Property
+
         Private privateBirthday As DateTime
+
         Public Property Birthday() As DateTime
             Get
                 Return privateBirthday
@@ -267,12 +315,16 @@ Namespace Model
                 privateBirthday = value
             End Set
         End Property
+
     End Class
 
 #Region "DataProvider "
+
     Public NotInheritable Class DataProvider
+
         Private Sub New()
         End Sub
+
         Public Shared Function GetContacts() As List(Of Contact)
             If HttpContext.Current.Session("Contacts") Is Nothing Then
                 HttpContext.Current.Session("Contacts") = GenerateContacts()
@@ -286,11 +338,13 @@ Namespace Model
             End If
             Return TryCast(HttpContext.Current.Session("Issues"), List(Of Issue))
         End Function
+
         Private Shared Sub UpdateIssues(ByVal list As List(Of Issue))
             HttpContext.Current.Session("Issues") = list
         End Sub
 
         Private Shared ReadOnly lockObject As Object = New Object()
+
         Public Shared Sub AddNewIssue(ByVal issue As Issue)
             SyncLock lockObject
                 Dim issues As List(Of Issue) = GetIssues()
@@ -304,6 +358,7 @@ Namespace Model
                 UpdateIssues(issues)
             End SyncLock
         End Sub
+
         Public Shared Sub UpdateIssue(ByVal issue As Issue)
             Dim issues As List(Of Issue) = GetIssues()
 
@@ -314,11 +369,13 @@ Namespace Model
 
             UpdateIssues(issues)
         End Sub
+
         Public Shared Sub DeleteIssues(ByVal ids As List(Of Long))
             Dim issues As List(Of Issue) = GetIssues()
             issues.RemoveAll(Function(i) ids.Contains(i.Id))
             UpdateIssues(issues)
         End Sub
+
         Private Shared Function GenerateContacts() As List(Of Contact)
             Dim contacts As New List(Of Contact)(
                 New Contact() {
@@ -428,13 +485,16 @@ Namespace Model
                 Return 1
             End If
         End Function
+
     End Class
+
 #End Region
 
     ' Scheduler Sample Data
 
     Public Class SchedulerLabel
         Private privateId As Long
+
         Public Property Id() As Long
             Get
                 Return privateId
@@ -443,7 +503,9 @@ Namespace Model
                 privateId = value
             End Set
         End Property
+
         Private privateName As String
+
         Public Property Name() As String
             Get
                 Return privateName
@@ -452,7 +514,9 @@ Namespace Model
                 privateName = value
             End Set
         End Property
+
         Private privateColor As System.Drawing.Color
+
         Public Property Color() As System.Drawing.Color
             Get
                 Return privateColor
@@ -461,10 +525,12 @@ Namespace Model
                 privateColor = value
             End Set
         End Property
+
     End Class
 
     Public Class SchedulerAppointment
         Private privateId As Long
+
         Public Property Id() As Long
             Get
                 Return privateId
@@ -473,7 +539,9 @@ Namespace Model
                 privateId = value
             End Set
         End Property
+
         Private privateSubject As String
+
         Public Property Subject() As String
             Get
                 Return privateSubject
@@ -482,7 +550,9 @@ Namespace Model
                 privateSubject = value
             End Set
         End Property
+
         Private privateLocation As String
+
         Public Property Location() As String
             Get
                 Return privateLocation
@@ -491,7 +561,9 @@ Namespace Model
                 privateLocation = value
             End Set
         End Property
+
         Private privateStartDate As DateTime
+
         Public Property StartDate() As DateTime
             Get
                 Return privateStartDate
@@ -500,7 +572,9 @@ Namespace Model
                 privateStartDate = value
             End Set
         End Property
+
         Private privateEndDate As DateTime
+
         Public Property EndDate() As DateTime
             Get
                 Return privateEndDate
@@ -509,7 +583,9 @@ Namespace Model
                 privateEndDate = value
             End Set
         End Property
+
         Private privateAllDay As Boolean
+
         Public Property AllDay() As Boolean
             Get
                 Return privateAllDay
@@ -518,7 +594,9 @@ Namespace Model
                 privateAllDay = value
             End Set
         End Property
+
         Private privateDescription As String
+
         Public Property Description() As String
             Get
                 Return privateDescription
@@ -527,7 +605,9 @@ Namespace Model
                 privateDescription = value
             End Set
         End Property
+
         Private privateRecurrenceInfo As String
+
         Public Property RecurrenceInfo() As String
             Get
                 Return privateRecurrenceInfo
@@ -536,7 +616,9 @@ Namespace Model
                 privateRecurrenceInfo = value
             End Set
         End Property
+
         Private privateEventType As Integer
+
         Public Property EventType() As Integer
             Get
                 Return privateEventType
@@ -545,7 +627,9 @@ Namespace Model
                 privateEventType = value
             End Set
         End Property
+
         Private privateLabelId As Long
+
         Public Property LabelId() As Long
             Get
                 Return privateLabelId
@@ -554,7 +638,9 @@ Namespace Model
                 privateLabelId = value
             End Set
         End Property
+
         Private privateStatus As Integer
+
         Public Property Status() As Integer
             Get
                 Return privateStatus
@@ -563,7 +649,9 @@ Namespace Model
                 privateStatus = value
             End Set
         End Property
+
         Private privateResourceId? As Long
+
         Public Property ResourceId() As Long?
             Get
                 Return privateResourceId
@@ -572,10 +660,12 @@ Namespace Model
                 privateResourceId = value
             End Set
         End Property
+
     End Class
 
     Public Class SchedulerResource
         Private privateId As Long
+
         Public Property Id() As Long
             Get
                 Return privateId
@@ -584,7 +674,9 @@ Namespace Model
                 privateId = value
             End Set
         End Property
+
         Private privateName As String
+
         Public Property Name() As String
             Get
                 Return privateName
@@ -593,6 +685,7 @@ Namespace Model
                 privateName = value
             End Set
         End Property
+
     End Class
 
     Public NotInheritable Class SchedulerLabelsHelper
@@ -600,6 +693,7 @@ Namespace Model
 
         Private Sub New()
         End Sub
+
         Shared Sub New()
             items = New List(Of SchedulerLabel)()
             items.Add(New SchedulerLabel With {.Id = 1, .Name = "Development", .Color = System.Drawing.Color.DarkBlue})
@@ -611,10 +705,11 @@ Namespace Model
         Public Shared Function GetItems() As List(Of SchedulerLabel)
             Return items
         End Function
+
     End Class
 
-
     Public Class AppointmentDataSourceHelper
+
         Public Sub New()
         End Sub
 
@@ -624,6 +719,7 @@ Namespace Model
             End If
             Return TryCast(HttpContext.Current.Session("SchedulerAppointments"), List(Of SchedulerAppointment))
         End Function
+
         Private Shared Sub UpdateAppointments(ByVal list As List(Of SchedulerAppointment))
             HttpContext.Current.Session("SchedulerAppointments") = list
         End Sub
@@ -729,6 +825,7 @@ Namespace Model
 
             UpdateAppointments(list)
         End Sub
+
     End Class
 
     Public NotInheritable Class ResourceDataSourceHelper
@@ -736,6 +833,7 @@ Namespace Model
 
         Private Sub New()
         End Sub
+
         Shared Sub New()
             items = New List(Of SchedulerResource)()
             items.Add(New SchedulerResource With {.Id = 1, .Name = "Calendar 1"})
@@ -758,6 +856,7 @@ Namespace Model
             End If
             Return items.Where(Function(item) ids.Contains(item.Id)).ToList()
         End Function
+
     End Class
 
 End Namespace

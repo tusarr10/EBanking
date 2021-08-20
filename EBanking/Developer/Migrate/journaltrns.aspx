@@ -23,7 +23,6 @@
             <dx:MenuItem Enabled="false">
                 <Template>
                     <h1>All User From Access DB</h1>
-
                 </Template>
             </dx:MenuItem>
             <dx:MenuItem Name="Send" Text="Send" Alignment="Right" AdaptivePriority="2" Visible="false">
@@ -56,7 +55,7 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="PageContent" runat="server">
 
-     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="card ">
         <dx:ASPxGridView ID="ASPxGridView1" runat="server" ClientInstanceName="gridView" EnablePagingGestures="False" CssClass="grid-view" Width="100%" OnCustomCallback="GridView_CustomCallback" KeyFieldName="AcNo" AutoGenerateColumns="False">
             <Columns>
@@ -99,8 +98,6 @@
         <div class="TopPadding">
             Selected count: <span id="selCount" style="font-weight: bold">0</span>
         </div>
-
-
     </div>
 
     <div class="card">
@@ -114,14 +111,10 @@
                         LoadingPanel.Show();
                     }" />--%>
                     </dx:ASPxButton>
-                   
 
                     <dx:ASPxMemo ID="ASPxMemo1" runat="server" Height="140px" ReadOnly="true" Width="100%"></dx:ASPxMemo>
                 </ContentTemplate>
-
             </asp:UpdatePanel>
-
-
         </div>
     </div>
     <dx:ASPxLoadingPanel ID="LoadingPanel" runat="server" ClientInstanceName="LoadingPanel"

@@ -54,7 +54,7 @@
 
     function onPageToolbarInit(s, e) {
         var adjustmentMethod = function() {
-            document.getElementById("pageContent").style.paddingTop = s.GetHeight() + "px"; 
+            document.getElementById("pageContent").style.paddingTop = s.GetHeight() + "px";
         };
         AddAdjustmentDelegate(adjustmentMethod);
     }

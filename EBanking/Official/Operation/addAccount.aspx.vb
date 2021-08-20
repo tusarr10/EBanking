@@ -1,5 +1,4 @@
 ﻿Imports System.Data.SqlClient
-Imports TWEB
 
 Public Class addAccount
     Inherits System.Web.UI.Page
@@ -19,8 +18,6 @@ Public Class addAccount
 
     Dim _accountid, _balance, _accountstatus, _cif, _accHolderName, _SecAccHolderName, _NominiReg, _product, _MOP, _GuardianName, _relation, _term, _value, _NominiName, _Nominirelation, _NominiDob, _NominiAddress, _today As String
 
-
-
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         userNotAdmin = False
 
@@ -30,6 +27,7 @@ Public Class addAccount
             userNotAdmin = True
         End If
     End Sub
+
     'here  Declar all field from view
     Private Sub GetDataFromView()
         'For Live Account
@@ -60,6 +58,7 @@ Public Class addAccount
         'dlt
         _today = DateAndTime.Now().ToString("yyyy-MM-dd")
     End Sub
+
     Private Sub DoTransctionAddData()
         GetDataFromView()
         Try
@@ -98,7 +97,6 @@ Public Class addAccount
                 myMsgBox.Show(Me, x)
 
                 MyMessageBox.Show(Me, "Data Saved Successfully")
-
             Catch ex As Exception
 
                 Errortb.Text = "Commit Exception Type: {0}" + ex.Message()
@@ -119,9 +117,10 @@ Public Class addAccount
 
         End Try
     End Sub
+
     Private Sub InsertDataLiveAccountDb(accountId As String)
         Try
-            AccountSearch(accountId) 'Get Data By Account Id 
+            AccountSearch(accountId) 'Get Data By Account Id
         Catch
         End Try
         If IsAccountIdExist(accountId) Then
@@ -137,6 +136,7 @@ Public Class addAccount
             End Try
         End If
     End Sub
+
     ''' <summary>
     ''' To add data In data Base
     ''' </summary>
@@ -158,7 +158,6 @@ Public Class addAccount
         ElseIf Modetb.Text = "Minor" Then
             EnablemodeofOpreation()
 
-
         End If
     End Sub
 
@@ -168,7 +167,6 @@ Public Class addAccount
             EnableNominiView()
         Else
             NominiNameInfotb.Text = Nothing
-
 
         End If
     End Sub
@@ -184,7 +182,6 @@ Public Class addAccount
         ElseIf ProductCb.Text = "SSA" Then
             Modetb.Text = "Minor"
         ElseIf ProductCb.Text = "Saving" Then
-
         Else
             Errortb.Text = "Not Yet Implement"
 
@@ -204,18 +201,16 @@ Public Class addAccount
         ElseIf Modetb.Text = "Minor" Then
             EnablemodeofOpreation()
 
-
         End If
     End Sub
 
-    Private Sub fillDataFromCifdb(ByVal AccountId As String) ' Here CIF 
+    Private Sub fillDataFromCifdb(ByVal AccountId As String) ' Here CIF
         Try
             cifsearch(AccountId)
         Catch
 
         End Try
         Try
-
 
             If CifHelper.getcif(0) = Nothing Then
                 ' ciftb.readonly = userNotAdmin
@@ -264,18 +259,17 @@ Public Class addAccount
             Else
                 CifHelper.cifupdate = False
             End If
-            'or we can 
+            'or we can
             ' status ="Approve"
             'then cifhelper.cifupdated =true
-
         Catch ex As Exception
             CifHelper.cifupdate = False
         Finally
 
         End Try
 
-
     End Sub
+
     Private Sub fillDataInView() 'For 1st Devision
         'division 1
         balanceTb.Text = getAccountBalance(row) 'Get Balance Form Database
@@ -289,6 +283,7 @@ Public Class addAccount
         Modetb.Text = getAccountAccType(row)
         Guardiantb.Text = getAccountGuardianName(row)
     End Sub
+
     Private Sub fillDataFromModeOfOperation(ByVal AccountId As String)
         Try
             AccountOperateMode(AccountId)
@@ -299,11 +294,11 @@ Public Class addAccount
             AcModetb.Text = getAccountOperateAccOperateMode(row)
             GuardianNametb.Text = getAccountOperateGuardianName(row)
             Relationtb.Text = getAccountOperateRelation(row)
-
         Catch
 
         End Try
     End Sub
+
     Private Sub fillDataFromProductInformation(ByVal AccountId As String)
         Try
             ProductType(AccountId)
@@ -314,11 +309,11 @@ Public Class addAccount
             ActypeInfotb.Text = getProductTypeType(row)
             Actermtb.Text = getProductTypeTerm(row)
             AccValuetb.Text = getProductTypeValue(row)
-
         Catch
             Errortb.Text = "producttype"
         End Try
     End Sub
+
     Private Sub fillDataFromNominiInfo(ByVal AccountId As String)
         Try
             NominiInformation(AccountId)
@@ -335,6 +330,7 @@ Public Class addAccount
             Errortb.Text = "NominiInfo"
         End Try
     End Sub
+
     Private Sub EnableInput()
         balanceTb.ReadOnly = False
 
@@ -350,33 +346,37 @@ Public Class addAccount
         nominiregcb.Enabled = True
         Button1.Enabled = True
     End Sub
+
     Private Sub EnableProductInfoView()
         Actermtb.ReadOnly = False
         AccValuetb.ReadOnly = False
     End Sub
+
     Private Sub EnableNominiView()
         NominiNameInfotb.ReadOnly = False
         NominiRelationInfotb.ReadOnly = False
         NominiAgeInfotb.ReadOnly = False
         NominiAddressInfotb.ReadOnly = False
     End Sub
+
     Private Sub EnablemodeofOpreation()
 
         Relationtb.ReadOnly = False
         Guardiantb.ReadOnly = False
     End Sub
+
     ''' <summary>
     ''' ERROR CODE EB-AddAccount-GetDataByAccountId-101
     ''' </summary>
     Private Sub GetDataByAccountId(ByVal AccountId As String)
 
         Try
-            AccountSearch(AccountId) 'Get Data By Account Id 
+            AccountSearch(AccountId) 'Get Data By Account Id
         Catch
             EnableInput()
             'Id Not Found OR Account Does Not Exist
         End Try
-        If IsAccountIdExist(AccountId) = True Then ' 
+        If IsAccountIdExist(AccountId) = True Then '
             LinkButton5.Enabled = False 'disable clicking on cif search
             Try
                 fillDataInView()
@@ -393,9 +393,6 @@ Public Class addAccount
 
                 'Division 6
                 fillDataFromNominiInfo(AccountId)
-
-
-
             Catch ex As Exception
             End Try
         Else
@@ -404,6 +401,7 @@ Public Class addAccount
             LinkButton5.Enabled = True 'enable clicking on cif search and msg id not exist and ready to open
         End If
     End Sub
+
     Protected Sub LinkButton4_Click(sender As Object, e As EventArgs) Handles LinkButton4.Click
         Dim _accountIdTb As String
         _accountIdTb = accIdTb.Text.Trim
@@ -424,7 +422,7 @@ Public Class addAccount
 
     Private Sub AccountStatusUpdate(ByVal status As String, ByVal accountId As String)
         Try
-            AccountSearch(accountId) 'Get Data By Account Id 
+            AccountSearch(accountId) 'Get Data By Account Id
         Catch
             'Id Not Found OR Account Does Not Exist
         End Try
@@ -437,7 +435,7 @@ Public Class addAccount
                 If i > 0 Then
                     replay = True ' Data Update Successfully
                 Else
-                    replay = False 'Data Not Update 
+                    replay = False 'Data Not Update
 
                 End If
                 databaseconnection.Close()
@@ -446,9 +444,9 @@ Public Class addAccount
             End Try
         End If
     End Sub
+
     Protected Sub AccountStatusApproveBtn_Click(sender As Object, e As EventArgs) Handles AccountStatusApproveBtn.Click ' Account Status Active
         If accIdTb.Text IsNot Nothing Then
-
 
             If userNotAdmin = False Then
                 Dim accountId As String = accIdTb.Text.Trim
@@ -463,9 +461,8 @@ Public Class addAccount
             MyMessageBox.Show(Me, "First View Account Details")
         End If
 
-
-
     End Sub
+
     Protected Sub AccountStatusPendingBtn_Click(sender As Object, e As EventArgs) Handles AccountStatusPendingBtn.Click
         If accIdTb.Text IsNot Nothing Then
 
@@ -483,6 +480,7 @@ Public Class addAccount
         End If
 
     End Sub
+
     Protected Sub AccountStatusFreezBtn_Click(sender As Object, e As EventArgs) Handles AccountStatusFreezBtn.Click
         If accIdTb.Text IsNot Nothing Then
 
@@ -501,4 +499,5 @@ Public Class addAccount
         End If
 
     End Sub
+
 End Class

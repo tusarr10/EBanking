@@ -12,20 +12,24 @@ Public Class dlttrns
     Dim _acNo As String
     Dim _dlt As String
     Dim _dlt1 As String
+
     ' Dim _nominireg As String
     ' Dim _acctype As String
     '  Dim _GuardianName As String
     Dim _AccountBalance As String
+
     ' Dim _nomininame As String
 
-    ' for Calculation 
+    ' for Calculation
     Dim _totaldata As String
+
     Dim _totalinsert As String
     Dim _totalSkip As String
     Dim _exist As String
     Dim y As Integer
     Dim z As Integer
     Dim n As Integer
+
     Function getCifAccessDataTable() As DataTable
         Try
             Return datasetcifdb.Tables("AccessDLT")
@@ -37,7 +41,6 @@ Public Class dlttrns
     Private Sub LoadCiffromdb()
         Try
             datasetcifdb.Tables("AccessDLT").Clear()
-
         Catch
         End Try
         Try
@@ -54,8 +57,8 @@ Public Class dlttrns
             MyMessageBox.Show(Me, "Unable to load Database Mak sure Your Data Base Upload to ....." + ex.Message)
         End Try
 
-
     End Sub
+
     Sub loaddatafromserver()
         Try
 
@@ -67,14 +70,15 @@ Public Class dlttrns
             table = getCifAccessDataTable()
             ASPxGridView1.DataSource = table
             ASPxGridView1.DataBind()
-
         Catch ex As Exception
 
         End Try
     End Sub
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         loaddatafromserver()
     End Sub
+
     Protected Sub GridView_CustomCallback(sender As Object, e As ASPxGridViewCustomCallbackEventArgs)
 
         Dim i As Integer
@@ -85,7 +89,6 @@ Public Class dlttrns
         End Try
         If e.Parameters = "view" Then
 
-
         End If
         If e.Parameters = "Send" Then
 
@@ -94,10 +97,13 @@ Public Class dlttrns
 
         End If
     End Sub
+
     Protected Sub btn1_Click(sender As Object, e As EventArgs)
         logmsg = Nothing
     End Sub
+
     Dim timeme As String = DateAndTime.Now.ToLongTimeString
+
     Private Sub DLTACCOUNTSEARCH(ByVal acNo As String)
         Try
             datasetcifdb.Tables(dlttable).Clear()
@@ -116,6 +122,7 @@ Public Class dlttrns
         databaseconnection.Close()
 
     End Sub
+
     Function IsIdExistdlt(ByVal matchingcif As String) As Boolean
 
         Dim Str, Str1 As String
@@ -135,9 +142,9 @@ Public Class dlttrns
         End While
         Return False
     End Function
+
     Private Sub InsertDataIntoSqlCIFDB(ByVal i As Integer)
         Dim x As Integer
-
 
         For x = 0 To i - 1
             _acNo = ASPxGridView1.GetSelectedFieldValues("AcNo")(x).ToString
@@ -199,7 +206,6 @@ Public Class dlttrns
                 z += 1
                 ASPxMemo1.Text = logmsg
                 UPN1.Update()
-
             Else
                 logmsg = logmsg & timeme & " : Record Not saved " & Environment.NewLine & Environment.NewLine
                 y += 1
@@ -223,7 +229,6 @@ Public Class dlttrns
                 Exit Sub
             End If
             _totaldata = i.ToString
-
         Catch ex As Exception
             Exit Sub
         End Try
@@ -242,4 +247,5 @@ Public Class dlttrns
 
         End If
     End Sub
+
 End Class

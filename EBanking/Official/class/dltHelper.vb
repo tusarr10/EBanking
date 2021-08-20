@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
 
 Module dltHelper
+
     Sub dltInformation(ByVal AccountId As String)
         Try
             datasetcifdb.Tables(dlttable).Clear()
@@ -19,6 +20,7 @@ Module dltHelper
         databaseconnection.Close()
 
     End Sub
+
     Function getDltAccountId(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(dlttable).Rows(currentrow)("accountnumber"), String)
@@ -26,6 +28,7 @@ Module dltHelper
             Return Nothing
         End Try
     End Function
+
     Function getDltAccountBalance(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(dlttable).Rows(currentrow)("accountbalance"), String)
@@ -33,6 +36,7 @@ Module dltHelper
             Return Nothing
         End Try
     End Function
+
     Function getDltdlt(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(dlttable).Rows(currentrow)("dlt"), String)
@@ -40,6 +44,7 @@ Module dltHelper
             Return Nothing
         End Try
     End Function
+
     Function getDltdlt2(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(dlttable).Rows(currentrow)("dlt2"), String)
@@ -47,4 +52,5 @@ Module dltHelper
             Return Nothing
         End Try
     End Function
+
 End Module

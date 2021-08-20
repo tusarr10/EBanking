@@ -10,7 +10,7 @@
                     "alertTextCheckboxMultiple": "* Yksi valikoima, kiitos",
                     "alertTextCheckboxe": "* Tarkistusmerkki on pakollinen"
                 },
-                "requiredInFunction": { 
+                "requiredInFunction": {
                     "func": function(field, rules, i, options){
                         return (field.val() == "test") ? true : false;
                     },
@@ -41,7 +41,7 @@
                 "future": {
                     "regex": "none",
                     "alertText": "* Päivämäärä jälkeen "
-                },	
+                },
                 "maxCheckbox": {
                     "regex": "none",
                     "alertText": "* Enintään ",
@@ -108,7 +108,6 @@
                     "alertText": "* Erikoismerkit eivät ole sallittuja"
                 }
             };
-            
         }
     };
     $.validationEngineLanguage.newLang();

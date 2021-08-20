@@ -21,7 +21,6 @@ Public Class sbtrns
     Private Sub LoadCiffromdb()
         Try
             datasetcifdb.Tables("AccessCif").Clear()
-
         Catch
         End Try
         Try
@@ -38,8 +37,8 @@ Public Class sbtrns
             MyMessageBox.Show(Me, "Unable to load Database Mak sure Your Data Base Upload to ....." + ex.Message)
         End Try
 
-
     End Sub
+
     Function getCifAccessDataTable() As DataTable
         Try
             Return datasetcifdb.Tables("AccessCif")
@@ -51,6 +50,7 @@ Public Class sbtrns
     Private Const UploadDirectory As String = "~/Developer/Data/"
     Dim resultFileUrl As String
     Dim resultFilePath As String
+
     Sub loaddatafromserver()
         Try
 
@@ -62,11 +62,11 @@ Public Class sbtrns
             table = getCifAccessDataTable()
             ASPxGridView1.DataSource = table
             ASPxGridView1.DataBind()
-
         Catch ex As Exception
 
         End Try
     End Sub
+
     Dim _acNo As String
     Dim _name As String
     Dim _cif As String
@@ -77,8 +77,9 @@ Public Class sbtrns
     Dim _AccountBalance As String
     Dim _nomininame As String
 
-    ' for Calculation 
+    ' for Calculation
     Dim _totaldata As String
+
     Dim _totalinsert As String
     Dim _totalSkip As String
     Dim _exist As String
@@ -104,7 +105,6 @@ Public Class sbtrns
                 command.CommandText = "insert into " & liveAccountTable & "(accountnumber,cif,n_ame,producttype,nominireg,acctype,guardianname,balance,status)values('" & acNo & "','" & cif & "','" & name & "','" & producttype & "','" & nominireg & "','" & acctype & "','" & guardianName & "','" & accountBalance & "','Pending')"
                 command.ExecuteNonQuery()
 
-
                 command.CommandText = "  insert into " & nominitable & " (accountnumber,nominireg,nomininame )values ('" & acNo & "','" & nominireg & "','" & nomininame & "')" 'insert into nominiinfo
                 command.ExecuteNonQuery()
 
@@ -121,8 +121,6 @@ Public Class sbtrns
                 logmsg = logmsg & timeme & " : Data Saved Successfully.. " & acNo & Environment.NewLine & Environment.NewLine
                 ASPxMemo1.Text = logmsg
                 UPN1.Update()
-
-
             Catch ex As Exception
 
                 logmsg = logmsg & timeme & " : Commit Exception Type: {0}" + ex.Message() & " Message: {0}" & Environment.NewLine
@@ -133,7 +131,7 @@ Public Class sbtrns
                     logmsg = logmsg & timeme & " : Data Not Saved " & acNo & " : " & Environment.NewLine
                     y += 1
                     ASPxMemo1.Text = logmsg
-                UPN1.Update()
+                    UPN1.Update()
                 Catch ex2 As Exception
                     logmsg = logmsg & timeme & " : Rollback Exception Type: {0}" + ex2.Message() & " Message: {0}" & Environment.NewLine
                     ASPxMemo1.Text = logmsg
@@ -150,9 +148,9 @@ Public Class sbtrns
 
         End Try
     End Sub
+
     Private Sub InsertDataIntoSqlCIFDB(ByVal i As Integer)
         Dim x As Integer
-
 
         For x = 0 To i - 1
             _acNo = ASPxGridView1.GetSelectedFieldValues("AcNo")(x).ToString
@@ -245,7 +243,6 @@ Public Class sbtrns
 
     End Sub
 
-
     Protected Sub GridView_CustomCallback(sender As Object, e As ASPxGridViewCustomCallbackEventArgs)
 
         Dim i As Integer
@@ -256,7 +253,6 @@ Public Class sbtrns
         End Try
         If e.Parameters = "view" Then
 
-
         End If
         If e.Parameters = "Send" Then
 
@@ -265,10 +261,12 @@ Public Class sbtrns
 
         End If
     End Sub
+
     Protected Sub btn1_Click(sender As Object, e As EventArgs)
         logmsg = Nothing
 
     End Sub
+
     Dim timeme As String = DateAndTime.Now.ToLongTimeString
 
     Protected Sub btn2_Click(sender As Object, e As EventArgs)
@@ -279,7 +277,6 @@ Public Class sbtrns
                 ASPxMemo1.Text = timeme & " : Select At Least 1 Row to Transfer ...."
             End If
             _totaldata = i.ToString
-
         Catch ex As Exception
             Exit Sub
         End Try
@@ -300,4 +297,5 @@ Public Class sbtrns
 
         End If
     End Sub
+
 End Class

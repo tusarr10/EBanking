@@ -1,5 +1,4 @@
 ﻿Imports System.Runtime.CompilerServices
-Imports DevExpress.Web
 
 Module DataInformation
 
@@ -18,21 +17,24 @@ Module DataInformation
 
     'Some Control
     Public GetworkingDate As String = ""
+
     Public GetofficeId As String = "12345"
     Public GetuserID As String = "6789"
 
     Public Getusername As String = "Developer"
     Public OfficeName As String = "Talita"
 
-
 End Module
 Module MyMessageBox
+
     <Extension()>
     Sub Show(ByVal Page As Page, ByVal Message As String)
         Page.ClientScript.RegisterStartupScript(Page.[GetType](), "MessageBox", "<script language='javascript'>alert('" & Message & "');</script>")
     End Sub
+
 End Module
 Module myMsgBox
+
     <Extension()>
     Sub Show(ByVal page As Page, ByVal url As String)
         Dim message As String = "Your details have been saved successfully."
@@ -44,5 +46,5 @@ Module myMsgBox
         script &= "'; }"
         page.ClientScript.RegisterStartupScript(page.GetType(), "SuccessMessage", script, True)
     End Sub
-End Module
 
+End Module

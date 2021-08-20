@@ -18,6 +18,7 @@ Module allaccountgrid
 
         databaseconnection.Close()
     End Sub
+
     Function getLiveaccountDataTable() As DataTable
         Try
             Return datasetcifdb.Tables(liveAccountTable)

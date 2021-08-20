@@ -10,7 +10,7 @@
                     "alertTextCheckboxMultiple": "* Prosím vyberte jednu možnost",
                     "alertTextCheckboxe": "* Tato položka je povinná"
                 },
-                 "requiredInFunction": { 
+                 "requiredInFunction": {
                     "func": function(field, rules, i, options){
                         return (field.val() == "test") ? true : false;
                     },
@@ -45,7 +45,7 @@
                 "future": {
                     "regex": "none",
                     "alertText": "* Datum po "
-                },	
+                },
                 "maxCheckbox": {
                     "regex": "none",
                     "alertText": "* Počet vybraných položek přesáhl limit"
@@ -153,7 +153,6 @@
                     "alertText": "* Prosím napište HELLO"
                 }
             };
-            
         }
     };
     $.validationEngineLanguage.newLang();

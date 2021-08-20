@@ -10,7 +10,7 @@
                     "alertTextCheckboxe": "* Este checkbox é obrigatório",
                     "alertTextDateRange": "* Ambas as datas do intervalo são obrigatórias"
                 },
-                "requiredInFunction": { 
+                "requiredInFunction": {
                     "func": function(field, rules, i, options){
                         return (field.val() == "test") ? true : false;
                     },
@@ -53,7 +53,7 @@
                 "future": {
                     "regex": "none",
                     "alertText": "* Data posterior a "
-                },	
+                },
                 "maxCheckbox": {
                     "regex": "none",
                     "alertText": "* Máximo de ",
@@ -146,10 +146,8 @@
                     "alertTextOK": "CPF válido"
                 }
             };
-            
         }
     };
 
     $.validationEngineLanguage.newLang();
-    
 })(jQuery);

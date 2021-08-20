@@ -1,15 +1,11 @@
-﻿Imports Microsoft.VisualBasic
-Imports System
-Imports System.Web.UI
-Imports System.Web.UI.HtmlControls
-
-Imports DevExpress.Web
+﻿Imports DevExpress.Web
 Imports TWEB.Model
 
 Public Class official
     Inherits System.Web.UI.MasterPage
 
     Private privateEnableBackButton As Boolean
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If (Not String.IsNullOrEmpty(Page.Header.Title)) Then
             Page.Header.Title &= " - "
@@ -20,6 +16,7 @@ Public Class official
 
         UpdateUserMenuItemsVisible()
     End Sub
+
     Public Property EnableBackButton() As Boolean
         Get
             Return privateEnableBackButton
@@ -28,6 +25,7 @@ Public Class official
             privateEnableBackButton = value
         End Set
     End Property
+
     Protected Sub UpdateUserMenuItemsVisible()
         Dim isAuthenticated = AuthHelper.IsAuthenticated()
         RightAreaMenu.Items.FindByName("SignInItem").Visible = Not isAuthenticated
@@ -42,8 +40,10 @@ Public Class official
             Response.Redirect("~/")
         End If
     End Sub
+
     Protected Sub ApplicationMenu_ItemDataBound(ByVal source As Object, ByVal e As MenuItemEventArgs)
         e.Item.Image.Url = String.Format("../Content/Images/{0}.svg", e.Item.Text)
         e.Item.Image.UrlSelected = String.Format("../Content/Images/{0}-white.svg", e.Item.Text)
     End Sub
+
 End Class

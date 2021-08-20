@@ -1,5 +1,4 @@
 ﻿Imports System.Data.SqlClient
-Imports Dapper
 
 Public Class operateModeRepo
     Implements IOperateMode
@@ -9,6 +8,7 @@ Public Class operateModeRepo
     Public Sub New(ByVal ConnectionString As String)
         _db = New SqlConnection(ConnectionString)
     End Sub
+
     Public Function AddOperateModeData(data As ClassOperateMode) As Boolean Implements IOperateMode.AddOperateModeData
 
     End Function
@@ -32,4 +32,5 @@ Public Class operateModeRepo
     Public Function UpdateoperateModeDate(data As ClassOperateMode) As Boolean Implements IOperateMode.UpdateoperateModeDate
         Throw New NotImplementedException()
     End Function
+
 End Class

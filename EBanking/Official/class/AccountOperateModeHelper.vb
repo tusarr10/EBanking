@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
 
 Module AccountOperateModeHelper
+
     Sub AccountOperateMode(ByVal AccountId As String)
         Try
             datasetcifdb.Tables(accountOperateTable).Clear()
@@ -19,6 +20,7 @@ Module AccountOperateModeHelper
         databaseconnection.Close()
 
     End Sub
+
     Function getAccountOperateNumber(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(accountOperateTable).Rows(currentrow)("accountnumber"), String)
@@ -26,6 +28,7 @@ Module AccountOperateModeHelper
             Return Nothing
         End Try
     End Function
+
     Function getAccountOperateAccOperateMode(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(accountOperateTable).Rows(currentrow)("accountoperatemode"), String)
@@ -33,6 +36,7 @@ Module AccountOperateModeHelper
             Return Nothing
         End Try
     End Function
+
     Function getAccountOperateGuardianName(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(accountOperateTable).Rows(currentrow)("guardianname"), String)
@@ -40,6 +44,7 @@ Module AccountOperateModeHelper
             Return Nothing
         End Try
     End Function
+
     Function getAccountOperateRelation(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(accountOperateTable).Rows(currentrow)("relation"), String)
@@ -47,4 +52,5 @@ Module AccountOperateModeHelper
             Return Nothing
         End Try
     End Function
+
 End Module

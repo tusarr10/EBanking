@@ -5,7 +5,7 @@
     <script type="text/javascript" src='<%# ResolveUrl("~/Content/GridView1.js") %>'></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="LeftPanelContent" runat="server">
-     <h3 class="leftpanel-section section-caption">Type</h3>
+    <h3 class="leftpanel-section section-caption">Type</h3>
     <dx:ASPxTreeView runat="server" ID="TableOfContentsTreeView" ClientInstanceName="tableOfContentsTreeView"
         EnableNodeTextWrapping="true" AllowSelectNode="true" Width="100%" SyncSelectionMode="None" DataSourceID="NodesDataSource" NodeLinkMode="ContentBounds">
         <Styles>
@@ -15,8 +15,6 @@
         <ClientSideEvents NodeClick="function (s, e) { HideLeftPanelIfRequired(); }" />
     </dx:ASPxTreeView>
     <asp:XmlDataSource ID="NodesDataSource" runat="server" DataFile="~/App_Data/DefaultLeft.xml" XPath="//Nodes/OperationNode/*" />
-
-
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="RightPanelContent" runat="server">
 </asp:Content>
@@ -36,7 +34,6 @@
             <dx:MenuItem Enabled="false">
                 <Template>
                     <h1>All RPLI Index Report</h1>
-
                 </Template>
             </dx:MenuItem>
             <dx:MenuItem Name="Send" Text="Send" Alignment="Right" AdaptivePriority="2" Visible="false">
@@ -66,7 +63,6 @@
         </PanelCollection>
         <ClientSideEvents Expanded="onFilterPanelExpanded" Collapsed="adjustPageControls" />
     </dx:ASPxPanel>
-
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="PageContent" runat="server">
 
@@ -75,7 +71,6 @@
         <dx:ASPxGridView ID="ASPxGridView1" runat="server" ClientInstanceName="gridView" EnablePagingGestures="False" CssClass="grid-view" Width="100%" OnCustomCallback="GridView_CustomCallback" KeyFieldName="proposalno" AutoGenerateColumns="False">
             <Columns>
                 <dx:GridViewCommandColumn ShowSelectCheckbox="True" SelectAllCheckboxMode="AllPages" VisibleIndex="0" Width="52"></dx:GridViewCommandColumn>
-
             </Columns>
 
             <SettingsBehavior AllowFocusedRow="true" AllowSelectByRowClick="true" AllowEllipsisInText="true" AllowDragDrop="false" />
@@ -128,9 +123,5 @@
         <div class="TopPadding">
             Selected count: <span id="selCount" style="font-weight: bold">0</span>
         </div>
-
-
     </div>
-
-
 </asp:Content>

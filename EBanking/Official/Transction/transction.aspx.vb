@@ -3,9 +3,8 @@
 Public Class transction
     Inherits System.Web.UI.Page
 
-
-
     Dim filterdate As String = GetworkingDate
+
     Private Sub allDataFromSbTransctiondb(dat As String)
         Try
             AllTeansctionFromSBJournal(dat)
@@ -13,18 +12,18 @@ Public Class transction
             tables = getSbJournalDataTable()
             sbjournalGridView.DataSource = tables
             sbjournalGridView.DataBind()
-
         Catch
 
         End Try
     End Sub
+
     Private Sub allDatafromJournalDB(dat As String)
         Try
             AllTeansctionFromJournal(dat)
             Dim tables As DataTable
             tables = JournalHelper.getjournalDataTable()
             journalgridview.DataSource = tables
-            journalGridView.DataBind()
+            journalgridview.DataBind()
         Catch
 
         End Try
@@ -41,6 +40,7 @@ Public Class transction
 
         End Try
     End Sub
+
     Private Sub alldatafromSSAJournalDB(dat As String)
         Try
             SSAJournalHelper.AllTeansctionFromSSAJournal(dat)
@@ -52,6 +52,7 @@ Public Class transction
 
         End Try
     End Sub
+
     Private Sub LoadDataFromServer(filterdate As String)
         allDataFromSbTransctiondb(filterdate)
         allDatafromJournalDB(filterdate)
@@ -59,6 +60,7 @@ Public Class transction
         alldatafromSSAJournalDB(filterdate)
 
     End Sub
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
         If (IsPostBack = False) Then
@@ -69,6 +71,7 @@ Public Class transction
 
         End If
     End Sub
+
     Protected Sub btnAction_Init(sender As Object, e As EventArgs)
         Dim btn = sender
         Dim container = btn.NamingContainer
@@ -86,6 +89,7 @@ Public Class transction
 
         End Try
     End Sub
+
     Private Function data(sender As Object, tablename As String)
         Dim btn As Bootstrap.BootstrapButton = sender
         Dim container As Object = btn.NamingContainer
@@ -93,6 +97,7 @@ Public Class transction
         Return container.Grid.GetRowValues(container.VisibleIndex, tablename).ToString
 
     End Function
+
     Protected Sub btnAction_Click(sender As Object, e As EventArgs) 'for sb
         Dim btn As Bootstrap.BootstrapButton = sender
         Dim container As Object = btn.NamingContainer
@@ -113,7 +118,6 @@ Public Class transction
         Catch ex As Exception
             MyMessageBox.Show(Me, "OPPS Inform Developer .")
             Exit Sub
-
         Finally
             Try
                 Response.Redirect("TransctionStatusApprove.aspx")
@@ -122,12 +126,12 @@ Public Class transction
             End Try
         End Try
 
-
-
     End Sub
+
     Protected Sub btnAction_Click2(sender As Object, e As EventArgs) 'For all transction
 
     End Sub
+
     Protected Sub btnAction_Click1(sender As Object, e As EventArgs) 'For RD
         Dim btn As Bootstrap.BootstrapButton = sender
         Dim container As Object = btn.NamingContainer
@@ -152,7 +156,6 @@ Public Class transction
         Catch ex As Exception
             MyMessageBox.Show(Me, "OPPS Inform Developer .")
             Exit Sub
-
         Finally
             Try
                 Response.Redirect("TransctionStatusApprove.aspx")
@@ -160,7 +163,6 @@ Public Class transction
 
             End Try
         End Try
-
 
     End Sub
 
@@ -188,7 +190,6 @@ Public Class transction
         Catch ex As Exception
             MyMessageBox.Show(Me, "OPPS Inform Developer .")
             Exit Sub
-
         Finally
             Try
                 Response.Redirect("TransctionStatusApprove.aspx")
@@ -242,4 +243,5 @@ Public Class transction
             MyMessageBox.Show(Me, "Enter Valid Date In  {yyyy-MM-dd} formate ")
         End Try
     End Sub
+
 End Class

@@ -3,7 +3,6 @@
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-
         'load data from module
         Try
             lbacname.Text = name
@@ -42,7 +41,6 @@
         Catch
 
         End Try
-
 
         Page.ClientScript.RegisterStartupScript(Me.GetType(), "Print", "window.print();", True)
     End Sub

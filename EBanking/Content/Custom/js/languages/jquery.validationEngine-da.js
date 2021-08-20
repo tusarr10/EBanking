@@ -10,7 +10,7 @@
                     "alertTextCheckboxMultiple": "* Vælg venligst en af mulighederne",
                     "alertTextCheckboxe": "* Dette felt er påkrævet"
                 },
-                "requiredInFunction": { 
+                "requiredInFunction": {
                     "func": function(field, rules, i, options){
                         return (field.val() == "test") ? true : false;
                     },
@@ -45,7 +45,7 @@
                 "future": {
                     "regex": "none",
                     "alertText": "* Datoen skal være efter "
-                },	
+                },
                 "maxCheckbox": {
                     "regex": "none",
                     "alertText": "* Antallet af tilladte valg er overskredet"
@@ -132,7 +132,6 @@
                     "alertText": "* Indsæt venligst HELLO"
                 }
             };
-            
         }
     };
     $.validationEngineLanguage.newLang();

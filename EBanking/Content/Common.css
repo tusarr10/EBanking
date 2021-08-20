@@ -1,24 +1,20 @@
 ﻿.uploadContainer,
-.filesContainer
-{
+.filesContainer {
     float: left;
     width: 100%;
     min-width: 288px;
 }
 
-.uploadContainer
-{
+.uploadContainer {
     max-width: 320px;
     margin-right: 80px;
 }
 
-.filesContainer
-{
+.filesContainer {
     max-width: 380px;
 }
 
-.contentFooter
-{
+.contentFooter {
     clear: both;
     padding-top: 20px;
 }

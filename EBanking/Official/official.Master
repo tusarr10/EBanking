@@ -16,18 +16,16 @@
     <link href="../Resour/fontawesome/css/all.css" rel="stylesheet" />
     <link href="../Resour/datatable/css/jquery.dataTables.min.css" rel="stylesheet" />
 
-
     <link rel="stylesheet" type="text/css" href='<%# ResolveUrl("~/Content/Content.css") %>' />
     <link href="../Content/Content.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href='<%# ResolveUrl("~/Content/Layout.css") %>' />
     <link href="../Content/Layout.css" rel="stylesheet" />
- <%--   <link rel="stylesheet" href="~/Content/Custom/css/validationEngine.jquery.css" type="text/css" />--%>
-
+    <%--   <link rel="stylesheet" href="~/Content/Custom/css/validationEngine.jquery.css" type="text/css" />--%>
 
     <asp:ContentPlaceHolder ID="Head" runat="server"></asp:ContentPlaceHolder>
     <script type="text/javascript" src='<%# ResolveUrl("~/Content/Script.js") %>'></script>
     <script src="../Content/Script.js"></script>
- <%--   <script src="~/Content/Custom/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+    <%--   <script src="~/Content/Custom/js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
     <script src="~/Content/Custom/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
     <script src="~/Content/Custom/js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>--%>
@@ -179,6 +177,5 @@
             <ClientSideEvents ControlsInitialized="onControlsInitialized" BrowserWindowResized="onBrowserWindowResized" />
         </dx:ASPxGlobalEvents>
     </form>
-
 </body>
 </html>

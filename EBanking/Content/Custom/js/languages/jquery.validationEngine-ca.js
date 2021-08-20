@@ -1,5 +1,4 @@
-﻿
-(function($){
+﻿(function($){
     $.fn.validationEngineLanguage = function(){
     };
     $.validationEngineLanguage = {
@@ -11,7 +10,7 @@
                     "alertTextCheckboxMultiple": "* Si us plau seleccioni una opció",
                     "alertTextCheckboxe": "* Aquest checkbox és obligatori"
                 },
-                "requiredInFunction": { 
+                "requiredInFunction": {
                     "func": function(field, rules, i, options){
                         return (field.val() == "test") ? true : false;
                     },
@@ -46,7 +45,7 @@
                 "future": {
                     "regex": "none",
                     "alertText": "* Data posterior a "
-                },	
+                },
                 "maxCheckbox": {
                     "regex": "none",
                     "alertText": "* S'ha excedit número d'opcions permeses"
@@ -133,9 +132,7 @@
                     "alertText": "* Si us plau, introduir HELLO"
                 }
             };
-            
         }
     };
     $.validationEngineLanguage.newLang();
 })(jQuery);
-

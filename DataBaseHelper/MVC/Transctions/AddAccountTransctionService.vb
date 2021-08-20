@@ -1,6 +1,3 @@
-﻿Imports Dapper
-Imports System.Data.SqlClient
-
-Public Class AddAccountTransctionService
+﻿Public Class AddAccountTransctionService
 
 End Class

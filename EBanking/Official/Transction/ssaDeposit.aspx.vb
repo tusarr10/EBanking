@@ -1,12 +1,13 @@
 ﻿Imports System.Data.SqlClient
+
 Public Class ssaDeposit
     Inherits System.Web.UI.Page
 
     Dim currentBalnce As Double
     Dim TransctionAmount As Double
     Dim NewBalance As Double
-    Dim fine As Double = 00
-    Dim totalDeposit As Double = 00
+    Dim fine As Double = 0
+    Dim totalDeposit As Double = 0
 
     Dim accountNumber As String
     Dim depositername As String
@@ -23,11 +24,13 @@ Public Class ssaDeposit
 
     Dim accounttype As String
     Dim dlt As String
+
     Private Sub btnFindAccountClick()
         Dim accountnumber As String
         accountnumber = accIdTb.Text.Trim
         GetDataOfAccount(accountnumber)
     End Sub
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
             GetworkingDate = DateAndTime.Now().ToString("yyyy-MM-dd")
@@ -122,18 +125,17 @@ Public Class ssaDeposit
             If CifHelper.getcifsign(0) IsNot Nothing Then
                 photosign.ImageUrl = CifHelper.getcifsign(0)
             End If
-
         Catch ex As Exception
             MyMessageBox.Show(Me, "Unable to load Cif Information")
         Finally
 
         End Try
     End Sub 'fill data in cif View
+
     Private Sub FilldataInDLT(accountnumber As String)
         Dim dlt, dlt2 As String
         Try
             dltInformation(accountnumber)
-
         Catch
             MyMessageBox.Show(Me, "NO DATA FOUND IN DLT TABLE")
             Exit Sub
@@ -149,6 +151,7 @@ Public Class ssaDeposit
         End Try
 
     End Sub 'Get Dlt information From DataBase
+
     Private Sub GetDataOfAccount(ByVal accountnumber As String)
         Try
             AccountSearch(accountnumber)
@@ -170,13 +173,13 @@ Public Class ssaDeposit
             Else
                 MyMessageBox.Show(Me, "This is not a Saving Account .This Is a " & getAccountProductType(0) & " Account")
             End If
-
         Else
             MyMessageBox.Show(Me, "Account Does not Exist ..")
 
         End If
 
     End Sub 'Get Account Information Then Insert data in view
+
     Private Sub DoCalculate()
         ''TODO Calculate
         currentBalnce = getAccountBalance(0)
@@ -196,12 +199,12 @@ Public Class ssaDeposit
             NewBalance = currentBalnce + TransctionAmount
             newbalancetb.Text = NewBalance
             totalDeposit = TransctionAmount + fine
-
         Catch
             MyMessageBox.Show(Me, "Unable to Calculate")
         End Try
 
     End Sub
+
     Private Sub GetDataFromView()
         'data validation pending...
 
@@ -226,6 +229,7 @@ Public Class ssaDeposit
         dlt = dlttb.Text
 
     End Sub
+
     Private Sub DoTransction()
         GetDataFromView()
         Try
@@ -261,16 +265,9 @@ Public Class ssaDeposit
                     MyMessageBox.Show(Me, "  Message: {0}" + ex2.Message)
                 End Try
             End Try
-
-
-
-
         Catch ex As Exception
             MyMessageBox.Show(Me, "  Message: {0}" + ex.Message)
         End Try
     End Sub
-
-
-
 
 End Class

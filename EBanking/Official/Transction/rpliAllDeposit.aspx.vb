@@ -6,6 +6,7 @@ Public Class rpliAllDeposit
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
     End Sub
+
     Protected Sub GridView_CustomCallback(sender As Object, e As ASPxGridViewCustomCallbackEventArgs)
 
         Dim i As Integer
@@ -16,7 +17,6 @@ Public Class rpliAllDeposit
         End Try
         If e.Parameters = "view" Then
 
-
         End If
         If e.Parameters = "Send" Then
 
@@ -25,6 +25,5 @@ Public Class rpliAllDeposit
 
         End If
     End Sub
-
 
 End Class

@@ -4,6 +4,7 @@ Module CifHelper
     Friend cifupdate As Boolean = False
     Friend photoPath As String
     Friend signPath As String
+
     Sub cifsearch(ByVal cif As String)
         Try
             datasetcifdb.Tables("cifdb").Clear()
@@ -42,33 +43,32 @@ Module CifHelper
         End While
         Return False
     End Function
+
     Function getcif(ByVal currentrow) As String
         Try : Return CType(datasetcifdb.Tables("cifdb").Rows(currentrow)("cif"), String)
-
-
         Catch
             Return Nothing
 
-
         End Try
     End Function
+
     Function getcifname(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables("cifdb").Rows(currentrow)("n_ame"), String)
-
         Catch
             Return Nothing
-
 
         End Try
 
     End Function
+
     Function getcifmobile(ByVal currentrow) As String
         Try : Return CType(datasetcifdb.Tables("cifdb").Rows(currentrow)("mobile"), String)
         Catch
             Return Nothing
         End Try
     End Function
+
     Function getcifemail(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables("cifdb").Rows(currentrow)("email"), String)
@@ -76,6 +76,7 @@ Module CifHelper
             Return Nothing
         End Try
     End Function
+
     Function getcifpan(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables("cifdb").Rows(currentrow)("pan"), String)
@@ -83,12 +84,14 @@ Module CifHelper
             Return Nothing
         End Try
     End Function
+
     Function getcifadhar(ByVal currentrow) As String
         Try : Return CType(datasetcifdb.Tables("cifdb").Rows(currentrow)("adhar"), String)
         Catch
             Return Nothing
         End Try
     End Function
+
     Function getcifphoto(ByVal currentrow) As String
         Try : Return CType(datasetcifdb.Tables("cifdb").Rows(currentrow)("photo"), String)
         Catch
@@ -103,6 +106,7 @@ Module CifHelper
             Return Nothing
         End Try
     End Function
+
     Function getcifaddress(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables("cifdb").Rows(currentrow)("address"), String)
@@ -110,18 +114,21 @@ Module CifHelper
             Return Nothing
         End Try
     End Function
+
     Function getcifdob(ByVal currentrow) As String
         Try : Return CType(datasetcifdb.Tables("cifdb").Rows(currentrow)("dob"), String)
         Catch
             Return Nothing
         End Try
     End Function
+
     Function getcifgender(ByVal currentrow) As String
         Try : Return CType(datasetcifdb.Tables("cifdb").Rows(currentrow)("gender"), String)
         Catch
             Return Nothing
         End Try
     End Function
+
     Function getcifStatus(ByVal currentrow) As String
         Try : Return CType(datasetcifdb.Tables("cifdb").Rows(currentrow)("status"), String)
         Catch

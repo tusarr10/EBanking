@@ -2,8 +2,6 @@
 
 Module rpliIndexHelper
 
-
-
     Public Property idrp As String
     Public Property agentidrp As String
     Public Property boidrp As String
@@ -59,6 +57,7 @@ Module rpliIndexHelper
         'indexbo = Nothing
         'usid = Nothing
     End Sub
+
     Sub searchpliindex(ByVal pno As String)
         Try
             datasetcifdb.Tables("rpliindex").Clear()
@@ -76,8 +75,10 @@ Module rpliIndexHelper
 
         databaseconnection.Close()
     End Sub
+
     Function IsProposalExist() As Boolean
 
         Return False
     End Function
+
 End Module

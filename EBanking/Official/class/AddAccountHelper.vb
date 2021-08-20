@@ -1,8 +1,10 @@
 ﻿Imports System.Data.SqlClient
+
 ''' <summary>
-''' This Is for Live Account DB 
+''' This Is for Live Account DB
 ''' </summary>
 Module AddAccountHelper
+
     Sub AccountSearch(ByVal AccountId As String)
         Try
             datasetcifdb.Tables(liveAccountTable).Clear()
@@ -21,6 +23,7 @@ Module AddAccountHelper
         databaseconnection.Close()
 
     End Sub
+
     Function IsAccountIdExist(ByVal AccountId As String) As Boolean
 
         Dim Str, Str1 As String
@@ -40,6 +43,7 @@ Module AddAccountHelper
         End While
         Return False
     End Function
+
     Function getAccountId(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(liveAccountTable).Rows(currentrow)("accountnumber"), String)
@@ -48,6 +52,7 @@ Module AddAccountHelper
         End Try
 
     End Function
+
     Function getAccountCif(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(liveAccountTable).Rows(currentrow)("cif"), String)
@@ -55,6 +60,7 @@ Module AddAccountHelper
             Return Nothing
         End Try
     End Function
+
     Function getAccountName(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(liveAccountTable).Rows(currentrow)("n_ame"), String)
@@ -62,6 +68,7 @@ Module AddAccountHelper
             Return Nothing
         End Try
     End Function
+
     Function getAccountProductType(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(liveAccountTable).Rows(currentrow)("producttype"), String)
@@ -69,6 +76,7 @@ Module AddAccountHelper
             Return Nothing
         End Try
     End Function
+
     Function getAccountNominiRegistor(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(liveAccountTable).Rows(currentrow)("nominireg"), String)
@@ -76,6 +84,7 @@ Module AddAccountHelper
             Return Nothing
         End Try
     End Function
+
     Function getAccountAccType(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(liveAccountTable).Rows(currentrow)("acctype"), String)
@@ -83,6 +92,7 @@ Module AddAccountHelper
             Return Nothing
         End Try
     End Function
+
     Function getAccountJointName(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(liveAccountTable).Rows(currentrow)("jointname"), String)
@@ -90,6 +100,7 @@ Module AddAccountHelper
             Return Nothing
         End Try
     End Function
+
     Function getAccountGuardianName(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(liveAccountTable).Rows(currentrow)("guardianname"), String)
@@ -97,6 +108,7 @@ Module AddAccountHelper
             Return Nothing
         End Try
     End Function
+
     Function getAccountBalance(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(liveAccountTable).Rows(currentrow)("balance"), String)
@@ -104,6 +116,7 @@ Module AddAccountHelper
             Return Nothing
         End Try
     End Function
+
     Function getAccountStatus(ByVal currentrow) As String
         Try
             Return CType(datasetcifdb.Tables(liveAccountTable).Rows(currentrow)("status"), String)
@@ -112,9 +125,7 @@ Module AddAccountHelper
         End Try
     End Function
 
-    ''''''For Open Account 
-
-
+    ''''''For Open Account
 
     Sub AccountNameSearch(ByVal Nmae As String)
         Try
@@ -134,13 +145,12 @@ Module AddAccountHelper
 
         dataadapter.Fill(datasetcifdb, liveAccountTable)
 
-
-
         'ShowData(currentrow)
 
         databaseconnection.Close()
 
     End Sub
+
     Function getAccountOpenDataTable() As DataTable
         Try
             Return datasetcifdb.Tables(liveAccountTable)
@@ -148,19 +158,5 @@ Module AddAccountHelper
             Return Nothing
         End Try
     End Function
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 End Module

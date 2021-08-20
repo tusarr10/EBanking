@@ -1,7 +1,4 @@
-﻿Imports System.Data.SqlClient
-Imports System.Configuration
-
-Module connectionhelper1
+﻿Module connectionhelper1
     Public databaseconnectionstring As String = ""
 
     'Public bdatareader As SqlDataReader = Nothing
@@ -19,13 +16,10 @@ Module connectionhelper1
 
     'Public currentrow As Object
 
-
     Public databasesource As String = ConfigurationSettings.AppSettings("dbsource").ToString()
 
     Public logindatasource As String = ConfigurationSettings.AppSettings("loginsource").ToString
 
     Public logindatastring As String = "server=tmedia ; database=" & logindatasource & ";user=tusar;password=tusarranjan"
-
-
 
 End Module

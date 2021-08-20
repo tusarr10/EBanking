@@ -4,7 +4,6 @@
  */
 
 ;(function() {
-
 /**
  * Block-Level Grammar
  */
@@ -767,5 +766,4 @@ if (typeof module !== 'undefined') {
 } else {
   this.marked = marked;
 }
-
 }).call(this);

@@ -3,7 +3,6 @@
 *	Do not sell or redistribute
 */
 
-
 (function($)
 {
 	// mardown parser options, do not touch
@@ -86,11 +85,9 @@
 						if(resp.data) resp= resp.data;
 				 		_this.showIssues(resp);
 				 	});
-				 	
 				});
 			},
 			loadComments : function(el){
-
 				var _this =this;
 				var issueid =$(el).attr("data-issue-id");
 				$(el).fadeOut().slideUp();
@@ -99,7 +96,7 @@
 					id:issueid,
 					action:"comments"
 				});
-				
+
 				this.callApi(options).success(function(resp, textStatus, jqXHR){
 					if(resp.data) resp= resp.data;
 			 		_this.showComments(resp, issueid);
@@ -143,7 +140,6 @@
     				return dateFormat;
 			},
 			sortDate : function (milestone1, milestone2) {
-
 				milestone1.dateTest = (milestone1.due_on) ? milestone1.due_on :  milestone1.created_at;
 				milestone2.dateTest = (milestone2.due_on) ? milestone2.due_on :  milestone2.created_at;
 
@@ -179,7 +175,7 @@
 					dataType:respType,
 					data:myoption
 				});
-			}, 
+			},
 			urls : {
 				domainName : "https://api.github.com",
 				milestones : function(){

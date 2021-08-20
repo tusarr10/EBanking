@@ -15,15 +15,12 @@
     </dx:ASPxTreeView>
 
     <asp:XmlDataSource ID="NodesDataSource" runat="server" DataFile="~/App_Data/DefaultLeft.xml" XPath="//Nodes/OperationNode/*" />
-
-
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="RightPanelContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="PageToolbar" runat="server">
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="PageContent" runat="server">
-
 
     <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
 
@@ -50,7 +47,6 @@
                     reader.readAsDataURL(input.files[0]);
                     }
                 }
-
     </script>
     <div class="container-fluid">
         <div class="row">
@@ -60,23 +56,23 @@
                         <div class="row">
                             <div class="col">
                                 <center>
-                           <h4>CIF Details</h4>
-                        </center>
+                                    <h4>CIF Details</h4>
+                                </center>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <center>
-                                    <dx:ASPxImage ID="photophoto" runat="server" ShowLoadingImage="true" Width="100px"  Border-BorderColor="#66FF33" Border-BorderStyle="Double" EmptyImage-Width="100px" ImageAlign="AbsMiddle" Height="50px" AlternateText="Photo">
-<EmptyImage Width="100px"></EmptyImage>
+                                    <dx:ASPxImage ID="photophoto" runat="server" ShowLoadingImage="true" Width="100px" Border-BorderColor="#66FF33" Border-BorderStyle="Double" EmptyImage-Width="100px" ImageAlign="AbsMiddle" Height="50px" AlternateText="Photo">
+                                        <EmptyImage Width="100px"></EmptyImage>
 
                                         <RootStyle Wrap="True">
                                         </RootStyle>
 
-<Border BorderColor="#66FF33" BorderStyle="Double"></Border>
+                                        <Border BorderColor="#66FF33" BorderStyle="Double"></Border>
                                     </dx:ASPxImage>
-                           <%--<img width="100px" src="../Resour/Images/generaluser.png" alt="Photo" />--%>
-                        </center>
+                                    <%--<img width="100px" src="../Resour/Images/generaluser.png" alt="Photo" />--%>
+                                </center>
                             </div>
                         </div>
                         <div class="row">
@@ -160,7 +156,6 @@
                                     <asp:TextBox CssClass="form-control" ID="adhartb" runat="server" placeholder="Adhar Card No"></asp:TextBox>
                                 </div>
                             </div>
-
                         </div>
 
                         <div class="row">
@@ -174,11 +169,10 @@
                         <div class="row">
                             <div class="col">
                                 <center>
-                                      <%--  <img width="100px" src="../Resour/Images/generalSign.png" alt="Signiture" />--%>
+                                    <%--  <img width="100px" src="../Resour/Images/generalSign.png" alt="Signiture" />--%>
                                     <dx:ASPxImage ID="signphoto" runat="server" ShowLoadingImage="true" Width="100px" ImageAlign="Middle" Caption="Signiture"></dx:ASPxImage>
-                                   </center>
+                                </center>
                             </div>
-
                         </div>
                         <div class="row">
                             <div class="col">
@@ -188,10 +182,9 @@
                         <div class="row">
                             <div class="col">
                                 <centre>
-                                <asp:Label ID="responselbl" runat="server" Text=""></asp:Label>
-                            </centre>
+                                    <asp:Label ID="responselbl" runat="server" Text=""></asp:Label>
+                                </centre>
                             </div>
-
                         </div>
                         <div class="row">
                             <div class="col-4 mx-auto">
@@ -215,8 +208,8 @@
                         <div class="row">
                             <div class="col">
                                 <center>
-                           <h4>Cif Pending List</h4>
-                        </center>
+                                    <h4>Cif Pending List</h4>
+                                </center>
                             </div>
                         </div>
                         <div class="row">
@@ -234,11 +227,4 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
 </asp:Content>

@@ -23,7 +23,6 @@
             <dx:MenuItem Enabled="false">
                 <Template>
                     <h1>All RD Transction From Access DB</h1>
-
                 </Template>
             </dx:MenuItem>
             <dx:MenuItem Name="Send" Text="Send" Alignment="Right" AdaptivePriority="2" Visible="false">
@@ -110,7 +109,6 @@
                     <dx:ASPxMemo ID="ASPxMemo1" runat="server" Height="140px" ReadOnly="true" Width="100%"></dx:ASPxMemo>
                 </ContentTemplate>
             </asp:UpdatePanel>
-
         </div>
     </div>
 </asp:Content>

@@ -298,7 +298,6 @@
                         this.gotToSubTree(s, e);
                 }
             }.bind(this));
-
         };
 
         this.onNavigationBreadCrumbsButtonClick = function() {
@@ -924,7 +923,7 @@
             var codeAreaPadding = 24;
             var codeElements = Array.prototype.slice.call(document.getElementsByClassName('code'), 0);
             var buttonElement = s.GetMainElement();
-            var codeElement = codeElements.filter(function(elem) { return elem.contains(buttonElement); })[0];            
+            var codeElement = codeElements.filter(function(elem) { return elem.contains(buttonElement); })[0];
 
             DXDemo.HightlightedCode.AlignCopyButton(buttonElement, codeElement);
             ASPx.Evt.AttachEventToElement(window, 'scroll', function() {

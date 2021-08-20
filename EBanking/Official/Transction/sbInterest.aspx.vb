@@ -33,11 +33,13 @@ Public Class sbInterest
 
         End Try
     End Sub
+
     Private Sub btnFindAccountClick()
         Dim accountnumber As String
         accountnumber = AcnoTb.Text.Trim
         GetDataOfAccount(accountnumber)
     End Sub
+
     Private Sub FillDataInView()
         baltb.Text = getAccountBalance(0)
         TextBox1.Text = getAccountName(0)
@@ -65,18 +67,17 @@ Public Class sbInterest
             Else
                 MyMessageBox.Show(Me, "This is not a Saving Account .This Is a " & getAccountProductType(0) & " Account")
             End If
-
         Else
             MyMessageBox.Show(Me, "Account Does not Exist ..")
 
         End If
 
-    End Sub 'Get Account Information Then 
-    Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
-        'fo rsearch account number 
-        btnFindAccountClick()
-        'after successful search 
+    End Sub 'Get Account Information Then
 
+    Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
+        'fo rsearch account number
+        btnFindAccountClick()
+        'after successful search
 
     End Sub
 
@@ -115,7 +116,7 @@ Public Class sbInterest
     End Sub
 
     ''' <summary>
-    ''' 
+    '''
     ''' </summary>
     ''' <param name="fn">As Available Balance</param>
     ''' <param name="sn"> As Transctions Amount</param>
@@ -135,6 +136,7 @@ Public Class sbInterest
             Return "00"
         End If
     End Function
+
     Private Sub DoCalculate()
         GetDataFromView()
         If _transctiontype = "Deposit" Then
@@ -148,15 +150,17 @@ Public Class sbInterest
             MyMessageBox.Show(Me, "You can not ..")
             Exit Sub
 
-
         End If
     End Sub
+
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         'for post button
         DoCalculate()
         DoTransction()
     End Sub
+
     Dim cs As String = connectionhelper.connectionstringaccount()
+
     Private Sub DoTransction()
         Dim sbjournalcmd As String = "INSERT INTO sbjournal (accountnumber, depositername, da_te, bbt, transctiontype, amount, bat, trid, status, office, u_ser, Details)
   VALUES ('" & _accountNumber & "', '" & _name & "', '" & _date & "', '" & _bbt & "', '" & _transctiontype & "', '" & _amount & "', '" & _bat & "', '" & _trid & "', '" & _status & "', '" & _office & "', '" & _user & "', '" & _details & "')"
@@ -192,11 +196,6 @@ Public Class sbInterest
             End Try
         End Try
 
-
-
-
-
-
     End Sub
 
     Protected Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
@@ -208,8 +207,6 @@ Public Class sbInterest
         MyMessageBox.Show(Me, "Success ...")
         Response.Redirect("Default.aspx")
     End Sub
-
-
 
     Protected Sub LinkButton2_Click(sender As Object, e As EventArgs) Handles LinkButton2.Click
         DoCalculate()

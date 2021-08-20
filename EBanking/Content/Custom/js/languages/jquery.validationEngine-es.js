@@ -1,5 +1,4 @@
-﻿
-(function($){
+﻿(function($){
     $.fn.validationEngineLanguage = function(){
     };
     $.validationEngineLanguage = {
@@ -11,7 +10,7 @@
                     "alertTextCheckboxMultiple": "* Por favor seleccione una opción",
                     "alertTextCheckboxe": "* Este checkbox es obligatorio"
                 },
-                "requiredInFunction": { 
+                "requiredInFunction": {
                     "func": function(field, rules, i, options){
                         return (field.val() == "test") ? true : false;
                     },
@@ -46,7 +45,7 @@
                 "future": {
                     "regex": "none",
                     "alertText": "* Fecha posterior a "
-                },	
+                },
                 "maxCheckbox": {
                     "regex": "none",
                     "alertText": "* Se ha excedido el número de opciones permitidas"
@@ -133,9 +132,7 @@
                     "alertText": "* Por favor entrar HELLO"
                 }
             };
-            
         }
     };
     $.validationEngineLanguage.newLang();
 })(jQuery);
-

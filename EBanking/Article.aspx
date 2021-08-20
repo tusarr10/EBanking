@@ -7,14 +7,14 @@
 <asp:Content ContentPlaceHolderID="LeftPanelContent" runat="server">
     <h3 class="section-caption contents-caption">Contents</h3>
 
-    <dx:ASPxTreeView runat="server" ID="TableOfContentsTreeView" ClientInstanceName="tableOfContentsTreeView"
-        EnableNodeTextWrapping="true" AllowSelectNode="true" Width="100%" SyncSelectionMode="None" DataSourceID="NodesDataSource" NodeLinkMode="ContentBounds">
-        <Styles>
-            <Elbow CssClass="tree-view-elbow" />
-            <Node CssClass="tree-view-node" HoverStyle-CssClass="hovered" />
-        </Styles>
-        <ClientSideEvents NodeClick="function (s, e) { HideLeftPanelIfRequired(); }" />
-    </dx:ASPxTreeView>
+    <dx:aspxtreeview runat="server" id="TableOfContentsTreeView" clientinstancename="tableOfContentsTreeView"
+        enablenodetextwrapping="true" allowselectnode="true" width="100%" syncselectionmode="None" datasourceid="NodesDataSource" nodelinkmode="ContentBounds">
+        <styles>
+            <elbow cssclass="tree-view-elbow" />
+            <node cssclass="tree-view-node" hoverstyle-cssclass="hovered" />
+        </styles>
+        <clientsideevents nodeclick="function (s, e) { HideLeftPanelIfRequired(); }" />
+    </dx:aspxtreeview>
 
-   <asp:XmlDataSource ID="NodesDataSource" runat="server" DataFile="~/App_Data/ArticleContents.xml" XPath="//Nodes/*" />
+    <asp:XmlDataSource ID="NodesDataSource" runat="server" DataFile="~/App_Data/ArticleContents.xml" XPath="//Nodes/*" />
 </asp:Content>

@@ -12,18 +12,14 @@
             var x = gridView.GetSelectedRowCount();
             //document.getElementById("").innerHTML = x;
             document.getElementById("selCount").innerHTML = gridView.GetSelectedRowCount();
-            
         }
         catch (err) {
-
         }
-
     }
     function adjustGridView() {
         gridView.AdjustControl();
     }
     function updateToolbarButtonsState() {
-       
         var enabled = gridView.GetSelectedRowCount() > 0;
         pageToolbar.GetItemByName("View").SetEnabled(enabled);
         pageToolbar.GetItemByName("Export").SetEnabled(enabled);
@@ -53,14 +49,12 @@
     function WithdrawSelectedRecord() {
         if (confirm('Do You Want To Transfer All Selected Document ... ')) {
             gridView.PerformCallback('SendAll');
-            
         }
     }
     function DepositSelectedRecord() {
         if (confirm('Do You Want To Transfer First Document... ')) {
             gridView.PerformCallback('Send');
            // ShowDetails();
-           
         }
     }
     function ViewSelectedRecord() {

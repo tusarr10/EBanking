@@ -9,8 +9,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="LeftPanelContent" runat="server">
 
-
-
     <h3 class="leftpanel-section section-caption">Choose</h3>
     <dx:ASPxTreeView runat="server" ID="TableOfContentsTreeView" ClientInstanceName="tableOfContentsTreeView"
         EnableNodeTextWrapping="true" AllowSelectNode="true" Width="100%" SyncSelectionMode="None" DataSourceID="NodesDataSource" NodeLinkMode="ContentBounds">
@@ -22,10 +20,6 @@
     </dx:ASPxTreeView>
 
     <asp:XmlDataSource ID="NodesDataSource" runat="server" DataFile="~/App_Data/Defaultleft.xml" XPath="//Nodes/*" />
-
-
-
-
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="RightPanelContent" runat="server">
 </asp:Content>

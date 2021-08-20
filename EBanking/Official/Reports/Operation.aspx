@@ -126,5 +126,4 @@
             <ClientSideEvents Init="onGridViewInit" SelectionChanged="onGridViewSelectionChanged" />
         </dx:ASPxGridView>
     </div>
-
 </asp:Content>

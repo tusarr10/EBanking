@@ -10,7 +10,7 @@
                     "alertTextCheckboxMultiple": "* Var god välj ett alternativ",
                     "alertTextCheckboxe": "* Den här kryssrutan måste anges"
                 },
-                "requiredInFunction": { 
+                "requiredInFunction": {
                     "func": function(field, rules, i, options){
                         return (field.val() == "test") ? true : false;
                     },
@@ -45,7 +45,7 @@
                 "future": {
                     "regex": "none",
                     "alertText": "* Datum efter "
-                },	
+                },
                 "maxCheckbox": {
                     "regex": "none",
                     "alertText": "* Maximalt ",
@@ -150,7 +150,6 @@
                     "alertText": "* Ange text HELLO"
                 }
             };
-            
         }
     };
     $.validationEngineLanguage.newLang();

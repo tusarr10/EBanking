@@ -1,7 +1,6 @@
 ﻿Imports System.Data.OleDb
 Imports System.Data.SqlClient
 Imports DevExpress.Web
-Imports Dapper
 
 Public Class CifTrns
     Inherits System.Web.UI.Page
@@ -22,7 +21,6 @@ Public Class CifTrns
     Private Sub LoadCiffromdb()
         Try
             datasetcifdb.Tables("AccessCif").Clear()
-
         Catch
         End Try
         Try
@@ -38,8 +36,8 @@ Public Class CifTrns
             MyMessageBox.Show(Me, "Unable to load Database Mak sure Your Data Base Upload to ....." + ex.Message)
         End Try
 
-
     End Sub
+
     Function getCifAccessDataTable() As DataTable
         Try
             Return datasetcifdb.Tables("AccessCif")
@@ -51,6 +49,7 @@ Public Class CifTrns
     Private Const UploadDirectory As String = "~/Developer/Data/"
     Dim resultFileUrl As String
     Dim resultFilePath As String
+
     Sub loaddatafromserver()
         Try
 
@@ -62,7 +61,6 @@ Public Class CifTrns
             table = getCifAccessDataTable()
             ASPxGridView1.DataSource = table
             ASPxGridView1.DataBind()
-
         Catch ex As Exception
 
         End Try
@@ -87,7 +85,6 @@ Public Class CifTrns
 
     Private Sub InsertDataIntoSqlCIFDB(ByVal i As Integer)
         Dim x As Integer
-
 
         For x = 0 To i - 1
             _name = ASPxGridView1.GetSelectedFieldValues("CustmorName")(x).ToString
@@ -145,7 +142,6 @@ Public Class CifTrns
                 z += 1
                 ASPxMemo1.Text = logmsg
                 UPN1.Update()
-
             Else
                 logmsg = logmsg & timeme & " : Record Not saved " & Environment.NewLine & Environment.NewLine
                 y += 1
@@ -158,7 +154,6 @@ Public Class CifTrns
         End Try
     End Sub
 
-
     Protected Sub GridView_CustomCallback(sender As Object, e As ASPxGridViewCustomCallbackEventArgs)
 
         Dim i As Integer
@@ -169,7 +164,6 @@ Public Class CifTrns
         End Try
         If e.Parameters = "view" Then
 
-
         End If
         If e.Parameters = "Send" Then
             ''  timer1.Enabled = True
@@ -177,27 +171,27 @@ Public Class CifTrns
             'InsertDataIntoSqlCIFDB()
             'timer1.Enabled = False
 
-
         End If
         If e.Parameters = "SendAll" Then
             ' InsertDataIntoSqlCIFDB(i)
         End If
     End Sub
+
     Protected Sub btn1_Click(sender As Object, e As EventArgs)
         ' logmsg = Nothing
         'InsertDataIntoSqlCIFDB()
     End Sub
+
     Dim timeme As String = DateAndTime.Now.ToLongTimeString
 
     Protected Sub btn2_Click(sender As Object, e As EventArgs)
         Dim i As Integer
         Try
             i = ASPxGridView1.Selection.Count
-            If i<1 Then
+            If i < 1 Then
                 ASPxMemo1.Text = timeme & " : Select At Least 1 Row to Transfer ...."
             End If
-                _totaldata = i.ToString
-
+            _totaldata = i.ToString
         Catch ex As Exception
             Exit Sub
         End Try
@@ -209,13 +203,14 @@ Public Class CifTrns
         InsertDataIntoSqlCIFDB(i)
 
         _totalSkip = y.ToString
-        _totalinsert = z.ToString 
+        _totalinsert = z.ToString
         _exist = n.ToString
         logmsg = logmsg & Environment.NewLine & Environment.NewLine & timeme & " :  Total Data Select = " & _totaldata & " Total Insert =  " & _totalinsert & " Total Skip = " & _totalSkip & "Total Exist = " & _exist & " ." & Environment.NewLine
         ASPxMemo1.Text = logmsg
         UPN1.Update()
-        If Iscallback Then
+        If IsCallback Then
 
         End If
     End Sub
+
 End Class

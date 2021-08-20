@@ -3,8 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" type="text/css" href='<%# ResolveUrl("~/Content/GridView.css") %>' />
     <script type="text/javascript" src='<%# ResolveUrl("~/Content/GridView1.js") %>'></script>
-
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="LeftPanelContent" runat="server">
 </asp:Content>
@@ -26,13 +24,12 @@
             <dx:MenuItem Enabled="false">
                 <Template>
                     <h1>All User From Access DB</h1>
-
                 </Template>
             </dx:MenuItem>
-            <dx:MenuItem Name="Send" Text="Send" Alignment="Right" AdaptivePriority="2" Visible="false" >
+            <dx:MenuItem Name="Send" Text="Send" Alignment="Right" AdaptivePriority="2" Visible="false">
                 <Image Url="~/Content/Images/add.svg" />
             </dx:MenuItem>
-            <dx:MenuItem Name="SendAll" Text="SendAll" Alignment="Right" AdaptivePriority="2" Visible="false" >
+            <dx:MenuItem Name="SendAll" Text="SendAll" Alignment="Right" AdaptivePriority="2" Visible="false">
                 <Image Url="~/Content/Images/edit.svg" />
             </dx:MenuItem>
             <dx:MenuItem Name="View" Text="View" Alignment="Right" AdaptivePriority="2">
@@ -56,12 +53,10 @@
         </PanelCollection>
         <ClientSideEvents Expanded="onFilterPanelExpanded" Collapsed="adjustPageControls" />
     </dx:ASPxPanel>
-
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="PageContent" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-   
-    
+
     <div class="card ">
 
         <dx:ASPxGridView ID="ASPxGridView1" runat="server" ClientInstanceName="gridView" EnablePagingGestures="False" CssClass="grid-view" Width="100%" OnCustomCallback="GridView_CustomCallback" KeyFieldName="AcNo" AutoGenerateColumns="False">
@@ -70,7 +65,6 @@
                 <dx:GridViewDataColumn FieldName="CustmorName" Name="CustmorName" Caption="Name" Width="250" VisibleIndex="2">
                     <Settings FilterMode="DisplayText"></Settings>
                 </dx:GridViewDataColumn>
-
 
                 <dx:GridViewDataDateColumn FieldName="AcNo" Name="AcNo" Caption="Account Number" VisibleIndex="1" Width="180"></dx:GridViewDataDateColumn>
 
@@ -112,8 +106,6 @@
         <div class="TopPadding">
             Selected count: <span id="selCount" style="font-weight: bold">0</span>
         </div>
-
-
     </div>
 
     <div class="card">
@@ -122,7 +114,7 @@
                 <ContentTemplate>
                     <%--    <asp:Button runat="server" ID="Button1xyz" Text="Submit" OnClick="btn2_Click" />--%>
                     <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Submit" OnClick="btn2_Click" AutoPostBack="False">
-                       <%-- <ClientSideEvents Click="function(s, e) {
+                        <%-- <ClientSideEvents Click="function(s, e) {
                         Callback.PerformCallback();
                         LoadingPanel.Show();
                     }" />--%>
@@ -131,10 +123,7 @@
 
                     <dx:ASPxMemo ID="ASPxMemo1" runat="server" Height="140px" ReadOnly="true" Width="100%"></dx:ASPxMemo>
                 </ContentTemplate>
-
             </asp:UpdatePanel>
-
-
         </div>
     </div>
     <dx:ASPxLoadingPanel ID="LoadingPanel" runat="server" ClientInstanceName="LoadingPanel"

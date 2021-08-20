@@ -20,10 +20,10 @@ Module dtrnsreportHelper
 
     End Sub
 
-
     Sub GetDtr()
 
     End Sub
+
     Function IsDtrExist(ByVal mating_string As String, ByVal matching_date As String) As Boolean
         Try
             Dim i As Integer
@@ -41,6 +41,7 @@ Module dtrnsreportHelper
             Return False
         End Try
     End Function
+
     Function getjournalDataTable() As DataTable
         Try
             Return datasetcifdb.Tables(journaltbl)
@@ -48,4 +49,5 @@ Module dtrnsreportHelper
             Return Nothing
         End Try
     End Function
+
 End Module

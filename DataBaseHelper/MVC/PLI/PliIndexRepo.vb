@@ -1,6 +1,5 @@
 ﻿Imports System.Data.SqlClient
 Imports Dapper
-Imports TWEB
 
 Public Class PliIndexRepo
     Implements IPliIndex
@@ -11,6 +10,7 @@ Public Class PliIndexRepo
         _db = New SqlConnection(connectionString)
 
     End Sub
+
     Public Function AddCustmor(custmor As ClassPliIndex) As Boolean Implements IPliIndex.AddCustmor
         Dim parm As SqlParameter() = {
         New SqlParameter("@id", custmor.id),
@@ -63,10 +63,12 @@ Public Class PliIndexRepo
         Return Me._db.Query(Of ClassPliIndex)("select * from Pli_Indexing where proposalno=@pno", New With {Key .pno = id}).FirstOrDefault
 
     End Function
+
     Public Function FindByIdNo(id As String) As ClassPliIndex Implements IPliIndex.FindByIdNo
         Return Me._db.Query(Of ClassPliIndex)("select * from Pli_Indexing where id=@pno", New With {Key .pno = id}).FirstOrDefault
 
     End Function
+
     Public Function IsProposalExist(Proposal As String) As Boolean Implements IPliIndex.IsProposalExist
         Dim x = Me._db.Query(Of ClassPliIndex)("select * from Pli_Indexing where proposalno='" & Proposal & "'").ToList().Count
         If x > 0 Then
@@ -75,6 +77,7 @@ Public Class PliIndexRepo
             Return False
         End If
     End Function
+
     Public Function GetAll() As List(Of ClassPliIndex) Implements IPliIndex.GetAll
         Return Me._db.Query(Of ClassPliIndex)("SELECT * FROM Pli_Indexing").ToList()
     End Function
@@ -124,4 +127,5 @@ Public Class PliIndexRepo
         End Try
         Return True
     End Function
+
 End Class

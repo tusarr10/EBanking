@@ -11,7 +11,7 @@
                     "alertTextCheckboxe": "* תיבת הבחירה היא חובה",
                     "alertTextDateRange": "* שני תאריכי הטווח הם חובה"
                 },
-                "requiredInFunction": { 
+                "requiredInFunction": {
                     "func": function(field, rules, i, options){
                         return (field.val() == "test") ? true : false;
                     },
@@ -56,7 +56,7 @@
                 "future": {
                     "regex": "none",
                     "alertText": "* תאריך מאוחר מ "
-                },	
+                },
                 "maxCheckbox": {
                     "regex": "none",
                     "alertText": "* מותרות לכל היותר ",
@@ -94,21 +94,21 @@
                     "regex": /^[\-\+]?((([0-9]{1,3})([,][0-9]{3})*)|([0-9]+))?([\.]([0-9]+))?$/,
                     "alertText": "* מספר בעל נקודה עשרונית לא תקין"
                 },
-                "date": {                    
+                "date": {
                     //	Check if date is valid by leap year
 			"func": function (field) {
 					var pattern = new RegExp(/^(\d{4})[\/\-\.](0?[1-9]|1[012])[\/\-\.](0?[1-9]|[12][0-9]|3[01])$/);
 					var match = pattern.exec(field.val());
 					if (match == null)
 					   return false;
-	
+
 					var year = match[1];
 					var month = match[2]*1;
-					var day = match[3]*1;					
+					var day = match[3]*1;
 					var date = new Date(year, month - 1, day); // because months starts from 0.
-	
+
 					return (date.getFullYear() == year && date.getMonth() == (month - 1) && date.getDate() == day);
-				},                		
+				},
 			 "alertText": "* תאריך לא תקין, חייב ליות בתבנית YYYY-MM-DD"
                 },
                 "ipv4": {
@@ -136,10 +136,8 @@
                     "alertText": "* אסורים תוים מיוחדים"
                 }
             };
-            
         }
     };
 
     $.validationEngineLanguage.newLang();
-    
 })(jQuery);

@@ -2,6 +2,7 @@
 
 Public Class ssaInterest
     Inherits System.Web.UI.Page
+
     Protected Sub trtype_TextChanged(sender As Object, e As EventArgs)
         If trtype.Text = "Deposit" Then
             amounttb.ReadOnly = False
@@ -19,12 +20,14 @@ Public Class ssaInterest
             MyMessageBox.Show(Me, "Choose Transction Type .. ")
         End If
     End Sub
+
     Private Sub btnFindAccountClick()
         Dim accountnumber As String
         accountnumber = AcnoTb.Text.Trim
         GetDataOfAccount(accountnumber)
-        'after successful search 
+        'after successful search
     End Sub
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If datetb.Text = Nothing Then
             datetb.Text = DateAndTime.Now().ToString("yyyy-MM-dd")
@@ -38,15 +41,18 @@ Public Class ssaInterest
 
         End Try
     End Sub
+
     Protected Sub LinkButton2_Click(sender As Object, e As EventArgs) Handles LinkButton2.Click
         DoCalculate()
     End Sub
+
     Private Sub FillDataInView()
         baltb.Text = getAccountBalance(0)
         TextBox1.Text = getAccountName(0)
         actypetb.Text = getAccountProductType(0)
 
     End Sub
+
     Private Sub GetDataOfAccount(ByVal accountnumber As String)
         Try
             AccountSearch(accountnumber)
@@ -67,17 +73,16 @@ Public Class ssaInterest
             Else
                 MyMessageBox.Show(Me, "This is not a Saving Account .This Is a " & getAccountProductType(0) & " Account")
             End If
-
         Else
             MyMessageBox.Show(Me, "Account Does not Exist ..")
 
         End If
 
     End Sub 'Get Account Information Then Insert data in view
-    Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
-        'fo rsearch account number 
-        btnFindAccountClick()
 
+    Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
+        'fo rsearch account number
+        btnFindAccountClick()
 
     End Sub
 
@@ -116,7 +121,7 @@ Public Class ssaInterest
     End Sub
 
     ''' <summary>
-    ''' 
+    '''
     ''' </summary>
     ''' <param name="fn">As Available Balance</param>
     ''' <param name="sn"> As Transctions Amount</param>
@@ -150,15 +155,17 @@ Public Class ssaInterest
             MyMessageBox.Show(Me, "You can not ..")
             Exit Sub
 
-
         End If
     End Sub
+
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         'for post button
         DoCalculate()
         DoTransction()
     End Sub
+
     Dim cs As String = connectionhelper.connectionstringaccount()
+
     Private Sub DoTransction()
 
         Dim sbjournalcmd As String = "INSERT INTO ssajournal (accountnumber, depositername, da_te, bbt, transctiontype, amount, bat, trid, status, office, u_ser, Details ,fine)
@@ -195,7 +202,6 @@ Public Class ssaInterest
             End Try
         End Try
 
-
     End Sub
 
     Protected Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
@@ -207,7 +213,5 @@ Public Class ssaInterest
         MyMessageBox.Show(Me, "Success ...")
         Response.Redirect("Default.aspx")
     End Sub
-
-
 
 End Class

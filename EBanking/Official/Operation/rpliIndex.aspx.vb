@@ -1,5 +1,4 @@
-﻿Imports System.Data.SqlClient
-Imports DataBaseHelper
+﻿Imports DataBaseHelper
 
 Public Class rpliIndex
     Inherits System.Web.UI.Page
@@ -38,12 +37,12 @@ Public Class rpliIndex
         If producttype.Text = "PLI" Then
 
         ElseIf producttype.Text = "RPLI" Then
-
         Else
 
             MyMessageBox.Show(Me, "Choose Product Type .. ")
         End If
     End Sub
+
     Protected Sub trtype_TextChanged1(sender As Object, e As EventArgs)
         If DropDownList1.Text = "Choose Product" Then
             MyMessageBox.Show(Me, "Choose Product Type .. ")
@@ -65,7 +64,6 @@ Public Class rpliIndex
 
         Custmorfiles.id = id
 
-
         boidrp = boidtb.Text.Trim
         Custmorfiles.boid = boidtb.Text.Trim
 
@@ -83,7 +81,6 @@ Public Class rpliIndex
 
         custanamerp = custnametb.Text.Trim
         Custmorfiles.CustName = custnametb.Text.Trim
-
 
         custdobrp = custdobtb.Text.Trim
         Custmorfiles.custmordob = custdobtb.Text.Trim
@@ -116,6 +113,7 @@ Public Class rpliIndex
         Custmorfiles.userid = "Tusar"
 
     End Sub 'insert data to pli transction class
+
     Sub GetAccountDataFromView()
         TranstionFiles = New classPliTransction
 
@@ -153,6 +151,7 @@ Public Class rpliIndex
         usidrp = "Tusar"
         Custmorfiles.userid = "Tusar"
     End Sub
+
     Sub insertDataaInView()
         id = Custmorfiles.id
         TextBox1.Text = id
@@ -180,10 +179,12 @@ Public Class rpliIndex
         usernametb.Text = Custmorfiles.userid 'total 21
 
     End Sub
+
     Private Function verifyData() As Boolean
-        'Data Verification 
-        Return True 'it (false) now its true  for testing 
+        'Data Verification
+        Return True 'it (false) now its true  for testing
     End Function
+
     Protected Sub ASPxButton1_Click(sender As Object, e As EventArgs) Handles ASPxButton1.Click 'insert data to new account
         log = ""
         id = DateAndTime.Now.ToString("yyMdHHmmss") & boidtb.Text
@@ -212,7 +213,6 @@ Public Class rpliIndex
             logtb.Text = log
         End If
     End Sub
-
 
     Protected Sub ASPxButton2_Click(sender As Object, e As EventArgs) 'insert transction data to db
 
@@ -256,16 +256,18 @@ Public Class rpliIndex
     Function fun(ByVal totalvalue As Double) As String
         Return (totalvalue) - (totalvalue * 100 / (100 + gstrate))
     End Function
+
     Function centreGst(ByVal x As String) As String
         Return fun(x) / 2
     End Function
+
     Function Stategst(ByVal x As String) As String
         Return fun(x) / 2
     End Function
+
     Sub getFunctionData()
         totalgst = fun(premtb.Text.Trim)
     End Sub
-
 
     Protected Sub ASPxButton3_Click(sender As Object, e As EventArgs)
         Response.Redirect(Request.Url.AbsoluteUri)
@@ -279,9 +281,8 @@ Public Class rpliIndex
             'Dim x = Custmorfiles.agentId
             insertDataaInView()
             ASPxButton1.Enabled = False
-
         Else
-            'my message = Proposal Number Not Found 
+            'my message = Proposal Number Not Found
         End If
 
     End Sub
@@ -295,9 +296,8 @@ Public Class rpliIndex
             insertDataaInView()
             ASPxButton1.Enabled = False
             ASPxButton4.Enabled = True
-
         Else
-            'my message = Proposal Number Not Found 
+            'my message = Proposal Number Not Found
             Custmorfiles = CustmorService.FindByIdNo(idno)
             'Dim x = Custmorfiles.agentId
             insertDataaInView()
@@ -349,4 +349,5 @@ Public Class rpliIndex
         End If
 
     End Function
+
 End Class

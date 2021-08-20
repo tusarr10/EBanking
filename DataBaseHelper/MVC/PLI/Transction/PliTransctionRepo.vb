@@ -1,6 +1,5 @@
 ﻿Imports System.Data.SqlClient
 Imports Dapper
-Imports TWEB
 
 Public Class PliTransctionRepo
     Implements IPliTransction
@@ -10,6 +9,7 @@ Public Class PliTransctionRepo
     Public Sub New(ByVal connectionString As String)
         _db = New SqlConnection(connectionString)
     End Sub
+
     Public Function AddTransaction(transction As classPliTransction) As Boolean Implements IPliTransction.AddTransaction
         Dim parm As SqlParameter() = {
         New SqlParameter("@id", transction.id),
@@ -50,4 +50,5 @@ Public Class PliTransctionRepo
     Public Function GetAll() As List(Of classPliTransction) Implements IPliTransction.GetAll
         Throw New NotImplementedException()
     End Function
+
 End Class

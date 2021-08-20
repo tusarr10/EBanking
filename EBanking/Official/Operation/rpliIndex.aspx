@@ -13,8 +13,6 @@
         <ClientSideEvents NodeClick="function (s, e) { HideLeftPanelIfRequired(); }" />
     </dx:ASPxTreeView>
     <asp:XmlDataSource ID="NodesDataSource" runat="server" DataFile="~/App_Data/DefaultLeft.xml" XPath="//Nodes/OperationNode/*" />
-
-
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="RightPanelContent" runat="server">
 </asp:Content>
@@ -45,7 +43,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
     <div class="card">
@@ -107,7 +104,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </dx:PanelContent>
                         </PanelCollection>
@@ -131,8 +127,6 @@
                                                 <asp:TextBox CssClass="form-control" ID="custnametb" runat="server" placeholder="Custmor Name"></asp:TextBox>
                                             </div>
                                         </div>
-
-
                                     </div>
 
                                     <div class="col-md-3">
@@ -179,7 +173,6 @@
 
         <div class="card">
 
-
             <div class="card-body ">
                 <%--  <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -224,7 +217,6 @@
                                                 <asp:ListItem Text="Quaterly" Value="Quaterly" />
                                                 <asp:ListItem Text="Half Yearly" Value="HalfYearly" />
                                                 <asp:ListItem Text="Yearly" Value="Yearly" />
-
                                             </asp:DropDownList>
                                         </div>
                                     </div>
@@ -237,19 +229,13 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
-
-
-
                                 </dx:PanelContent>
                             </PanelCollection>
                         </dx:ASPxRoundPanel>
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>
-
-
         </div>
     </div>
     <div class="row">
@@ -279,7 +265,6 @@
                                                 <asp:TextBox ID="propnotb" CssClass="form-control " placeholder=" Enter Proposal No" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
-
                                     </div>
                                     <div class="col-md-3">
                                         <label>Rec No</label>
@@ -288,7 +273,6 @@
                                                 <asp:TextBox ID="recnotb" CssClass="form-control " placeholder=" Enter Rec No" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
-
                                     </div>
 
                                     <div class="col-md-3 ">
@@ -298,7 +282,6 @@
                                                 <asp:TextBox ID="satb" CssClass="form-control " placeholder=" Enter SA In rs" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                                 <div class="row">
@@ -309,7 +292,6 @@
                                                 <asp:TextBox ID="premtb" CssClass="form-control " placeholder=" Enter Premium In rs" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
-
                                     </div>
                                     <div class="col-md-3">
                                         <label>Indexing BO</label>
@@ -327,15 +309,13 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
-
                             </dx:PanelContent>
                         </PanelCollection>
                     </dx:ASPxRoundPanel>
                     <br />
                     <div class="card-body ">
-                        
+
                         <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Next" OnClick="ASPxButton1_Click" AutoPostBack="False" Enabled="true"></dx:ASPxButton>
                          <dx:ASPxButton ID="ASPxButton4" runat="server" Text="Submit" OnClick="ASPxButton4_Click" AutoPostBack="False" Enabled="false"></dx:ASPxButton>
                         <dx:ASPxButton ID="ASPxButton2" runat="server" Text="Paid" OnClick="ASPxButton2_Click" AutoPostBack="False" Enabled="false"></dx:ASPxButton>
@@ -345,12 +325,9 @@
                     <br />
                     <div class="row ">
                         <dx:ASPxMemo ID="logtb" runat="server" Height="71px" Width="100%" ReadOnly="true"></dx:ASPxMemo>
-
                     </div>
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>
-
-
 </asp:Content>

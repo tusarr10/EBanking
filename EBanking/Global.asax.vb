@@ -1,9 +1,7 @@
-Imports System.Web.SessionState
-Imports DevExpress.Web
-
 Public Class Global_asax
     Inherits System.Web.HttpApplication
-        Sub Application_Start(ByVal sender As Object, ByVal e As EventArgs)
+
+    Sub Application_Start(ByVal sender As Object, ByVal e As EventArgs)
         AddHandler DevExpress.Web.ASPxWebControl.CallbackError, AddressOf Application_Error
     End Sub
 
@@ -30,4 +28,5 @@ Public Class Global_asax
     Sub Application_End(ByVal sender As Object, ByVal e As EventArgs)
         ' Fires when the application ends
     End Sub
+
 End Class
