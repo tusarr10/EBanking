@@ -33,10 +33,11 @@ Public Class ClassCifRepo
 
         Try
             Me._db.Query(Of ClassCif)(query, args).SingleOrDefault()
+            Return True
         Catch generatedExceptionName As Exception
             Return False
         End Try
-        Return True
+
     End Function
 
     Public Function DeleteCif(cif As String) As Boolean Implements ICif.DeleteCif

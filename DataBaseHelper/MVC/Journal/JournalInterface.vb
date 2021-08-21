@@ -31,14 +31,66 @@
 
     Function AddtoSbJournal(data As sbJournalClass) As Boolean
 
-    Function UpdateSbJournal(data As sbJournalClass) As Boolean
+    Function UpdateSbJournal(data As String, trid As String) As Boolean
 
     Function DeleteSbjournal(Trid As String) As Boolean
 
     ' For Rd Journal
+    Function getAllfromRdJournal() As List(Of rdJournalClass)
+
+    Function getByAcnoFromRdJournal(AccountNumber As String) As List(Of rdJournalClass)
+
+    Function getByTridFromRdJournal(EnterTransctionId As String) As rdJournalClass
+
+    Function getByDateFromRdJournal(EnterDate As String) As List(Of rdJournalClass)
+
+    Function IsTridExistInRdJournal(Trid As String) As Boolean
+
+    Function IsTransctionApproveInRdJournal(Trid As String) As Boolean
+
+    Function AddtordJournal(Data As rdJournalClass) As Boolean
+
+    Function UpdateRdJournal(Data As String, trid As String) As Boolean
+
+    Function DeleteFromRdJournal(Trid As String) As Boolean
 
     ' For Ssa Journal
 
+    Function getAllFromSsaJournal() As List(Of ssaJournalClass)
+
+    Function getByAcnoFromSsaJournal(AccountNumber As String) As List(Of ssaJournalClass)
+
+    Function getByTridFromSsaJournal(EnterTrid As String) As ssaJournalClass
+
+    Function getByDateFromSsaJournal(EnterDate As String) As List(Of ssaJournalClass)
+
+    Function IsTridExistInSsaJournal(Trid As String) As Boolean
+
+    Function IsTransctionApproveInSsaJournal(Trid As String) As Boolean
+
+    Function AddtoSsaJournal(Data As ssaJournalClass) As Boolean
+
+    Function UpdateToSsaJournal(Data As String, trid As String) As Boolean
+
+    Function DeleteFromSsaJournal(Trid As ssaJournalClass) As Boolean
+
     ' For Td Journal
+    Function getAllFromTdJournal() As List(Of tdJournalClass)
+
+    Function getByAcnoFromTdJournal(AccountNumber As String) As List(Of tdJournalClass)
+
+    Function getByTridFromTdJournal(EnterTrid As String) As tdJournalClass
+
+    Function getByDateFromTdJournal(EnterDate As String) As List(Of tdJournalClass)
+
+    Function IsTridExistInTdJournal(Trid As String) As Boolean
+
+    Function IsTransctionApproveInTdJournal(Trid As String) As Boolean
+
+    Function AddtoTdJournal(Data As tdJournalClass) As Boolean
+
+    Function UpdateToTdJournal(Data As tdJournalClass) As Boolean
+
+    Function DeleteFromTdJournal(Trid As tdJournalClass) As Boolean
 
 End Interface
