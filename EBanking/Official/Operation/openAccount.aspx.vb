@@ -1,13 +1,26 @@
 ﻿Imports System.Data.SqlClient
 Imports DevExpress.Web
+Imports DataBaseHelper
 
 Public Class openAccount
     Inherits System.Web.UI.Page
 
+
+    'Variable Declaration
+    Private UserData As liveAccountClass
+    Private UserDataList As List(Of liveAccountClass)
+    Private UserService As New liveAccountService(connectionstringaccount)
+
+    Private CifData As ClassCif
+    Private CifService As New ClassCifService(connectionstringaccount)
+
+    '******************End****************************
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
     End Sub
 
+
+    'Not In Use
     Function data(sender As Object, tablename As String) 'For retrive data from Table
         Dim btn As Bootstrap.BootstrapButton = sender
         Dim container As Object = btn.NamingContainer
@@ -109,30 +122,15 @@ Public Class openAccount
     Private Sub btnclickcifsearch(cif As String) ' fill cif data from database to view
 
         Try
-            CifHelper.cifsearch(cif)
-            If IsIdExist(cif) = True Then
-                Try
-                    ' do fill in box
-                    loadData()
-                    If CifHelper.cifupdate = True Then
-                        ' responselbl.Text = "Everything OK. ID Found."
-                        ' responselbl.ForeColor = Drawing.Color.Green
-                    Else
-                        ' responselbl.Text = "Incomplect Profile. ID Found."
-                        ' responselbl.ForeColor = Drawing.Color.Yellow
-                        ' clearNocif()
-                    End If
-                Catch
-
-                    ' responselbl.Text = "Id Found But Error In Getting Data(Contact DEVELOPER ERROR EB-CifUpdatefrmm-10). ID Found."
-
-                End Try
+            'check cif exist or not
+            If CifService.IsCifExist(cif) Then
+                CifData = CifService.FindById(cif)
+                loadData()
             Else
-                'responselbl.Text = "O NO. ID Not Found."
-                ' responselbl.ForeColor = Drawing.Color.Red
-                CifHelper.cifupdate = False
-                ' clearNocif()
+                cifupdate = False
+
             End If
+
         Catch ex As Exception
             ' responselbl.Text = "error" + ex.Message
         Finally
@@ -141,81 +139,81 @@ Public Class openAccount
 
     Sub loadData()
         Try
-            If CifHelper.getcif(0) = Nothing Then
+            If CifData.cif = Nothing Then
                 ' ciftb.readonly = userNotAdmin
             Else
-                ciftb.Text = CifHelper.getcif(0)
+                ciftb.Text = CifData.cif
                 '  ciftb.ReadOnly = userNotAdmin
 
             End If
-            If CifHelper.getcifname(0) IsNot Nothing Then
-                nametb.Text = CifHelper.getcifname(0)
+            If CifData.n_ame IsNot Nothing Then
+                nametb.Text = CifData.n_ame
                 '  nametb.ReadOnly = userNotAdmin
 
             End If
-            If CifHelper.getcifemail(0) IsNot Nothing Then
-                emailtb.Text = CifHelper.getcifemail(0)
+            If CifData.email IsNot Nothing Then
+                emailtb.Text = CifData.email
                 '   emailtb.ReadOnly = userNotAdmin
 
             End If
-            If CifHelper.getcifmobile(0) IsNot Nothing Then
-                mobiletb.Text = CifHelper.getcifmobile(0)
+            If CifData.mobile IsNot Nothing Then
+                mobiletb.Text = CifData.mobile
                 '  mobiletb.ReadOnly = userNotAdmin
 
             End If
-            If CifHelper.getcifpan(0) IsNot Nothing Then
-                pantb.Text = CifHelper.getcifpan(0)
+            If CifData.pan IsNot Nothing Then
+                pantb.Text = CifData.pan
                 '  pantb.ReadOnly = userNotAdmin
 
             End If
-            If CifHelper.getcifadhar(0) IsNot Nothing Then
-                adhartb.Text = CifHelper.getcifadhar(0)
+            If CifData.adhar IsNot Nothing Then
+                adhartb.Text = CifData.adhar
                 '  adhartb.ReadOnly = userNotAdmin
 
             End If
-            If CifHelper.getcifdob(0) IsNot Nothing Then
-                dobtb.Text = CifHelper.getcifdob(0)
+            If CifData.dob IsNot Nothing Then
+                dobtb.Text = CifData.dob
                 '  dobtb.ReadOnly = userNotAdmin
             End If
-            If CifHelper.getcifgender(0) IsNot Nothing Then
-                'If CifHelper.getcifgender(0) = "Male" Then
+            If CifData.gender IsNot Nothing Then
+                'If cifdata.getcifgender = "Male" Then
                 '    gendertb.SelectedIndex = 0
-                'ElseIf CifHelper.getcifgender(0) = "Female" Then
+                'ElseIf cifdata.getcifgender = "Female" Then
                 '    RadioGroup1.SelectedIndex = 1
-                'ElseIf CifHelper.getcifgender(0) = "Other" Then
+                'ElseIf cifdata.getcifgender = "Other" Then
                 '    RadioGroup1.SelectedIndex = 2
                 'End If
-                genderlb.SelectedValue = CifHelper.getcifgender(0)
+                genderlb.SelectedValue = CifData.gender
                 '  genderlb.Enabled = Not (userNotAdmin)
 
             End If
-            If CifHelper.getcifaddress(0) IsNot Nothing Then
-                addresstb.Text = CifHelper.getcifaddress(0)
+            If CifData.address IsNot Nothing Then
+                addresstb.Text = CifData.address
                 ' addresstb.ReadOnly = userNotAdmin
 
             End If
-            If CifHelper.getcifStatus(0) IsNot Nothing Then
-                CifStatustb.Text = CifHelper.getcifStatus(0)
+            If CifData.status IsNot Nothing Then
+                CifStatustb.Text = CifData.status
                 ' statustb.ReadOnly = userNotAdmin
 
             End If
-            If CifHelper.getcifphoto(0) IsNot Nothing Then
-                photophoto.ImageUrl = CifHelper.getcifphoto(0)
+            If CifData.photo IsNot Nothing Then
+                photophoto.ImageUrl = CifData.photo
                 photoPath = photophoto.ImageUrl
                 Debug.WriteLine(photophoto.ImageUrl)
 
             End If
-            If CifHelper.getcifsign(0) IsNot Nothing Then
-                signphoto.ImageUrl = CifHelper.getcifsign(0)
+            If CifData.sign IsNot Nothing Then
+                signphoto.ImageUrl = CifData.sign
                 signPath = signphoto.ImageUrl
                 Debug.WriteLine(signphoto.ImageUrl)
             End If
 
             'or we can
             ' status ="Approve"
-            'then cifhelper.cifupdated =true
+            'then cifdata.cifupdated =true
         Catch ex As Exception
-            CifHelper.cifupdate = False
+            cifupdate = False
         Finally
 
         End Try
@@ -285,7 +283,7 @@ Public Class openAccount
     End Sub
 
     Private Sub loadDataTable()
-        ASPxGridView1.DataSource = getAccountOpenDataTable()
+        ASPxGridView1.DataSource = UserDataList  'here change to class list
         ASPxGridView1.DataBind()
     End Sub
 
@@ -293,8 +291,7 @@ Public Class openAccount
         'get data from liveaccount database
         'get data from accountOpen Database
         Try
-            AddAccountHelper.AccountNameSearch(name)
-            loadDataTable()
+            UserDataList = UserService.getByName(name)
         Catch ex As Exception
 
         End Try

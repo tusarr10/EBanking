@@ -72,6 +72,8 @@
     <Compile Include="MVC\account\dltClass.vb" />
     <Compile Include="MVC\account\liveAccountClass.vb" />
     <Compile Include="MVC\account\liveAccountInterface.vb" />
+    <Compile Include="MVC\account\liveAccountRepo.vb" />
+    <Compile Include="MVC\account\liveAccountService.vb" />
     <Compile Include="MVC\account\NewAccountClass.vb" />
     <Compile Include="MVC\account\newAccountInterface.vb" />
     <Compile Include="MVC\account\NominiClass.vb" />
