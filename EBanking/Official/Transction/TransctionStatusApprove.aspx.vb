@@ -1,4 +1,6 @@
 ﻿Imports System.Data.SqlClient
+Imports DataBaseHelper
+
 
 Public Class TransctionStatusApprove
     Inherits System.Web.UI.Page
@@ -6,91 +8,280 @@ Public Class TransctionStatusApprove
     ' all Variable Declare
     Dim cs As String = connectionhelper.connectionstringaccount()
 
+    Private dataservice As New AllJournalService(connectionstringaccount)
+    Private dltservice As New dltService(connectionstringaccount)
+    Dim sbdataList As sbJournalClass
+    Dim rddataList As rdJournalClass
+    Dim ssadataList As ssaJournalClass
+    Dim dltdatalist As dltClass
+
     Dim dlt1 As String = Nothing
     Dim dlt2 As String = Nothing
     Dim updatedlt As String
     Dim updatedlt2 As String
 
+    Dim bat As String
+
+    Dim accountNumber As String
+    Dim TrId As String
+    Dim type As String
+    Dim trdate As String
+    Dim status As String
+    Dim amount As String
+
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+
+
+
         Try
-            getInfo()
+            If Request.QueryString("value") IsNot Nothing Then
+                accountNumber = Request.QueryString("value").ToString
+                TrId = Request.QueryString("value3").ToString
+                type = Request.QueryString("value2").ToString
+                trdate = Request.QueryString("value4").ToString
+                amount = Request.QueryString("value5").ToString
+                status = Request.QueryString("status").ToString
+                ' btnFindAccountClick()
+                fireQuery(type, trdate, accountNumber, TrId, status, amount)
+            Else
+                MyMessageBox.Show(Me, "Data Tempering : No Parameter Found..")
+            End If
         Catch ex As Exception
-            MyMessageBox.Show(Me, ex.Message)
+
         End Try
     End Sub
 
-    Sub getInfo()
-        If getApproveInfo.GetAccountNumber IsNot Nothing Then
-            tbacno.Text = getApproveInfo.GetAccountNumber
+    Private Sub fireQuery(type As String, trdate As String, accountNumber As String, trId As String, status As String, amount As String)
+        If type = "Saving" Then
+            sbdataList = dataservice.getBydataFromSb(trdate, accountNumber, trId, status)
+            getInfosb(sbdataList)
+
+        ElseIf type = "RD" Then
+            rddataList = dataservice.getBydataFromrd(trdate, accountNumber, trId, status)
+            getInford(rddataList)
+        ElseIf type = "SSA" Then
+            ssadataList = dataservice.getBydataFromssa(trdate, accountNumber, trId, status)
+            getInfossa(ssadataList)
+        Else
+            tbacno.Text = "Can`not Find Product Type ..."
+            Exit Sub
+
+        End If
+
+    End Sub
+
+    Sub getInfosb(ByVal data As sbJournalClass)
+
+        If data.accountnumber IsNot Nothing Then
+            tbacno.Text = data.accountnumber
         Else
             tbacno.Text = "ERROR"
 
         End If
-        If getApproveInfo.GetTrId IsNot Nothing Then
-            tbtrid.Text = getApproveInfo.GetTrId
+        If data.trid IsNot Nothing Then
+            tbtrid.Text = data.trid
         Else
             tbtrid.Text = "Error"
         End If
 
-        If getApproveInfo.GetStatus IsNot Nothing Then
-            tbstatus.Text = getApproveInfo.GetStatus
+        If data.status IsNot Nothing Then
+            tbstatus.Text = data.status
         Else
             tbstatus.Text = "ERROR"
 
         End If
-        If getApproveInfo.GetDate IsNot Nothing Then
-            tbDate.Text = getApproveInfo.GetDate
+        If data.da_te IsNot Nothing Then
+            tbDate.Text = data.da_te
         Else
             tbDate.Text = "Error"
         End If
-        If getApproveInfo.GetAcType IsNot Nothing Then
-            tbactype.Text = GetAcType
-        Else tbactype.Text = "Error"
+        If type IsNot Nothing Then
+            tbactype.Text = type
+        Else
+            tbactype.Text = "Error"
         End If
 
-        If getApproveInfo.GetBBT IsNot Nothing Then
-            tbbbt.Text = getApproveInfo.GetBBT
+        If data.bbt IsNot Nothing Then
+            tbbbt.Text = data.bbt
+
         Else
             tbbbt.Text = "ERROR"
 
         End If
-        If getApproveInfo.GetDetailsTransction IsNot Nothing Then
-            detailstb.Text = getApproveInfo.GetDetailsTransction
+        If data.Details IsNot Nothing Then
+            detailstb.Text = data.Details
         Else
             detailstb.Text = "ERROR"
 
         End If
-        If getApproveInfo.GetAmount IsNot Nothing Then
-            tbAmount.Text = getApproveInfo.GetAmount
+        If data.amount IsNot Nothing Then
+            tbAmount.Text = data.amount
         Else
             tbAmount.Text = "Error"
         End If
 
-        If getApproveInfo.GetBAT IsNot Nothing Then
-            tbbat.Text = getApproveInfo.GetBAT
+        If data.bat IsNot Nothing Then
+            tbbat.Text = data.bat
+            bat = data.bat
         Else
             tbbat.Text = "ERROR"
 
         End If
-        If getApproveInfo.GetTransctionsType IsNot Nothing Then
-            tbtrtype.Text = getApproveInfo.GetTransctionsType
+        If data.transctiontype IsNot Nothing Then
+            tbtrtype.Text = data.transctiontype
         Else
             tbtrtype.Text = "Error"
         End If
-        If getApproveInfo.GetName IsNot Nothing Then
-            tbname.Text = GetName
+        If data.depositername IsNot Nothing Then
+            tbname.Text = data.depositername
         Else tbname.Text = "Error"
         End If
 
     End Sub
+    Sub getInford(ByVal data As rdJournalClass)
 
+        If data.accountnumber IsNot Nothing Then
+            tbacno.Text = data.accountnumber
+        Else
+            tbacno.Text = "ERROR"
+
+        End If
+        If data.trid IsNot Nothing Then
+            tbtrid.Text = data.trid
+        Else
+            tbtrid.Text = "Error"
+        End If
+
+        If data.status IsNot Nothing Then
+            tbstatus.Text = data.status
+        Else
+            tbstatus.Text = "ERROR"
+
+        End If
+        If data.da_te IsNot Nothing Then
+            tbDate.Text = data.da_te
+        Else
+            tbDate.Text = "Error"
+        End If
+        If type IsNot Nothing Then
+            tbactype.Text = type
+        Else
+            tbactype.Text = "Error"
+        End If
+
+        If data.bbt IsNot Nothing Then
+            tbbbt.Text = data.bbt
+
+        Else
+            tbbbt.Text = "ERROR"
+
+        End If
+        If data.Details IsNot Nothing Then
+            detailstb.Text = data.Details
+        Else
+            detailstb.Text = "ERROR"
+
+        End If
+        If data.amount IsNot Nothing Then
+            tbAmount.Text = data.amount
+        Else
+            tbAmount.Text = "Error"
+        End If
+
+        If data.bat IsNot Nothing Then
+            tbbat.Text = data.bat
+            bat = data.bat
+        Else
+            tbbat.Text = "ERROR"
+
+        End If
+        If data.transctiontype IsNot Nothing Then
+            tbtrtype.Text = data.transctiontype
+        Else
+            tbtrtype.Text = "Error"
+        End If
+        If data.depositername IsNot Nothing Then
+            tbname.Text = data.depositername
+        Else tbname.Text = "Error"
+        End If
+
+    End Sub
+    Sub getInfossa(ByVal data As ssaJournalClass)
+
+        If data.accountnumber IsNot Nothing Then
+            tbacno.Text = data.accountnumber
+        Else
+            tbacno.Text = "ERROR"
+
+        End If
+        If data.trid IsNot Nothing Then
+            tbtrid.Text = data.trid
+        Else
+            tbtrid.Text = "Error"
+        End If
+
+        If data.status IsNot Nothing Then
+            tbstatus.Text = data.status
+        Else
+            tbstatus.Text = "ERROR"
+
+        End If
+        If data.da_te IsNot Nothing Then
+            tbDate.Text = data.da_te
+        Else
+            tbDate.Text = "Error"
+        End If
+        If type IsNot Nothing Then
+            tbactype.Text = type
+        Else
+            tbactype.Text = "Error"
+        End If
+
+        If data.bbt IsNot Nothing Then
+            tbbbt.Text = data.bbt
+
+        Else
+            tbbbt.Text = "ERROR"
+
+        End If
+        If data.Details IsNot Nothing Then
+            detailstb.Text = data.Details
+        Else
+            detailstb.Text = "ERROR"
+
+        End If
+        If data.amount IsNot Nothing Then
+            tbAmount.Text = data.amount
+        Else
+            tbAmount.Text = "Error"
+        End If
+
+        If data.bat IsNot Nothing Then
+            tbbat.Text = data.bat
+            bat = data.bat
+        Else
+            tbbat.Text = "ERROR"
+
+        End If
+        If data.transctiontype IsNot Nothing Then
+            tbtrtype.Text = data.transctiontype
+        Else
+            tbtrtype.Text = "Error"
+        End If
+        If data.depositername IsNot Nothing Then
+            tbname.Text = data.depositername
+        Else tbname.Text = "Error"
+        End If
+
+    End Sub
     Protected Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
 
     End Sub
 
     Private Sub DoSBTransction()
         Dim bal As String = Nothing
-        If GetBAT = tbbat.Text.Trim Then
+        If bat = tbbat.Text.Trim Then
             bal = tbbat.Text.Trim
         Else
             MyMessageBox.Show(Me, "Data Tempering ....!!!")
@@ -119,10 +310,10 @@ Public Class TransctionStatusApprove
 
                 'update alljournalstatus
 
-                command.CommandText = "update liveaccount set balance='" & bal & "' where accountnumber='" & getApproveInfo.GetAccountNumber & "'"
+                command.CommandText = "update liveaccount set balance='" & bal & "' where accountnumber='" & accountNumber & "'"
                 command.ExecuteNonQuery()
 
-                command.CommandText = "update dlt set dlt='" & updatedlt & "',dlt2='" & updatedlt2 & "', accountbalance='" & bal & "' where accountnumber='" & getApproveInfo.GetAccountNumber & "'"
+                command.CommandText = "update dlt set dlt='" & updatedlt & "',dlt2='" & updatedlt2 & "', accountbalance='" & bal & "' where accountnumber='" & accountNumber & "'"
                 command.ExecuteNonQuery()
 
                 transction.Commit()
@@ -146,7 +337,7 @@ Public Class TransctionStatusApprove
 
     Private Sub DoRDTransction()
         Dim bal As String = Nothing
-        If GetBAT = tbbat.Text.Trim Then
+        If bat = tbbat.Text.Trim Then
             bal = tbbat.Text.Trim
         Else
             MyMessageBox.Show(Me, "Data Tempering ....!!!")
@@ -175,10 +366,10 @@ Public Class TransctionStatusApprove
 
                 'update alljournalstatus
 
-                command.CommandText = "update liveaccount set balance='" & bal & "' where accountnumber='" & getApproveInfo.GetAccountNumber & "'"
+                command.CommandText = "update liveaccount set balance='" & bal & "' where accountnumber='" & accountNumber & "'"
                 command.ExecuteNonQuery()
 
-                command.CommandText = "update dlt set dlt='" & updatedlt & "',dlt2='" & updatedlt2 & "', accountbalance='" & bal & "' where accountnumber='" & getApproveInfo.GetAccountNumber & "'"
+                command.CommandText = "update dlt set dlt='" & updatedlt & "',dlt2='" & updatedlt2 & "', accountbalance='" & bal & "' where accountnumber='" & accountNumber & "'"
                 command.ExecuteNonQuery()
 
                 transction.Commit()
@@ -202,7 +393,7 @@ Public Class TransctionStatusApprove
 
     Private Sub DoSSaTransction()
         Dim bal As String = Nothing
-        If GetBAT = tbbat.Text.Trim Then
+        If bat = tbbat.Text.Trim Then
             bal = tbbat.Text.Trim
         Else
             MyMessageBox.Show(Me, "Data Tempering ....!!!")
@@ -231,10 +422,10 @@ Public Class TransctionStatusApprove
 
                 'update alljournalstatus
 
-                command.CommandText = "update liveaccount set balance='" & bal & "' where accountnumber='" & getApproveInfo.GetAccountNumber & "'"
+                command.CommandText = "update liveaccount set balance='" & bal & "' where accountnumber='" & accountNumber & "'"
                 command.ExecuteNonQuery()
 
-                command.CommandText = "update dlt set dlt='" & updatedlt & "',dlt2='" & updatedlt2 & "', accountbalance='" & bal & "' where accountnumber='" & getApproveInfo.GetAccountNumber & "'"
+                command.CommandText = "update dlt set dlt='" & updatedlt & "',dlt2='" & updatedlt2 & "', accountbalance='" & bal & "' where accountnumber='" & accountNumber & "'"
                 command.ExecuteNonQuery()
 
                 transction.Commit()
@@ -261,28 +452,29 @@ Public Class TransctionStatusApprove
     End Sub
 
     Private Sub GetDltFirst()
-        dltInformation(getApproveInfo.GetAccountNumber)
-        dlt1 = getDltdlt(0)
-        dlt2 = getDltdlt2(0)
-        updatedlt = getApproveInfo.GetDate
+        '  dltInformation(getApproveInfo.GetAccountNumber)
+        dltdatalist = dltservice.GetByAcno(accountNumber)
+        dlt1 = dltdatalist.dlt
+        dlt2 = dltdatalist.dlt2
+        updatedlt = trdate
         updatedlt2 = dlt1
     End Sub
 
     Protected Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
-        If getApproveInfo.GetStatus = "Pending" Then
+        If status = "Pending" Then
 
             GetDltFirst()
-            If GetAcType = "Saving" Then
+            If type = "Saving" Then
                 DoSBTransction()
-            ElseIf GetAcType = "RD" Then
+            ElseIf type = "RD" Then
                 DoRDTransction()
-            ElseIf GetAcType = "SSA" Then
+            ElseIf type = "SSA" Then
                 DoSSaTransction()
-            ElseIf GetAcType = "TD" Then
+            ElseIf type = "TD" Then
                 DoTdTransction()
             End If
         Else
-            MyMessageBox.Show(Me, "Already " & getApproveInfo.GetStatus)
+            MyMessageBox.Show(Me, "Already " & status)
         End If
     End Sub
 
@@ -325,20 +517,20 @@ Public Class TransctionStatusApprove
 
     Protected Sub btnReject_Click(sender As Object, e As EventArgs) Handles btnReject.Click
 
-        If getApproveInfo.GetStatus = "Pending" Then
+        If status = "Pending" Then
 
             GetDltFirst()
-            If GetAcType = "Saving" Then
+            If type = "Saving" Then
                 DoSBRejected()
-            ElseIf GetAcType = "RD" Then
+            ElseIf type = "RD" Then
                 DoRDRejected()
-            ElseIf GetAcType = "SSA" Then
+            ElseIf type = "SSA" Then
                 DoSSaRejected()
-            ElseIf GetAcType = "TD" Then
+            ElseIf type = "TD" Then
                 DoTdTransction()
             End If
         Else
-            MyMessageBox.Show(Me, "Already " & getApproveInfo.GetStatus)
+            MyMessageBox.Show(Me, "Already " & status)
         End If
 
     End Sub

@@ -267,7 +267,10 @@ Public Class sbDeposit
         GetDataFromView()
 
         If Len(transctiontb.Text.ToString) > 2 Then
-            DoTransction()
+            If "x" = "x" Then 'transction duplicate and status must reject
+                DoTransction()
+            End If
+
         Else
             MyMessageBox.Show(Me, "Enter Valid Transction ID")
         End If

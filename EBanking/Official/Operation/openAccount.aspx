@@ -251,7 +251,7 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <label>Refference Number</label>
+                            <label>Account Number</label>
                             <div class="form-group">
                                 <div class="input-group">
                                     <asp:TextBox CssClass="form-control" ID="acnotb" runat="server" placeholder="Account Number" ReadOnly="true"></asp:TextBox>

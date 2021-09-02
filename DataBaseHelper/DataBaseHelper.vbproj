@@ -70,12 +70,18 @@
   <ItemGroup>
     <Compile Include="MVC\account\accOperateClass.vb" />
     <Compile Include="MVC\account\dltClass.vb" />
+    <Compile Include="MVC\account\dltInterface.vb" />
     <Compile Include="MVC\account\liveAccountClass.vb" />
     <Compile Include="MVC\account\liveAccountInterface.vb" />
     <Compile Include="MVC\account\liveAccountRepo.vb" />
     <Compile Include="MVC\account\liveAccountService.vb" />
-    <Compile Include="MVC\account\NewAccountClass.vb" />
-    <Compile Include="MVC\account\newAccountInterface.vb" />
+    <Compile Include="MVC\account\newaccount\NewAccountClass.vb" />
+    <Compile Include="MVC\account\newaccount\newAccountInterface.vb" />
+    <Compile Include="MVC\account\newaccount\newAccountRepo.vb" />
+    <Compile Include="MVC\account\newaccount\newAccountService.vb" />
+    <Compile Include="MVC\account\newaccount\newAccountTransctionInterface.vb" />
+    <Compile Include="MVC\account\newaccount\newAccountTransctionRepo.vb" />
+    <Compile Include="MVC\account\newaccount\newAccountTransctionService.vb" />
     <Compile Include="MVC\account\NominiClass.vb" />
     <Compile Include="MVC\account\productClass.vb" />
     <Compile Include="MVC\cif\ClassCif.vb" />
@@ -84,6 +90,7 @@
     <Compile Include="MVC\cif\ICif.vb" />
     <Compile Include="MVC\Journal\allJournalClass.vb" />
     <Compile Include="MVC\Journal\AllJournalRepo.vb" />
+    <Compile Include="MVC\Journal\AllJournalService.vb" />
     <Compile Include="MVC\Journal\JournalInterface.vb" />
     <Compile Include="MVC\Journal\rdJournalClass.vb" />
     <Compile Include="MVC\Journal\sbJournalClass.vb" />

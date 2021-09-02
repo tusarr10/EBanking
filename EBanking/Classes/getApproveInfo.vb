@@ -1,17 +1,17 @@
-﻿Module getApproveInfo
-    Public Property GetAccountNumber As String
-    Public Property GetAcType As String
-    Public Property GetName As String
-    Public Property GetTrId As String
-    Public Property GetAmount As String
-    Public Property GetBBT As String
-    Public Property GetBAT As String
-    Public Property GetStatus As String
-    Public Property GetDate As String
-    Public Property GetTransctionsType As String
-    Public Property GetDetailsTransction As String
+﻿'Module getApproveInfo
+'    Public Property GetAccountNumber As String
+'    Public Property GetAcType As String
+'    Public Property GetName As String
+'    Public Property GetTrId As String
+'    Public Property GetAmount As String
+'    Public Property GetBBT As String
+'    Public Property GetBAT As String
+'    Public Property GetStatus As String
+'    Public Property GetDate As String
+'    Public Property GetTransctionsType As String
+'    Public Property GetDetailsTransction As String
 
-End Module
+'End Module
 Module getAccountData
     Public Property VertualId As String
     Public Property cif As String

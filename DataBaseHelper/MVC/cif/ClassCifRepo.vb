@@ -47,7 +47,6 @@ Public Class ClassCifRepo
 
     Public Function FindById(cif As String) As ClassCif Implements ICif.FindById
         Return Me._db.Query(Of ClassCif)("select * from cifdb where cif=@cif", New With {Key .cif = cif}).FirstOrDefault()
-
     End Function
 
     Public Function IsCifExist(cif As String) As Boolean Implements ICif.IsCifExist
@@ -95,4 +94,26 @@ Public Class ClassCifRepo
         Return True
     End Function
 
+    Public Function UpdateStatus(status As String, id As String) As Boolean Implements ICif.UpdateStatus
+        Dim parm As SqlParameter() = {
+            New SqlParameter("@cif", id),
+            New SqlParameter("@status", status)
+            }
+        Dim query As String = "update cifdb set status=@status where cif = @cif"
+
+        '  Dim query As String = " UPDATE Customer SET CompanyName = @CompanyName,Address = @Address, " + " City = @City,State = @State,IntroDate = @IntroDate,CreditLimit = @CreditLimit" + " WHERE CustomerID = @CustomerID"
+
+        Dim args = New DynamicParameters()
+        For Each p As SqlParameter In parm
+            args.Add(p.ParameterName, p.Value)
+        Next
+
+        Try
+            Me._db.Execute(query, args)
+        Catch generatedExceptionName As Exception
+            Return False
+        End Try
+
+        Return True
+    End Function
 End Class

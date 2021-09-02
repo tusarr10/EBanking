@@ -1,53 +1,69 @@
 ﻿Imports DevExpress.Web
-
+Imports DataBaseHelper
 Public Class transction
     Inherits System.Web.UI.Page
 
     Dim filterdate As String = GetworkingDate
 
+    Private transctionService As New AllJournalService(connectionstringaccount)
+
     Private Sub allDataFromSbTransctiondb(dat As String)
+
         Try
-            AllTeansctionFromSBJournal(dat)
-            Dim tables As DataTable
-            tables = getSbJournalDataTable()
-            sbjournalGridView.DataSource = tables
-            sbjournalGridView.DataBind()
-        Catch
+            If dat IsNot "" Then
+                sbjournalGridView.DataSource = transctionService.getByDateFromSb(dat)
+                sbjournalGridView.DataBind()
+            Else
+                sbjournalGridView.DataSource = transctionService.GetAllFromSb()
+                sbjournalGridView.DataBind()
+            End If
+        Catch ex As Exception
 
         End Try
     End Sub
 
     Private Sub allDatafromJournalDB(dat As String)
+
         Try
-            AllTeansctionFromJournal(dat)
-            Dim tables As DataTable
-            tables = JournalHelper.getjournalDataTable()
-            journalgridview.DataSource = tables
-            journalgridview.DataBind()
-        Catch
+            If dat IsNot "" Then
+                journalgridview.DataSource = transctionService.getByDateFromJournal(dat)
+                journalgridview.DataBind()
+            Else
+                journalgridview.DataSource = transctionService.GetAll()
+                journalgridview.DataBind()
+            End If
+        Catch ex As Exception
 
         End Try
     End Sub
 
     Private Sub allDatafromRDTransctionDB(dat As String)
+
         Try
-            RdJournalHelper.AllTeansctionFromRDJournal(dat)
-            Dim tables As DataTable
-            tables = getRDJournalDataTable()
-            RdJournalGridView.DataSource = tables
-            RdJournalGridView.DataBind()
+            If dat IsNot "" Then
+                RdJournalGridView.DataSource = transctionService.getByDateFromRd(dat)
+                RdJournalGridView.DataBind()
+            Else
+                RdJournalGridView.DataSource = transctionService.GetAllfromRd()
+                RdJournalGridView.DataBind()
+            End If
+
         Catch ex As Exception
 
         End Try
     End Sub
 
     Private Sub alldatafromSSAJournalDB(dat As String)
+
         Try
-            SSAJournalHelper.AllTeansctionFromSSAJournal(dat)
-            Dim tables As DataTable
-            tables = getSSAJournalDataTable()
-            ssaJournalGridView.DataSource = tables
-            ssaJournalGridView.DataBind()
+            If dat IsNot "" Then
+                ssaJournalGridView.DataSource = transctionService.getByDateFromSsa(dat)
+                ssaJournalGridView.DataBind()
+            Else
+                ssaJournalGridView.DataSource = transctionService.getAllFromSSA()
+                ssaJournalGridView.DataBind()
+            End If
+
         Catch ex As Exception
 
         End Try
@@ -71,24 +87,32 @@ Public Class transction
 
         End If
     End Sub
-
-    Protected Sub btnAction_Init(sender As Object, e As EventArgs)
-        Dim btn = sender
-        Dim container = btn.NamingContainer
-        Dim value As String = container.Grid.GetRowValues(container.VisibleIndex, "accountnumber").ToString
-        getApproveInfo.GetAccountNumber = value
-
-        Dim value2 As String = container.Grid.GetRowValues(container.VisibleIndex, "trid").ToString
-        getApproveInfo.GetTrId = value2
-
-        Dim value3 As String = container.Grid.GetRowValues(container.visibleIndex, "accounttype").ToString
-
-        Try
-            Response.Redirect("TransctionStatusApprove.aspx")
-        Catch ex As Exception
-
-        End Try
+    Sub redirect(url As String, accountnumber As String)
+        Dim TARGET_URL As String = url
+        If Page.IsCallback Then
+            DevExpress.Web.ASPxWebControl.RedirectOnCallback(TARGET_URL + "?value=" + accountnumber)
+        Else
+            Response.Redirect(TARGET_URL + "?value=" + accountnumber)
+        End If
     End Sub
+
+    'Protected Sub btnAction_Init(sender As Object, e As EventArgs)
+    '    Dim btn = sender
+    '    Dim container = btn.NamingContainer
+    '    Dim value As String = container.Grid.GetRowValues(container.VisibleIndex, "accountnumber").ToString
+    '    getApproveInfo.GetAccountNumber = value
+
+    '    Dim value2 As String = container.Grid.GetRowValues(container.VisibleIndex, "trid").ToString
+    '    getApproveInfo.GetTrId = value2
+
+    '    Dim value3 As String = container.Grid.GetRowValues(container.visibleIndex, "accounttype").ToString
+
+    '    Try
+    '        Response.Redirect("TransctionStatusApprove.aspx")
+    '    Catch ex As Exception
+
+    '    End Try
+    'End Sub
 
     Private Function data(sender As Object, tablename As String)
         Dim btn As Bootstrap.BootstrapButton = sender
@@ -101,30 +125,38 @@ Public Class transction
     Protected Sub btnAction_Click(sender As Object, e As EventArgs) 'for sb
         Dim btn As Bootstrap.BootstrapButton = sender
         Dim container As Object = btn.NamingContainer
+        Dim value As String = ""
+        Dim value2 As String = ""
+        Dim aunt As String = ""
+        Dim etDate As String = ""
+        Dim stus As String = ""
         Try
-            Dim value As String = container.Grid.GetRowValues(container.VisibleIndex, "accountnumber").ToString
-            getApproveInfo.GetAccountNumber = value
-            Dim value2 As String = container.Grid.GetRowValues(container.VisibleIndex, "trid").ToString
-            getApproveInfo.GetTrId = value2
-            getApproveInfo.GetAcType = "Saving"
-            getApproveInfo.GetName = container.Grid.GetRowValues(container.VisibleIndex, "depositername").ToString
-            getApproveInfo.GetAmount = data(sender, "amount")
-            getApproveInfo.GetBAT = data(sender, "bat")
-            getApproveInfo.GetDate = data(sender, "da_te")
-            getApproveInfo.GetBBT = data(sender, "bbt")
-            getApproveInfo.GetStatus = data(sender, "status")
-            getApproveInfo.GetDetailsTransction = data(sender, "Details")
-            getApproveInfo.GetTransctionsType = data(sender, "transctiontype")
+            value = container.Grid.GetRowValues(container.VisibleIndex, "accountnumber").ToString
+            '  value = sbjournalGridView.GetSelectedFieldValues("accountnumber")(container.VisibleIndex).ToString
+            '  value = sbjournalGridView.Columns.Item("accountnumber").ToString
+            '  value = sbjournalGridView.GetRowValues("accountnumber").ToString
+            value2 = container.Grid.GetRowValues(container.VisibleIndex, "trid").ToString
+            'getApproveInfo.GetTrId = value2
+            'getApproveInfo.GetAcType = "Saving"
+            'getApproveInfo.GetName = container.Grid.GetRowValues(container.VisibleIndex, "depositername").ToString
+            aunt = data(sender, "amount")
+            'getApproveInfo.GetBAT = data(sender, "bat")
+            etDate = data(sender, "da_te")
+            'getApproveInfo.GetBBT = data(sender, "bbt")
+            stus = data(sender, "status")
+            'getApproveInfo.GetDetailsTransction = data(sender, "Details")
+            'getApproveInfo.GetTransctionsType = data(sender, "transctiontype")
+
         Catch ex As Exception
             MyMessageBox.Show(Me, "OPPS Inform Developer .")
             Exit Sub
         Finally
-            Try
-                Response.Redirect("TransctionStatusApprove.aspx")
-            Catch ex As Exception
-
-            End Try
+            If value IsNot "" Then
+                '   Response.Redirect("TransctionStatusApprove.aspx")
+                redirect("TransctionStatusApprove.aspx", value + "&value2=" + "Saving" + "&value3=" + value2 + "&value4=" + etDate + "&Value5=" + aunt + "&status=" + stus)
+            End If
         End Try
+
 
     End Sub
 
@@ -135,30 +167,37 @@ Public Class transction
     Protected Sub btnAction_Click1(sender As Object, e As EventArgs) 'For RD
         Dim btn As Bootstrap.BootstrapButton = sender
         Dim container As Object = btn.NamingContainer
+        Dim value As String = ""
+        Dim value2 As String = ""
+        Dim aunt As String = ""
+        Dim etDate As String = ""
+        Dim stus As String = ""
         Try
-            Dim value As String = container.Grid.GetRowValues(container.VisibleIndex, "accountnumber").ToString
-            getApproveInfo.GetAccountNumber = value
-            Dim value2 As String = container.Grid.GetRowValues(container.VisibleIndex, "trid").ToString
-            getApproveInfo.GetTrId = value2
-            getApproveInfo.GetAcType = "RD"
-            getApproveInfo.GetName = container.Grid.GetRowValues(container.VisibleIndex, "depositername").ToString
+            value = container.Grid.GetRowValues(container.VisibleIndex, "accountnumber").ToString
+            ' getApproveInfo.GetAccountNumber = value
+            value2 = container.Grid.GetRowValues(container.VisibleIndex, "trid").ToString
+            'getApproveInfo.GetTrId = value2
+            'getApproveInfo.GetAcType = "RD"
+            'getApproveInfo.GetName = container.Grid.GetRowValues(container.VisibleIndex, "depositername").ToString
             Dim x As Double = data(sender, "amount")
             Dim y As Double = data(sender, "fine")
 
-            getApproveInfo.GetAmount = x + y 'data(sender, "amount")
+            aunt = x + y 'data(sender, "amount")
 
-            getApproveInfo.GetBAT = data(sender, "bat")
-            getApproveInfo.GetDate = data(sender, "da_te")
-            getApproveInfo.GetBBT = data(sender, "bbt")
-            getApproveInfo.GetStatus = data(sender, "status")
-            getApproveInfo.GetDetailsTransction = data(sender, "Details")
-            getApproveInfo.GetTransctionsType = data(sender, "transctiontype")
+            'getApproveInfo.GetBAT = data(sender, "bat")
+            etDate = data(sender, "da_te")
+            stus = data(sender, "status")
+            'getApproveInfo.GetDetailsTransction = data(sender, "Details")
+            'getApproveInfo.GetTransctionsType = data(sender, "transctiontype")
         Catch ex As Exception
             MyMessageBox.Show(Me, "OPPS Inform Developer .")
             Exit Sub
         Finally
             Try
-                Response.Redirect("TransctionStatusApprove.aspx")
+                If value IsNot "" Then
+                    '   Response.Redirect("TransctionStatusApprove.aspx")
+                    redirect("TransctionStatusApprove.aspx", value + "&value2=" + "RD" + "&value3=" + value2 + "&value4=" + etDate + "&Value5=" + aunt + "&status=" + stus)
+                End If
             Catch ex As Exception
 
             End Try
@@ -169,30 +208,38 @@ Public Class transction
     Protected Sub btnAction_Click3(sender As Object, e As EventArgs)
         Dim btn As Bootstrap.BootstrapButton = sender
         Dim container As Object = btn.NamingContainer
+        Dim value As String = ""
+        Dim value2 As String = ""
+        Dim aunt As String = ""
+        Dim etDate As String = ""
+        Dim stus As String = ""
         Try
-            Dim value As String = container.Grid.GetRowValues(container.VisibleIndex, "accountnumber").ToString
-            getApproveInfo.GetAccountNumber = value
-            Dim value2 As String = container.Grid.GetRowValues(container.VisibleIndex, "trid").ToString
-            getApproveInfo.GetTrId = value2
-            getApproveInfo.GetAcType = "SSA"
-            getApproveInfo.GetName = container.Grid.GetRowValues(container.VisibleIndex, "depositername").ToString
+            value = container.Grid.GetRowValues(container.VisibleIndex, "accountnumber").ToString
+            ' getApproveInfo.GetAccountNumber = value
+            value2 = container.Grid.GetRowValues(container.VisibleIndex, "trid").ToString
+            'getApproveInfo.GetTrId = value2
+            'getApproveInfo.GetAcType = "SSA"
+            'getApproveInfo.GetName = container.Grid.GetRowValues(container.VisibleIndex, "depositername").ToString
             Dim x As Double = data(sender, "amount")
             Dim y As Double = data(sender, "fine")
 
-            getApproveInfo.GetAmount = x + y 'data(sender, "amount")
+            aunt = x + y 'data(sender, "amount")
 
-            getApproveInfo.GetBAT = data(sender, "bat")
-            getApproveInfo.GetDate = data(sender, "da_te")
-            getApproveInfo.GetBBT = data(sender, "bbt")
-            getApproveInfo.GetStatus = data(sender, "status")
-            getApproveInfo.GetDetailsTransction = data(sender, "Details")
-            getApproveInfo.GetTransctionsType = data(sender, "transctiontype")
+            'getApproveInfo.GetBAT = data(sender, "bat")
+            etDate = data(sender, "da_te")
+            'getApproveInfo.GetBBT = data(sender, "bbt")
+            stus = data(sender, "status")
+            'getApproveInfo.GetDetailsTransction = data(sender, "Details")
+            'getApproveInfo.GetTransctionsType = data(sender, "transctiontype")
         Catch ex As Exception
             MyMessageBox.Show(Me, "OPPS Inform Developer .")
             Exit Sub
         Finally
             Try
-                Response.Redirect("TransctionStatusApprove.aspx")
+                If value IsNot "" Then
+                    '   Response.Redirect("TransctionStatusApprove.aspx")
+                    redirect("TransctionStatusApprove.aspx", value + "&value2=" + "SSA" + "&value3=" + value2 + "&value4=" + etDate + "&Value5=" + aunt + "&status=" + stus)
+                End If
             Catch ex As Exception
 
             End Try

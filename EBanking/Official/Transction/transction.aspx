@@ -58,6 +58,7 @@
                         <dx:BootstrapButton ID="BootstrapButton1" runat="server" AutoPostBack="false" Text="Verify All"></dx:BootstrapButton>
                     </div>--%>
                     <div class="col">
+                        
                         <dx:ASPxGridView ID="journalgridview" CssClass="grid-view" OnInit="journalgridview_Init" runat="server" AutoGenerateColumns="False" KeyFieldName="accountnumber" Width="100%">
 
                             <Columns>
@@ -99,7 +100,7 @@
         <div class="card">
             <div class="card-body">
 
-                <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" Width="100%" ClientInstanceName="roundpanel" HeaderText="Saving Transction" AllowCollapsingByHeaderClick="True" ShowCollapseButton="True" LoadContentViaCallback="True" Collapsed="true">
+                <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" Width="100%" ClientInstanceName="roundpanel" HeaderText="Saving Transction" AllowCollapsingByHeaderClick="True" ShowCollapseButton="True"  Collapsed="true">
                     <PanelCollection>
                         <dx:PanelContent>
 
@@ -149,7 +150,7 @@
         <%-- For Rd Journal --%>
         <div class="card">
             <div class="card-body">
-                <dx:ASPxRoundPanel ID="ASPxRoundPanel2" runat="server" Width="100%" ClientInstanceName="roundpanel" HeaderText="RD Transction" AllowCollapsingByHeaderClick="True" ShowCollapseButton="True" LoadContentViaCallback="True" Collapsed="true">
+                <dx:ASPxRoundPanel ID="ASPxRoundPanel2" runat="server" Width="100%" ClientInstanceName="roundpanel" HeaderText="RD Transction" AllowCollapsingByHeaderClick="True" ShowCollapseButton="True" Collapsed="true">
                     <PanelCollection>
                         <dx:PanelContent>
 
@@ -203,7 +204,7 @@
         <%-- For SSA Journal --%>
         <div class="card">
             <div class="card-body">
-                <dx:ASPxRoundPanel ID="ASPxRoundPanel3" runat="server" Width="100%" ClientInstanceName="roundpanel" HeaderText="SSA Transction" AllowCollapsingByHeaderClick="True" ShowCollapseButton="True" LoadContentViaCallback="True" Collapsed="true">
+                <dx:ASPxRoundPanel ID="ASPxRoundPanel3" runat="server" Width="100%" ClientInstanceName="roundpanel" HeaderText="SSA Transction" AllowCollapsingByHeaderClick="True" ShowCollapseButton="True" Collapsed="true">
                     <PanelCollection>
                         <dx:PanelContent>
 
@@ -284,7 +285,7 @@
         <div class="card">
             <div class="card-body">
 
-                <dx:ASPxRoundPanel ID="ASPxRoundPanel4" runat="server" Width="100%" ClientInstanceName="roundpanel" HeaderText="TD Transction" AllowCollapsingByHeaderClick="True" ShowCollapseButton="True" LoadContentViaCallback="True" Collapsed="true">
+                <dx:ASPxRoundPanel ID="ASPxRoundPanel4" runat="server" Width="100%" ClientInstanceName="roundpanel" HeaderText="TD Transction" AllowCollapsingByHeaderClick="True" ShowCollapseButton="True"  Collapsed="true">
                     <PanelCollection>
                         <dx:PanelContent>
 

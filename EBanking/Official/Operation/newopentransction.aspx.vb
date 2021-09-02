@@ -1,57 +1,63 @@
 ﻿Imports System.Data.SqlClient
+Imports DataBaseHelper
+
 
 Public Class newopentransction
     Inherits System.Web.UI.Page
+
+    Private DataFile As NewAccountClass
+    Private newService As New newAccountService(connectionstringaccount)
+    Private newtransctionService As New newAccountTransctionService(connectionstringaccount)
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
     End Sub
 
-    Private Sub getdataFromDB() '31
-        '1
-        getAccountData.VertualId = getNewAccountVirtualid(row)
-        getAccountData.cif = getNewAccountcif(row)
-        getAccountData.accountnumber = getNewAccountacno(row)
-        getAccountData.name = getNewAccountName(row)
-        getAccountData.producttype1 = getNewAccountproducttype(row)
-        getAccountData.productterm = getNewAccountProductTerm(row)
-        getAccountData.productvalue = getNewAccountProductValue(row)
-        getAccountData.nomini = getNewAccountNominiReg(row)
-        getAccountData.nomininame = getNewAccountNominiName(row)
-        getAccountData.nominiage = getNewAccountNominiAge(row)
-        '11
-        getAccountData.nominiaddress = getNewAccountNominiaddress(row)
-        getAccountData.nominirelation = getNewAccountNominiRelation(row)
-        getAccountData.acoperatemode = getNewAccountMOP(row)
-        getAccountData.guardianname = getNewAccountguardianname(row)
-        getAccountData.jointname = getNewAccountJointName(row)
-        getAccountData.relation = ""
-        getAccountData.acstatus = getAccountStatus(row)
-        getAccountData.address = getNewAccountAddress(row)
-        getAccountData.mobile = getNewAccountmobile(row)
-        getAccountData.email = getNewAccountEmail(row)
-        '21
-        getAccountData.dob = getNewAccountdob(row)
-        getAccountData.gender = getNewAccountgender(row)
-        getAccountData.adhar = getNewAccountadhar(row)
-        getAccountData.pan = getNewAccountpan(row)
-        getAccountData.photo = getNewAccountphoto(row)
-        getAccountData.sign = getNewAccountsign(row)
-        getAccountData.doo = getNewAccountdoo(row)
-        getAccountData.reffno = getNewAccountreffno(row)
-        getAccountData.pr = getNewAccountpr(row)
-        getAccountData.balance = getNewAccountbalance(row)
-        '31
-        getAccountData.trid = getNewAccounttrid(row)
+    'Private Sub getdataFromDB(data As NewAccountClass) '31
+    '    '1
+    '    getAccountData.VertualId = data.VirtualId 'getNewAccountVirtualid(row)
+    '    getAccountData.cif = data.cif 'getNewAccountcif(row)
+    '    getAccountData.accountnumber = data.accountnumber ' getNewAccountacno(row)
+    '    getAccountData.name = data.n_ame 'getNewAccountName(row)
+    '    getAccountData.producttype1 = data.producttype ' getNewAccountproducttype(row)
+    '    getAccountData.productterm = data.productterm ' getNewAccountProductTerm(row)
+    '    getAccountData.productvalue = data.productvalue ' getNewAccountProductValue(row)
+    '    getAccountData.nomini = data.nominireg ' getNewAccountNominiReg(row)
+    '    getAccountData.nomininame = data.nomininame ' getNewAccountNominiName(row)
+    '    getAccountData.nominiage = data.nominiage ' getNewAccountNominiAge(row)
+    '    '11
+    '    getAccountData.nominiaddress = data.nominiaddress ' getNewAccountNominiaddress(row)
+    '    getAccountData.nominirelation = data.nominirelation ' getNewAccountNominiRelation(row)
+    '    getAccountData.acoperatemode = data.acoperatemode ' getNewAccountMOP(row)
+    '    getAccountData.guardianname = data.guardianname ' getNewAccountguardianname(row)
+    '    getAccountData.jointname = data.jointname ' getNewAccountJointName(row)
+    '    getAccountData.relation = ""
+    '    getAccountData.acstatus = data.status ' getAccountStatus(row)
+    '    getAccountData.address = data.address ' getNewAccountAddress(row)
+    '    getAccountData.mobile = data.mobile ' getNewAccountmobile(row)
+    '    getAccountData.email = data.email ' getNewAccountEmail(row)
+    '    '21
+    '    getAccountData.dob = data.dob ' getNewAccountdob(row)
+    '    getAccountData.gender = data.gender ' getNewAccountgender(row)
+    '    getAccountData.adhar = data.adhar ' getNewAccountadhar(row)
+    '    getAccountData.pan = data.pan ' getNewAccountpan(row)
+    '    getAccountData.photo = data.photo ' getNewAccountphoto(row)
+    '    getAccountData.sign = data.sign ' getNewAccountsign(row)
+    '    getAccountData.doo = data.doo ' getNewAccountdoo(row)
+    '    getAccountData.reffno = data.reffno ' getNewAccountreffno(row)
+    '    getAccountData.pr = data.pr 'getNewAccountpr(row)
+    '    getAccountData.balance = data.balance ' getNewAccountbalance(row)
+    '    '31
+    '    getAccountData.trid = data.trid ' getNewAccounttrid(row)
 
-    End Sub
+    'End Sub
 
     Protected Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         'getdata Function
         newOpenAccountSearch(reffNumberTb.Text.Trim)
-        getdataFromDB()
+        ' getdataFromDB()
         'print
-        Page.ClientScript.RegisterStartupScript(Me.GetType(), "OpenWindow", "window.open('Print/OpenAccountCheck.aspx','_newtab');", True)
+        Page.ClientScript.RegisterStartupScript(Me.GetType(), "OpenWindow", "window.open('../Print/OpenAccountCheck.aspx','_newtab');", True)
         'then
         Button2.Enabled = True
 
@@ -59,58 +65,60 @@ Public Class newopentransction
 
     Dim cs As String = connectionhelper.connectionstringaccount()
 
+
+    ''' <summary>
+    ''' Logic For Insert/Update Data In Database
+    ''' </summary>
     Private Sub updateDataInOpenAccount()
         'TODO
-        'Update transctionJopurnal
-        newOpenAccountSearch(reffNumberTb.Text.Trim)
-        getdataFromDB()
+        'Update transctionJournal
+        DataFile = New NewAccountClass
+        DataFile = newService.getByReffNo(reffNumberTb.Text.Trim)
+        Dim datafile2 = New allJournalClass
 
-        Dim bal As String = Nothing
-        Dim trid1 As String
 
-        trid1 = tridtb.Text.Trim
-        bal = amounttb.Text.Trim
+        'For update data in New Account Class
+        DataFile.trid = tridtb.Text.Trim
+        DataFile.balance = amounttb.Text.Trim
 
-        databaseconnection = New SqlConnection(cs)
-        databaseconnection.Open()
-        Dim command As SqlCommand = databaseconnection.CreateCommand()
-        Dim transction As SqlTransaction
-        transction = databaseconnection.BeginTransaction("UpdateNewAccount")
+        'For insert data in all Journal
+        datafile2.da_te = datetb.Text.Trim
+        datafile2.accounttype = DataFile.producttype
+        datafile2.accountnumber = DataFile.accountnumber
+        datafile2.na_me = DataFile.n_ame
+        datafile2.deposit = amounttb.Text.Trim
+        datafile2.withdraw = "00"
+        datafile2.dlt = "New Account"
+        datafile2.trid = DataFile.trid
+        datafile2.balance = DataFile.balance
+        datafile2.status = "Approved"
+        datafile2.office = OfficeName
+        datafile2.u_ser = Getusername
 
-        command.Connection = databaseconnection
-        command.Transaction = transction
-        If acstatus IsNot "Pending" Then
-            MyMessageBox.Show(Me, "Already Payment Done ")
+        Dim matchingtext As String = DataFile.status
+        If Not matchingtext = "Pending" Then
+            MyMessageBox.Show(Me, "Already Payment Done And Status = " & matchingtext)
+            Button3.Enabled = True
             Exit Sub
         End If
         'Implement Verification
-        If bal IsNot Nothing Then
-            Try
+        If datafile2.deposit IsNot Nothing Then
+            'TODO 
+            'Update Balance , status ,trid where reffno =xx
+            'insert data in to journal ..
 
-                command.CommandText = "update newacdb set balance='" & bal & "',status='Approve' , trid='" & trid1 & "' where reffno='" & reffno & "'"
-                command.ExecuteNonQuery()
 
-                'update trdtatus from sb journal
+            Dim Result As Boolean
+                Result = newtransctionService.AddTransction(DataFile, datafile2)
 
-                command.CommandText = "insert into journal (da_te,accounttype,accountnumber,na_me,deposit,withdraw,dlt,trid,balance,status,office,u_ser) values ('" & datetb.Text.Trim & "','" & producttype1 & "','" & reffno & "','" & name & "','" & bal & "','" & "00" & "','" & "NewAccount" & "','" & trid1 & "','" & bal & "','" & "Approved" & "','" & OfficeName & "','" & Getusername & "')"
-                command.ExecuteNonQuery()
-
-                'update alljournalstatus
-
-                transction.Commit()
-                MyMessageBox.Show(Me, "Data Saved Successfully")
-            Catch ex As Exception
-                MyMessageBox.Show(Me, "Commit Exception Type: {0}" + ex.Message())
-                MyMessageBox.Show(Me, "  Message: {0}" + ex.Message)
-                Try
-                    transction.Rollback()
+            If Result Then
+                    MyMessageBox.Show(Me, "Data Saved Successfully")
+                Else
                     MyMessageBox.Show(Me, "Data Not Saved Successfully")
-                Catch ex2 As Exception
-                    MyMessageBox.Show(Me, "Rollback Exception Type: {0}" + ex2.Message())
-                    MyMessageBox.Show(Me, "  Message: {0}" + ex2.Message)
-                End Try
-            End Try
-        Else
+                End If
+
+
+                Else
             MyMessageBox.Show(Me, "Account Balance Not Update Check In All User ...")
         End If
 
@@ -119,6 +127,10 @@ Public Class newopentransction
 
     End Sub
 
+
+    ''' <summary>
+    ''' Button Click For Update Balance And Transction Report
+    ''' </summary>
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         updateDataInOpenAccount()
     End Sub
@@ -129,11 +141,17 @@ Public Class newopentransction
 
     Dim row As Integer = 0
 
+
+    ''' <summary>
+    ''' get Data from DataBase By Its ReffNo
+    ''' </summary>
     Protected Sub LinkButton4_Click(sender As Object, e As EventArgs) Handles LinkButton4.Click
         Try
-            newOpenAccountSearch(reffNumberTb.Text.Trim)
-            fullnametb.Text = getNewAccountName(row)
-            datetb.Text = getNewAccountdoo(row)
+            DataFile = New NewAccountClass
+            DataFile = newService.getByReffNo(reffNumberTb.Text.Trim)
+            ' newOpenAccountSearch(reffNumberTb.Text.Trim)
+            fullnametb.Text = DataFile.n_ame ' getNewAccountName(row)
+            datetb.Text = DataFile.doo ' getNewAccountdoo(row)
         Catch ex As Exception
 
         End Try
@@ -143,8 +161,9 @@ Public Class newopentransction
 
     Private Sub findDataFromAccountDatabase(ByVal name1 As String)
         Try
-            newaccounthelper.NewAccountNameSearch(name1)
-            BootstrapGridView1.DataSource = getNewAccountOpenDataTable()
+            ' newaccounthelper.NewAccountNameSearch(name1)
+
+            BootstrapGridView1.DataSource = newService.getByName(name1) 'getNewAccountOpenDataTable()
             BootstrapGridView1.DataBind()
         Catch ex As Exception
 

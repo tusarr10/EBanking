@@ -14,6 +14,7 @@
 End Interface
 Public Interface liveaccounttransction
     'Insert data
+    Function InsertIntoLiveAccount(dblive As liveAccountClass) As Boolean
 
     'Update data
 

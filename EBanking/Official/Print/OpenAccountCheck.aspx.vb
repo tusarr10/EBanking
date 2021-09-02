@@ -1,43 +1,46 @@
-﻿Public Class OpenAccountCheck
+﻿Imports DataBaseHelper
+Public Class OpenAccountCheck
     Inherits System.Web.UI.Page
+
+    Dim newac As NewAccountClass
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
         'load data from module
         Try
-            lbacname.Text = name
-            lbdob.Text = dob
-            lbgender.Text = gender
-            lbmobile.Text = mobile
-            lbemail.Text = email
-            lbadhar.Text = adhar
-            lbpan.Text = pan
-            lbaddress.Text = address
+            lbacname.Text = newac.n_ame ' name
+            lbdob.Text = newac.dob ' dob
+            lbgender.Text = newac.gender ' gender
+            lbmobile.Text = newac.mobile
+            lbemail.Text = newac.email
+            lbadhar.Text = newac.adhar
+            lbpan.Text = newac.pan
+            lbaddress.Text = newac.address
 
-            lbproduct.Text = producttype1
-            lbValue.Text = productvalue
-            lbterm.Text = productterm
+            lbproduct.Text = newac.producttype
+            lbValue.Text = newac.productvalue
+            lbterm.Text = newac.productterm
 
-            lbmop.Text = acoperatemode
-            lbGuardian.Text = guardianname
-            lbrelation.Text = relation
-            lbname2.Text = jointname
+            lbmop.Text = newac.acoperatemode
+            lbGuardian.Text = newac.guardianname
+            lbrelation.Text = "" 'newac.relation
+            lbname2.Text = newac.jointname
 
-            lbnominireg.Text = nomini
-            lbnomininame.Text = nomininame
-            lbnominiaddress.Text = nominiaddress
-            lbnominidob.Text = nominiage ' dob
-            lbnominirelation.Text = nominirelation
+            lbnominireg.Text = newac.nominireg
+            lbnomininame.Text = newac.nomininame
+            lbnominiaddress.Text = newac.nominiaddress
+            lbnominidob.Text = newac.nominiage ' dob
+            lbnominirelation.Text = newac.nominirelation
 
-            lbbalance.Text = balance
-            lbtrid.Text = trid
+            lbbalance.Text = newac.balance
+            lbtrid.Text = newac.trid
 
-            lbacno.Text = accountnumber
-            lbcif.Text = cif
-            lbdoo.Text = doo
-            lbreffno.Text = reffno
-            lbprno.Text = pr
-            lbstatus.Text = acstatus
+            lbacno.Text = newac.accountnumber
+            lbcif.Text = newac.cif
+            lbdoo.Text = newac.doo
+            lbreffno.Text = newac.reffno
+            lbprno.Text = newac.pr
+            lbstatus.Text = newac.status
         Catch
 
         End Try

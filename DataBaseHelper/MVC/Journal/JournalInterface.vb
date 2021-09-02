@@ -25,6 +25,8 @@
 
     Function getByDateFromSbJournal(EnterDate As String) As List(Of sbJournalClass)
 
+    Function getByDataFromSbJournal(enterdate As String, accountNumber As String, Trid As String, status As String) As sbJournalClass
+
     Function IsTridExistInSbJournal(trid As String) As Boolean
 
     Function IsTransctionApproveInSbJournal(trid As String) As Boolean
@@ -41,6 +43,8 @@
     Function getByAcnoFromRdJournal(AccountNumber As String) As List(Of rdJournalClass)
 
     Function getByTridFromRdJournal(EnterTransctionId As String) As rdJournalClass
+    Function getByDataFromRdJournal(enterdate As String, accountNumber As String, Trid As String, status As String) As rdJournalClass
+
 
     Function getByDateFromRdJournal(EnterDate As String) As List(Of rdJournalClass)
 
@@ -63,7 +67,7 @@
     Function getByTridFromSsaJournal(EnterTrid As String) As ssaJournalClass
 
     Function getByDateFromSsaJournal(EnterDate As String) As List(Of ssaJournalClass)
-
+    Function getByDataFromSsabJournal(enterdate As String, accountNumber As String, Trid As String, status As String) As ssaJournalClass
     Function IsTridExistInSsaJournal(Trid As String) As Boolean
 
     Function IsTransctionApproveInSsaJournal(Trid As String) As Boolean
@@ -80,7 +84,7 @@
     Function getByAcnoFromTdJournal(AccountNumber As String) As List(Of tdJournalClass)
 
     Function getByTridFromTdJournal(EnterTrid As String) As tdJournalClass
-
+    Function getByDataFromtdJournal(enterdate As String, accountNumber As String, Trid As String, status As String) As tdJournalClass
     Function getByDateFromTdJournal(EnterDate As String) As List(Of tdJournalClass)
 
     Function IsTridExistInTdJournal(Trid As String) As Boolean

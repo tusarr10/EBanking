@@ -10,6 +10,8 @@
     Function AddCif(custmor As ClassCif) As Boolean
 
     Function UpdateCif(custmor As ClassCif) As Boolean
+    Function UpdateStatus(status As String, id As String) As Boolean
+
 
     Function DeleteCif(cif As String) As Boolean
 

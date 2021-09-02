@@ -1,16 +1,27 @@
-﻿Imports System.Data.SqlClient
+﻿'Imports System.Data.SqlClient
 Imports DevExpress.Web
 Imports DataBaseHelper
 
 Public Class openAccount
     Inherits System.Web.UI.Page
 
-
-    'Variable Declaration
+    ''' <summary>
+    ''' Link To LiveaccountService.vb
+    ''' </summary>
     Private UserData As liveAccountClass
     Private UserDataList As List(Of liveAccountClass)
     Private UserService As New liveAccountService(connectionstringaccount)
 
+    ''' <summary>
+    ''' Link to NewAccountInterface.vb
+    ''' </summary>
+    Private newAccountfiles As NewAccountClass
+    Private newService As New newAccountService(connectionstringaccount)
+    Private newTransctionService As New newAccountTransctionService(connectionstringaccount)
+
+    ''' <summary>
+    ''' For CifService.vb
+    ''' </summary>
     Private CifData As ClassCif
     Private CifService As New ClassCifService(connectionstringaccount)
 
@@ -118,6 +129,15 @@ Public Class openAccount
     End Sub
 
     Dim _reffNumber, _PrNumber, _OpenDate, _AccountStatus, _Name, _ModeOfOperation, _secondName, _guardianName, _cif, _cifStatus, _Dob, _gender, _MobileNumber, _EmailId, _Pan, _Adhar, _Address, _Relation, _product, _term, _Value, _nominiReg, _NominiName, _NominiRelation, _NominiDOB, _NominiAddress, _Photo, _sign, _fullName, _accountNumber As String
+
+    Protected Sub LinkButton4_Click(sender As Object, e As EventArgs) Handles LinkButton4.Click
+        Dim reff As String = reffNumberTb.Text.Trim
+        If newService.IsReffNoExistInNewAccount(reff) Then
+            MyMessageBox.Show(Me, "ReffNo already Exist")
+        Else
+
+        End If
+    End Sub
 
     Private Sub btnclickcifsearch(cif As String) ' fill cif data from database to view
 
@@ -241,19 +261,30 @@ Public Class openAccount
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Grab Data From Cif Database
+    ''' </summary>
     Protected Sub LinkButton5_Click(sender As Object, e As EventArgs) Handles LinkButton5.Click
         ' search cif if exist
         btnclickcifsearch(ciftb.Text.Trim)
     End Sub
 
+
+    'for Update Balance Of New Account Opened
     Protected Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
 
     End Sub
 
+    ''' <summary>
+    ''' Open Print Page
+    ''' </summary>
     Private Sub OpenPrintPage()
-        Page.ClientScript.RegisterStartupScript(Me.GetType(), "OpenWindow", "window.open('Print/OpenAccountCheck.aspx','_newtab');", True)
+        Page.ClientScript.RegisterStartupScript(Me.GetType(), "OpenWindow", "window.open('../Print/OpenAccountCheck.aspx','_newtab');", True)
     End Sub
 
+    ''' <summary>
+    ''' Go To Print Page
+    ''' </summary>
     Protected Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         VerifyInputData()
         GoForrword()
@@ -261,6 +292,9 @@ Public Class openAccount
 
     End Sub
 
+    ''' <summary>
+    ''' Button Control Enable / Disable
+    ''' </summary>
     Private Sub enableFormView() ' set readonly false
         reffNumberTb.ReadOnly = False
         TextBox1.ReadOnly = False
@@ -282,16 +316,28 @@ Public Class openAccount
 
     End Sub
 
+    ''' <summary>
+    ''' Just Bind Data Form Database to Datatable
+    ''' </summary>
     Private Sub loadDataTable()
-        ASPxGridView1.DataSource = UserDataList  'here change to class list
+        ' ASPxGridView1.DataSource = UserDataList  'here change to class list
         ASPxGridView1.DataBind()
     End Sub
 
+    ''' <summary>
+    ''' Find Data From DataBase 
+    ''' logic To Get Data From Database
+    ''' Check User already Exist Or Not
+    ''' </summary>
+    ''' <param name="name">Enter Name As String To find user from Database</param>
     Private Sub findDataFromAccountDatabase(name As String)
         'get data from liveaccount database
         'get data from accountOpen Database
         Try
             UserDataList = UserService.getByName(name)
+            ASPxGridView1.DataSource = UserService.getByName(name)  'here change to class list
+            loadDataTable()
+
         Catch ex As Exception
 
         End Try
@@ -299,6 +345,10 @@ Public Class openAccount
 
     Dim _name1 As String
 
+    ''' <summary>
+    ''' Search By Name 
+    ''' Check Wheather User Already Open Account Or Not
+    ''' </summary>
     Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click ' for search name
         _name1 = nametb.Text.Trim
         If _name1 = Nothing Then
@@ -314,40 +364,48 @@ Public Class openAccount
     Dim IsVerifu As Boolean
     Dim verid As String
 
+
+    ''' <summary>
+    ''' Get Data From View
+    ''' </summary>
     Private Sub GetDataFromView()
         'total in db 28
-        _accountNumber = acnotb.Text.Trim
-        _reffNumber = reffNumberTb.Text.Trim
-        _PrNumber = TextBox1.Text.Trim
-        _OpenDate = accountTb.Text.Trim
-        _AccountStatus = "Pending"
-        _Name = nametb.Text.Trim
-        _ModeOfOperation = Modetb.Text.Trim
-        _secondName = name2tb.Text.Trim
-        _guardianName = GuardianNametb.Text.Trim
-        _Photo = ""
-        _sign = ""
-        _cif = ciftb.Text.Trim
-        _fullName = NameInfo.Text.Trim
-        _cifStatus = "Pending"
-        _Dob = dobtb.Text.Trim
-        _gender = genderlb.Text.Trim
-        _MobileNumber = mobiletb.Text.Trim
-        _EmailId = emailtb.Text.Trim
-        _Pan = pantb.Text.Trim
-        _Adhar = adhartb.Text.Trim
-        _Address = addresstb.Text
-        _Relation = Relationtb.Text.Trim
-        _product = ProductCb.Text.Trim
-        _term = Actermtb.Text.Trim
-        _Value = AccValuetb.Text.Trim
-        _nominiReg = nominiregcb.Text.Trim
-        _NominiName = NominiNameInfotb.Text.Trim
-        _NominiRelation = NominiRelationInfotb.Text.Trim
-        _NominiDOB = NominiAgeInfotb.Text.Trim
-        _NominiAddress = NominiAddressInfotb.Text.Trim
+        newAccountfiles = New NewAccountClass
+        verid = DateAndTime.Now.ToString("yyyy-MM-dd-hh-mm") + "_" + GetofficeId + GetuserID
+        newAccountfiles.VirtualId = verid
+        _accountNumber = acnotb.Text.Trim : newAccountfiles.accountnumber = acnotb.Text.Trim
+        _reffNumber = reffNumberTb.Text.Trim : newAccountfiles.reffno = reffNumberTb.Text.Trim
+        _PrNumber = TextBox1.Text.Trim : newAccountfiles.pr = TextBox1.Text.Trim
+        _OpenDate = accountTb.Text.Trim : newAccountfiles.doo = accountTb.Text.Trim
+        _AccountStatus = "Pending" : newAccountfiles.status = "Pending"
+        _Name = nametb.Text.Trim : newAccountfiles.n_ame = nametb.Text.Trim
+        _ModeOfOperation = Modetb.Text.Trim : newAccountfiles.acoperatemode = Modetb.Text.Trim
+        _secondName = name2tb.Text.Trim : newAccountfiles.jointname = name2tb.Text.Trim
+        _guardianName = GuardianNametb.Text.Trim : newAccountfiles.guardianname = GuardianNametb.Text.Trim
+        _Photo = "" : newAccountfiles.photo = ""
+        _sign = "" : newAccountfiles.sign = ""
+        _cif = ciftb.Text.Trim : newAccountfiles.cif = ciftb.Text.Trim
+        _fullName = NameInfo.Text.Trim : newAccountfiles.n_ame = NameInfo.Text.Trim
+        _cifStatus = "Pending" ': newAccountfiles. = "Pending"
+        _Dob = dobtb.Text.Trim : newAccountfiles.dob = dobtb.Text.Trim
+        _gender = genderlb.Text.Trim : newAccountfiles.gender = genderlb.Text.Trim
+        _MobileNumber = mobiletb.Text.Trim : newAccountfiles.mobile = mobiletb.Text.Trim
+        _EmailId = emailtb.Text.Trim : newAccountfiles.email = emailtb.Text.Trim
+        _Pan = pantb.Text.Trim : newAccountfiles.pan = pantb.Text.Trim
+        _Adhar = adhartb.Text.Trim : newAccountfiles.adhar = adhartb.Text.Trim
+        _Address = addresstb.Text : newAccountfiles.address = addresstb.Text
+        _Relation = Relationtb.Text.Trim  'newAccountfiles.r = Relationtb.Text.Trim
+        _product = ProductCb.Text.Trim : newAccountfiles.producttype = ProductCb.Text.Trim
+        _term = Actermtb.Text.Trim : newAccountfiles.productterm = Actermtb.Text.Trim
+        _Value = AccValuetb.Text.Trim : newAccountfiles.productvalue = AccValuetb.Text.Trim
+        _nominiReg = nominiregcb.Text.Trim : newAccountfiles.nominireg = nominiregcb.Text.Trim
+        _NominiName = NominiNameInfotb.Text.Trim : newAccountfiles.nomininame = NominiNameInfotb.Text.Trim
+        _NominiRelation = NominiRelationInfotb.Text.Trim : newAccountfiles.nominirelation = NominiRelationInfotb.Text.Trim
+        _NominiDOB = NominiAgeInfotb.Text.Trim : newAccountfiles.nominiage = NominiAgeInfotb.Text.Trim
+        _NominiAddress = NominiAddressInfotb.Text.Trim : newAccountfiles.nominiaddress = NominiAddressInfotb.Text.Trim
     End Sub
 
+    'Verify InPut Data
     Private Sub VerifyInputData()
         'Get Data From View
         GetDataFromView()
@@ -437,6 +495,8 @@ Public Class openAccount
 
     End Sub
 
+
+    'Send Data To Next Module For Print Page
     Private Sub GoForrword()
         'send all data to a module then open print form
         VertualId = verid
@@ -476,58 +536,80 @@ Public Class openAccount
     End Sub
 
     'Submit Button
-    Private Sub InsertDataTransction()
+    '  Private Sub InsertDataTransction()
 
-        verid = DateAndTime.Now.ToString("yyyy-MM-dd-hh-mm") + "_" + GetofficeId + GetuserID
 
-        'insert data into newacdb
-        Dim command As String
-        command = "INSERT INTO newacdb (VirtualId, cif, accountnumber, n_ame, producttype, productterm, productvalue, nominireg, nomininame, nominiage, nominiaddress, nominirelation, acoperatemode, guardianname, jointname, address, mobile, email, dob, gender, adhar, pan, photo, sign, doo, reffno, pr)
-  VALUES ( '" & verid & "','" & _cif & "', '" & _accountNumber & "', '" & _Name & "', '" & _product & "', '" & _term & "', '" & _Value & "', '" & _nominiReg & "', '" & _NominiName & "', '" & _NominiDOB & "', '" & _NominiAddress & "', '" & _NominiRelation & "', '" & _ModeOfOperation & "', '" & _guardianName & "', '" & _secondName & "', '" & _Address & "', '" & _MobileNumber & "', '" & _EmailId & "', '" & _Dob & "', '" & _gender & "', '" & _Adhar & "', '" & _Pan & "', '" & _Photo & "', '" & _sign & "', '" & _OpenDate & "', '" & _reffNumber & "', '" & _PrNumber & "')"
-        Try
-            Dim cs As String = connectionhelper.connectionstringaccount()
-            databaseconnection = New SqlConnection(cs)
-            databaseconnection.Open()
-            Dim comd As SqlCommand = databaseconnection.CreateCommand()
-            Dim transction As SqlTransaction
 
-            transction = databaseconnection.BeginTransaction("OpenAccount")
+    '      'insert data into newacdb
+    '      Dim command As String
+    '      command = "INSERT INTO newacdb (VirtualId, cif, accountnumber, n_ame, producttype, productterm, productvalue, nominireg, nomininame, nominiage, nominiaddress, nominirelation, acoperatemode, guardianname, jointname, address, mobile, email, dob, gender, adhar, pan, photo, sign, doo, reffno, pr)
+    'VALUES ( '" & verid & "','" & _cif & "', '" & _accountNumber & "', '" & _Name & "', '" & _product & "', '" & _term & "', '" & _Value & "', '" & _nominiReg & "', '" & _NominiName & "', '" & _NominiDOB & "', '" & _NominiAddress & "', '" & _NominiRelation & "', '" & _ModeOfOperation & "', '" & _guardianName & "', '" & _secondName & "', '" & _Address & "', '" & _MobileNumber & "', '" & _EmailId & "', '" & _Dob & "', '" & _gender & "', '" & _Adhar & "', '" & _Pan & "', '" & _Photo & "', '" & _sign & "', '" & _OpenDate & "', '" & _reffNumber & "', '" & _PrNumber & "')"
+    '      Try
+    '          Dim cs As String = connectionhelper.connectionstringaccount()
+    '          databaseconnection = New SqlConnection(cs)
+    '          databaseconnection.Open()
+    '          Dim comd As SqlCommand = databaseconnection.CreateCommand()
+    '          Dim transction As SqlTransaction
 
-            comd.Connection = databaseconnection
-            comd.Transaction = transction
-            Try
-                comd.CommandText = command
-                comd.ExecuteNonQuery()
-                transction.Commit()
-                Errortb.Text = "Account Form Post Successfully ..."
+    '          transction = databaseconnection.BeginTransaction("OpenAccount")
 
-                ' GoForrword()
+    '          comd.Connection = databaseconnection
+    '          comd.Transaction = transction
+    '          Try
+    '              comd.CommandText = command
+    '              comd.ExecuteNonQuery()
+    '              transction.Commit()
+    '              Errortb.Text = "Account Form Post Successfully ..."
 
-                'now go to transction page
-                Button2.Enabled = True
+    '              ' GoForrword()
 
-                ' Response.Redirect("#")
-            Catch ex As Exception
-                Errortb.Text = "Commit Exception Type: {0}" + ex.Message()
+    '              'now go to transction page
+    '              Button2.Enabled = True
 
-                Errortb.Text = Errortb.Text + " Message: {0}" + ex.Message
-                Try
-                    transction.Rollback()
-                    Errortb.Text = "Data Not Saved Successfully"
-                Catch ex2 As Exception
-                    Errortb.Text = "Rollback Exception Type: {0}" + ex2.Message()
-                    Errortb.Text = Errortb.Text + "  Message: {0}" + ex2.Message
-                End Try
-            End Try
-        Catch ex As Exception
-            ''Error In Database Connection
-        End Try
-    End Sub
+    '              ' Response.Redirect("#")
+    '          Catch ex As Exception
+    '              Errortb.Text = "Commit Exception Type: {0}" + ex.Message()
 
+    '              Errortb.Text = Errortb.Text + " Message: {0}" + ex.Message
+    '              Try
+    '                  transction.Rollback()
+    '                  Errortb.Text = "Data Not Saved Successfully"
+    '              Catch ex2 As Exception
+    '                  Errortb.Text = "Rollback Exception Type: {0}" + ex2.Message()
+    '                  Errortb.Text = Errortb.Text + "  Message: {0}" + ex2.Message
+    '              End Try
+    '          End Try
+    '      Catch ex As Exception
+    '          ''Error In Database Connection
+    '      End Try
+    '  End Sub
+
+    'Submit Button Click
+
+    ''' <summary>
+    ''' Submit Button Click 
+    ''' </summary>
+    ''' <param name="sender">Not Required</param>
+    ''' <param name="e">NA</param>
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         'check
         VerifyInputData()
-        InsertDataTransction()
+        ' InsertDataTransction()
+        InsertData()
     End Sub
+    Dim result As Boolean
 
+    ''' <summary>
+    ''' Logic To Insert Data To Database
+    ''' </summary>
+    Private Sub InsertData()
+
+        result = newTransctionService.AddData(newAccountfiles)
+        If result Then
+            Errortb.Text = "Account Form Post Successfully ..."
+            Button2.Enabled = True
+        Else
+            Errortb.Text = "Data Not Saved Successfully"
+        End If
+    End Sub
 End Class

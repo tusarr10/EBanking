@@ -25,6 +25,9 @@
     Public Function UpdateCif(custmor As ClassCif) As Boolean
         Return _repo.UpdateCif(custmor)
     End Function
+    Function updateStatus(cif As String, status As String) As Boolean
+        Return _repo.UpdateStatus(status, cif)
+    End Function
 
     Public Function DeleteCif(custmor As String) As Boolean
         Return _repo.DeleteCif(custmor)

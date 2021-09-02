@@ -55,10 +55,15 @@
     </dx:ASPxMenu>
     <dx:ASPxPanel runat="server" ID="FilterPanel" ClientInstanceName="filterPanel"
         Collapsible="true" CssClass="filter-panel">
-        <SettingsCollapsing ExpandEffect="Slide" AnimationType="Slide" ExpandButton-Visible="false" />
+        <SettingsCollapsing ExpandEffect="Slide" AnimationType="Slide" ExpandButton-Visible="false" >
+<ExpandButton Visible="False"></ExpandButton>
+        </SettingsCollapsing>
         <PanelCollection>
             <dx:PanelContent>
-                <dx:ASPxButtonEdit runat="server" ID="SearchButtonEdit" ClientInstanceName="searchButtonEdit" ClearButton-DisplayMode="Always" Caption="Search" Width="100%" />
+                <dx:ASPxButtonEdit runat="server" ID="SearchButtonEdit" ClientInstanceName="searchButtonEdit" ClearButton-DisplayMode="Always" Caption="Search" Width="100%" >
+<ClearButton DisplayMode="Always"></ClearButton>
+                </dx:ASPxButtonEdit>
+                <dx:ASPxButton ID="ASPxButton1" runat="server" Text="All"></dx:ASPxButton>
             </dx:PanelContent>
         </PanelCollection>
         <ClientSideEvents Expanded="onFilterPanelExpanded" Collapsed="adjustPageControls" />
@@ -68,12 +73,8 @@
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="card ">
-        <dx:ASPxGridView ID="ASPxGridView1" runat="server" ClientInstanceName="gridView" EnablePagingGestures="False" CssClass="grid-view" Width="100%" OnCustomCallback="GridView_CustomCallback" KeyFieldName="policyno" AutoGenerateColumns="False" DataSourceID="rpliAllDepositDataSet">
-            <Columns>
-                <dx:GridViewCommandColumn ShowSelectCheckbox="True" SelectAllCheckboxMode="AllPages" VisibleIndex="0" Width="52"></dx:GridViewCommandColumn>
-            </Columns>
-
-            <SettingsBehavior AllowFocusedRow="true" AllowSelectByRowClick="true" AllowEllipsisInText="true" AllowDragDrop="false" />
+        <dx:ASPxGridView ID="ASPxGridView1" runat="server" ClientInstanceName="gridView" EnablePagingGestures="False" CssClass="grid-view" Width="100%" OnCustomCallback="GridView_CustomCallback" KeyFieldName="policyno" AutoGenerateColumns="False">
+                             <SettingsBehavior AllowFocusedRow="true" AllowSelectByRowClick="true" AllowEllipsisInText="true" AllowDragDrop="false" />
             <SettingsEditing Mode="PopupEditForm" EditFormColumnCount="2" />
             <SettingsSearchPanel CustomEditorID="SearchButtonEdit" />
             <Settings VerticalScrollBarMode="Hidden" HorizontalScrollBarMode="Auto" ShowHeaderFilterButton="true" />
@@ -82,6 +83,17 @@
             </SettingsPager>
             <SettingsExport EnableClientSideExportAPI="true" ExportSelectedRowsOnly="true" />
             <Columns>
+                  <dx:GridViewCommandColumn ShowSelectCheckbox="True" SelectAllCheckboxMode="AllPages" VisibleIndex="0" Width="52"></dx:GridViewCommandColumn>
+                <dx:GridViewDataTextColumn FieldName="policyNo" Name="policyNo" Caption="PolicyNo" VisibleIndex="2"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="proposalno" Name="proposalno" Caption="proposalno" VisibleIndex="3"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="amount" Name="amount" Caption="amount" VisibleIndex="6"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="month" Name="month" Caption="Month" VisibleIndex="5"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="dat_e" Name="dat_e" Caption="Date" VisibleIndex="1"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="name" Name="name" Caption="Name" VisibleIndex="4"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="recno" Name="recno" Caption="RecNo" VisibleIndex="9"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="gst" Name="gst" Caption="GST" VisibleIndex="7"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="totalrec" Name="totalrec" Caption="Total Amount" VisibleIndex="8"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="type" Name="type" Caption="Type" VisibleIndex="10"></dx:GridViewDataTextColumn>
             </Columns>
 
             <SettingsPopup>
@@ -97,7 +109,7 @@
             <ClientSideEvents Init="onGridViewInit" SelectionChanged="onGridViewSelectionChanged" />
         </dx:ASPxGridView>
 
-        <asp:ObjectDataSource runat="server" ID="rpliAllDepositDataSet"></asp:ObjectDataSource>
+       
         <div class="TopPadding">
             Selected count: <span id="selCount" style="font-weight: bold">0</span>
         </div>
