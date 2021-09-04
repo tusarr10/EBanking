@@ -1,7 +1,18 @@
 ﻿Imports System.Data.SqlClient
+Imports DataBaseHelper
 
 Public Class addAccount
     Inherits System.Web.UI.Page
+
+    Private liveAccountService As New liveAccountService(connectionstringaccount)
+    Private liveAccountData As liveAccountClass
+    Private nominiData As NominiClass
+    Private productData As productClass
+    Private opData As accOperateClass
+
+    Private Cifservice As New ClassCifService(connectionstringaccount)
+    Private cifData As ClassCif
+
     Dim errorText As String
     Dim userNotAdmin As Boolean = True
     Dim replay As Boolean = False
@@ -59,6 +70,10 @@ Public Class addAccount
         _today = DateAndTime.Now().ToString("yyyy-MM-dd")
     End Sub
 
+    ''' <summary>
+    ''' Grab Data from view and store at respective class by reffer from here
+    ''' and then send this data to liveaccountInterface/transction Interface  to make transction
+    ''' </summary>
     Private Sub DoTransctionAddData()
         GetDataFromView()
         Try
@@ -119,11 +134,8 @@ Public Class addAccount
     End Sub
 
     Private Sub InsertDataLiveAccountDb(accountId As String)
-        Try
-            AccountSearch(accountId) 'Get Data By Account Id
-        Catch
-        End Try
-        If IsAccountIdExist(accountId) Then
+
+        If liveAccountService.IsAccountNumberExist(accountId) Then
 
             Errortb.Text = "Account Already Exit"
             Exit Sub
@@ -204,128 +216,137 @@ Public Class addAccount
         End If
     End Sub
 
-    Private Sub fillDataFromCifdb(ByVal AccountId As String) ' Here CIF
+    ''' <summary>
+    ''' Dapper Migration
+    ''' </summary>
+    ''' <param name="Data"></param>
+    Private Sub fillDataFromCifdb(ByVal data As ClassCif) ' Here CIF
+
         Try
-            cifsearch(AccountId)
-        Catch
-
-        End Try
-        Try
-
-            If CifHelper.getcif(0) = Nothing Then
-                ' ciftb.readonly = userNotAdmin
+            If data.cif = Nothing Then
             Else
-                CifInfo.Text = getcif(0)
-                '  ciftb.ReadOnly = userNotAdmin
+                'ciftb.Text = data.cif
+                CifInfo.Text = data.cif
+            End If
+            If data.n_ame IsNot Nothing Then
+                NameInfo.Text = data.n_ame
 
             End If
-            If getcifname(0) IsNot Nothing Then
-                NameInfo.Text = getcifname(0)
-            End If
-            If getcifemail(0) IsNot Nothing Then
-                emailtb.Text = getcifemail(0)
-            End If
-            If getcifmobile(0) IsNot Nothing Then
-                mobiletb.Text = getcifmobile(0)
-            End If
-            If CifHelper.getcifpan(0) IsNot Nothing Then
-                pantb.Text = CifHelper.getcifpan(0)
-            End If
-            If CifHelper.getcifadhar(0) IsNot Nothing Then
-                adhartb.Text = CifHelper.getcifadhar(0)
-            End If
-            If getcifdob(0) IsNot Nothing Then
-                dobtb.Text = getcifdob(0)
-            End If
-            If CifHelper.getcifgender(0) IsNot Nothing Then
-                genderlb.SelectedValue = CifHelper.getcifgender(0)
+            If data.email IsNot Nothing Then
+                emailtb.Text = data.email
 
             End If
-            If CifHelper.getcifaddress(0) IsNot Nothing Then
-                addresstb.Text = CifHelper.getcifaddress(0)
-            End If
-            If getcifStatus(0) IsNot Nothing Then
-                CifStatustb.Text = getcifStatus(0)
+            If data.mobile IsNot Nothing Then
+                mobiletb.Text = data.mobile
 
             End If
-            If CifHelper.getcifphoto(0) IsNot Nothing Then
-                photophoto.ImageUrl = CifHelper.getcifphoto(0)
+            If data.pan IsNot Nothing Then
+                pantb.Text = data.pan
+
             End If
-            If CifHelper.getcifsign(0) IsNot Nothing Then
-                signphoto.ImageUrl = CifHelper.getcifsign(0)
+            If data.adhar IsNot Nothing Then
+                adhartb.Text = data.adhar
+
             End If
-            If getcifaddress(0) IsNot Nothing And getcifadhar(0) IsNot Nothing And getcifdob(0) IsNot Nothing And getcifemail(0) IsNot Nothing And getcifgender(0) IsNot Nothing And getcifmobile(0) IsNot Nothing And getcifname(0) IsNot Nothing And getcifpan(0) IsNot Nothing Then
-                CifHelper.cifupdate = True
+            If data.dob IsNot Nothing Then
+                dobtb.Text = data.dob
+
+            End If
+            If data.gender IsNot Nothing Then
+
+                genderlb.SelectedValue = data.gender
+
+            End If
+            If data.address IsNot Nothing Then
+                addresstb.Text = data.address
+
+            End If
+            If data.status IsNot Nothing Then
+                CifStatustb.Text = data.status
+
+            End If
+            If data.photo IsNot Nothing Then
+                photophoto.ImageUrl = data.photo
+
+            End If
+            If data.sign IsNot Nothing Then
+                signphoto.ImageUrl = data.sign
+
+            End If
+            If data.address IsNot Nothing And data.adhar IsNot Nothing And data.dob IsNot Nothing And data.email IsNot Nothing And data.gender IsNot Nothing And data.mobile IsNot Nothing And data.n_ame IsNot Nothing And data.pan IsNot Nothing Then
+                cifupdate = True
             Else
-                CifHelper.cifupdate = False
+                cifupdate = False
             End If
-            'or we can
-            ' status ="Approve"
-            'then cifhelper.cifupdated =true
         Catch ex As Exception
-            CifHelper.cifupdate = False
+            cifupdate = False
         Finally
 
         End Try
 
     End Sub
 
-    Private Sub fillDataInView() 'For 1st Devision
+    ''' <summary>
+    ''' Complect Dapper
+    ''' </summary>
+    ''' <param name="data"></param>
+    Private Sub fillDataInView(data As liveAccountClass) 'For 1st Devision
         'division 1
-        balanceTb.Text = getAccountBalance(row) 'Get Balance Form Database
-        AccStatustb.Text = getAccountStatus(row) 'Get Account Status
+
+        balanceTb.Text = data.balance ' getAccountBalance(row) 'Get Balance Form Database
+        AccStatustb.Text = data.status ' getAccountStatus(row) 'Get Account Status
         'division 2
-        ciftb.Text = getAccountCif(row)
-        nametb.Text = getAccountName(row)
-        name2tb.Text = getAccountJointName(row)
-        nominiregcb.Text = getAccountNominiRegistor(row)
-        ProductCb.Text = getAccountProductType(row)
-        Modetb.Text = getAccountAccType(row)
-        Guardiantb.Text = getAccountGuardianName(row)
+        ciftb.Text = data.cif ' getAccountCif(row)
+        nametb.Text = data.n_ame ' getAccountName(row)
+        name2tb.Text = data.jointname ' getAccountJointName(row)
+        nominiregcb.Text = data.nominireg ' getAccountNominiRegistor(row)
+        ProductCb.Text = data.producttype ' getAccountProductType(row)
+        Modetb.Text = data.acctype ' getAccountAccType(row)
+        Guardiantb.Text = data.guardianname ' getAccountGuardianName(row)
     End Sub
 
-    Private Sub fillDataFromModeOfOperation(ByVal AccountId As String)
-        Try
-            AccountOperateMode(AccountId)
-        Catch
+    ''' <summary>
+    ''' Dapper Migration
+    ''' </summary>
+    ''' <param name="data"></param>
+    Private Sub fillDataFromModeOfOperation(ByVal data As accOperateClass)
 
-        End Try
         Try
-            AcModetb.Text = getAccountOperateAccOperateMode(row)
-            GuardianNametb.Text = getAccountOperateGuardianName(row)
-            Relationtb.Text = getAccountOperateRelation(row)
+            AcModetb.Text = data.accountoperatemode ' getAccountOperateAccOperateMode(row)
+            GuardianNametb.Text = data.guardianname ' getAccountOperateGuardianName(row)
+            Relationtb.Text = data.relation 'getAccountOperateRelation(row)
         Catch
-
+            Errortb.Text = "Opps Error In Getting data From Mode Of Operation ..."
         End Try
     End Sub
 
-    Private Sub fillDataFromProductInformation(ByVal AccountId As String)
-        Try
-            ProductType(AccountId)
-        Catch
+    ''' <summary>
+    ''' Dapper Migration DONE
+    ''' </summary>
+    ''' <param name="data"></param>
+    Private Sub fillDataFromProductInformation(ByVal data As productClass)
 
-        End Try
         Try
-            ActypeInfotb.Text = getProductTypeType(row)
-            Actermtb.Text = getProductTypeTerm(row)
-            AccValuetb.Text = getProductTypeValue(row)
+            ActypeInfotb.Text = data.type 'getProductTypeType(row)
+            Actermtb.Text = data.term ' getProductTypeTerm(row)
+            AccValuetb.Text = data.v_alue ' getProductTypeValue(row)
         Catch
             Errortb.Text = "producttype"
         End Try
     End Sub
 
-    Private Sub fillDataFromNominiInfo(ByVal AccountId As String)
-        Try
-            NominiInformation(AccountId)
-        Catch
+    ''' <summary>
+    ''' Dapper Migration
+    ''' </summary>
+    ''' <param name="data"></param>
+    Private Sub fillDataFromNominiInfo(ByVal data As NominiClass)
 
-        End Try
         Try
-            NominiRegInfo.Text = getNominiInfoReg(row)
-            NominiNameInfotb.Text = getNominiInfoNominiName(row)
-            NominiRelationInfotb.Text = getNominiInfoRelation(row)
-            NominiAddressInfotb.Text = getNominiInfoAddress(row)
-            NominiAgeInfotb.Text = getNominiInfoNominiAge(row)
+            NominiRegInfo.Text = data.nominireg ' getNominiInfoReg(row)
+            NominiNameInfotb.Text = data.nomininame ' getNominiInfoNominiName(row)
+            NominiRelationInfotb.Text = data.nominirelation ' getNominiInfoRelation(row)
+            NominiAddressInfotb.Text = data.nominiaddress ' getNominiInfoAddress(row)
+            NominiAgeInfotb.Text = data.nominiage ' getNominiInfoNominiAge(row)
         Catch
             Errortb.Text = "NominiInfo"
         End Try
@@ -360,7 +381,6 @@ Public Class addAccount
     End Sub
 
     Private Sub EnablemodeofOpreation()
-
         Relationtb.ReadOnly = False
         Guardiantb.ReadOnly = False
     End Sub
@@ -369,34 +389,39 @@ Public Class addAccount
     ''' ERROR CODE EB-AddAccount-GetDataByAccountId-101
     ''' </summary>
     Private Sub GetDataByAccountId(ByVal AccountId As String)
-
-        Try
-            AccountSearch(AccountId) 'Get Data By Account Id
-        Catch
-            EnableInput()
-            'Id Not Found OR Account Does Not Exist
-        End Try
-        If IsAccountIdExist(AccountId) = True Then '
+        '  If IsAccountIdExist(AccountId) = True Then '
+        If liveAccountService.IsAccountNumberExist(AccountId) Then '
             LinkButton5.Enabled = False 'disable clicking on cif search
             Try
-                fillDataInView()
+                'Fire To Get ClassData From Live acccount Data
+                liveAccountData = New liveAccountClass
+                liveAccountData = liveAccountService.getByAcNo(AccountId)
+                fillDataInView(liveAccountData)
 
                 'Division 3
                 'retrive Data From Cif Database
-                fillDataFromCifdb(getAccountCif(row).ToString)
+                cifData = New ClassCif
+                cifData = Cifservice.FindById(liveAccountData.cif.ToString)
+                fillDataFromCifdb(cifData)
 
                 'Division 4
-                fillDataFromModeOfOperation(AccountId)
+                opData = New accOperateClass
+                opData = liveAccountService.getByAcNoFromOpMode(AccountId)
+                fillDataFromModeOfOperation(opData)
 
                 'Division 5
-                fillDataFromProductInformation(AccountId)
+                productData = New productClass
+                productData = liveAccountService.getByAccountNumberFromAcType(AccountId)
+                fillDataFromProductInformation(productData)
 
                 'Division 6
-                fillDataFromNominiInfo(AccountId)
+                nominiData = New NominiClass
+                nominiData = liveAccountService.getByAcnoFromNomini(AccountId)
+                fillDataFromNominiInfo(nominiData)
             Catch ex As Exception
             End Try
         Else
-
+            EnableInput()
             ciftb.ReadOnly = False
             LinkButton5.Enabled = True 'enable clicking on cif search and msg id not exist and ready to open
         End If
@@ -412,7 +437,9 @@ Public Class addAccount
         Dim cifid As String
         Try
             cifid = ciftb.Text.Trim
-            fillDataFromCifdb(cifid)
+            cifData = New ClassCif
+            cifData = Cifservice.FindById(cifid)
+            fillDataFromCifdb(cifData)
             nametb.Text = NameInfo.Text.Trim
             EnableInput()
         Catch
@@ -420,38 +447,13 @@ Public Class addAccount
         End Try
     End Sub
 
-    Private Sub AccountStatusUpdate(ByVal status As String, ByVal accountId As String)
-        Try
-            AccountSearch(accountId) 'Get Data By Account Id
-        Catch
-            'Id Not Found OR Account Does Not Exist
-        End Try
-        If IsAccountIdExist(accountId) Then
-            Try
-                databaseconnection = New SqlConnection(connectionstringaccount())
-                datacommand = New SqlCommand("UPDATE " & liveAccountTable & " set status ='" & status & "' where accountnumber='" & accountId & "'", databaseconnection)
-                databaseconnection.Open()
-                Dim i = datacommand.ExecuteNonQuery()
-                If i > 0 Then
-                    replay = True ' Data Update Successfully
-                Else
-                    replay = False 'Data Not Update
-
-                End If
-                databaseconnection.Close()
-            Catch ex As Exception
-                databaseconnection.Close()
-            End Try
-        End If
-    End Sub
-
     Protected Sub AccountStatusApproveBtn_Click(sender As Object, e As EventArgs) Handles AccountStatusApproveBtn.Click ' Account Status Active
         If accIdTb.Text IsNot Nothing Then
 
             If userNotAdmin = False Then
                 Dim accountId As String = accIdTb.Text.Trim
-                AccountStatusUpdate("Active", accountId)
-                If replay Then
+
+                If liveAccountService.UpdateAccountStatus(accountId, "Active") Then
                     AccStatustb.Text = "Active"
                 End If
             Else
@@ -468,8 +470,8 @@ Public Class addAccount
 
             If userNotAdmin = False Then
                 Dim accountId As String = accIdTb.Text.Trim
-                AccountStatusUpdate("Pending", accountId)
-                If replay Then
+                '  AccountStatusUpdate("Pending", accountId)
+                If liveAccountService.UpdateAccountStatus(accountId, "Pending") Then
                     AccStatustb.Text = "Pending"
                 End If
             Else
@@ -487,8 +489,8 @@ Public Class addAccount
             If userNotAdmin = False Then
 
                 Dim accountId As String = accIdTb.Text.Trim
-                AccountStatusUpdate("Block", accountId)
-                If replay Then
+                '  AccountStatusUpdate("Block", accountId)
+                If liveAccountService.UpdateAccountStatus(accountId, "Block") Then
                     AccStatustb.Text = "Block"
                 End If
             Else

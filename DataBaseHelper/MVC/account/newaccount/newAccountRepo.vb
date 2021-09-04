@@ -9,6 +9,7 @@ Public Class newAccountRepo
     Public Sub New(connection As String)
         _db = New SqlConnection(connection)
     End Sub
+
     Public Function getAll() As List(Of NewAccountClass) Implements newAccountInterface.getAll
         Return Me._db.Query(Of NewAccountClass)("SELECT * FROM newacdb").ToList
     End Function
@@ -101,4 +102,5 @@ Public Class newAccountRepo
             Return False
         End If
     End Function
+
 End Class

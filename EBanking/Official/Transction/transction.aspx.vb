@@ -1,5 +1,6 @@
-﻿Imports DevExpress.Web
-Imports DataBaseHelper
+﻿Imports DataBaseHelper
+Imports DevExpress.Web
+
 Public Class transction
     Inherits System.Web.UI.Page
 
@@ -47,7 +48,6 @@ Public Class transction
                 RdJournalGridView.DataSource = transctionService.GetAllfromRd()
                 RdJournalGridView.DataBind()
             End If
-
         Catch ex As Exception
 
         End Try
@@ -63,7 +63,6 @@ Public Class transction
                 ssaJournalGridView.DataSource = transctionService.getAllFromSSA()
                 ssaJournalGridView.DataBind()
             End If
-
         Catch ex As Exception
 
         End Try
@@ -87,6 +86,7 @@ Public Class transction
 
         End If
     End Sub
+
     Sub redirect(url As String, accountnumber As String)
         Dim TARGET_URL As String = url
         If Page.IsCallback Then
@@ -146,7 +146,6 @@ Public Class transction
             stus = data(sender, "status")
             'getApproveInfo.GetDetailsTransction = data(sender, "Details")
             'getApproveInfo.GetTransctionsType = data(sender, "transctiontype")
-
         Catch ex As Exception
             MyMessageBox.Show(Me, "OPPS Inform Developer .")
             Exit Sub
@@ -156,7 +155,6 @@ Public Class transction
                 redirect("TransctionStatusApprove.aspx", value + "&value2=" + "Saving" + "&value3=" + value2 + "&value4=" + etDate + "&Value5=" + aunt + "&status=" + stus)
             End If
         End Try
-
 
     End Sub
 

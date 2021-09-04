@@ -270,7 +270,6 @@ Public Class sbDeposit
             If "x" = "x" Then 'transction duplicate and status must reject
                 DoTransction()
             End If
-
         Else
             MyMessageBox.Show(Me, "Enter Valid Transction ID")
         End If

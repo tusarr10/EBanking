@@ -1,7 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports DataBaseHelper
 
-
 Public Class TransctionStatusApprove
     Inherits System.Web.UI.Page
 
@@ -29,10 +28,7 @@ Public Class TransctionStatusApprove
     Dim status As String
     Dim amount As String
 
-
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
-
 
         Try
             If Request.QueryString("value") IsNot Nothing Then
@@ -104,7 +100,6 @@ Public Class TransctionStatusApprove
 
         If data.bbt IsNot Nothing Then
             tbbbt.Text = data.bbt
-
         Else
             tbbbt.Text = "ERROR"
 
@@ -139,6 +134,7 @@ Public Class TransctionStatusApprove
         End If
 
     End Sub
+
     Sub getInford(ByVal data As rdJournalClass)
 
         If data.accountnumber IsNot Nothing Then
@@ -172,7 +168,6 @@ Public Class TransctionStatusApprove
 
         If data.bbt IsNot Nothing Then
             tbbbt.Text = data.bbt
-
         Else
             tbbbt.Text = "ERROR"
 
@@ -207,6 +202,7 @@ Public Class TransctionStatusApprove
         End If
 
     End Sub
+
     Sub getInfossa(ByVal data As ssaJournalClass)
 
         If data.accountnumber IsNot Nothing Then
@@ -240,7 +236,6 @@ Public Class TransctionStatusApprove
 
         If data.bbt IsNot Nothing Then
             tbbbt.Text = data.bbt
-
         Else
             tbbbt.Text = "ERROR"
 
@@ -275,6 +270,7 @@ Public Class TransctionStatusApprove
         End If
 
     End Sub
+
     Protected Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
 
     End Sub

@@ -1,5 +1,4 @@
-﻿Imports System.Data.SqlClient
-Imports DataBaseHelper
+﻿Imports DataBaseHelper
 
 Public Class addcif
     Inherits System.Web.UI.Page
@@ -42,6 +41,7 @@ Public Class addcif
         End Try
 
     End Sub
+
     ' Complect Migration To Dapper on  02-09-2021
     ''' <summary>
     ''' ERROR CODE EB-CifUpdatefrmm-10
@@ -99,6 +99,7 @@ Public Class addcif
         End Try
 
     End Sub
+
     Sub GetDataFromView()
         cifclass = New ClassCif
         cifclass.cif = ciftb.Text.Trim
@@ -116,7 +117,6 @@ Public Class addcif
     End Sub
 
     Sub incertCif() '"insert into cifdb(cif) values(" & "'" & cif & "')"
-
 
         Try
             If ciftb.Text = Nothing Then
@@ -139,7 +139,7 @@ Public Class addcif
     End Sub
 
     Sub UpdateCif() '"insert into cifdb(cif) values(" & "'" & cif & "')"
-        '  Dim commandstring As String
+
         Try
             If ciftb.Text = Nothing Then
                 responselbl.Text = "Enter CIF ID .."
@@ -241,13 +241,7 @@ Public Class addcif
                 dobtb.ReadOnly = userNotAdmin
             End If
             If data.gender IsNot Nothing Then
-                'If data.gender = "Male" Then
-                '    gendertb.SelectedIndex = 0
-                'ElseIf data.gender = "Female" Then
-                '    RadioGroup1.SelectedIndex = 1
-                'ElseIf data.gender = "Other" Then
-                '    RadioGroup1.SelectedIndex = 2
-                'End If
+
                 genderlb.SelectedValue = data.gender
                 genderlb.Enabled = Not (userNotAdmin)
 
@@ -278,9 +272,6 @@ Public Class addcif
             Else
                 cifupdate = False
             End If
-            'or we can
-            ' status ="Approve"
-            'then data.cifupdated =true
         Catch ex As Exception
             cifupdate = False
         Finally
@@ -290,12 +281,10 @@ Public Class addcif
 
     Protected Sub LinkButton4_Click(sender As Object, e As EventArgs) Handles LinkButton4.Click
         subfilldata()
-
     End Sub
 
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         replay1 = ""
-
         incertCif()
         If replay = True Then
             subfilldata()
@@ -305,7 +294,6 @@ Public Class addcif
             responselbl.Text = "Record Not saved : " + replay1
             responselbl.ForeColor = Drawing.Color.Red
         End If
-
     End Sub
 
     Protected Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
@@ -330,9 +318,7 @@ Public Class addcif
     Protected Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         replay1 = ""
         If userNotAdmin = False Then
-            ''Must Implectment Dialog
             deleteCif(ciftb.Text.Trim)
-            ' CifHelper.cifsearch(ciftb.Text.Trim)
             If replay = True Then
                 If cifservice.IsCifExist(ciftb.Text.Trim) = False Then
                     responselbl.Text = "Record successfully Deleted : Successfully "
@@ -369,11 +355,7 @@ Public Class addcif
     End Sub
 
     Private Sub AccountStatusUpdate(v As String, cifId As String)
-        'Try
-        '    cifsearch(cifId) 'Get Data By Account Id
-        'Catch
-        '    'Id Not Found OR Account Does Not Exist
-        'End Try
+
         Try
             If cifservice.IsCifExist(cifId) Then
                 replay = cifservice.updateStatus(cifId, v)
@@ -381,23 +363,7 @@ Public Class addcif
         Catch ex As Exception
 
         End Try
-        'If IsIdExist(cifId) Then
-        '    Try
-        '        databaseconnection = New SqlConnection(connectionstringaccount())
-        '        datacommand = New SqlCommand("UPDATE " & ciftable & " set status ='" & v & "' where cif='" & cifId & "'", databaseconnection)
-        '        databaseconnection.Open()
-        '        Dim i = datacommand.ExecuteNonQuery()
-        '        If i > 0 Then
-        '            replay = True ' Data Update Successfully
-        '        Else
-        '            replay = False 'Data Not Update
 
-        '        End If
-        '        databaseconnection.Close()
-        '    Catch ex As Exception
-        '        databaseconnection.Close()
-        '    End Try
-        'End If
     End Sub
 
     Protected Sub LinkButton2_Click(sender As Object, e As EventArgs) Handles LinkButton2.Click

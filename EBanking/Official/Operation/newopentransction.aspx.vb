@@ -1,6 +1,4 @@
-﻿Imports System.Data.SqlClient
-Imports DataBaseHelper
-
+﻿Imports DataBaseHelper
 
 Public Class newopentransction
     Inherits System.Web.UI.Page
@@ -65,7 +63,6 @@ Public Class newopentransction
 
     Dim cs As String = connectionhelper.connectionstringaccount()
 
-
     ''' <summary>
     ''' Logic For Insert/Update Data In Database
     ''' </summary>
@@ -75,7 +72,6 @@ Public Class newopentransction
         DataFile = New NewAccountClass
         DataFile = newService.getByReffNo(reffNumberTb.Text.Trim)
         Dim datafile2 = New allJournalClass
-
 
         'For update data in New Account Class
         DataFile.trid = tridtb.Text.Trim
@@ -103,22 +99,19 @@ Public Class newopentransction
         End If
         'Implement Verification
         If datafile2.deposit IsNot Nothing Then
-            'TODO 
+            'TODO
             'Update Balance , status ,trid where reffno =xx
             'insert data in to journal ..
 
-
             Dim Result As Boolean
-                Result = newtransctionService.AddTransction(DataFile, datafile2)
+            Result = newtransctionService.AddTransction(DataFile, datafile2)
 
             If Result Then
-                    MyMessageBox.Show(Me, "Data Saved Successfully")
-                Else
-                    MyMessageBox.Show(Me, "Data Not Saved Successfully")
-                End If
-
-
-                Else
+                MyMessageBox.Show(Me, "Data Saved Successfully")
+            Else
+                MyMessageBox.Show(Me, "Data Not Saved Successfully")
+            End If
+        Else
             MyMessageBox.Show(Me, "Account Balance Not Update Check In All User ...")
         End If
 
@@ -126,7 +119,6 @@ Public Class newopentransction
         Button3.Enabled = True
 
     End Sub
-
 
     ''' <summary>
     ''' Button Click For Update Balance And Transction Report
@@ -140,7 +132,6 @@ Public Class newopentransction
     End Sub
 
     Dim row As Integer = 0
-
 
     ''' <summary>
     ''' get Data from DataBase By Its ReffNo

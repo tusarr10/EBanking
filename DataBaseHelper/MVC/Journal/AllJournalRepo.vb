@@ -407,4 +407,5 @@ Public Class AllJournalRepo
     Public Function getByDataFromtdJournal(enterdate As String, accountNumber As String, Trid As String, status As String) As tdJournalClass Implements JournalInterface.getByDataFromtdJournal
         Return Me._db.Query(Of tdJournalClass)("SELECT * FROM rdjournal WHERE trid=@Trid AND status=@status AND accountnumber=@acno AND da_te=@dte", New With {Key .Trid = Trid, Key .status = status, Key .acno = accountNumber, Key .dte = enterdate}).FirstOrDefault
     End Function
+
 End Class

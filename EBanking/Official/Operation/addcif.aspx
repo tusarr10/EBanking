@@ -34,19 +34,19 @@
                         .height(100);
                 };
                 reader.readAsDataURL(input.files[0]);
-                }
             }
-            function ImagePreview1(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        $('#<%=signphoto.ClientID%>').prop('src', e.target.result)
+        }
+        function ImagePreview1(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#<%=signphoto.ClientID%>').prop('src', e.target.result)
                         .width(100)
                         .height(50);
-                    };
-                    reader.readAsDataURL(input.files[0]);
-                    }
-                }
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
     </script>
     <div class="container-fluid">
         <div class="row">

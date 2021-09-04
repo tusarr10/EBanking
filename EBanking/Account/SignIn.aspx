@@ -8,88 +8,88 @@
 <asp:Content ID="Content" ContentPlaceHolderID="PageContent" runat="server">
     <div class="formLayout-verticalAlign">
         <div class="formLayout-container">
-            <dx:aspxtabcontrol id="SignInRegisterTabControl" runat="server" width="100%" tabalign="Justify" paddings-padding="0">
-                <tabs>
-                    <dx:tab text="Sign In" navigateurl="SignIn.aspx"></dx:tab>
-                    <dx:tab text="Register" navigateurl="Register.aspx"></dx:tab>
-                </tabs>
-            </dx:aspxtabcontrol>
+            <dx:ASPxTabControl ID="SignInRegisterTabControl" runat="server" Width="100%" TabAlign="Justify" Paddings-Padding="0">
+                <Tabs>
+                    <dx:Tab Text="Sign In" NavigateUrl="SignIn.aspx"></dx:Tab>
+                    <dx:Tab Text="Register" NavigateUrl="Register.aspx"></dx:Tab>
+                </Tabs>
+            </dx:ASPxTabControl>
 
-            <dx:aspxformlayout runat="server" id="FormLayout" clientinstancename="formLayout" usedefaultpaddings="false">
-                <settingsadaptivity adaptivitymode="SingleColumnWindowLimit" />
-                <settingsitemcaptions location="Top" />
-                <styles layoutgroup-cell-paddings-padding="0" layoutitem-paddings-paddingbottom="8" />
-                <items>
-                    <dx:layoutgroup showcaption="False" groupboxdecoration="None" paddings-padding="16">
-                        <items>
-                            <dx:layoutitem caption="User name" helptext="Please, enter your user name">
-                                <layoutitemnestedcontrolcollection>
-                                    <dx:layoutitemnestedcontrolcontainer>
-                                        <dx:aspxtextbox id="UserNameTextBox" runat="server" width="100%">
-                                            <validationsettings display="Dynamic" setfocusonerror="true" errortextposition="Bottom" errordisplaymode="ImageWithText">
-                                                <requiredfield isrequired="true" errortext="User name is required" />
-                                            </validationsettings>
-                                            <clientsideevents init="function(s, e){ s.Focus(); }" />
-                                        </dx:aspxtextbox>
-                                    </dx:layoutitemnestedcontrolcontainer>
-                                </layoutitemnestedcontrolcollection>
-                            </dx:layoutitem>
+            <dx:ASPxFormLayout runat="server" ID="FormLayout" ClientInstanceName="formLayout" UseDefaultPaddings="false">
+                <SettingsAdaptivity AdaptivityMode="SingleColumnWindowLimit" />
+                <SettingsItemCaptions Location="Top" />
+                <Styles LayoutGroup-Cell-Paddings-Padding="0" LayoutItem-Paddings-PaddingBottom="8" />
+                <Items>
+                    <dx:LayoutGroup ShowCaption="False" GroupBoxDecoration="None" Paddings-Padding="16">
+                        <Items>
+                            <dx:LayoutItem Caption="User name" HelpText="Please, enter your user name">
+                                <LayoutItemNestedControlCollection>
+                                    <dx:LayoutItemNestedControlContainer>
+                                        <dx:ASPxTextBox ID="UserNameTextBox" runat="server" Width="100%">
+                                            <ValidationSettings Display="Dynamic" SetFocusOnError="true" ErrorTextPosition="Bottom" ErrorDisplayMode="ImageWithText">
+                                                <RequiredField IsRequired="true" ErrorText="User name is required" />
+                                            </ValidationSettings>
+                                            <ClientSideEvents Init="function(s, e){ s.Focus(); }" />
+                                        </dx:ASPxTextBox>
+                                    </dx:LayoutItemNestedControlContainer>
+                                </LayoutItemNestedControlCollection>
+                            </dx:LayoutItem>
 
-                            <dx:layoutitem caption="Password">
-                                <layoutitemnestedcontrolcollection>
-                                    <dx:layoutitemnestedcontrolcontainer>
-                                        <dx:aspxbuttonedit id="PasswordButtonEdit" runat="server" width="100%" password="true" clearbutton-displaymode="Never">
-                                            <buttonstyle border-borderwidth="0" width="6" cssclass="eye-button" hoverstyle-backcolor="Transparent" pressedstyle-backcolor="Transparent">
-                                            </buttonstyle>
-                                            <buttontemplate>
+                            <dx:LayoutItem Caption="Password">
+                                <LayoutItemNestedControlCollection>
+                                    <dx:LayoutItemNestedControlContainer>
+                                        <dx:ASPxButtonEdit ID="PasswordButtonEdit" runat="server" Width="100%" Password="true" ClearButton-DisplayMode="Never">
+                                            <ButtonStyle Border-BorderWidth="0" Width="6" CssClass="eye-button" HoverStyle-BackColor="Transparent" PressedStyle-BackColor="Transparent">
+                                            </ButtonStyle>
+                                            <ButtonTemplate>
                                                 <div></div>
-                                            </buttontemplate>
-                                            <buttons>
-                                                <dx:editbutton>
-                                                </dx:editbutton>
-                                            </buttons>
-                                            <validationsettings display="Dynamic" setfocusonerror="true" errortextposition="Bottom" errordisplaymode="ImageWithText">
-                                                <requiredfield isrequired="true" errortext="Password is required" />
-                                            </validationsettings>
-                                            <clientsideevents buttonclick="onPasswordButtonEditButtonClick" />
-                                        </dx:aspxbuttonedit>
-                                    </dx:layoutitemnestedcontrolcontainer>
-                                </layoutitemnestedcontrolcollection>
-                            </dx:layoutitem>
+                                            </ButtonTemplate>
+                                            <Buttons>
+                                                <dx:EditButton>
+                                                </dx:EditButton>
+                                            </Buttons>
+                                            <ValidationSettings Display="Dynamic" SetFocusOnError="true" ErrorTextPosition="Bottom" ErrorDisplayMode="ImageWithText">
+                                                <RequiredField IsRequired="true" ErrorText="Password is required" />
+                                            </ValidationSettings>
+                                            <ClientSideEvents ButtonClick="onPasswordButtonEditButtonClick" />
+                                        </dx:ASPxButtonEdit>
+                                    </dx:LayoutItemNestedControlContainer>
+                                </LayoutItemNestedControlCollection>
+                            </dx:LayoutItem>
 
-                            <dx:layoutitem showcaption="False" paddings-paddingtop="13">
-                                <layoutitemnestedcontrolcollection>
-                                    <dx:layoutitemnestedcontrolcontainer>
-                                        <dx:aspxcheckbox id="RememberMeCheckBox" runat="server" text="Remember me" checked="true"></dx:aspxcheckbox>
-                                    </dx:layoutitemnestedcontrolcontainer>
-                                </layoutitemnestedcontrolcollection>
-                            </dx:layoutitem>
+                            <dx:LayoutItem ShowCaption="False" Paddings-PaddingTop="13">
+                                <LayoutItemNestedControlCollection>
+                                    <dx:LayoutItemNestedControlContainer>
+                                        <dx:ASPxCheckBox ID="RememberMeCheckBox" runat="server" Text="Remember me" Checked="true"></dx:ASPxCheckBox>
+                                    </dx:LayoutItemNestedControlContainer>
+                                </LayoutItemNestedControlCollection>
+                            </dx:LayoutItem>
 
-                            <dx:layoutitem showcaption="False" name="GeneralError">
-                                <layoutitemnestedcontrolcollection>
-                                    <dx:layoutitemnestedcontrolcontainer>
+                            <dx:LayoutItem ShowCaption="False" Name="GeneralError">
+                                <LayoutItemNestedControlCollection>
+                                    <dx:LayoutItemNestedControlContainer>
                                         <div id="GeneralErrorDiv" runat="server" class="formLayout-generalErrorText"></div>
-                                    </dx:layoutitemnestedcontrolcontainer>
-                                </layoutitemnestedcontrolcollection>
-                            </dx:layoutitem>
-                        </items>
-                    </dx:layoutgroup>
+                                    </dx:LayoutItemNestedControlContainer>
+                                </LayoutItemNestedControlCollection>
+                            </dx:LayoutItem>
+                        </Items>
+                    </dx:LayoutGroup>
 
-                    <dx:layoutgroup groupboxdecoration="HeadingLine" showcaption="False">
-                        <paddings paddingtop="13" paddingbottom="13" />
-                        <groupboxstyle cssclass="formLayout-groupBox" />
-                        <items>
-                            <dx:layoutitem showcaption="False" horizontalalign="Center" paddings-padding="0">
-                                <layoutitemnestedcontrolcollection>
-                                    <dx:layoutitemnestedcontrolcontainer>
-                                        <dx:aspxbutton id="SignInButton" runat="server" width="200" text="Log In" onclick="SignInButton_Click"></dx:aspxbutton>
-                                    </dx:layoutitemnestedcontrolcontainer>
-                                </layoutitemnestedcontrolcollection>
-                            </dx:layoutitem>
-                        </items>
-                    </dx:layoutgroup>
-                </items>
-            </dx:aspxformlayout>
+                    <dx:LayoutGroup GroupBoxDecoration="HeadingLine" ShowCaption="False">
+                        <Paddings PaddingTop="13" PaddingBottom="13" />
+                        <GroupBoxStyle CssClass="formLayout-groupBox" />
+                        <Items>
+                            <dx:LayoutItem ShowCaption="False" HorizontalAlign="Center" Paddings-Padding="0">
+                                <LayoutItemNestedControlCollection>
+                                    <dx:LayoutItemNestedControlContainer>
+                                        <dx:ASPxButton ID="SignInButton" runat="server" Width="200" Text="Log In" OnClick="SignInButton_Click"></dx:ASPxButton>
+                                    </dx:LayoutItemNestedControlContainer>
+                                </LayoutItemNestedControlCollection>
+                            </dx:LayoutItem>
+                        </Items>
+                    </dx:LayoutGroup>
+                </Items>
+            </dx:ASPxFormLayout>
         </div>
     </div>
 </asp:Content>

@@ -1,6 +1,6 @@
 ﻿'Imports System.Data.SqlClient
-Imports DevExpress.Web
 Imports DataBaseHelper
+Imports DevExpress.Web
 
 Public Class openAccount
     Inherits System.Web.UI.Page
@@ -9,6 +9,7 @@ Public Class openAccount
     ''' Link To LiveaccountService.vb
     ''' </summary>
     Private UserData As liveAccountClass
+
     Private UserDataList As List(Of liveAccountClass)
     Private UserService As New liveAccountService(connectionstringaccount)
 
@@ -16,6 +17,7 @@ Public Class openAccount
     ''' Link to NewAccountInterface.vb
     ''' </summary>
     Private newAccountfiles As NewAccountClass
+
     Private newService As New newAccountService(connectionstringaccount)
     Private newTransctionService As New newAccountTransctionService(connectionstringaccount)
 
@@ -23,13 +25,13 @@ Public Class openAccount
     ''' For CifService.vb
     ''' </summary>
     Private CifData As ClassCif
+
     Private CifService As New ClassCifService(connectionstringaccount)
 
     '******************End****************************
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
     End Sub
-
 
     'Not In Use
     Function data(sender As Object, tablename As String) 'For retrive data from Table
@@ -150,7 +152,6 @@ Public Class openAccount
                 cifupdate = False
 
             End If
-
         Catch ex As Exception
             ' responselbl.Text = "error" + ex.Message
         Finally
@@ -269,7 +270,6 @@ Public Class openAccount
         btnclickcifsearch(ciftb.Text.Trim)
     End Sub
 
-
     'for Update Balance Of New Account Opened
     Protected Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
 
@@ -325,7 +325,7 @@ Public Class openAccount
     End Sub
 
     ''' <summary>
-    ''' Find Data From DataBase 
+    ''' Find Data From DataBase
     ''' logic To Get Data From Database
     ''' Check User already Exist Or Not
     ''' </summary>
@@ -337,7 +337,6 @@ Public Class openAccount
             UserDataList = UserService.getByName(name)
             ASPxGridView1.DataSource = UserService.getByName(name)  'here change to class list
             loadDataTable()
-
         Catch ex As Exception
 
         End Try
@@ -346,7 +345,7 @@ Public Class openAccount
     Dim _name1 As String
 
     ''' <summary>
-    ''' Search By Name 
+    ''' Search By Name
     ''' Check Wheather User Already Open Account Or Not
     ''' </summary>
     Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click ' for search name
@@ -363,7 +362,6 @@ Public Class openAccount
 
     Dim IsVerifu As Boolean
     Dim verid As String
-
 
     ''' <summary>
     ''' Get Data From View
@@ -495,7 +493,6 @@ Public Class openAccount
 
     End Sub
 
-
     'Send Data To Next Module For Print Page
     Private Sub GoForrword()
         'send all data to a module then open print form
@@ -537,8 +534,6 @@ Public Class openAccount
 
     'Submit Button
     '  Private Sub InsertDataTransction()
-
-
 
     '      'insert data into newacdb
     '      Dim command As String
@@ -587,7 +582,7 @@ Public Class openAccount
     'Submit Button Click
 
     ''' <summary>
-    ''' Submit Button Click 
+    ''' Submit Button Click
     ''' </summary>
     ''' <param name="sender">Not Required</param>
     ''' <param name="e">NA</param>
@@ -597,6 +592,7 @@ Public Class openAccount
         ' InsertDataTransction()
         InsertData()
     End Sub
+
     Dim result As Boolean
 
     ''' <summary>
@@ -612,4 +608,5 @@ Public Class openAccount
             Errortb.Text = "Data Not Saved Successfully"
         End If
     End Sub
+
 End Class

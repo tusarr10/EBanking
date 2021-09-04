@@ -1,5 +1,5 @@
-﻿Imports Dapper
-Imports System.Data.SqlClient
+﻿Imports System.Data.SqlClient
+Imports Dapper
 
 Public Class newAccountTransctionRepo
     Implements newAccountTransctionInterface
@@ -9,6 +9,7 @@ Public Class newAccountTransctionRepo
     Public Sub New(connection As String)
         _db = New SqlConnection(connection)
     End Sub
+
     Private Function AddData(data As NewAccountClass) As Boolean Implements newAccountTransctionInterface.AddData
         Dim parm As SqlParameter() = {
            New SqlParameter("@vrid", data.VirtualId),
@@ -151,9 +152,9 @@ Public Class newAccountTransctionRepo
 
             End Using
             '  Me._db.Query(Of allJournalClass)(query, args).SingleOrDefault
-
         Catch ex As Exception
             Return False
         End Try
     End Function
+
 End Class

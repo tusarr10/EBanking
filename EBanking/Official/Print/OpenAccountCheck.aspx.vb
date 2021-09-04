@@ -1,4 +1,5 @@
 ﻿Imports DataBaseHelper
+
 Public Class OpenAccountCheck
     Inherits System.Web.UI.Page
 
