@@ -52,7 +52,10 @@ Public Class newopentransction
 
     Protected Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         'getdata Function
-        newOpenAccountSearch(reffNumberTb.Text.Trim)
+        ' newOpenAccountSearch(reffNumberTb.Text.Trim)
+        MyMessageBox.Show(Me, "Not Proper Implement So Do It")
+        DataFile = New NewAccountClass
+        DataFile = newService.getByReffNo(reffNumberTb.Text.Trim)
         ' getdataFromDB()
         'print
         Page.ClientScript.RegisterStartupScript(Me.GetType(), "OpenWindow", "window.open('../Print/OpenAccountCheck.aspx','_newtab');", True)
@@ -76,6 +79,7 @@ Public Class newopentransction
         'For update data in New Account Class
         DataFile.trid = tridtb.Text.Trim
         DataFile.balance = amounttb.Text.Trim
+        DataFile.status = "Approved"
 
         'For insert data in all Journal
         datafile2.da_te = datetb.Text.Trim
@@ -107,6 +111,7 @@ Public Class newopentransction
             Result = newtransctionService.AddTransction(DataFile, datafile2)
 
             If Result Then
+
                 MyMessageBox.Show(Me, "Data Saved Successfully")
             Else
                 MyMessageBox.Show(Me, "Data Not Saved Successfully")

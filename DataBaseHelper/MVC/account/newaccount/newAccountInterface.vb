@@ -17,5 +17,6 @@ Public Interface newAccountInterface
 
     'add data by transction ok
     ' Function AddData(data As NewAccountClass) As Boolean
+    Function UpdateStatus(status As String, reffno As String) As Boolean
 
 End Interface

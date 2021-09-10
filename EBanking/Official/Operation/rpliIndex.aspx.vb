@@ -7,6 +7,8 @@ Public Class rpliIndex
 
     Dim result As Boolean = False
     Dim log As String
+    Dim proposalnorp As String
+
     Private Custmorfiles As ClassPliIndex
     Private CustmorService As New pliindexService(connectionstringRpli())
     Dim listOfCustmor As List(Of ClassPliIndex)
@@ -18,10 +20,8 @@ Public Class rpliIndex
         If Not (Page.IsPostBack) Then
             Try
                 'log implement
-                usidrp = "Tusar"
-                indexborp = "Talita"
-                officeidtb.Text = indexborp
-                usernametb.Text = usidrp
+                officeidtb.Text = "Talita" 'indexborp
+                usernametb.Text = "Tusar" ' usidrp
                 rcdatetb.Text = DateAndTime.Now.ToString("yyyy-MM-dd")
                 proposaldatetb.Text = DateAndTime.Now.ToString("yyyy-MM-dd")
             Catch ex As Exception
@@ -57,59 +57,59 @@ Public Class rpliIndex
     Sub getdatafromview()
         Custmorfiles = New ClassPliIndex
 
-        idrp = DateAndTime.Now.ToString() & boidtb.Text
+        '  idrp = DateAndTime.Now.ToString() & boidtb.Text
 
-        agentidrp = agentidtb.Text.Trim
+        ' agentidrp = agentidtb.Text.Trim
         Custmorfiles.agentId = agentidtb.Text.Trim
 
         Custmorfiles.id = id
 
-        boidrp = boidtb.Text.Trim
+        'boidrp = boidtb.Text.Trim
         Custmorfiles.boid = boidtb.Text.Trim
 
-        recdaterp = rcdatetb.Text.Trim
+        ' recdaterp = rcdatetb.Text.Trim
         Custmorfiles.RecDate = rcdatetb.Text.Trim
 
-        agentsarp = agentsa.Text.Trim
+        ' agentsarp = agentsa.Text.Trim
         Custmorfiles.agentSA = agentsa.Text.Trim
 
-        agentpremrp = agentpremtb.Text.Trim
+        '  agentpremrp = agentpremtb.Text.Trim
         Custmorfiles.agentPremium = agentpremtb.Text.Trim
 
-        agentmobilerp = agentmobile.Text.Trim
+        '  agentmobilerp = agentmobile.Text.Trim
         Custmorfiles.AgentMobile = agentmobile.Text.Trim
 
-        custanamerp = custnametb.Text.Trim
+        '   custanamerp = custnametb.Text.Trim
         Custmorfiles.CustName = custnametb.Text.Trim
 
-        custdobrp = custdobtb.Text.Trim
+        ' custdobrp = custdobtb.Text.Trim
         Custmorfiles.custmordob = custdobtb.Text.Trim
 
-        custmobilerp = custmobiletb.Text.Trim
+        ' custmobilerp = custmobiletb.Text.Trim
         Custmorfiles.custmobile = custmobiletb.Text.Trim
 
-        custnotesrp = custnotestb.Text.Trim
+        ' custnotesrp = custnotestb.Text.Trim
         Custmorfiles.custmornotes = custnotestb.Text.Trim
 
-        custaddressrp = custaddresstb.Text
+        ' custaddressrp = custaddresstb.Text
         Custmorfiles.custaddress = custaddresstb.Text
 
-        proposaltyperp = producttype.Text.Trim
+        '  proposaltyperp = producttype.Text.Trim
         Custmorfiles.proposaltype = producttype.Text.Trim
 
-        productcatrp = DropDownList1.Text.Trim
+        '  productcatrp = DropDownList1.Text.Trim
         Custmorfiles.productcat = DropDownList1.Text.Trim
 
-        prefqrp = DropDownList3.Text.Trim
+        ' prefqrp = DropDownList3.Text.Trim
         Custmorfiles.prefrq = DropDownList3.Text.Trim
 
-        matagerp = matagetb.Text.Trim
+        ' matagerp = matagetb.Text.Trim
         Custmorfiles.matage = matagetb.Text.Trim
 
-        indexborp = "Talita"
+        ' indexborp = "Talita"
         Custmorfiles.indexbo = "Talita"
 
-        usidrp = "Tusar"
+        '  usidrp = "Tusar"
         Custmorfiles.userid = "Tusar"
 
     End Sub 'insert data to pli transction class
@@ -126,29 +126,29 @@ Public Class rpliIndex
         TranstionFiles.name = custnametb.Text.Trim
         TranstionFiles.id = DateAndTime.Now.ToString("yyMdHHmmss") & boidtb.Text
 
-        proposaldaterp = proposaldatetb.Text.Trim
+        'proposaldaterp = proposaldatetb.Text.Trim
         Custmorfiles.proposaldate = proposaldatetb.Text.Trim
         TranstionFiles.dat_e = proposaldatetb.Text.Trim
 
-        proposalnorp = propnotb.Text.Trim
+        ' proposalnorp = propnotb.Text.Trim
         Custmorfiles.proposalno = propnotb.Text.Trim
         TranstionFiles.proposalno = propnotb.Text.Trim
 
-        recnorp = recnotb.Text.Trim
+        ' recnorp = recnotb.Text.Trim
         Custmorfiles.recno = recnotb.Text.Trim
         TranstionFiles.recno = recnotb.Text.Trim
 
-        sarp = satb.Text.Trim
+        ' sarp = satb.Text.Trim
         Custmorfiles.sa = satb.Text.Trim
 
-        premrp = premtb.Text.Trim
+        ' premrp = premtb.Text.Trim
         Custmorfiles.premium = premtb.Text.Trim
         TranstionFiles.totalrec = premtb.Text.Trim
 
-        indexborp = "Talita"
+        ' indexborp = "Talita"
         Custmorfiles.indexbo = "Talita"
 
-        usidrp = "Tusar"
+        '  usidrp = "Tusar"
         Custmorfiles.userid = "Tusar"
     End Sub
 
@@ -308,7 +308,7 @@ Public Class rpliIndex
 
     End Sub
 
-    Protected Sub ASPxButton4_Click(sender As Object, e As EventArgs)
+    Protected Sub ASPxButton4_Click(sender As Object, e As EventArgs) Handles ASPxButton4.Click
 
         Try
             log = ""

@@ -1,33 +1,21 @@
-﻿Imports System.Data.SqlClient
-Imports DataBaseHelper
+﻿Imports DataBaseHelper
 
 Public Class addAccount
     Inherits System.Web.UI.Page
 
+    Private liveaccountTransction As New AddAccountTransctionService(connectionstringaccount)
     Private liveAccountService As New liveAccountService(connectionstringaccount)
     Private liveAccountData As liveAccountClass
     Private nominiData As NominiClass
     Private productData As productClass
     Private opData As accOperateClass
+    Private dltdata As dltClass
 
     Private Cifservice As New ClassCifService(connectionstringaccount)
     Private cifData As ClassCif
 
-    Dim errorText As String
     Dim userNotAdmin As Boolean = True
-    Dim replay As Boolean = False
-    Dim replay1 As String = ""
-    Dim gendder As String
 
-    Dim photoName As String
-    Dim signName As String
-
-    Dim row As Integer = 0
-    ''' <summary>
-    ''' data from view
-    ''' </summary>
-
-    Dim _accountid, _balance, _accountstatus, _cif, _accHolderName, _SecAccHolderName, _NominiReg, _product, _MOP, _GuardianName, _relation, _term, _value, _NominiName, _Nominirelation, _NominiDob, _NominiAddress, _today As String
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         userNotAdmin = False
@@ -39,35 +27,72 @@ Public Class addAccount
         End If
     End Sub
 
-    'here  Declar all field from view
-    Private Sub GetDataFromView()
-        'For Live Account
-        _accountid = accIdTb.Text.Trim
-        _balance = balanceTb.Text.Trim
-        _accountstatus = "Pending"
-        _cif = ciftb.Text.Trim
-        _product = ProductCb.Text.Trim
-        _accHolderName = nametb.Text.Trim
-        _SecAccHolderName = name2tb.Text.Trim
-        _NominiReg = nominiregcb.Text.Trim
-        _MOP = Modetb.Text.Trim
-        _GuardianName = Guardiantb.Text.Trim
+    'here  Declaration all field from view
+    Private Sub GetDataFromView(liveAccountData As liveAccountClass, nominiData As NominiClass, productData As productClass, opData As accOperateClass, dltdata As dltClass)
+        'For Live Account ==> accountnumber ,cif,n_ame,producttype,nominireg,acctype,jointname,guardianname,balance,status
+        ' _accountid = accIdTb.Text.Trim
+        liveAccountData.accountnumber = accIdTb.Text.Trim
+
+        ' _balance = balanceTb.Text.Trim
+        liveAccountData.balance = balanceTb.Text.Trim
+
+        ' _accountstatus = "Pending"
+        liveAccountData.status = "Pending"
+
+        ' _cif = ciftb.Text.Trim
+        liveAccountData.cif = ciftb.Text.Trim
+
+        ' _product = ProductCb.Text.Trim
+        liveAccountData.producttype = ProductCb.Text.Trim
+
+        ' _accHolderName = nametb.Text.Trim
+        liveAccountData.n_ame = nametb.Text.Trim
+
+        ' _SecAccHolderName = name2tb.Text.Trim
+        liveAccountData.jointname = name2tb.Text.Trim
+
+        '  _NominiReg = nominiregcb.Text.Trim
+        liveAccountData.nominireg = nominiregcb.Text.Trim
+
+        '  _MOP = Modetb.Text.Trim
+        liveAccountData.acctype = Modetb.Text.Trim
+
+        ' _GuardianName = Guardiantb.Text.Trim
+        liveAccountData.guardianname = Guardiantb.Text.Trim
 
         'For Mode Of Operation
-        _relation = Relationtb.Text.Trim
+        '   _relation = Relationtb.Text.Trim
+        opData.relation = Relationtb.Text.Trim
+        opData.guardianname = Guardiantb.Text.Trim
+        opData.accountoperatemode = Modetb.Text.Trim
+        opData.accountnumber = accIdTb.Text.Trim
 
-        'For Product Info
-        _term = Actermtb.Text.Trim
-        _value = AccValuetb.Text.Trim
+        'For Product Info ==> accountnumber , type, term , v_alue
+        '  _term = Actermtb.Text.Trim
+        productData.term = Actermtb.Text.Trim
+        ' _value = AccValuetb.Text.Trim
+        productData.v_alue = AccValuetb.Text.Trim
+        productData.type = ProductCb.Text.Trim
+        productData.accountnumber = accIdTb.Text.Trim
 
-        'Nomini Info
-        _NominiName = NominiNameInfotb.Text.Trim
-        _Nominirelation = NominiRelationInfotb.Text.Trim
-        _NominiAddress = NominiAddressInfotb.Text.Trim
-        _NominiDob = NominiAgeInfotb.Text.Trim
+        'Nomini Info ==> accountnumber,nominireg,nomininame,nominiage,noiminiaddress,nominirelation
+        nominiData.accountnumber = accIdTb.Text.Trim
+        nominiData.nomininame = NominiNameInfotb.Text
+        '  _NominiName = NominiNameInfotb.Text
+        '  _nominirelation = NominiRelationInfotb.Text.Trim
+        nominiData.nominirelation = NominiRelationInfotb.Text
+        ' _NominiAddress = NominiAddressInfotb.Text
+        nominiData.nominiaddress = NominiAddressInfotb.Text
+        ' _NominiDob = NominiAgeInfotb.Text.Trim
+        nominiData.nominiage = NominiAgeInfotb.Text
+        nominiData.nominireg = nominiregcb.Text.Trim
 
-        'dlt
-        _today = DateAndTime.Now().ToString("yyyy-MM-dd")
+        'dlt ==> accountnumber ,accountbalance,dlt,dlt2
+        '_today = DateAndTime.Now().ToString("yyyy-MM-dd")
+        dltdata.accountnumber = accIdTb.Text.Trim
+        dltdata.accountbalance = balanceTb.Text.Trim
+        dltdata.dlt = GetWorKingDate() '_today
+        dltdata.dlt2 = GetWorKingDate() '_today
     End Sub
 
     ''' <summary>
@@ -75,62 +100,82 @@ Public Class addAccount
     ''' and then send this data to liveaccountInterface/transction Interface  to make transction
     ''' </summary>
     Private Sub DoTransctionAddData()
-        GetDataFromView()
+        liveAccountData = New liveAccountClass
+        nominiData = New NominiClass
+        productData = New productClass
+        opData = New accOperateClass
+        dltdata = New dltClass
+
+        GetDataFromView(liveAccountData, nominiData, productData, opData, dltdata)
         Try
-            Dim cs As String = connectionhelper.connectionstringaccount()
-            databaseconnection = New SqlConnection(cs)
-            databaseconnection.Open()
-            Dim command As SqlCommand = databaseconnection.CreateCommand()
-            Dim transction As SqlTransaction
+            'Logic Here
+            If liveaccountTransction.MadeAddAccountTransction(liveAccountData, nominiData, productData, opData, dltdata) Then
 
-            transction = databaseconnection.BeginTransaction("AddAccount")
+            End If
+            Errortb.Text = "Data Saved Successfully"
 
-            command.Connection = databaseconnection
-            command.Transaction = transction
+            Dim x = Request.Url.AbsoluteUri
+            myMsgBox.Show(Me, x)
 
-            Try
-                command.CommandText = "  insert into " & liveAccountTable & " (accountnumber ,cif,n_ame,producttype,nominireg,acctype,jointname,guardianname,balance,status )values('" & _accountid & "','" & _cif & "','" & _accHolderName & "','" & _product & "','" & _NominiReg & "','" & _MOP & "','" & _SecAccHolderName & "','" & _GuardianName & "','" & _balance & "','" & _accountstatus & "')" ' Insert inTo Liveaccount
-                command.ExecuteNonQuery()
-                command.CommandText = "  insert into " & nominitable & " (accountnumber,nominireg,nomininame,nominiage,noiminiaddress,nominirelation )values ('" & _accountid & "','" & _NominiReg & "','" & _NominiName & "','" & _NominiDob & "','" & _NominiAddress & "','" & _Nominirelation & "')" 'insert into nominiinfo
-                command.ExecuteNonQuery()
-
-                command.CommandText = "  insert into " & productTypeTable & " (accountnumber , type, term , v_alue )values('" & _accountid & "','" & _product & "','" & _term & "','" & _value & "')" ' Insert inTo product type
-                command.ExecuteNonQuery()
-
-                command.CommandText = "insert into " & accountOperateTable & " (accountnumber ,accountoperatemode,guardianname,relation )values('" & _accountid & "','" & _MOP & "','" & _GuardianName & "','" & _relation & "')" 'insert into account type
-                command.ExecuteNonQuery()
-
-                command.CommandText = "insert into " & dlttable & "(accountnumber ,accountbalance,dlt,dlt2)values('" & _accountid & "','" & _balance & "','" & _today & "','" & _today & "')"
-                command.ExecuteNonQuery()
-
-                'try to commite the transction
-                transction.Commit()
-                '  MyMessageBox.Show(Me, "Data Saved Successfully")
-                Errortb.Text = "Data Saved Successfully"
-
-                Dim x = Request.Url.AbsoluteUri
-                myMsgBox.Show(Me, x)
-
-                MyMessageBox.Show(Me, "Data Saved Successfully")
-            Catch ex As Exception
-
-                Errortb.Text = "Commit Exception Type: {0}" + ex.Message()
-
-                Errortb.Text = Errortb.Text + " Message: {0}" + ex.Message
-                Try
-                    transction.Rollback()
-
-                    Errortb.Text = "Data Not Saved Successfully"
-                Catch ex2 As Exception
-
-                    Errortb.Text = "Rollback Exception Type: {0}" + ex2.Message()
-
-                    Errortb.Text = Errortb.Text + "  Message: {0}" + ex2.Message
-                End Try
-            End Try
+            MyMessageBox.Show(Me, "Data Saved Successfully")
         Catch ex As Exception
-
+            Errortb.Text = "Data Not Saved Successfully"
         End Try
+
+        'Try
+        '    Dim cs As String = connectionhelper.connectionstringaccount()
+        '    databaseconnection = New SqlConnection(cs)
+        '    databaseconnection.Open()
+        '    Dim command As SqlCommand = databaseconnection.CreateCommand()
+        '    Dim transction As SqlTransaction
+
+        ' transction = databaseconnection.BeginTransaction("AddAccount")
+
+        ' command.Connection = databaseconnection command.Transaction = transction
+
+        ' Try command.CommandText = " insert into " & liveAccountTable & " (accountnumber
+        ' ,cif,n_ame,producttype,nominireg,acctype,jointname,guardianname,balance,status )values('"
+        ' & _accountid & "','" & _cif & "','" & _accHolderName & "','" & _product & "','" &
+        ' _NominiReg & "','" & _MOP & "','" & _SecAccHolderName & "','" & _GuardianName & "','" &
+        ' _balance & "','" & _accountstatus & "')" ' Insert inTo Liveaccount
+        ' command.ExecuteNonQuery() command.CommandText = " insert into " & nominitable & "
+        ' (accountnumber,nominireg,nomininame,nominiage,noiminiaddress,nominirelation )values ('" &
+        ' _accountid & "','" & _NominiReg & "','" & _NominiName & "','" & _NominiDob & "','" &
+        ' _NominiAddress & "','" & _Nominirelation & "')" 'insert into nominiinfo command.ExecuteNonQuery()
+
+        ' command.CommandText = " insert into " & productTypeTable & " (accountnumber , type, term ,
+        ' v_alue )values('" & _accountid & "','" & _product & "','" & _term & "','" & _value & "')"
+        ' ' Insert inTo product type command.ExecuteNonQuery()
+
+        ' command.CommandText = "insert into " & accountOperateTable & " (accountnumber
+        ' ,accountoperatemode,guardianname,relation )values('" & _accountid & "','" & _MOP & "','" &
+        ' _GuardianName & "','" & _relation & "')" 'insert into account type command.ExecuteNonQuery()
+
+        ' command.CommandText = "insert into " & dlttable & "(accountnumber
+        ' ,accountbalance,dlt,dlt2)values('" & _accountid & "','" & _balance & "','" & _today &
+        ' "','" & _today & "')" command.ExecuteNonQuery()
+
+        ' 'try to commite the transction transction.Commit() ' MyMessageBox.Show(Me, "Data Saved
+        ' Successfully") Errortb.Text = "Data Saved Successfully"
+
+        ' Dim x = Request.Url.AbsoluteUri myMsgBox.Show(Me, x)
+
+        ' MyMessageBox.Show(Me, "Data Saved Successfully") Catch ex As Exception
+
+        ' Errortb.Text = "Commit Exception Type: {0}" + ex.Message()
+
+        ' Errortb.Text = Errortb.Text + " Message: {0}" + ex.Message Try transction.Rollback()
+
+        ' Errortb.Text = "Data Not Saved Successfully" Catch ex2 As Exception
+
+        ' Errortb.Text = "Rollback Exception Type: {0}" + ex2.Message()
+
+        '            Errortb.Text = Errortb.Text + "  Message: {0}" + ex2.Message
+        '        End Try
+        '    End Try
+        'Catch ex As Exception
+
+        'End Try
     End Sub
 
     Private Sub InsertDataLiveAccountDb(accountId As String)

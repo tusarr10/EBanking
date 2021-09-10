@@ -219,7 +219,6 @@
       <DependentUpon>ssajournaltrns.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Official\class\rpliIndexHelper.vb" />
     <Compile Include="Official\Operation\AllRpliIndex.aspx.designer.vb">
       <DependentUpon>AllRpliIndex.aspx</DependentUpon>
     </Compile>
@@ -285,14 +284,6 @@
     <Compile Include="Official\class\CifHelper.vb" />
     <Compile Include="Official\class\dltHelper.vb" />
     <Compile Include="Official\class\GriddViewHelper\allaccountgrid.vb" />
-    <Compile Include="Official\class\IntersetHelper.vb" />
-    <Compile Include="Official\class\JournalHelper.vb" />
-    <Compile Include="Official\class\newaccounthelper.vb" />
-    <Compile Include="Official\class\NominiInfoHelper.vb" />
-    <Compile Include="Official\class\ProductTypeHelper.vb" />
-    <Compile Include="Official\class\RdJournalHelper.vb" />
-    <Compile Include="Official\class\SbJournalHelper.vb" />
-    <Compile Include="Official\class\SSAJournalHelper.vb" />
     <Compile Include="Official\Default.aspx.designer.vb">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>

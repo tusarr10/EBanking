@@ -37,8 +37,7 @@ Public Class PliIndexRepo
         New SqlParameter("@indexbo", custmor.indexbo),
         New SqlParameter("@userid", custmor.userid)
                 } '23 parm
-        Dim query As String = "INSERT INTO dbo.Pli_Indexing (id, agentId, boid, RecDate, agentSA, agentPremium, AgentMobile, CustName, custmordob, custmobile, custmornotes, custaddress, proposaldate, proposaltype, productcat, prefrq, matage, proposalno, recno, sa, premium, indexbo, userid)
-  VALUES (@id, @agentid, @boid, @recdate, @agentsa, @agentprem, @agentmobile, @custname, @custdob, @custmobile, @custnotes, @custaddress, @proposaldate, @proposaltype, @proposalcat, @prefrq, @matage, @proposalno, @recno, @sa, @premium, @indexbo, @userid)"
+        Dim query As String = "INSERT INTO dbo.Pli_Indexing (id, agentId, boid, RecDate, agentSA, agentPremium, AgentMobile, CustName, custmordob, custmobile, custmornotes, custaddress, proposaldate, proposaltype, productcat, prefrq, matage, proposalno, recno, sa, premium, indexbo, userid)VALUES (@id, @agentid, @boid, @recdate, @agentsa, @agentprem, @agentmobile, @custname, @custdob, @custmobile, @custnotes, @custaddress, @proposaldate, @proposaltype, @proposalcat, @prefrq, @matage, @proposalno, @recno, @sa, @premium, @indexbo, @userid)"
 
         Dim args As DynamicParameters = New DynamicParameters
         For Each p As SqlParameter In parm

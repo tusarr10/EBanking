@@ -18,15 +18,17 @@
     Function gteByCif(cif As String) As List(Of liveAccountClass)
 
     Function getByType(type As String) As List(Of liveAccountClass)
-    Function UpdateAccountStatus(AccountNumber As String, Status As String) As Boolean
 
+    Function UpdateAccountStatus(AccountNumber As String, Status As String) As Boolean
 
 End Interface
 
-Public Interface liveaccounttransction
+Public Interface liveaccounttransctionInterface
 
     'Insert data
     Function InsertIntoLiveAccount(dblive As liveAccountClass) As Boolean
+
+    Function MadeAddAccountTransction(liveACData As liveAccountClass, NominiData As NominiClass, Prtype As productClass, opdata As accOperateClass, dltdata As dltClass) As Boolean
 
     'Update data
 

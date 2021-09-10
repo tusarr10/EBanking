@@ -16,13 +16,17 @@ Module DataInformation
     Public newaccounttable As String = "newacdb"
 
     'Some Control
-    Public GetworkingDate As String = ""
+    Public WorkingData As String = ""
 
     Public GetofficeId As String = "12345"
     Public GetuserID As String = "6789"
 
     Public Getusername As String = "Developer"
     Public OfficeName As String = "Talita"
+
+    Public Function GetWorKingDate() As String
+        Return DateAndTime.Now().ToString("yyyy-MM-dd")
+    End Function
 
 End Module
 Module MyMessageBox

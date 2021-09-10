@@ -4,7 +4,7 @@ Imports DevExpress.Web
 Public Class transction
     Inherits System.Web.UI.Page
 
-    Dim filterdate As String = GetworkingDate
+    Dim filterdate As String = WorkingData
 
     Private transctionService As New AllJournalService(connectionstringaccount)
 
@@ -80,8 +80,8 @@ Public Class transction
 
         If (IsPostBack = False) Then
             'Load Data From Server
-            GetworkingDate = datetb.Text
-            LoadDataFromServer(GetworkingDate)
+            WorkingData = datetb.Text
+            LoadDataFromServer(WorkingData)
         Else
 
         End If
@@ -283,7 +283,7 @@ Public Class transction
     Protected Sub LinkButton3_Click(sender As Object, e As EventArgs) Handles LinkButton3.Click
         Try
             filterdate = datetb.Text.ToString
-            LoadDataFromServer(GetworkingDate)
+            LoadDataFromServer(WorkingData)
         Catch
             MyMessageBox.Show(Me, "Enter Valid Date In  {yyyy-MM-dd} formate ")
         End Try

@@ -25,8 +25,8 @@ Public Class sbDeposit
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
-            GetworkingDate = DateAndTime.Now().ToString("yyyy-MM-dd")
-            DateofTransction.Text = GetworkingDate
+            WorkingData = DateAndTime.Now().ToString("yyyy-MM-dd")
+            DateofTransction.Text = WorkingData
         Catch
 
         End Try

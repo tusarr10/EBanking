@@ -103,4 +103,26 @@ Public Class newAccountRepo
         End If
     End Function
 
+    Public Function UpdateStatus(status As String, reffno As String) As Boolean Implements newAccountInterface.UpdateStatus
+        Dim parm As SqlParameter() = {
+         New SqlParameter("@reffno", reffno),
+         New SqlParameter("@status", status)
+        }
+        Dim query As String = "" ' "update cifdb set cif=@cif,n_ame=@n_ame,mobile=@mobile,email=@email,pan=@pan,adhar=@adhar,photo=@photo,sign=@sign,address=@address,dob=@dob,gender=@gender,status=@status where cif = @cif"
+
+        '  Dim query As String = " UPDATE Customer SET CompanyName = @CompanyName,Address = @Address, " + " City = @City,State = @State,IntroDate = @IntroDate,CreditLimit = @CreditLimit" + " WHERE CustomerID = @CustomerID"
+
+        Dim args = New DynamicParameters()
+        For Each p As SqlParameter In parm
+            args.Add(p.ParameterName, p.Value)
+        Next
+
+        Try
+            Me._db.Execute(query, args)
+        Catch generatedExceptionName As Exception
+            Return False
+        End Try
+
+        Return True
+    End Function
 End Class
