@@ -1,7 +1,16 @@
-﻿Imports System.Data.SqlClient
+﻿'Imports System.Data.SqlClient
+Imports DataBaseHelper
 
+''' <summary>
+''' Dapper
+''' </summary>
 Public Class ssaInterest
     Inherits System.Web.UI.Page
+
+    Private liveAccountData As liveAccountClass
+    Private AccountService As New liveAccountService(connectionstringaccount)
+    Private ssadata As ssaJournalClass
+    Private trservice As New AllJournalService(connectionstringaccount)
 
     Protected Sub trtype_TextChanged(sender As Object, e As EventArgs)
         If trtype.Text = "Deposit" Then
@@ -46,26 +55,21 @@ Public Class ssaInterest
         DoCalculate()
     End Sub
 
-    Private Sub FillDataInView()
-        baltb.Text = getAccountBalance(0)
-        TextBox1.Text = getAccountName(0)
-        actypetb.Text = getAccountProductType(0)
+    Private Sub FillDataInView(liveAccountData As liveAccountClass)
+        baltb.Text = liveAccountData.balance ' getAccountBalance(0)
+        TextBox1.Text = liveAccountData.n_ame ' getAccountName(0)
+        actypetb.Text = liveAccountData.producttype ' getAccountProductType(0)
 
     End Sub
 
     Private Sub GetDataOfAccount(ByVal accountnumber As String)
-        Try
-            AccountSearch(accountnumber)
-        Catch
-            MyMessageBox.Show(Me, "Unable to find account")
-            Exit Sub
+        If AccountService.IsAccountNumberExist(accountnumber) Then
+            liveAccountData = New liveAccountClass
+            liveAccountData = AccountService.getByAcNo(accountnumber)
 
-        End Try
-        If IsAccountIdExist(accountnumber) Then
-
-            If getAccountProductType(0) = "SSA" Then
-                If getAccountStatus(0) = "Active" Then
-                    FillDataInView()
+            If liveAccountData.producttype = "SSA" Then
+                If liveAccountData.status = "Active" Then
+                    FillDataInView(liveAccountData)
                     AcnoTb.ReadOnly = True
                 Else
                     MyMessageBox.Show(Me, "This Is a Inactive Account ..")
@@ -113,7 +117,7 @@ Public Class ssaInterest
         _amount = amounttb.Text.Trim 'given
         _fine = "00"
         _bat = Availablebalancetb.Text.Trim 'calculated
-        _trid = "NA"
+        _trid = "INT" & _date
         _status = "Approved"
         _office = "CBS"
         _user = Getusername 'hardcode
@@ -167,40 +171,73 @@ Public Class ssaInterest
     Dim cs As String = connectionhelper.connectionstringaccount()
 
     Private Sub DoTransction()
-
-        Dim sbjournalcmd As String = "INSERT INTO ssajournal (accountnumber, depositername, da_te, bbt, transctiontype, amount, bat, trid, status, office, u_ser, Details ,fine)
-  VALUES ('" & _accountNumber & "', '" & _name & "', '" & _date & "', '" & _bbt & "', '" & _transctiontype & "', '" & _amount & "', '" & _bat & "', '" & _trid & "', '" & _status & "', '" & _office & "', '" & _user & "', '" & _details & "','00')"
-        Dim liveaccountcom As String = "update liveaccount set balance='" & _bat & "' where accountnumber='" & _accountNumber & "'"
-
-        databaseconnection = New SqlConnection(cs)
-        databaseconnection.Open()
-        Dim command As SqlCommand = databaseconnection.CreateCommand()
-        Dim transction As SqlTransaction
-        transction = databaseconnection.BeginTransaction("InsertTransction")
-
-        command.Connection = databaseconnection
-        command.Transaction = transction
+        insertdataInClass()
         Try
-
-            command.CommandText = sbjournalcmd
-            command.ExecuteNonQuery()
-            command.CommandText = liveaccountcom
-            command.ExecuteNonQuery()
-
-            transction.Commit()
-
-            MyMessageBox.Show(Me, "Successfully Post Transction")
-        Catch ex As Exception
-            MyMessageBox.Show(Me, "Commit Exception Type: {0}" + ex.Message())
-            MyMessageBox.Show(Me, "  Message: {0}" + ex.Message)
-            Try
-                transction.Rollback()
+            If trservice.addInteresrSsa(ssadata, liveAccountData) Then
+                'Logic here 
+                MyMessageBox.Show(Me, "Successfully Post Transction")
+            Else
                 MyMessageBox.Show(Me, "Data Not Saved Successfully")
-            Catch ex2 As Exception
-                MyMessageBox.Show(Me, "Rollback Exception Type: {0}" + ex2.Message())
-                MyMessageBox.Show(Me, "  Message: {0}" + ex2.Message)
-            End Try
+            End If
+
+        Catch ex As Exception
+
         End Try
+        '      Dim sbjournalcmd As String = "INSERT INTO ssajournal (accountnumber, depositername, da_te, bbt, transctiontype, amount, bat, trid, status, office, u_ser, Details ,fine)
+        'VALUES ('" & _accountNumber & "', '" & _name & "', '" & _date & "', '" & _bbt & "', '" & _transctiontype & "', '" & _amount & "', '" & _bat & "', '" & _trid & "', '" & _status & "', '" & _office & "', '" & _user & "', '" & _details & "','00')"
+        '      Dim liveaccountcom As String = "update liveaccount set balance='" & _bat & "' where accountnumber='" & _accountNumber & "'"
+
+        '      databaseconnection = New SqlConnection(cs)
+        '      databaseconnection.Open()
+        '      Dim command As SqlCommand = databaseconnection.CreateCommand()
+        '      Dim transction As SqlTransaction
+        '      transction = databaseconnection.BeginTransaction("InsertTransction")
+
+        '      command.Connection = databaseconnection
+        '      command.Transaction = transction
+        '      Try
+
+        '          command.CommandText = sbjournalcmd
+        '          command.ExecuteNonQuery()
+        '          command.CommandText = liveaccountcom
+        '          command.ExecuteNonQuery()
+
+        '          transction.Commit()
+
+        '          MyMessageBox.Show(Me, "Successfully Post Transction")
+        '      Catch ex As Exception
+        '          MyMessageBox.Show(Me, "Commit Exception Type: {0}" + ex.Message())
+        '          MyMessageBox.Show(Me, "  Message: {0}" + ex.Message)
+        '          Try
+        '              transction.Rollback()
+        '              MyMessageBox.Show(Me, "Data Not Saved Successfully")
+        '          Catch ex2 As Exception
+        '              MyMessageBox.Show(Me, "Rollback Exception Type: {0}" + ex2.Message())
+        '              MyMessageBox.Show(Me, "  Message: {0}" + ex2.Message)
+        '          End Try
+        '      End Try
+
+    End Sub
+
+    Private Sub insertdataInClass()
+
+        ssadata = New ssaJournalClass
+        ssadata.accountnumber = _accountNumber
+        ssadata.depositername = _name
+        ssadata.da_te = _date
+        ssadata.bbt = _bbt
+        ssadata.transctiontype = _transctiontype
+        ssadata.amount = _amount
+        ssadata.bat = _bat
+        ssadata.trid = _trid
+        ssadata.status = _status
+        ssadata.office = _office
+        ssadata.u_ser = _user
+        ssadata.Details = _details
+        ssadata.fine = "00"
+        liveAccountData = New liveAccountClass
+        liveAccountData.accountnumber = _accountNumber
+        liveAccountData.balance = _bat
 
     End Sub
 

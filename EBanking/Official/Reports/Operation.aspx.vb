@@ -1,14 +1,19 @@
 ﻿Imports DevExpress.Web
-
+Imports DataBaseHelper
+''' <summary>
+''' Dapper Migration Complect 
+''' </summary>
 Public Class Operation
     Inherits System.Web.UI.Page
 
+    Private accountData As List(Of liveAccountClass)
+    Private DataService As New liveAccountService(connectionstringaccount)
     Private Sub loadDataFromServer()
         Try
-            LoadAllDataFromServer()
-            Dim tables As DataTable
-            tables = getLiveaccountDataTable()
-            ASPxGridView1.DataSource = tables
+            ' LoadAllDataFromServer()
+            accountData = New List(Of liveAccountClass)
+            accountData = DataService.GetAll()
+            ASPxGridView1.DataSource = accountData
             ASPxGridView1.DataBind()
         Catch
 

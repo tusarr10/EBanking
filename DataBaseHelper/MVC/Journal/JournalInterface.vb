@@ -37,6 +37,9 @@
 
     Function DeleteSbjournal(Trid As String) As Boolean
 
+    Function AddTransctionsb(sbData As sbJournalClass, journalData As allJournalClass) As Boolean
+    Function AddIntersestSB(sbdata As sbJournalClass, liveac As liveAccountClass) As Boolean
+
     ' For Rd Journal
     Function getAllfromRdJournal() As List(Of rdJournalClass)
 
@@ -57,6 +60,8 @@
     Function UpdateRdJournal(Data As String, trid As String) As Boolean
 
     Function DeleteFromRdJournal(Trid As String) As Boolean
+    Function AddTransctionRd(rdData As rdJournalClass, journalData As allJournalClass) As Boolean
+
 
     ' For Ssa Journal
 
@@ -79,6 +84,8 @@
     Function UpdateToSsaJournal(Data As String, trid As String) As Boolean
 
     Function DeleteFromSsaJournal(Trid As ssaJournalClass) As Boolean
+    Function AddTransctionssa(ssaData As ssaJournalClass, journalData As allJournalClass) As Boolean
+    Function addInterestSSA(ssadata As ssaJournalClass, live As liveAccountClass) As Boolean
 
     ' For Td Journal
     Function getAllFromTdJournal() As List(Of tdJournalClass)
@@ -100,5 +107,6 @@
     Function UpdateToTdJournal(Data As tdJournalClass) As Boolean
 
     Function DeleteFromTdJournal(Trid As tdJournalClass) As Boolean
+    Function AddTransctiontd(tdData As tdJournalClass, journalData As allJournalClass) As Boolean
 
 End Interface

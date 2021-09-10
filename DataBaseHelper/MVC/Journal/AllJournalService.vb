@@ -52,5 +52,22 @@
     Public Function getBydataFromtd(enterdate As String, accountNumber As String, Trid As String, status As String) As tdJournalClass
         Return _repo.getByDataFromtdJournal(enterdate, accountNumber, Trid, status)
     End Function
-
+    Public Function AddtransctionSb(sbData As sbJournalClass, journalData As allJournalClass) As Boolean
+        Return _repo.AddTransctionsb(sbData, journalData)
+    End Function
+    Public Function AddtransctionSSA(ssaData As ssaJournalClass, journalData As allJournalClass) As Boolean
+        Return _repo.AddTransctionssa(ssaData, journalData)
+    End Function
+    Public Function AddtransctionRD(rdData As rdJournalClass, journalData As allJournalClass) As Boolean
+        Return _repo.AddTransctionRd(rdData, journalData)
+    End Function
+    Public Function AddtransctionTD(tdData As tdJournalClass, journalData As allJournalClass) As Boolean
+        Return _repo.AddTransctiontd(tdData, journalData)
+    End Function
+    Public Function addInteresrSB(sbdata As sbJournalClass, liveac As liveAccountClass) As Boolean
+        Return _repo.AddIntersestSB(sbdata, liveac)
+    End Function
+    Public Function addInteresrSsa(ssadata As ssaJournalClass, liveac As liveAccountClass) As Boolean
+        Return _repo.addInterestSSA(ssadata, liveac)
+    End Function
 End Class

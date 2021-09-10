@@ -1,5 +1,8 @@
-﻿Imports System.Data.SqlClient
+﻿Imports DataBaseHelper
 
+''' <summary>
+''' Dapper Migration
+''' </summary>
 Public Class sbWithdraw
     Inherits System.Web.UI.Page
 
@@ -24,6 +27,18 @@ Public Class sbWithdraw
     Dim accounttype As String
     Dim dlt As String
 
+
+    Private cifData As ClassCif
+    Private liveAccountData As liveAccountClass
+    Private dltData As dltClass
+    Private sbdata As sbJournalClass
+    Private jdata As allJournalClass
+
+    Private cifService As New ClassCifService(connectionstringaccount)
+    Private allJournalService As New AllJournalService(connectionstringaccount)
+    Private AccountService As New liveAccountService(connectionstringaccount)
+    Private dltservice As New dltService(connectionstringaccount)
+
     Private Sub btnFindAccountClick()
         Dim accountnumber As String
         accountnumber = accIdTb.Text.Trim
@@ -47,65 +62,61 @@ Public Class sbWithdraw
         End Try
     End Sub
 
-    Private Sub FillDataInView() 'get and put data from liveaccount
-        balanceTb.Text = getAccountBalance(0)
-        currentBalnce = getAccountBalance(0)
-        AccStatustb.Text = getAccountStatus(0)
-        Acctypetb.Text = getAccountAccType(0)
-        ciftb.Text = getAccountCif(0)
-        nametb.Text = getAccountName(0)
-        nametb2.Text = getAccountJointName(0)
+    Private Sub FillDataInView(liveAccountData As liveAccountClass) 'get and put data from liveaccount
+        balanceTb.Text = liveAccountData.balance
+        currentBalnce = liveAccountData.balance
+        AccStatustb.Text = liveAccountData.status
+        Acctypetb.Text = liveAccountData.acctype
+        ciftb.Text = liveAccountData.cif
+        nametb.Text = liveAccountData.n_ame
+        nametb2.Text = liveAccountData.jointname
 
     End Sub
 
-    Private Sub FIllDataInCif(accountnumber As String)
-        Try
-            cifsearch(accountnumber)
-        Catch
+    Private Sub FIllDataInCif(cifData As ClassCif)
 
-        End Try
         Try
-            If CifHelper.getcif(0) = Nothing Then
+            If cifData.cif = Nothing Then
                 ' ciftb.readonly = userNotAdmin
             Else
-                CifInfo.Text = getcif(0)
+                CifInfo.Text = cifData.cif
                 '  ciftb.ReadOnly = userNotAdmin
 
             End If
-            If getcifname(0) IsNot Nothing Then
-                NameInfo.Text = getcifname(0)
+            If cifData.n_ame IsNot Nothing Then
+                NameInfo.Text = cifData.n_ame
             End If
-            If getcifemail(0) IsNot Nothing Then
-                emailtb.Text = getcifemail(0)
+            If cifData.email IsNot Nothing Then
+                emailtb.Text = cifData.email
             End If
-            If getcifmobile(0) IsNot Nothing Then
-                mobiletb.Text = getcifmobile(0)
+            If cifData.mobile IsNot Nothing Then
+                mobiletb.Text = cifData.mobile
             End If
-            If CifHelper.getcifpan(0) IsNot Nothing Then
-                pantb.Text = CifHelper.getcifpan(0)
+            If cifData.pan IsNot Nothing Then
+                pantb.Text = cifData.pan
             End If
-            If CifHelper.getcifadhar(0) IsNot Nothing Then
-                adhartb.Text = CifHelper.getcifadhar(0)
+            If cifData.adhar IsNot Nothing Then
+                adhartb.Text = cifData.adhar
             End If
-            If getcifdob(0) IsNot Nothing Then
-                dobtb.Text = getcifdob(0)
+            If cifData.dob IsNot Nothing Then
+                dobtb.Text = cifData.dob
             End If
-            If CifHelper.getcifgender(0) IsNot Nothing Then
-                genderlb.SelectedValue = CifHelper.getcifgender(0)
+            If cifData.gender IsNot Nothing Then
+                genderlb.SelectedValue = cifData.gender
 
             End If
-            If CifHelper.getcifaddress(0) IsNot Nothing Then
-                addresstb.Text = CifHelper.getcifaddress(0)
+            If cifData.address IsNot Nothing Then
+                addresstb.Text = cifData.address
             End If
-            If getcifStatus(0) IsNot Nothing Then
-                CifStatustb.Text = getcifStatus(0)
+            If cifData.status IsNot Nothing Then
+                CifStatustb.Text = cifData.status
 
             End If
-            If CifHelper.getcifphoto(0) IsNot Nothing Then
-                photophoto.ImageUrl = CifHelper.getcifphoto(0)
+            If cifData.photo IsNot Nothing Then
+                photophoto.ImageUrl = cifData.photo
             End If
-            If CifHelper.getcifsign(0) IsNot Nothing Then
-                photosign.ImageUrl = CifHelper.getcifsign(0)
+            If cifData.sign IsNot Nothing Then
+                photosign.ImageUrl = cifData.sign
             End If
         Catch ex As Exception
             MyMessageBox.Show(Me, "Unable to load Cif Information")
@@ -113,21 +124,11 @@ Public Class sbWithdraw
 
         End Try
     End Sub
+    Private Sub FilldataInDLT(dltData As dltClass)
 
-    Private Sub FilldataInDLT(accountnumber As String)
-        Dim dlt, dlt2 As String
         Try
-            dltInformation(accountnumber)
-        Catch
-            MyMessageBox.Show(Me, "NO DATA FOUND IN DLT TABLE")
-            Exit Sub
-
-        End Try
-        Try
-            dlt = getDltdlt(0).ToString()
-            dlt2 = getDltdlt2(0).ToString()
-            dlttb.Text = dlt
-            dlttb2.Text = dlt2
+            dlttb.Text = dltData.dlt
+            dlttb2.Text = dltData.dlt2
         Catch
             MyMessageBox.Show(Me, "Unable to convert dlt to date")
         End Try
@@ -135,19 +136,21 @@ Public Class sbWithdraw
     End Sub
 
     Private Sub GetDataOfAccount(ByVal accountnumber As String)
-        Try
-            AccountSearch(accountnumber)
-        Catch
-            MyMessageBox.Show(Me, "Unable to find account")
-            Exit Sub
 
-        End Try
-        If IsAccountIdExist(accountnumber) Then
-            If getAccountProductType(0) = "Saving" Then
-                If getAccountStatus(0) = "Active" Then
-                    FillDataInView()
-                    FIllDataInCif(getAccountCif(0))
-                    FilldataInDLT(accountnumber)
+
+        If AccountService.IsAccountNumberExist(accountnumber) Then
+            liveAccountData = New liveAccountClass
+            liveAccountData = AccountService.getByAcNo(accountnumber)
+            If liveAccountData.producttype = "Saving" Then
+                If liveAccountData.status = "Active" Then
+                    FillDataInView(liveAccountData)
+                    cifData = New ClassCif
+                    cifData = cifService.FindById(liveAccountData.cif)
+                    FIllDataInCif(cifData)
+
+                    dltData = New dltClass
+                    dltData = dltservice.GetByAcno(liveAccountData.accountnumber)
+                    FilldataInDLT(dltData)
                 Else
                     MyMessageBox.Show(Me, "Account Inactive ")
                 End If
@@ -167,7 +170,14 @@ Public Class sbWithdraw
 
     Private Sub DoCalculate()
         ''TODO Calculate do validation >500 must be balance
-        currentBalnce = getAccountBalance(0)
+        liveAccountData = AccountService.getByAcNo(accIdTb.Text.Trim)
+        currentBalnce = Double.Parse(liveAccountData.balance)  'getAccountBalance(0)
+        If currentBalnce = balanceTb.Text Then
+
+        Else
+            MyMessageBox.Show(Me, "Data Tempering" & currentBalnce & "=" & balanceTb.Text)
+            Exit Sub
+        End If
         Try
             TransctionAmount = "0" + DepositAmounttb.Text.Trim
         Catch
@@ -176,7 +186,7 @@ Public Class sbWithdraw
         End Try
 
         If currentBalnce > 500 Then
-            MyMessageBox.Show(Me, "You Can withdraw maximum " + currentBalnce - 500 - TransctionAmount + " Amount")
+            MyMessageBox.Show(Me, "You Can withdraw maximum " & currentBalnce - 500 & " Amount")
         Else
             MyMessageBox.Show(Me, "Low Balance ")
             Exit Sub
@@ -197,68 +207,81 @@ Public Class sbWithdraw
 
     Private Sub GetDataFromView()
         'data validation pending...
+        sbdata = New sbJournalClass
+        jdata = New allJournalClass
 
         accountNumber = accIdTb.Text.Trim
+        sbdata.accountnumber = accIdTb.Text.Trim
+        jdata.accountnumber = accIdTb.Text.Trim
+
         bbt = balanceTb.Text.Trim
+        sbdata.bbt = balanceTb.Text.Trim
+
         da_te = DateofTransction.Text
+        sbdata.da_te = DateofTransction.Text
+        jdata.da_te = DateofTransction.Text
+
         depositername = nametb.Text.Trim
-        amount = DepositAmounttb.Text.Trim
+        sbdata.depositername = nametb.Text.Trim
+        jdata.na_me = nametb.Text.Trim
+
+        amount = "0" + DepositAmounttb.Text.Trim
+        sbdata.amount = "0" + DepositAmounttb.Text.Trim
+        jdata.withdraw = "0" + DepositAmounttb.Text.Trim
+        jdata.deposit = "0"
+
         bat = newbalancetb.Text.Trim
+        sbdata.bat = newbalancetb.Text.Trim
+        jdata.balance = newbalancetb.Text.Trim
+
         Trid = transctiontb.Text.Trim
+        sbdata.trid = transctiontb.Text.Trim
+        jdata.trid = transctiontb.Text.Trim
+
         details = detailstb.Text.Trim
+        sbdata.Details = detailstb.Text.Trim
 
         'from hardcode
         transctiontype = "Withdraw"
+        sbdata.transctiontype = "Withdraw"
         status = "Pending"
+        sbdata.status = "Pending"
+        jdata.status = "Pending"
+
         office = OfficeName ' to be change in login system
+        sbdata.office = OfficeName
+        jdata.office = OfficeName
+
         userName = Getusername ' to be change in Login system
+        sbdata.u_ser = Getusername
+        jdata.u_ser = Getusername
 
         'for journal
         accounttype = "Saving"
+        jdata.accounttype = "Saving"
         dlt = dlttb.Text
+        jdata.dlt = dlttb.Text
+
 
     End Sub
 
     Private Sub DoTransction()
-        GetDataFromView()
         Try
-            Dim cs As String = connectionhelper.connectionstringaccount()
-            databaseconnection = New SqlConnection(cs)
-            databaseconnection.Open()
-            Dim command As SqlCommand = databaseconnection.CreateCommand()
-            Dim transction As SqlTransaction
-
-            transction = databaseconnection.BeginTransaction("AddSbTransction")
-
-            command.Connection = databaseconnection
-            command.Transaction = transction
-            Try
-                command.CommandText = "insert into " & sbjournaltbl & " (accountnumber ,depositername,da_te,bbt,transctiontype,amount,bat,trid,status,office,u_ser,Details )values('" & accountNumber & "','" & depositername & "','" & da_te & "','" & bbt & "','" & transctiontype & "','" & amount & "','" & bat & "','" & Trid & "','" & status & "','" & office & "','" & userName & "','" & details & "')"
-                command.ExecuteNonQuery()
-
-                command.CommandText = "insert into journal (da_te,accounttype ,accountnumber,na_me,deposit,withdraw,dlt,trid,balance,status,office,u_ser ) values('" & da_te & "','" & accounttype & "','" & accountNumber & "','" & depositername & "','" & "00" & "','" & amount & "','" & dlt & "','" & Trid & "','" & bat & "','" & status & "','" & office & "','" & userName & "')"
-                command.ExecuteNonQuery()
-
-                transction.Commit()
+            If allJournalService.AddtransctionSb(sbdata, jdata) Then
                 Dim x = Request.Url.AbsoluteUri
                 myMsgBox.Show(Me, x)
-            Catch ex As Exception
-                MyMessageBox.Show(Me, "Commit Exception Type: {0}" + ex.Message())
-                MyMessageBox.Show(Me, "  Message: {0}" + ex.Message)
-                Try
-                    transction.Rollback()
-                    MyMessageBox.Show(Me, "Data Not Saved Successfully")
-                Catch ex2 As Exception
-                    MyMessageBox.Show(Me, "Rollback Exception Type: {0}" + ex2.Message())
-                    MyMessageBox.Show(Me, "  Message: {0}" + ex2.Message)
-                End Try
-            End Try
+            Else
+
+                MyMessageBox.Show(Me, "Data Not Saved Successfully")
+            End If
         Catch ex As Exception
-            MyMessageBox.Show(Me, "  Message: {0}" + ex.Message)
+
         End Try
+
     End Sub
 
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        GetDataFromView()
         If Len(transctiontb.Text) > 2 Then
             DoTransction()
         Else

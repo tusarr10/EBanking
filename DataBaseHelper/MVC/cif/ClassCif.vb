@@ -142,4 +142,5 @@
     End Property
 
     Private m_status As String
+
 End Class

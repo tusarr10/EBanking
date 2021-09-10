@@ -408,4 +408,348 @@ Public Class AllJournalRepo
         Return Me._db.Query(Of tdJournalClass)("SELECT * FROM rdjournal WHERE trid=@Trid AND status=@status AND accountnumber=@acno AND da_te=@dte", New With {Key .Trid = Trid, Key .status = status, Key .acno = accountNumber, Key .dte = enterdate}).FirstOrDefault
     End Function
 
+    Public Function AddTransctionsb(sbData As sbJournalClass, journalData As allJournalClass) As Boolean Implements JournalInterface.AddTransctionsb
+        'accountnumber ,depositername,da_te,bbt,transctiontype,amount,bat,trid,status,office,u_ser ,details)
+        Dim parm As SqlParameter() = {
+        New SqlParameter("@accountnumber", sbData.accountnumber),
+        New SqlParameter("@name", sbData.depositername),
+        New SqlParameter("@trtype", sbData.transctiontype),
+        New SqlParameter("@date", sbData.da_te),
+        New SqlParameter("@bbt", sbData.bbt),
+        New SqlParameter("@amount", sbData.amount),
+        New SqlParameter("@bat", sbData.bat),
+        New SqlParameter("@trid", sbData.trid),
+        New SqlParameter("@status", sbData.status),
+        New SqlParameter("@office", sbData.office),
+        New SqlParameter("@user", sbData.u_ser),
+        New SqlParameter("@details", sbData.Details)
+   }
+
+        'da_te,accounttype ,accountnumber,na_me,deposit,withdraw,dlt,trid,balance,status,office,u_ser 
+        Dim parm2 As SqlParameter() = {
+        New SqlParameter("@date", journalData.da_te),
+        New SqlParameter("@actype", journalData.accounttype),
+        New SqlParameter("@acno", journalData.accountnumber),
+        New SqlParameter("@name", journalData.na_me),
+        New SqlParameter("@deposit", journalData.deposit),
+        New SqlParameter("@withdraw", journalData.withdraw),
+        New SqlParameter("@dlt", journalData.dlt),
+        New SqlParameter("@trid", journalData.trid),
+        New SqlParameter("@balance", journalData.balance),
+        New SqlParameter("@status", journalData.status),
+        New SqlParameter("@office", journalData.office),
+        New SqlParameter("@user", journalData.u_ser)
+        }
+        Try
+            If _db.State() Then
+            Else
+                _db.Open()
+            End If
+            Using transction = _db.BeginTransaction()
+                Try
+                    Dim query As String = "insert into sbjournal (accountnumber ,depositername,da_te,bbt,transctiontype,amount,bat,trid,status,office,u_ser ,details)values(@accountnumber,@name,@date,@bbt,@trtype,@amount,@bat,@trid,@status,@office,@user,@details)"
+                    Dim args = New DynamicParameters()
+                    For Each p As SqlParameter In parm
+                        args.Add(p.ParameterName, p.Value)
+                    Next
+                    _db.Execute(query, args, transction) '1
+                    '2
+                    Dim query2 As String = "insert into journal (da_te,accounttype ,accountnumber,na_me,deposit,withdraw,dlt,trid,balance,status,office,u_ser ) values(@date,@actype,@acno,@name ,@deposit,@withdraw,@dlt,@trid,@balance,@status,@office,@user)"
+                    Dim args2 = New DynamicParameters()
+                    For Each q As SqlParameter In parm2
+                        args2.Add(q.ParameterName, q.Value)
+                    Next
+                    _db.Execute(query2, args2, transction)
+
+                    '6.
+                    '.
+                    '.
+
+                    transction.Commit()
+                    Return True
+                Catch ex As Exception
+                    transction.Rollback()
+                    Return False
+                End Try
+
+            End Using
+
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
+
+    Public Function AddTransctionRd(rdData As rdJournalClass, journalData As allJournalClass) As Boolean Implements JournalInterface.AddTransctionRd
+        '(accountnumber ,depositername,da_te,bbt,transctiontype,amount,bat,trid,status,office,u_ser ,fine,mo_nth 
+        Dim parm As SqlParameter() = {
+    New SqlParameter("@accountnumber", rdData.accountnumber),
+    New SqlParameter("@name", rdData.depositername),
+    New SqlParameter("@trtype", rdData.transctiontype),
+    New SqlParameter("@date", rdData.da_te),
+    New SqlParameter("@bbt", rdData.bbt),
+    New SqlParameter("@amount", rdData.amount),
+    New SqlParameter("@bat", rdData.bat),
+    New SqlParameter("@trid", rdData.trid),
+    New SqlParameter("@status", rdData.status),
+    New SqlParameter("@office", rdData.office),
+    New SqlParameter("@user", rdData.u_ser),
+    New SqlParameter("@details", rdData.Details),
+    New SqlParameter("@fine", rdData.fine),
+    New SqlParameter("@month", rdData.mo_nth)
+    }
+
+        'da_te,accounttype ,accountnumber,na_me,deposit,withdraw,dlt,trid,balance,status,office,u_ser 
+        Dim parm2 As SqlParameter() = {
+        New SqlParameter("@date", journalData.da_te),
+        New SqlParameter("@actype", journalData.accounttype),
+        New SqlParameter("@acno", journalData.accountnumber),
+        New SqlParameter("@name", journalData.na_me),
+        New SqlParameter("@deposit", journalData.deposit),
+        New SqlParameter("@withdraw", journalData.withdraw),
+        New SqlParameter("@dlt", journalData.dlt),
+        New SqlParameter("@trid", journalData.trid),
+        New SqlParameter("@balance", journalData.balance),
+        New SqlParameter("@status", journalData.status),
+        New SqlParameter("@office", journalData.office),
+        New SqlParameter("@user", journalData.u_ser)
+        }
+        Try
+            If _db.State() Then
+            Else
+                _db.Open()
+            End If
+            Using transction = _db.BeginTransaction()
+                Try
+
+                    Dim query As String = "insert into rdjournal (accountnumber ,depositername,da_te,bbt,transctiontype,amount,bat,trid,status,office,u_ser ,details,mo_nth,fine)values(@accountnumber,@name,@date,@bbt,@trtype,@amount,@bat,@trid,@status,@office,@user,@details,@month,@fine)"
+                    Dim args = New DynamicParameters()
+                    For Each p As SqlParameter In parm
+                        args.Add(p.ParameterName, p.Value)
+                    Next
+                    _db.Execute(query, args, transction) '1
+                    '2
+                    Dim query2 As String = "insert into journal (da_te,accounttype ,accountnumber,na_me,deposit,withdraw,dlt,trid,balance,status,office,u_ser ) values(@date,@actype,@acno,@name ,@deposit,@withdraw,@dlt,@trid,@balance,@status,@office,@user)"
+                    Dim args2 = New DynamicParameters()
+                    For Each q As SqlParameter In parm2
+                        args2.Add(q.ParameterName, q.Value)
+                    Next
+                    _db.Execute(query2, args2, transction)
+
+                    '6.
+                    '.
+                    '.
+
+                    transction.Commit()
+                    Return True
+                Catch ex As Exception
+                    transction.Rollback()
+                    Return False
+                End Try
+
+            End Using
+
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
+
+    Public Function AddTransctionssa(ssaData As ssaJournalClass, journalData As allJournalClass) As Boolean Implements JournalInterface.AddTransctionssa
+        '(accountnumber ,depositername,da_te,bbt,transctiontype,amount,bat,trid,status,office,u_ser ,fine,mo_nth 
+        Dim parm As SqlParameter() = {
+    New SqlParameter("@accountnumber", ssaData.accountnumber),
+    New SqlParameter("@name", ssaData.depositername),
+    New SqlParameter("@trtype", ssaData.transctiontype),
+    New SqlParameter("@date", ssaData.da_te),
+    New SqlParameter("@bbt", ssaData.bbt),
+    New SqlParameter("@amount", ssaData.amount),
+    New SqlParameter("@bat", ssaData.bat),
+    New SqlParameter("@trid", ssaData.trid),
+    New SqlParameter("@status", ssaData.status),
+    New SqlParameter("@office", ssaData.office),
+    New SqlParameter("@user", ssaData.u_ser),
+    New SqlParameter("@details", ssaData.Details),
+    New SqlParameter("@fine", ssaData.fine)
+    }
+
+        'da_te,accounttype ,accountnumber,na_me,deposit,withdraw,dlt,trid,balance,status,office,u_ser 
+        Dim parm2 As SqlParameter() = {
+        New SqlParameter("@date", journalData.da_te),
+        New SqlParameter("@actype", journalData.accounttype),
+        New SqlParameter("@acno", journalData.accountnumber),
+        New SqlParameter("@name", journalData.na_me),
+        New SqlParameter("@deposit", journalData.deposit),
+        New SqlParameter("@withdraw", journalData.withdraw),
+        New SqlParameter("@dlt", journalData.dlt),
+        New SqlParameter("@trid", journalData.trid),
+        New SqlParameter("@balance", journalData.balance),
+        New SqlParameter("@status", journalData.status),
+        New SqlParameter("@office", journalData.office),
+        New SqlParameter("@user", journalData.u_ser)
+        }
+        Try
+            If _db.State() Then
+            Else
+                _db.Open()
+            End If
+            Using transction = _db.BeginTransaction()
+                Try
+
+                    Dim query As String = "insert into ssajournal (accountnumber ,depositername,da_te,bbt,transctiontype,amount,bat,trid,status,office,u_ser ,details,fine)values(@accountnumber,@name,@date,@bbt,@trtype,@amount,@bat,@trid,@status,@office,@user,@details,@fine)"
+                    Dim args = New DynamicParameters()
+                    For Each p As SqlParameter In parm
+                        args.Add(p.ParameterName, p.Value)
+                    Next
+                    _db.Execute(query, args, transction) '1
+                    '2
+                    Dim query2 As String = "insert into journal (da_te,accounttype ,accountnumber,na_me,deposit,withdraw,dlt,trid,balance,status,office,u_ser ) values(@date,@actype,@acno,@name ,@deposit,@withdraw,@dlt,@trid,@balance,@status,@office,@user)"
+                    Dim args2 = New DynamicParameters()
+                    For Each q As SqlParameter In parm2
+                        args2.Add(q.ParameterName, q.Value)
+                    Next
+                    _db.Execute(query2, args2, transction)
+
+                    '6.
+                    '.
+                    '.
+
+                    transction.Commit()
+                    Return True
+                Catch ex As Exception
+                    transction.Rollback()
+                    Return False
+                End Try
+
+            End Using
+
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
+
+    Public Function AddTransctiontd(tdData As tdJournalClass, journalData As allJournalClass) As Boolean Implements JournalInterface.AddTransctiontd
+        Return False
+    End Function
+
+    Public Function AddIntersestSB(sbdata As sbJournalClass, liveac As liveAccountClass) As Boolean Implements JournalInterface.AddIntersestSB
+        Dim parm As SqlParameter() = {
+        New SqlParameter("@accountnumber", sbdata.accountnumber),
+        New SqlParameter("@name", sbdata.depositername),
+        New SqlParameter("@trtype", sbdata.transctiontype),
+        New SqlParameter("@date", sbdata.da_te),
+        New SqlParameter("@bbt", sbdata.bbt),
+        New SqlParameter("@amount", sbdata.amount),
+        New SqlParameter("@bat", sbdata.bat),
+        New SqlParameter("@trid", sbdata.trid),
+        New SqlParameter("@status", sbdata.status),
+        New SqlParameter("@office", sbdata.office),
+        New SqlParameter("@user", sbdata.u_ser),
+        New SqlParameter("@details", sbdata.Details)
+   }
+
+        'da_te,accounttype ,accountnumber,na_me,deposit,withdraw,dlt,trid,balance,status,office,u_ser 
+        Dim parm2 As SqlParameter() = {
+        New SqlParameter("@balance", liveac.balance),
+        New SqlParameter("@acno", liveac.accountnumber)
+        }
+        Try
+            If _db.State() Then
+            Else
+                _db.Open()
+            End If
+            Using transction = _db.BeginTransaction()
+                Try
+
+                    Dim query As String = "insert into sbjournal (accountnumber ,depositername,da_te,bbt,transctiontype,amount,bat,trid,status,office,u_ser ,details)values(@accountnumber,@name,@date,@bbt,@trtype,@amount,@bat,@trid,@status,@office,@user,@details)"
+                    Dim args = New DynamicParameters()
+                    For Each p As SqlParameter In parm
+                        args.Add(p.ParameterName, p.Value)
+                    Next
+                    _db.Execute(query, args, transction) '1
+                    '2
+                    Dim query2 As String = "update liveaccount set balance=@balance where accountnumber=@acno"
+                    Dim args2 = New DynamicParameters()
+                    For Each q As SqlParameter In parm2
+                        args2.Add(q.ParameterName, q.Value)
+                    Next
+                    _db.Execute(query2, args2, transction)
+
+                    '6.
+                    '.
+                    '.
+
+                    transction.Commit()
+                    Return True
+                Catch ex As Exception
+                    transction.Rollback()
+                    Return False
+                End Try
+
+            End Using
+
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
+
+    Public Function addInterestSSA(ssadata As ssaJournalClass, live As liveAccountClass) As Boolean Implements JournalInterface.addInterestSSA
+        Dim parm As SqlParameter() = {
+    New SqlParameter("@accountnumber", ssadata.accountnumber),
+    New SqlParameter("@name", ssadata.depositername),
+    New SqlParameter("@trtype", ssadata.transctiontype),
+    New SqlParameter("@date", ssadata.da_te),
+    New SqlParameter("@bbt", ssadata.bbt),
+    New SqlParameter("@amount", ssadata.amount),
+    New SqlParameter("@bat", ssadata.bat),
+    New SqlParameter("@trid", ssadata.trid),
+    New SqlParameter("@status", ssadata.status),
+    New SqlParameter("@office", ssadata.office),
+    New SqlParameter("@user", ssadata.u_ser),
+    New SqlParameter("@details", ssadata.Details),
+    New SqlParameter("@fine", ssadata.fine)
+    }
+
+        'da_te,accounttype ,accountnumber,na_me,deposit,withdraw,dlt,trid,balance,status,office,u_ser 
+        Dim parm2 As SqlParameter() = {
+        New SqlParameter("@balance", live.balance),
+        New SqlParameter("@acno", live.accountnumber)
+        }
+        Try
+            If _db.State() Then
+            Else
+                _db.Open()
+            End If
+            Using transction = _db.BeginTransaction()
+                Try
+
+                    Dim query As String = "insert into ssajournal (accountnumber ,depositername,da_te,bbt,transctiontype,amount,bat,trid,status,office,u_ser ,details,fine)values(@accountnumber,@name,@date,@bbt,@trtype,@amount,@bat,@trid,@status,@office,@user,@details,@fine)"
+                    Dim args = New DynamicParameters()
+                    For Each p As SqlParameter In parm
+                        args.Add(p.ParameterName, p.Value)
+                    Next
+                    _db.Execute(query, args, transction) '1
+                    '2
+                    Dim query2 As String = "update liveaccount set balance=@balance where accountnumber=@acno"
+                    Dim args2 = New DynamicParameters()
+                    For Each q As SqlParameter In parm2
+                        args2.Add(q.ParameterName, q.Value)
+                    Next
+                    _db.Execute(query2, args2, transction)
+
+                    '6.
+                    '.
+                    '.
+
+                    transction.Commit()
+                    Return True
+                Catch ex As Exception
+                    transction.Rollback()
+                    Return False
+                End Try
+
+            End Using
+
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
 End Class

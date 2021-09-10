@@ -279,11 +279,8 @@
       <DependentUpon>AllOpenAccount.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Official\class\AccountOperateModeHelper.vb" />
     <Compile Include="Official\class\AddAccountHelper.vb" />
     <Compile Include="Official\class\CifHelper.vb" />
-    <Compile Include="Official\class\dltHelper.vb" />
-    <Compile Include="Official\class\GriddViewHelper\allaccountgrid.vb" />
     <Compile Include="Official\Default.aspx.designer.vb">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>

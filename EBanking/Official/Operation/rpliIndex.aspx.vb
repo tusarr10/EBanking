@@ -1,5 +1,8 @@
 ﻿Imports DataBaseHelper
 
+''' <summary>
+''' Dapper Complect
+''' </summary>
 Public Class rpliIndex
     Inherits System.Web.UI.Page
 
