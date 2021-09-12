@@ -163,6 +163,13 @@
       <DependentUpon>CifTrns.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="Developer\Migrate\dactrns.aspx.designer.vb">
+      <DependentUpon>dactrns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Developer\Migrate\dactrns.aspx.vb">
+      <DependentUpon>dactrns.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Developer\Migrate\Default.aspx.designer.vb">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
@@ -280,7 +287,6 @@
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Official\class\AddAccountHelper.vb" />
-    <Compile Include="Official\class\CifHelper.vb" />
     <Compile Include="Official\Default.aspx.designer.vb">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
@@ -555,6 +561,7 @@
     <Content Include="DATA\Sign\tre1234Sign190620211028.png" />
     <Content Include="DATA\Sign\vter123Sign19062021710.png" />
     <Content Include="Developer\Migrate\CifTrns.aspx" />
+    <Content Include="Developer\Migrate\dactrns.aspx" />
     <Content Include="Developer\Migrate\Default.aspx" />
     <Content Include="Developer\Migrate\dlttrns.aspx" />
     <Content Include="Developer\Migrate\journaltrns.aspx" />

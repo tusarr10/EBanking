@@ -28,6 +28,10 @@ Public Class openAccount
 
     Private CifService As New ClassCifService(connectionstringaccount)
 
+
+    Friend cifupdate As Boolean = False
+    Friend photoPath As String
+    Friend signPath As String
     '******************End****************************
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
@@ -256,7 +260,7 @@ Public Class openAccount
 
     Protected Sub ASPxGridView1_Init(sender As Object, e As EventArgs)
         Try
-            loadDataTable()
+            findDataFromAccountDatabase(name)
         Catch ex As Exception
 
         End Try
@@ -334,9 +338,16 @@ Public Class openAccount
         'get data from liveaccount database
         'get data from accountOpen Database
         Try
-            UserDataList = UserService.getByName(name)
-            ASPxGridView1.DataSource = UserService.getByName(name)  'here change to class list
-            loadDataTable()
+            If name = "" Then
+                '   UserDataList = UserService.getByName(_name2)
+                ASPxGridView1.DataSource = UserService.getByName(_name_OA)  'here change to class list
+                loadDataTable()
+            Else
+                UserDataList = UserService.getByName(name)
+                ASPxGridView1.DataSource = UserService.getByName(name)  'here change to class list
+                loadDataTable()
+            End If
+
         Catch ex As Exception
 
         End Try
@@ -350,12 +361,12 @@ Public Class openAccount
     ''' </summary>
     Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click ' for search name
         _name1 = nametb.Text.Trim
+
         If _name1 = Nothing Then
             MyMessageBox.Show(Me, "Enter Name ...")
             Exit Sub
-
         End If
-
+        _name_OA = _name1
         enableFormView() ' for readonly false
         findDataFromAccountDatabase(_name1)
     End Sub
@@ -369,8 +380,8 @@ Public Class openAccount
     Private Sub GetDataFromView()
         'total in db 28
         newAccountfiles = New NewAccountClass
-        verid = DateAndTime.Now.ToString("yyyy-MM-dd-hh-mm") + "_" + GetofficeId + GetuserID
-        newAccountfiles.VirtualId = verid
+        '  verid = DateAndTime.Now.ToString("yyyy-MM-dd-hh-mm") + "_" + GetofficeId + GetuserID
+        ' newAccountfiles.VirtualId = verid
         _accountNumber = acnotb.Text.Trim : newAccountfiles.accountnumber = acnotb.Text.Trim
         _reffNumber = reffNumberTb.Text.Trim : newAccountfiles.reffno = reffNumberTb.Text.Trim
         _PrNumber = TextBox1.Text.Trim : newAccountfiles.pr = TextBox1.Text.Trim
@@ -531,55 +542,6 @@ Public Class openAccount
 
         OpenPrintPage()
     End Sub
-
-    'Submit Button
-    '  Private Sub InsertDataTransction()
-
-    '      'insert data into newacdb
-    '      Dim command As String
-    '      command = "INSERT INTO newacdb (VirtualId, cif, accountnumber, n_ame, producttype, productterm, productvalue, nominireg, nomininame, nominiage, nominiaddress, nominirelation, acoperatemode, guardianname, jointname, address, mobile, email, dob, gender, adhar, pan, photo, sign, doo, reffno, pr)
-    'VALUES ( '" & verid & "','" & _cif & "', '" & _accountNumber & "', '" & _Name & "', '" & _product & "', '" & _term & "', '" & _Value & "', '" & _nominiReg & "', '" & _NominiName & "', '" & _NominiDOB & "', '" & _NominiAddress & "', '" & _NominiRelation & "', '" & _ModeOfOperation & "', '" & _guardianName & "', '" & _secondName & "', '" & _Address & "', '" & _MobileNumber & "', '" & _EmailId & "', '" & _Dob & "', '" & _gender & "', '" & _Adhar & "', '" & _Pan & "', '" & _Photo & "', '" & _sign & "', '" & _OpenDate & "', '" & _reffNumber & "', '" & _PrNumber & "')"
-    '      Try
-    '          Dim cs As String = connectionhelper.connectionstringaccount()
-    '          databaseconnection = New SqlConnection(cs)
-    '          databaseconnection.Open()
-    '          Dim comd As SqlCommand = databaseconnection.CreateCommand()
-    '          Dim transction As SqlTransaction
-
-    '          transction = databaseconnection.BeginTransaction("OpenAccount")
-
-    '          comd.Connection = databaseconnection
-    '          comd.Transaction = transction
-    '          Try
-    '              comd.CommandText = command
-    '              comd.ExecuteNonQuery()
-    '              transction.Commit()
-    '              Errortb.Text = "Account Form Post Successfully ..."
-
-    '              ' GoForrword()
-
-    '              'now go to transction page
-    '              Button2.Enabled = True
-
-    '              ' Response.Redirect("#")
-    '          Catch ex As Exception
-    '              Errortb.Text = "Commit Exception Type: {0}" + ex.Message()
-
-    '              Errortb.Text = Errortb.Text + " Message: {0}" + ex.Message
-    '              Try
-    '                  transction.Rollback()
-    '                  Errortb.Text = "Data Not Saved Successfully"
-    '              Catch ex2 As Exception
-    '                  Errortb.Text = "Rollback Exception Type: {0}" + ex2.Message()
-    '                  Errortb.Text = Errortb.Text + "  Message: {0}" + ex2.Message
-    '              End Try
-    '          End Try
-    '      Catch ex As Exception
-    '          ''Error In Database Connection
-    '      End Try
-    '  End Sub
-
-    'Submit Button Click
 
     ''' <summary>
     ''' Submit Button Click

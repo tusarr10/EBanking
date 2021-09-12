@@ -3,6 +3,8 @@
 Public Class newopentransction
     Inherits System.Web.UI.Page
 
+    Private _name1 As String
+
     Private DataFile As NewAccountClass
     Private newService As New newAccountService(connectionstringaccount)
     Private newtransctionService As New newAccountTransctionService(connectionstringaccount)
@@ -153,14 +155,20 @@ Public Class newopentransction
         End Try
     End Sub
 
-    Dim _name1 As String
+
 
     Private Sub findDataFromAccountDatabase(ByVal name1 As String)
         Try
             ' newaccounthelper.NewAccountNameSearch(name1)
+            If name1 = "" Then
+                ASPxGridView1.DataSource = newService.getByName(_name2)
+                ASPxGridView1.DataBind()
+            Else
+                ASPxGridView1.DataSource = newService.getByName(name1) 'getNewAccountOpenDataTable()
+                ASPxGridView1.DataBind()
+            End If
 
-            BootstrapGridView1.DataSource = newService.getByName(name1) 'getNewAccountOpenDataTable()
-            BootstrapGridView1.DataBind()
+
         Catch ex As Exception
 
         End Try
@@ -170,12 +178,7 @@ Public Class newopentransction
         Try
             ' for search name
             _name1 = nametb.Text.Trim
-            If _name1 = Nothing Then
-                MyMessageBox.Show(Me, "Enter Name ...")
-                Exit Sub
-
-            End If
-
+            _name2 = _name1
             findDataFromAccountDatabase(_name1)
         Catch ex As Exception
 
@@ -183,19 +186,6 @@ Public Class newopentransction
     End Sub
 
     Protected Sub ASPxGridView1_Init(sender As Object, e As EventArgs)
-        Try
-            ' for search name
-            _name1 = nametb.Text.Trim
-            If _name1 = Nothing Then
-
-                Exit Sub
-
-            End If
-
-            findDataFromAccountDatabase(_name1)
-        Catch ex As Exception
-
-        End Try
+        findDataFromAccountDatabase("")
     End Sub
-
 End Class

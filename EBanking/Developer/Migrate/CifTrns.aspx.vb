@@ -1,9 +1,11 @@
 ﻿Imports System.Data.OleDb
-Imports System.Data.SqlClient
 Imports DevExpress.Web
+Imports DataBaseHelper
 
 Public Class CifTrns
     Inherits System.Web.UI.Page
+    Private CifService As New ClassCifService(connectionstringaccount)
+    Private CifData As ClassCif
 
     Dim logmsg As String ' = DateAndTime.Now.ToLongTimeString & "  : "
 
@@ -100,8 +102,9 @@ Public Class CifTrns
             UPN1.Update()
             Try
                 If Len(_cif) > 2 Then
-                    cifsearch(_cif)
-                    If IsIdExist(_cif) = False Then
+                    'cifsearch(_cif)
+                    ' If IsIdExist(_cif) = False Then
+                    If Not CifService.IsCifExist(_cif) Then
                         logmsg = logmsg & timeme & " : Inserting Data Please wait... " & Environment.NewLine
                         ASPxMemo1.Text = logmsg
                         UPN1.Update()
@@ -129,15 +132,31 @@ Public Class CifTrns
     End Sub
 
     Private Sub InsertIntoDB(_name As String, _cif As String, _mobile As String, _pan As String, _adhar As String, _address As String, _dob As String, _gender As String)
-        Dim cmdstr As String
+        CifData = New ClassCif
+        CifData.n_ame = _name
+        CifData.cif = _cif
+        CifData.mobile = _mobile
+        CifData.pan = _pan
+        CifData.adhar = _adhar
+        CifData.address = _address
+        CifData.dob = _dob
+        CifData.gender = _gender
+        CifData.status = "Pending"
+
+
         Try
-            cmdstr = "insert into cifdb(cif,n_ame,mobile,pan,adhar,address,dob,gender,status)values('" & _cif & "','" & _name & "','" & _mobile & "','" & _pan & "','" & _adhar & "','" & _address & "','" & _dob & "','" & _gender & "','Pending')"
-            databaseconnection = New SqlConnection(connectionhelper.connectionstringaccount())
-            datacommand = New SqlCommand(cmdstr, databaseconnection)
-            databaseconnection.Open()
-            Dim i
-            i = datacommand.ExecuteNonQuery()
-            If i > 0 Then
+            Dim i As Boolean
+            i = CifService.AddCif(CifData)
+            'Dim cmdstr As String
+            'cmdstr = "insert into cifdb(cif,n_ame,mobile,pan,adhar,address,dob,gender,status)values('" & _cif & "','" & _name & "','" & _mobile & "','" & _pan & "','" & _adhar & "','" & _address & "','" & _dob & "','" & _gender & "','Pending')"
+            'databaseconnection = New SqlConnection(connectionhelper.connectionstringaccount())
+            'datacommand = New SqlCommand(cmdstr, databaseconnection)
+            'databaseconnection.Open()
+            'Dim i
+            'i = datacommand.ExecuteNonQuery()
+
+
+            If i Then
                 logmsg = logmsg & timeme & " :  Record successfully saved .." & Environment.NewLine & Environment.NewLine
                 z += 1
                 ASPxMemo1.Text = logmsg
@@ -148,9 +167,9 @@ Public Class CifTrns
                 ASPxMemo1.Text = logmsg
                 UPN1.Update()
             End If
-            databaseconnection.Close()
+
         Catch ex As Exception
-            databaseconnection.Close()
+
         End Try
     End Sub
 

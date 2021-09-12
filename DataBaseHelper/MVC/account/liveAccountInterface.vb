@@ -29,8 +29,8 @@ Public Interface liveaccounttransctionInterface
     Function InsertIntoLiveAccount(dblive As liveAccountClass) As Boolean
 
     Function MadeAddAccountTransction(liveACData As liveAccountClass, NominiData As NominiClass, Prtype As productClass, opdata As accOperateClass, dltdata As dltClass) As Boolean
-
+    Function DevAddAccountTransction(liveACData As liveAccountClass, NominiData As NominiClass, Prtype As productClass, opdata As accOperateClass) As Boolean
     'Update data
-
+    Function DevUpdateAccountTransction(liveACData As liveAccountClass, NominiData As NominiClass, Prtype As productClass, opdata As accOperateClass) As Boolean
     'update status
 End Interface

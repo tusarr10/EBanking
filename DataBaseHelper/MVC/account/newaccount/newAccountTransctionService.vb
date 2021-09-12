@@ -12,5 +12,7 @@
     Function AddTransction(data As NewAccountClass, data1 As allJournalClass) As Boolean
         Return _repo1.NewAccountTransction(data, data1)
     End Function
-
+    Function UpdateData(data As NewAccountClass) As Boolean
+        Return _repo1.NewAccountUpdate(data)
+    End Function
 End Class

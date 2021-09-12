@@ -58,7 +58,7 @@
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="card ">
-        <dx:ASPxGridView ID="ASPxGridView1" runat="server" ClientInstanceName="gridView" EnablePagingGestures="False" CssClass="grid-view" Width="100%" OnCustomCallback="GridView_CustomCallback" KeyFieldName="ACNO" AutoGenerateColumns="False">
+        <dx:ASPxGridView ID="ASPxGridView1" runat="server" ClientInstanceName="gridView" EnablePagingGestures="False" CssClass="grid-view" Width="100%" OnCustomCallback="GridView_CustomCallback" KeyFieldName="Notes;ACNO;today" AutoGenerateColumns="False">
             <Columns>
                 <dx:GridViewCommandColumn ShowSelectCheckbox="True" SelectAllCheckboxMode="AllPages" VisibleIndex="0" Width="52"></dx:GridViewCommandColumn>
             </Columns>
@@ -98,7 +98,7 @@
             <ClientSideEvents Init="onGridViewInit" SelectionChanged="onGridViewSelectionChanged" />
         </dx:ASPxGridView>
         <div class="TopPadding">
-            Selected count: <span id="selCount" style="font-weight: bold">0</span>
+            Selected count: <span id="selCount" style="font-weight: bold">0(Do Not Select Duplicate Trid)</span>
         </div>
     </div>
 

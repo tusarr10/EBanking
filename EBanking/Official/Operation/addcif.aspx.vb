@@ -70,7 +70,7 @@ Public Class addcif
             Else
                 responselbl.Text = "O NO. ID Not Found."
                 responselbl.ForeColor = Drawing.Color.Red
-                CifHelper.cifupdate = False
+                cifupdate = False
                 clearNocif()
             End If
         Catch ex As Exception

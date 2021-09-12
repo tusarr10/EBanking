@@ -6,6 +6,7 @@ Public Interface dltInterface
     Function getAll() As List(Of dltClass)
 
     Function getByAcc(acno As String) As dltClass
+    Function IsAccountNumberExist(acno As String) As Boolean
 
     Function addDlt(data As dltClass) As Boolean
 
@@ -36,7 +37,7 @@ Public Class dltRepo
         New SqlParameter("@dlt", data.dlt),
         New SqlParameter("@dlt2", data.dlt2)
                 }
-        Dim query As String = "INSERT INTO dbo.dlt (accountnumber, accountbalance, dlt, dlt2) VALUES (@acno, @balance, @dlt, @dlt2)"
+        Dim query As String = "INSERT INTO dlt (accountnumber, accountbalance, dlt, dlt2) VALUES (@acno, @balance, @dlt, @dlt2)"
 
         Dim args As DynamicParameters = New DynamicParameters
         For Each p As SqlParameter In parm
@@ -57,7 +58,7 @@ Public Class dltRepo
         New SqlParameter("@dlt", data.dlt),
         New SqlParameter("@dlt2", data.dlt2)
                 }
-        Dim query As String = "UPDATE dbo.dlt SET accountnumber = @acno,accountbalance = @balance,dlt = @dlt,dlt2 = @dlt2"
+        Dim query As String = "UPDATE dlt SET accountbalance = @balance,dlt = @dlt,dlt2 = @dlt2 where accountnumber = @acno "
 
         Dim args As DynamicParameters = New DynamicParameters
         For Each p As SqlParameter In parm
@@ -71,6 +72,14 @@ Public Class dltRepo
         Return True
     End Function
 
+    Public Function IsAccountNumberExist(acno As String) As Boolean Implements dltInterface.IsAccountNumberExist
+        Dim x As Integer = Me._db.Query(Of dltClass)("SELECT * FROM dlt WHERE accountnumber = @accountnumber ", New With {Key .accountnumber = acno}).ToList.Count
+        If x > 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
 End Class
 
 Public Class dltService
@@ -95,5 +104,7 @@ Public Class dltService
     Public Function Updatedlt(data As dltClass) As Boolean
         Return _repo.UpdatDlt(data)
     End Function
-
+    Public Function IsDltExist(acno As String) As Boolean
+        Return _repo.IsAccountNumberExist(acno)
+    End Function
 End Class

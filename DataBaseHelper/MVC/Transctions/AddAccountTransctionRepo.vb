@@ -113,4 +113,181 @@ Public Class AddAccountTransctionRepo
         End Try
     End Function
 
+    Public Function DevAddAccountTransction(liveACData As liveAccountClass, NominiData As NominiClass, Prtype As productClass, opdata As accOperateClass) As Boolean Implements liveaccounttransctionInterface.DevAddAccountTransction
+        Dim parm As SqlParameter() = {
+        New SqlParameter("@accountnumber", liveACData.accountnumber),
+        New SqlParameter("@name", liveACData.n_ame),
+        New SqlParameter("@prtype", liveACData.producttype),
+        New SqlParameter("@cif", liveACData.cif),
+        New SqlParameter("@actype", liveACData.acctype),
+        New SqlParameter("@nominireg", liveACData.nominireg),
+        New SqlParameter("@jointname", liveACData.jointname),
+        New SqlParameter("@guardianname", liveACData.guardianname),
+        New SqlParameter("@balance", liveACData.balance),
+        New SqlParameter("@status", liveACData.status)
+   }
+        Dim parm2 As SqlParameter() = {
+        New SqlParameter("@account", NominiData.accountnumber),
+        New SqlParameter("@nominireg", NominiData.nominireg),
+        New SqlParameter("@nomininame", NominiData.nomininame),
+        New SqlParameter("@nominiage", NominiData.nominiage),
+        New SqlParameter("@nominiaddress", NominiData.nominiaddress),
+        New SqlParameter("@nominirelation", NominiData.nominirelation)
+        }
+        Dim parm3 As SqlParameter() = {
+        New SqlParameter("@account", Prtype.accountnumber),
+        New SqlParameter("@type", Prtype.type),
+        New SqlParameter("@term", Prtype.term),
+        New SqlParameter("@val", Prtype.v_alue)
+        }
+        Dim parm4 As SqlParameter() = {
+        New SqlParameter("@account", opdata.accountnumber),
+        New SqlParameter("@accountoperatemode", opdata.accountoperatemode),
+        New SqlParameter("@guardianname", opdata.guardianname),
+        New SqlParameter("@relation", opdata.relation)
+        }
+
+
+        Try
+            If _db.State() Then
+            Else
+                _db.Open()
+            End If
+            Using transction = _db.BeginTransaction()
+                Try
+                    Dim query As String = "INSERT INTO liveaccount (accountnumber, cif, n_ame, producttype, nominireg, acctype, jointname, guardianname, balance, status) VALUES (@accountnumber, @cif, @name, @prtype, @nominireg, @actype, @jointname, @guardianname, @balance, @status)"
+                    Dim args = New DynamicParameters()
+                    For Each p As SqlParameter In parm
+                        args.Add(p.ParameterName, p.Value)
+                    Next
+                    _db.Execute(query, args, transction) '1
+                    '2
+                    Dim query2 As String = "INSERT INTO nominiinfo (accountnumber, nominireg, nomininame, nominiage, noiminiaddress, nominirelation)VALUES (@account, @nominireg, @nomininame, @nominiage, @nominiaddress, @nominirelation)"
+                    Dim args2 = New DynamicParameters()
+                    For Each q As SqlParameter In parm2
+                        args2.Add(q.ParameterName, q.Value)
+                    Next
+                    _db.Execute(query2, args2, transction)
+                    '3.
+                    Dim query3 As String = "INSERT INTO dbo.producttype (accountnumber, type, term, v_alue)VALUES (@account, @type, @term, @val)"
+                    Dim args3 = New DynamicParameters()
+                    For Each q As SqlParameter In parm3
+                        args3.Add(q.ParameterName, q.Value)
+                    Next
+                    _db.Execute(query3, args3, transction)
+                    '4.
+                    Dim query4 As String = "INSERT INTO accountopratemode (accountnumber, accountoperatemode, guardianname, relation) VALUES (@account, @accountoperatemode, @guardianname, @relation)"
+                    Dim args4 = New DynamicParameters()
+                    For Each q As SqlParameter In parm4
+                        args4.Add(q.ParameterName, q.Value)
+                    Next
+                    _db.Execute(query4, args4, transction)
+                    '5.
+
+                    '6.
+                    '.
+                    '.
+
+                    transction.Commit()
+                    Return True
+                Catch ex As Exception
+                    transction.Rollback()
+                    Return False
+                End Try
+
+            End Using
+            '  Me._db.Query(Of allJournalClass)(query, args).SingleOrDefault
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
+
+    Public Function DevUpdateAccountTransction(liveACData As liveAccountClass, NominiData As NominiClass, Prtype As productClass, opdata As accOperateClass) As Boolean Implements liveaccounttransctionInterface.DevUpdateAccountTransction
+        Dim parm As SqlParameter() = {
+      New SqlParameter("@accountnumber", liveACData.accountnumber),
+      New SqlParameter("@name", liveACData.n_ame),
+      New SqlParameter("@prtype", liveACData.producttype),
+      New SqlParameter("@cif", liveACData.cif),
+      New SqlParameter("@actype", liveACData.acctype),
+      New SqlParameter("@nominireg", liveACData.nominireg),
+      New SqlParameter("@jointname", liveACData.jointname),
+      New SqlParameter("@guardianname", liveACData.guardianname),
+      New SqlParameter("@balance", liveACData.balance),
+      New SqlParameter("@status", liveACData.status)
+ }
+        Dim parm2 As SqlParameter() = {
+        New SqlParameter("@account", NominiData.accountnumber),
+        New SqlParameter("@nominireg", NominiData.nominireg),
+        New SqlParameter("@nomininame", NominiData.nomininame),
+        New SqlParameter("@nominiage", NominiData.nominiage),
+        New SqlParameter("@nominiaddress", NominiData.nominiaddress),
+        New SqlParameter("@nominirelation", NominiData.nominirelation)
+        }
+        Dim parm3 As SqlParameter() = {
+        New SqlParameter("@account", Prtype.accountnumber),
+        New SqlParameter("@type", Prtype.type),
+        New SqlParameter("@term", Prtype.term),
+        New SqlParameter("@val", Prtype.v_alue)
+        }
+        Dim parm4 As SqlParameter() = {
+        New SqlParameter("@account", opdata.accountnumber),
+        New SqlParameter("@accountoperatemode", opdata.accountoperatemode),
+        New SqlParameter("@guardianname", opdata.guardianname),
+        New SqlParameter("@relation", opdata.relation)
+        }
+
+
+        Try
+            If _db.State() Then
+            Else
+                _db.Open()
+            End If
+            Using transction = _db.BeginTransaction()
+                Try
+                    Dim query As String = "UPDATE liveaccount SET cif = @cif,n_ame = @name,producttype = @prtype,nominireg = @nominireg ,acctype = @actype,guardianname = @guardianname ,balance = @balance where accountnumber=@accountnumber"
+                    Dim args = New DynamicParameters()
+                    For Each p As SqlParameter In parm
+                        args.Add(p.ParameterName, p.Value)
+                    Next
+                    _db.Execute(query, args, transction) '1
+                    '2
+                    Dim query2 As String = "UPDATE nominiinfo SET nominireg = @nominireg,nomininame = @nomininame where accountnumber=@account"
+                    Dim args2 = New DynamicParameters()
+                    For Each q As SqlParameter In parm2
+                        args2.Add(q.ParameterName, q.Value)
+                    Next
+                    _db.Execute(query2, args2, transction)
+                    '3.
+                    Dim query3 As String = "UPDATE producttype SET type = @type where accountnumber=@account"
+                    Dim args3 = New DynamicParameters()
+                    For Each q As SqlParameter In parm3
+                        args3.Add(q.ParameterName, q.Value)
+                    Next
+                    _db.Execute(query3, args3, transction)
+                    '4.
+                    Dim query4 As String = "UPDATE dbo.accountopratemode SET accountoperatemode = @accountoperatemode ,guardianname = @guardianname where accountnumber=@account"
+                    Dim args4 = New DynamicParameters()
+                    For Each q As SqlParameter In parm4
+                        args4.Add(q.ParameterName, q.Value)
+                    Next
+                    _db.Execute(query4, args4, transction)
+                    '5.
+
+                    '6.
+                    '.
+                    '.
+
+                    transction.Commit()
+                    Return True
+                Catch ex As Exception
+                    transction.Rollback()
+                    Return False
+                End Try
+
+            End Using
+            '  Me._db.Query(Of allJournalClass)(query, args).SingleOrDefault
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
 End Class

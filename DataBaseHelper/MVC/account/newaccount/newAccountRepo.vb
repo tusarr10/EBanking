@@ -95,7 +95,7 @@ Public Class newAccountRepo
     'End Function
 
     Public Function IsReffNoExist(reffno As String) As Boolean Implements newAccountInterface.IsReffNoExist
-        Dim x As Integer = Me._db.Query(Of NewAccountClass)("SELECT * FROM newacdb where reffno like '%' + @name + '%'", New With {Key .name = reffno}).Count
+        Dim x As Integer = Me._db.Query(Of NewAccountClass)("SELECT * FROM newacdb where reffno=@name", New With {Key .name = reffno}).Count
         If x > 0 Then
             Return True
         Else

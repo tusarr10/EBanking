@@ -9,14 +9,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="LeftPanelContent" runat="server">
 
     <h3 class="leftpanel-section section-caption">Type</h3>
-    <dx:aspxtreeview runat="server" id="TableOfContentsTreeView" clientinstancename="tableOfContentsTreeView"
-        enablenodetextwrapping="true" allowselectnode="true" width="100%" syncselectionmode="None" datasourceid="NodesDataSource" nodelinkmode="ContentBounds">
-        <styles>
-            <elbow cssclass="tree-view-elbow" />
-            <node cssclass="tree-view-node" hoverstyle-cssclass="hovered" />
-        </styles>
-        <clientsideevents nodeclick="function (s, e) { HideLeftPanelIfRequired(); }" />
-    </dx:aspxtreeview>
+    <dx:ASPxTreeView runat="server" ID="TableOfContentsTreeView" ClientInstanceName="tableOfContentsTreeView"
+        EnableNodeTextWrapping="true" AllowSelectNode="true" Width="100%" SyncSelectionMode="None" DataSourceID="NodesDataSource" NodeLinkMode="ContentBounds">
+        <Styles>
+            <Elbow CssClass="tree-view-elbow" />
+            <Node CssClass="tree-view-node" HoverStyle-CssClass="hovered" />
+        </Styles>
+        <ClientSideEvents NodeClick="function (s, e) { HideLeftPanelIfRequired(); }" />
+    </dx:ASPxTreeView>
 
     <asp:XmlDataSource ID="NodesDataSource" runat="server" DataFile="~/App_Data/DefaultLeft.xml" XPath="//Nodes/OperationNode/*" />
 </asp:Content>
@@ -31,7 +31,7 @@
 
             <div class="card ">
                 <div class="card-body">
-                    <div class="row">
+                    <div class="row content ">
 
                         <div class="col-md-4">
                             <label>Account Holder Name</label>
@@ -41,86 +41,51 @@
                                     <i class="fas fa-check-circle"></i>
                                 </asp:LinkButton>
                             </div>
+
                         </div>
 
                         <div class="col-md-8">
-                            <%--          <dx:BootstrapGridView ID="gsgfdf" runat="server" AutoGenerateColumns="False" Width="100%">
-                                <Columns>
-                                    <dx:BootstrapGridViewTextColumn FieldName="n_ame" Name="n_ame" Caption="Name" VisibleIndex="2" Width="36%" MinWidth="280" MaxWidth="450"></dx:BootstrapGridViewTextColumn>
-                                    <%--  <dx:BootstrapGridViewTextColumn FieldName="address" Name="Address" Caption="Address" VisibleIndex="3" MinWidth="150" MaxWidth="250" Width="20%"></dx:BootstrapGridViewTextColumn>
-                                    <dx:BootstrapGridViewTextColumn FieldName="pr" Name="pr" Caption="PR" VisibleIndex="4" MinWidth="150" MaxWidth="250" Width="20%"></dx:BootstrapGridViewTextColumn>
-                                    <dx:BootstrapGridViewTextColumn FieldName="reffno" Name="reffno" Caption="Reff. No." VisibleIndex="6" MinWidth="150" MaxWidth="250" Width="20%"></dx:BootstrapGridViewTextColumn>
 
-                                    <dx:BootstrapGridViewButtonEditColumn Name="get" Caption="Control" VisibleIndex="0">
+
+                            <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" OnInit ="ASPxGridView1_Init">
+  <Columns>
+
+                                    <dx:GridViewDataTextColumn FieldName="n_ame" Name="n_ame" Caption="Name" VisibleIndex="2" Width="36%" MinWidth="280" MaxWidth="450"></dx:GridViewDataTextColumn>
+
+                                    <dx:GridViewDataTextColumn FieldName="pr" Name="pr" Caption="PR" VisibleIndex="4" MinWidth="150" MaxWidth="250" Width="20%"></dx:GridViewDataTextColumn>
+                                    <dx:GridViewDataTextColumn FieldName="reffno" Name="reffno" Caption="Reff. No." VisibleIndex="6" MinWidth="150" MaxWidth="250" Width="20%"></dx:GridViewDataTextColumn>
+
+                                    <dx:GridViewDataTextColumn Name="get" Caption="Control" VisibleIndex="0">
                                         <DataItemTemplate>
                                             <dx:BootstrapButton ID="BootstrapButton1" runat="server" AutoPostBack="false" Text="View"></dx:BootstrapButton>
                                         </DataItemTemplate>
-                                    </dx:BootstrapGridViewButtonEditColumn>
-                                    <dx:BootstrapGridViewButtonEditColumn Name="get" Caption="Option" VisibleIndex="1">
+                                    </dx:GridViewDataTextColumn>
+                                    <dx:GridViewDataTextColumn Name="get" Caption="Option" VisibleIndex="1">
                                         <DataItemTemplate>
                                             <dx:BootstrapButton ID="BootstrapButton2" runat="server" AutoPostBack="false" Text="Get"></dx:BootstrapButton>
                                         </DataItemTemplate>
-                                    </dx:BootstrapGridViewButtonEditColumn>
-                                    <dx:BootstrapGridViewTextColumn FieldName="producttype" Name="producttype" Caption="Account Type" VisibleIndex="6" MinWidth="150" MaxWidth="250" Width="20%"></dx:BootstrapGridViewTextColumn>
+                                    </dx:GridViewDataTextColumn>
+                                    <dx:GridViewDataTextColumn FieldName="producttype" Name="producttype" Caption="Account Type" VisibleIndex="6" MinWidth="150" MaxWidth="250" Width="20%"></dx:GridViewDataTextColumn>
                                 </Columns>
-                                <Settings HorizontalScrollBarMode="Auto" />
-                                <Settings VerticalScrollBarMode="Auto" VerticalScrollableHeight="100" />
-                            </dx:BootstrapGridView>--%>
+                                <SettingsBehavior AllowFocusedRow="true" AllowSelectByRowClick="true" AllowEllipsisInText="true" AllowDragDrop="false" />
 
-                            <dx:aspxgridview id="BootstrapGridView1" oninit="ASPxGridView1_Init" cssclass="grid-view" width="100%" keyfieldname="reffno" runat="server" autogeneratecolumns="False">
+                                <Settings VerticalScrollBarMode="Hidden" HorizontalScrollBarMode="Auto" ShowHeaderFilterButton="true" />
 
-                                <columns>
+                                <SettingsPager PageSize="3">
+                                    <PageSizeItemSettings Visible="true" ShowAllItem="true" />
+                                </SettingsPager>
 
-                                    <dx:gridviewdatatextcolumn fieldname="n_ame" name="n_ame" caption="Name" visibleindex="2" width="36%" minwidth="280" maxwidth="450"></dx:gridviewdatatextcolumn>
-                                    <%--  <dx:BootstrapGridViewTextColumn FieldName="address" Name="Address" Caption="Address" VisibleIndex="3" MinWidth="150" MaxWidth="250" Width="20%"></dx:BootstrapGridViewTextColumn>--%>
-                                    <dx:gridviewdatatextcolumn fieldname="pr" name="pr" caption="PR" visibleindex="4" minwidth="150" maxwidth="250" width="20%"></dx:gridviewdatatextcolumn>
-                                    <dx:gridviewdatatextcolumn fieldname="reffno" name="reffno" caption="Reff. No." visibleindex="6" minwidth="150" maxwidth="250" width="20%"></dx:gridviewdatatextcolumn>
+                                <Styles>
+                                    <Cell Wrap="false" />
+                                    <PagerBottomPanel CssClass="pager" />
+                                    <FocusedRow CssClass="focused" />
+                                </Styles>
+                            </dx:ASPxGridView>
 
-                                    <dx:gridviewdatatextcolumn name="get" caption="Control" visibleindex="0">
-                                        <dataitemtemplate>
-                                            <dx:bootstrapbutton id="BootstrapButton1" runat="server" autopostback="false" text="View"></dx:bootstrapbutton>
-                                        </dataitemtemplate>
-                                    </dx:gridviewdatatextcolumn>
-                                    <dx:gridviewdatatextcolumn name="get" caption="Option" visibleindex="1">
-                                        <dataitemtemplate>
-                                            <dx:bootstrapbutton id="BootstrapButton2" runat="server" autopostback="false" text="Get"></dx:bootstrapbutton>
-                                        </dataitemtemplate>
-                                    </dx:gridviewdatatextcolumn>
-                                    <dx:gridviewdatatextcolumn fieldname="producttype" name="producttype" caption="Account Type" visibleindex="6" minwidth="150" maxwidth="250" width="20%"></dx:gridviewdatatextcolumn>
-                                </columns>
-                                <settingsbehavior allowfocusedrow="true" allowselectbyrowclick="true" allowellipsisintext="true" allowdragdrop="false" />
-
-                                <settings verticalscrollbarmode="Hidden" horizontalscrollbarmode="Auto" showheaderfilterbutton="true" />
-
-                                <settingspager pagesize="3">
-                                    <pagesizeitemsettings visible="true" showallitem="true" />
-                                </settingspager>
-
-                                <styles>
-                                    <cell wrap="false" />
-                                    <pagerbottompanel cssclass="pager" />
-                                    <focusedrow cssclass="focused" />
-                                </styles>
-                            </dx:aspxgridview>
-                        </div>
-                    </div>
-
-                    <%--    <div class="row">
-
-                      <div class="col-md-4">
-                            <label>Guardian Name</label>
-                            <div class="form-group  ">
-                                <asp:TextBox CssClass="form-control" ID="Guardiantb" runat="server" placeholder="Guardian Name" ReadOnly="true"></asp:TextBox>
-                            </div>
-                        </div>
-                    </div>--%>
-
-                    <div class="row">
-                        <div class="col">
-                            <hr />
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <div class="row">

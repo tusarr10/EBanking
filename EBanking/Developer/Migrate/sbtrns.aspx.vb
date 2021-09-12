@@ -1,9 +1,17 @@
 ﻿Imports System.Data.OleDb
-Imports System.Data.SqlClient
 Imports DevExpress.Web
+Imports DataBaseHelper
 
 Public Class sbtrns
     Inherits System.Web.UI.Page
+
+    Private Accountservice As New liveAccountService(connectionstringaccount)
+    Private AccountTransctionservice As New AddAccountTransctionService(connectionstringaccount)
+    Private AccountData As liveAccountClass
+    Private nominiData As NominiClass
+    Private productData As productClass
+    Private acModeData As accOperateClass
+
 
     Dim logmsg As String ' = DateAndTime.Now.ToLongTimeString & "  : "
 
@@ -88,65 +96,52 @@ Public Class sbtrns
     Dim n As Integer
 
     Private Sub InsertIntoDB(ByVal acNo As String, ByVal cif As String, ByVal name As String, ByVal producttype As String, ByVal nominireg As String, ByVal acctype As String, ByVal guardianName As String, ByVal accountBalance As String, ByVal nomininame As String)
-        Dim cmdstr As String
-        Try
-            Dim cs As String = connectionhelper.connectionstringaccount()
-            databaseconnection = New SqlConnection(cs)
-            databaseconnection.Open()
-            Dim command As SqlCommand = databaseconnection.CreateCommand()
-            Dim transction As SqlTransaction
 
-            transction = databaseconnection.BeginTransaction("AddAccount")
+        AccountData = New liveAccountClass
+        AccountData.accountnumber = acNo
+        AccountData.cif = cif
+        AccountData.n_ame = name
+        AccountData.producttype = producttype
+        AccountData.nominireg = nominireg
+        AccountData.acctype = acctype
+        AccountData.guardianname = guardianName
+        AccountData.balance = accountBalance
+        AccountData.status = "Pending"
+        '*************End************
+        ' "  insert into " & nominitable & " (accountnumber,nominireg,nomininame )values ('" & acNo & "','" & nominireg & "','" & nomininame & "')"
+        nominiData = New NominiClass
+        nominiData.accountnumber = acNo
+        nominiData.nominireg = nominireg
+        nominiData.nomininame = nomininame
+        '**************End**********
+        ' "  insert into " & productTypeTable & " (accountnumber , type )values('" & acNo & "','" & producttype & "')" 
+        productData = New productClass
+        productData.accountnumber = acNo
+        productData.type = producttype
 
-            command.Connection = databaseconnection
-            command.Transaction = transction
+        '*************End *****************
+        '"insert into " & accountOperateTable & " (accountnumber ,accountoperatemode,guardianname )values('" & acNo & "','" & acctype & "','" & guardianName & "')"
+        acModeData = New accOperateClass
+        acModeData.accountnumber = acNo
+        acModeData.accountoperatemode = acctype
+        acModeData.guardianname = guardianName
 
-            Try
-                command.CommandText = "insert into " & liveAccountTable & "(accountnumber,cif,n_ame,producttype,nominireg,acctype,guardianname,balance,status)values('" & acNo & "','" & cif & "','" & name & "','" & producttype & "','" & nominireg & "','" & acctype & "','" & guardianName & "','" & accountBalance & "','Pending')"
-                command.ExecuteNonQuery()
+        '************************End*************
+        Dim i As Boolean
+        i = AccountTransctionservice.DevAddAccountTransction(AccountData, nominiData, productData, acModeData)
+        If i Then
+            z += 1
+            logmsg = logmsg & timeme & " : Data Saved Successfully.. " & acNo & Environment.NewLine & Environment.NewLine
+            ASPxMemo1.Text = logmsg
+            UPN1.Update()
+        Else
 
-                command.CommandText = "  insert into " & nominitable & " (accountnumber,nominireg,nomininame )values ('" & acNo & "','" & nominireg & "','" & nomininame & "')" 'insert into nominiinfo
-                command.ExecuteNonQuery()
+            logmsg = logmsg & timeme & " : Data Not Saved " & acNo & " : " & Environment.NewLine
+            y += 1
+            ASPxMemo1.Text = logmsg
+            UPN1.Update()
+        End If
 
-                command.CommandText = "  insert into " & productTypeTable & " (accountnumber , type )values('" & acNo & "','" & producttype & "')" ' Insert inTo product type
-                command.ExecuteNonQuery()
-
-                command.CommandText = "insert into " & accountOperateTable & " (accountnumber ,accountoperatemode,guardianname )values('" & acNo & "','" & acctype & "','" & guardianName & "')" 'insert into account type
-                command.ExecuteNonQuery()
-                'try to commite the transction
-                transction.Commit()
-                '  MyMessageBox.Show(Me, "Data Saved Successfully")
-                z += 1
-
-                logmsg = logmsg & timeme & " : Data Saved Successfully.. " & acNo & Environment.NewLine & Environment.NewLine
-                ASPxMemo1.Text = logmsg
-                UPN1.Update()
-            Catch ex As Exception
-
-                logmsg = logmsg & timeme & " : Commit Exception Type: {0}" + ex.Message() & " Message: {0}" & Environment.NewLine
-                ASPxMemo1.Text = logmsg
-                UPN1.Update()
-                Try
-                    transction.Rollback()
-                    logmsg = logmsg & timeme & " : Data Not Saved " & acNo & " : " & Environment.NewLine
-                    y += 1
-                    ASPxMemo1.Text = logmsg
-                    UPN1.Update()
-                Catch ex2 As Exception
-                    logmsg = logmsg & timeme & " : Rollback Exception Type: {0}" + ex2.Message() & " Message: {0}" & Environment.NewLine
-                    ASPxMemo1.Text = logmsg
-                    UPN1.Update()
-                End Try
-
-            End Try
-        Catch ex As Exception
-
-        End Try
-        Try
-            databaseconnection.Close()
-        Catch ex As Exception
-
-        End Try
     End Sub
 
     Private Sub InsertDataIntoSqlCIFDB(ByVal i As Integer)
@@ -215,18 +210,18 @@ Public Class sbtrns
             Try
                 If Len(_acNo) > 6 Then
                     'cifsearch(_cif)
-                    AccountSearch(_acNo)
-                    If AddAccountHelper.IsAccountIdExist(_acNo) = False Then
+
+                    If Not Accountservice.IsAccountNumberExist(_acNo) Then
                         logmsg = logmsg & timeme & " : Inserting Data Please wait... " & Environment.NewLine
                         ASPxMemo1.Text = logmsg
                         UPN1.Update()
                         InsertIntoDB(_acNo, _cif, _name, _Producttype, _nominireg, _acctype, _GuardianName, _AccountBalance, _nomininame)
                     Else
-                        n += 1
-
-                        logmsg = logmsg & timeme & " : Account Id Already Exist in Database  " & Environment.NewLine & Environment.NewLine
+                        '  n += 1
+                        logmsg = logmsg & timeme & " : Account Id Already Exist in Database  " & Environment.NewLine & timeme & " : Trying to Update Account Number " & _acNo & " Please Wait ..... " & Environment.NewLine
                         ASPxMemo1.Text = logmsg
                         UPN1.Update()
+                        UpdateIntoDB(_acNo, _cif, _name, _Producttype, _nominireg, _acctype, _GuardianName, _AccountBalance, _nomininame)
                     End If
                 Else
                     y += 1
@@ -240,6 +235,54 @@ Public Class sbtrns
             End Try
 
         Next
+
+    End Sub
+
+    Private Sub UpdateIntoDB(acNo As String, cif As String, name As String, producttype As String, nominireg As String, acctype As String, guardianName As String, accountBalance As String, nomininame As String)
+        AccountData = New liveAccountClass
+        AccountData.accountnumber = acNo
+        AccountData.cif = cif
+        AccountData.n_ame = name
+        AccountData.producttype = producttype
+        AccountData.nominireg = nominireg
+        AccountData.acctype = acctype
+        AccountData.guardianname = guardianName
+        AccountData.balance = accountBalance
+        AccountData.status = "Pending"
+        '*************End************
+        ' "  insert into " & nominitable & " (accountnumber,nominireg,nomininame )values ('" & acNo & "','" & nominireg & "','" & nomininame & "')"
+        nominiData = New NominiClass
+        nominiData.accountnumber = acNo
+        nominiData.nominireg = nominireg
+        nominiData.nomininame = nomininame
+        '**************End**********
+        ' "  insert into " & productTypeTable & " (accountnumber , type )values('" & acNo & "','" & producttype & "')" 
+        productData = New productClass
+        productData.accountnumber = acNo
+        productData.type = producttype
+
+        '*************End *****************
+        '"insert into " & accountOperateTable & " (accountnumber ,accountoperatemode,guardianname )values('" & acNo & "','" & acctype & "','" & guardianName & "')"
+        acModeData = New accOperateClass
+        acModeData.accountnumber = acNo
+        acModeData.accountoperatemode = acctype
+        acModeData.guardianname = guardianName
+
+        '************************End*************
+        Dim i As Boolean
+        i = AccountTransctionservice.DevUpdateAccountTransction(AccountData, nominiData, productData, acModeData)
+        If i Then
+            n += 1
+            logmsg = logmsg & timeme & " : Data Update Successfully.. " & acNo & Environment.NewLine & Environment.NewLine
+            ASPxMemo1.Text = logmsg
+            UPN1.Update()
+        Else
+
+            logmsg = logmsg & timeme & " : Data Not Saved " & acNo & " : " & Environment.NewLine
+            y += 1
+            ASPxMemo1.Text = logmsg
+            UPN1.Update()
+        End If
 
     End Sub
 
@@ -290,7 +333,7 @@ Public Class sbtrns
         _totalSkip = y.ToString
         _totalinsert = z.ToString
         _exist = n.ToString
-        logmsg = logmsg & Environment.NewLine & Environment.NewLine & timeme & " :  Total Data Select = " & _totaldata & " Total Insert =  " & _totalinsert & " Total Skip = " & _totalSkip & "  Already Exist = " & _exist & " ." & Environment.NewLine
+        logmsg = logmsg & Environment.NewLine & Environment.NewLine & timeme & " :  Total Data Select = " & _totaldata & " Total Insert =  " & _totalinsert & " Total Skip = " & _totalSkip & "  Total Update = " & _exist & " ." & Environment.NewLine
         ASPxMemo1.Text = logmsg
         UPN1.Update()
         If IsCallback Then

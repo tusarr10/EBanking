@@ -58,9 +58,9 @@
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="card ">
-        <dx:ASPxGridView ID="ASPxGridView1" runat="server" ClientInstanceName="gridView" EnablePagingGestures="False" CssClass="grid-view" Width="100%" OnCustomCallback="GridView_CustomCallback" KeyFieldName="AcNo" AutoGenerateColumns="False">
+        <dx:ASPxGridView ID="ASPxGridView1" runat="server" ClientInstanceName="gridView" EnablePagingGestures="False" CssClass="grid-view" Width="100%" OnCustomCallback="GridView_CustomCallback" KeyFieldName="AcNo;Notes;todate" AutoGenerateColumns="False">
             <Columns>
-                <dx:GridViewCommandColumn ShowSelectCheckbox="True" SelectAllCheckboxMode="AllPages" VisibleIndex="0" Width="52"></dx:GridViewCommandColumn>
+                <dx:GridViewCommandColumn ShowSelectCheckbox="True" SelectAllCheckboxMode="AllPages"  VisibleIndex="0" Width="52"></dx:GridViewCommandColumn>
             </Columns>
             <SettingsBehavior AllowFocusedRow="true" AllowSelectByRowClick="true" AllowEllipsisInText="true" AllowDragDrop="false" />
             <SettingsEditing Mode="PopupEditForm" EditFormColumnCount="2" />
@@ -72,15 +72,15 @@
             <SettingsExport EnableClientSideExportAPI="true" ExportSelectedRowsOnly="true" />
             <Columns>
                 <dx:GridViewDataTextColumn FieldName="AcNo" Name="ACNO" Caption="ACNO" VisibleIndex="1"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="CustmorName" Name="Name" Caption="Name" VisibleIndex="2"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="CustmorName" Name="CustmorName" Caption="Name" VisibleIndex="2"></dx:GridViewDataTextColumn>
                 <dx:GridViewDataTextColumn FieldName="depositerName" Name="Depositer" Caption="Depositer" VisibleIndex="3"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="todate" Name="today" Caption="today" VisibleIndex="4"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="todate" Name="todate" Caption="today" VisibleIndex="4"></dx:GridViewDataTextColumn>
                 <dx:GridViewDataTextColumn FieldName="BBT" Name="BBT" Caption="bbt" VisibleIndex="5"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="transType" Name="Transtype" Caption="transtype" VisibleIndex="6"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="transAmt" Name="Amount" Caption="Amount" VisibleIndex="7"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="DNT" Name="fine" Caption="fine" VisibleIndex="8"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="DLT" Name="balance" Caption="balance" VisibleIndex="9"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="AcBal" Name="m_onth" Caption="m_onth" VisibleIndex="10"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="transType" Name="transType" Caption="transtype" VisibleIndex="6"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="transAmt" Name="transAmt" Caption="Amount" VisibleIndex="7"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="DNT" Name="DNT" Caption="DNT" VisibleIndex="8"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="DLT" Name="DLT" Caption="DLT" VisibleIndex="9"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="AcBal" Name="AcBal" Caption="balance" VisibleIndex="10"></dx:GridViewDataTextColumn>
                 <dx:GridViewDataTextColumn FieldName="Notes" Name="Notes" Caption="Notes" VisibleIndex="12"></dx:GridViewDataTextColumn>
             </Columns>
 

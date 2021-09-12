@@ -38,6 +38,8 @@
     Function DeleteSbjournal(Trid As String) As Boolean
 
     Function AddTransctionsb(sbData As sbJournalClass, journalData As allJournalClass) As Boolean
+    Function DoSBTransction(sbData As sbJournalClass, dltdata As dltClass) As Boolean 'Grab Status trid bat accountnumber from sb class and dlt info from dlt class 
+    Function rejecttransction(TableName As String, Trid As String) As Boolean
     Function AddIntersestSB(sbdata As sbJournalClass, liveac As liveAccountClass) As Boolean
 
     ' For Rd Journal
@@ -61,7 +63,7 @@
 
     Function DeleteFromRdJournal(Trid As String) As Boolean
     Function AddTransctionRd(rdData As rdJournalClass, journalData As allJournalClass) As Boolean
-
+    Function DoRDTransction(rdData As rdJournalClass, dltdata As dltClass) As Boolean 'Grab Status trid bat accountnumber from sb class and dlt info from dlt class 
 
     ' For Ssa Journal
 
@@ -85,6 +87,7 @@
 
     Function DeleteFromSsaJournal(Trid As ssaJournalClass) As Boolean
     Function AddTransctionssa(ssaData As ssaJournalClass, journalData As allJournalClass) As Boolean
+    Function DoSSATransction(ssaData As ssaJournalClass, dltdata As dltClass) As Boolean 'Grab Status trid bat accountnumber from ssa class and dlt info from dlt class 
     Function addInterestSSA(ssadata As ssaJournalClass, live As liveAccountClass) As Boolean
 
     ' For Td Journal
@@ -108,5 +111,12 @@
 
     Function DeleteFromTdJournal(Trid As tdJournalClass) As Boolean
     Function AddTransctiontd(tdData As tdJournalClass, journalData As allJournalClass) As Boolean
+    Function DoTDTransction(tdData As tdJournalClass, dltdata As dltClass) As Boolean 'Grab Status trid bat accountnumber from sb class and dlt info from dlt class 
 
+
+
+    ' Generlly for developer Mode
+    Function checkDataAvailableSSA(data As ssaJournalClass)
+    Function checkDataAvailableSb(data As sbJournalClass)
+    Function checkDataAvailablerd(data As rdJournalClass)
 End Interface

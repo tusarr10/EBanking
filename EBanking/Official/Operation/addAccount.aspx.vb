@@ -15,7 +15,7 @@ Public Class addAccount
     Private cifData As ClassCif
 
     Dim userNotAdmin As Boolean = True
-
+    Friend cifupdate As Boolean = False
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         userNotAdmin = False

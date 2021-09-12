@@ -401,7 +401,7 @@ Public Class AllJournalRepo
     End Function
 
     Public Function getByDataFromSsabJournal(enterdate As String, accountNumber As String, Trid As String, status As String) As ssaJournalClass Implements JournalInterface.getByDataFromSsabJournal
-        Return Me._db.Query(Of ssaJournalClass)("SELECT * FROM rdjournal WHERE trid=@Trid AND status=@status AND accountnumber=@acno AND da_te=@dte", New With {Key .Trid = Trid, Key .status = status, Key .acno = accountNumber, Key .dte = enterdate}).FirstOrDefault
+        Return Me._db.Query(Of ssaJournalClass)("SELECT * FROM ssajournal WHERE trid=@Trid AND status=@status AND accountnumber=@acno AND da_te=@dte", New With {Key .Trid = Trid, Key .status = status, Key .acno = accountNumber, Key .dte = enterdate}).FirstOrDefault
     End Function
 
     Public Function getByDataFromtdJournal(enterdate As String, accountNumber As String, Trid As String, status As String) As tdJournalClass Implements JournalInterface.getByDataFromtdJournal
@@ -751,5 +751,303 @@ Public Class AllJournalRepo
         Catch ex As Exception
             Return False
         End Try
+    End Function
+
+    Public Function DoSBTransction(sbData As sbJournalClass, dltdata As dltClass) As Boolean Implements JournalInterface.DoSBTransction
+        Dim parm As SqlParameter() = {
+       New SqlParameter("@trid", sbData.trid),
+       New SqlParameter("@status", sbData.status)
+         }
+
+        'da_te,accounttype ,accountnumber,na_me,deposit,withdraw,dlt,trid,balance,status,office,u_ser 
+        Dim parm2 As SqlParameter() = {
+        New SqlParameter("@balance", sbData.bat),
+        New SqlParameter("@acno", sbData.accountnumber)
+        }
+        Dim parm3 As SqlParameter() = {
+        New SqlParameter("@balance", dltdata.accountbalance),
+        New SqlParameter("@acno", dltdata.accountnumber),
+        New SqlParameter("@dlt", dltdata.dlt),
+        New SqlParameter("@dlt2", dltdata.dlt2)
+        }
+        Try
+            If _db.State() Then
+            Else
+                _db.Open()
+            End If
+            Using transction = _db.BeginTransaction()
+                Try
+                    Dim query As String = "update sbjournal set status=@status where trid=@trid"
+                    Dim args = New DynamicParameters()
+                    For Each p As SqlParameter In parm
+                        args.Add(p.ParameterName, p.Value)
+                    Next
+                    _db.Execute(query, args, transction) '1
+                    '2
+                    Dim query2 As String = "update liveaccount set balance=@balance where accountnumber=@acno"
+                    Dim args2 = New DynamicParameters()
+                    For Each q As SqlParameter In parm2
+                        args2.Add(q.ParameterName, q.Value)
+                    Next
+                    _db.Execute(query2, args2, transction)
+                    '3.
+                    Dim query3 As String = "update journal set status=@status where trid=@trid"
+                    Dim args3 = New DynamicParameters()
+                    For Each q As SqlParameter In parm
+                        args3.Add(q.ParameterName, q.Value)
+                    Next
+                    _db.Execute(query3, args3, transction)
+                    '4.
+                    Dim query4 As String = "update dlt set dlt=@dlt,dlt2=@dlt2, accountbalance=@balance where accountnumber=@acno"
+                    Dim args4 = New DynamicParameters()
+                    For Each q As SqlParameter In parm3
+                        args4.Add(q.ParameterName, q.Value)
+                    Next
+                    _db.Execute(query4, args4, transction)
+                    '6.
+                    '.
+                    '.
+
+                    transction.Commit()
+                    Return True
+                Catch ex As Exception
+                    transction.Rollback()
+                    Return False
+                End Try
+
+            End Using
+
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
+
+    Public Function DoRDTransction(rdData As rdJournalClass, dltdata As dltClass) As Boolean Implements JournalInterface.DoRDTransction
+        Dim parm As SqlParameter() = {
+    New SqlParameter("@trid", rdData.trid),
+    New SqlParameter("@status", rdData.status)
+      }
+
+        'da_te,accounttype ,accountnumber,na_me,deposit,withdraw,dlt,trid,balance,status,office,u_ser 
+        Dim parm2 As SqlParameter() = {
+        New SqlParameter("@balance", rdData.bat),
+        New SqlParameter("@acno", rdData.accountnumber)
+        }
+        Dim parm3 As SqlParameter() = {
+        New SqlParameter("@balance", dltdata.accountbalance),
+        New SqlParameter("@acno", dltdata.accountnumber),
+        New SqlParameter("@dlt", dltdata.dlt),
+        New SqlParameter("@dlt2", dltdata.dlt2)
+        }
+        Try
+            If _db.State() Then
+            Else
+                _db.Open()
+            End If
+            Using transction = _db.BeginTransaction()
+                Try
+                    Dim query As String = "update rdjournal set status=@status where trid=@trid"
+                    Dim args = New DynamicParameters()
+                    For Each p As SqlParameter In parm
+                        args.Add(p.ParameterName, p.Value)
+                    Next
+                    _db.Execute(query, args, transction) '1
+                    '2
+                    Dim query2 As String = "update liveaccount set balance=@balance where accountnumber=@acno"
+                    Dim args2 = New DynamicParameters()
+                    For Each q As SqlParameter In parm2
+                        args2.Add(q.ParameterName, q.Value)
+                    Next
+                    _db.Execute(query2, args2, transction)
+                    '3.
+                    Dim query3 As String = "update journal set status=@status where trid=@trid"
+                    Dim args3 = New DynamicParameters()
+                    For Each q As SqlParameter In parm
+                        args3.Add(q.ParameterName, q.Value)
+                    Next
+                    _db.Execute(query3, args3, transction)
+                    '4.
+                    Dim query4 As String = "update dlt set dlt=@dlt,dlt2=@dlt2, accountbalance=@balance where accountnumber=@acno"
+                    Dim args4 = New DynamicParameters()
+                    For Each q As SqlParameter In parm3
+                        args4.Add(q.ParameterName, q.Value)
+                    Next
+                    _db.Execute(query4, args4, transction)
+                    '6.
+                    '.
+                    '.
+
+                    transction.Commit()
+                    Return True
+                Catch ex As Exception
+                    transction.Rollback()
+                    Return False
+                End Try
+
+            End Using
+
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
+
+    Public Function DoSSATransction(ssaData As ssaJournalClass, dltdata As dltClass) As Boolean Implements JournalInterface.DoSSATransction
+        Dim parm As SqlParameter() = {
+    New SqlParameter("@trid", ssaData.trid),
+    New SqlParameter("@status", ssaData.status)
+      }
+
+        'da_te,accounttype ,accountnumber,na_me,deposit,withdraw,dlt,trid,balance,status,office,u_ser 
+        Dim parm2 As SqlParameter() = {
+        New SqlParameter("@balance", ssaData.bat),
+        New SqlParameter("@acno", ssaData.accountnumber)
+        }
+        Dim parm3 As SqlParameter() = {
+        New SqlParameter("@balance", dltdata.accountbalance),
+        New SqlParameter("@acno", dltdata.accountnumber),
+        New SqlParameter("@dlt", dltdata.dlt),
+        New SqlParameter("@dlt2", dltdata.dlt2)
+        }
+        Try
+            If _db.State() Then
+            Else
+                _db.Open()
+            End If
+            Using transction = _db.BeginTransaction()
+                Try
+                    Dim query As String = "update ssajournal set status=@status where trid=@trid"
+                    Dim args = New DynamicParameters()
+                    For Each p As SqlParameter In parm
+                        args.Add(p.ParameterName, p.Value)
+                    Next
+                    _db.Execute(query, args, transction) '1
+                    '2
+                    Dim query2 As String = "update liveaccount set balance=@balance where accountnumber=@acno"
+                    Dim args2 = New DynamicParameters()
+                    For Each q As SqlParameter In parm2
+                        args2.Add(q.ParameterName, q.Value)
+                    Next
+                    _db.Execute(query2, args2, transction)
+                    '3.
+                    Dim query3 As String = "update journal set status=@status where trid=@trid"
+                    Dim args3 = New DynamicParameters()
+                    For Each q As SqlParameter In parm
+                        args3.Add(q.ParameterName, q.Value)
+                    Next
+                    _db.Execute(query3, args3, transction)
+                    '4.
+                    Dim query4 As String = "update dlt set dlt=@dlt,dlt2=@dlt2, accountbalance=@balance where accountnumber=@acno"
+                    Dim args4 = New DynamicParameters()
+                    For Each q As SqlParameter In parm3
+                        args4.Add(q.ParameterName, q.Value)
+                    Next
+                    _db.Execute(query4, args4, transction)
+                    '6.
+                    '.
+                    '.
+
+                    transction.Commit()
+                    Return True
+                Catch ex As Exception
+                    transction.Rollback()
+                    Return False
+                End Try
+
+            End Using
+
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
+
+    Public Function DoTDTransction(tdData As tdJournalClass, dltdata As dltClass) As Boolean Implements JournalInterface.DoTDTransction
+        Throw New NotImplementedException()
+    End Function
+
+    Public Function rejecttransction(TableName As String, Trid As String) As Boolean Implements JournalInterface.rejecttransction
+        Dim _tablename As String
+        If TableName = "Saving" Then
+            _tablename = "sbjournal"
+        ElseIf TableName = "RD" Then
+            _tablename = "rdjournal"
+        ElseIf TableName = "SSA" Then
+            _tablename = "ssajournal"
+        ElseIf TableName = "TD" Then
+            _tablename = "tdjournal"
+        Else
+            _tablename = TableName
+        End If
+        Dim parm As SqlParameter() = {
+    New SqlParameter("@trid", Trid),
+    New SqlParameter("@status", "Rejected"),
+    New SqlParameter("@NTrid", "R-" & Trid)
+      }
+
+        'da_te,accounttype ,accountnumber,na_me,deposit,withdraw,dlt,trid,balance,status,office,u_ser 
+
+        Try
+            If _db.State() Then
+            Else
+                _db.Open()
+            End If
+            Using transction = _db.BeginTransaction()
+                Try
+                    Dim query As String = "update " & _tablename & " set status=@status,trid=@NTrid where trid=@trid"
+                    Dim args = New DynamicParameters()
+                    For Each p As SqlParameter In parm
+                        args.Add(p.ParameterName, p.Value)
+                    Next
+                    _db.Execute(query, args, transction) '1
+                    '3.
+                    Dim query3 As String = "update journal set status=@status,trid=@NTrid where trid=@trid"
+                    Dim args3 = New DynamicParameters()
+                    For Each q As SqlParameter In parm
+                        args3.Add(q.ParameterName, q.Value)
+                    Next
+                    _db.Execute(query3, args3, transction)
+
+                    '6.
+                    '.
+                    '.
+
+                    transction.Commit()
+                    Return True
+                Catch ex As Exception
+                    transction.Rollback()
+                    Return False
+                End Try
+
+            End Using
+
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
+
+    Public Function checkDataAvailable(data As ssaJournalClass) As Object Implements JournalInterface.checkDataAvailableSSA
+        Dim x As Integer = Me._db.Query(Of ssaJournalClass)("SELECT * FROM ssajournal WHERE trid=@Trid AND da_te=@date and accountnumber=@acno", New With {Key .Trid = data.trid, Key .date = data.da_te, Key .acno = data.accountnumber}).ToList.Count
+        If x > 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Public Function checkDataAvailableSb(data As sbJournalClass) As Object Implements JournalInterface.checkDataAvailableSb
+        Dim x As Integer = Me._db.Query(Of sbJournalClass)("SELECT * FROM sbjournal WHERE trid=@Trid AND da_te=@date and accountnumber=@acno", New With {Key .Trid = data.trid, Key .date = data.da_te, Key .acno = data.accountnumber}).ToList.Count
+        If x > 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Public Function checkDataAvailablerd(data As rdJournalClass) As Object Implements JournalInterface.checkDataAvailablerd
+        Dim x As Integer = Me._db.Query(Of rdJournalClass)("SELECT * FROM rdjournal WHERE trid=@Trid AND da_te=@date and accountnumber=@acno", New With {Key .Trid = data.trid, Key .date = data.da_te, Key .acno = data.accountnumber}).ToList.Count
+        If x > 0 Then
+            Return True
+        Else
+            Return False
+        End If
     End Function
 End Class

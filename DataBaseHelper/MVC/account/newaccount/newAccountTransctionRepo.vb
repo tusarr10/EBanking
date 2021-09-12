@@ -10,6 +10,72 @@ Public Class newAccountTransctionRepo
         _db = New SqlConnection(connection)
     End Sub
 
+    Public Function NewAccountUpdate(data As NewAccountClass) As Boolean Implements newAccountTransctionInterface.NewAccountUpdate
+        Dim parm As SqlParameter() = {
+          New SqlParameter("@vrid", data.VirtualId),
+          New SqlParameter("@cif", data.cif),
+          New SqlParameter("@accountnumber", data.accountnumber),
+          New SqlParameter("@name", data.n_ame),
+          New SqlParameter("@prtype", data.producttype),
+          New SqlParameter("@prterm", data.productterm),
+          New SqlParameter("@prvalue", data.productvalue),
+          New SqlParameter("@nominireg", data.nominireg),
+          New SqlParameter("@nomininame", data.nomininame),
+          New SqlParameter("@nominiage", data.nominiage),
+          New SqlParameter("@nominiaddress", data.nominiaddress),
+          New SqlParameter("@nominirelation", data.nominirelation),
+          New SqlParameter("@acopmode", data.acoperatemode),
+          New SqlParameter("@guardianname", data.guardianname),
+          New SqlParameter("@jointname", data.jointname),
+          New SqlParameter("@address", data.address),
+          New SqlParameter("@mobile", data.mobile),
+          New SqlParameter("@email", data.email),
+          New SqlParameter("@dob", data.dob),
+          New SqlParameter("@gender", data.gender),
+          New SqlParameter("@adhar", data.adhar),
+          New SqlParameter("@pan", data.pan),
+          New SqlParameter("@photo", data.photo),
+          New SqlParameter("@sign", data.sign),
+          New SqlParameter("@doo", data.doo),
+          New SqlParameter("@balance", data.balance),
+          New SqlParameter("@reffno", data.reffno),
+          New SqlParameter("@pr", data.pr),
+          New SqlParameter("@trid", data.trid),
+          New SqlParameter("@status", data.status)
+     }
+        Dim query As String = "update newacdb set cif=@cif, accountnumber=@accountnumber,trid= @trid where reffno=@reffno"
+        Dim args = New DynamicParameters()
+        For Each p As SqlParameter In parm
+            args.Add(p.ParameterName, p.Value)
+        Next
+
+        Try
+            If _db.State() Then
+            Else
+                _db.Open()
+            End If
+            Using transction = _db.BeginTransaction()
+                Try
+                    _db.Execute(query, args, transction) '1
+                    '2
+                    '.
+                    '.
+                    '.
+                    transction.Commit()
+                    Return True
+                Catch ex As Exception
+                    transction.Rollback()
+                    Return False
+                End Try
+
+            End Using
+            '  Me._db.Query(Of allJournalClass)(query, args).SingleOrDefault
+
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
+
     Private Function AddData(data As NewAccountClass) As Boolean Implements newAccountTransctionInterface.AddData
         Dim parm As SqlParameter() = {
            New SqlParameter("@vrid", data.VirtualId),
@@ -43,7 +109,7 @@ Public Class newAccountTransctionRepo
            New SqlParameter("@trid", data.trid),
            New SqlParameter("@status", data.status)
       }
-        Dim query As String = "INSERT INTO dbo.newacdb (VirtualId, cif, accountnumber, n_ame, producttype, productterm, productvalue, nominireg, nomininame, nominiage, nominiaddress, nominirelation, acoperatemode, guardianname, jointname, address, mobile, email, dob, gender, adhar, pan, photo, sign, doo, balance, reffno, pr, trid, status) VALUES (@vrid, @cif, @accountnumber, @name, @prtype, @prterm, @prvalue, @nominireg, @nomininame, @nominiage, @nominiaddress, @nominirelation, @acopmode, @guardianname, @jointname, @address, @mobile, @email, @dob,@gender, @adhar, @pan, @photo, @sign, @doo, @balance, @reffno, @pr, @trid, @status)"
+        Dim query As String = "INSERT INTO dbo.newacdb ( cif, accountnumber, n_ame, producttype, productterm, productvalue, nominireg, nomininame, nominiage, nominiaddress, nominirelation, acoperatemode, guardianname, jointname, address, mobile, email, dob, gender, adhar, pan, photo, sign, doo, balance, reffno, pr, trid, status) VALUES (@cif, @accountnumber, @name, @prtype, @prterm, @prvalue, @nominireg, @nomininame, @nominiage, @nominiaddress, @nominirelation, @acopmode, @guardianname, @jointname, @address, @mobile, @email, @dob,@gender, @adhar, @pan, @photo, @sign, @doo, @balance, @reffno, @pr, @trid, @status)"
         Dim args = New DynamicParameters()
         For Each p As SqlParameter In parm
             args.Add(p.ParameterName, p.Value)
@@ -62,13 +128,15 @@ Public Class newAccountTransctionRepo
                     '.
                     '.
                     transction.Commit()
+                    Return True
                 Catch ex As Exception
                     transction.Rollback()
+                    Return False
                 End Try
 
             End Using
             '  Me._db.Query(Of allJournalClass)(query, args).SingleOrDefault
-            Return True
+
         Catch ex As Exception
             Return False
         End Try

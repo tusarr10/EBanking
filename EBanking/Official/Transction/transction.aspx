@@ -255,7 +255,7 @@
                                         <dx:GridViewDataTextColumn Name="ActionClick" Caption="Action" VisibleIndex="0">
 
                                             <DataItemTemplate>
-                                                <dx:BootstrapButton ID="BootstrapButton2" runat="server" AutoPostBack="false" Text="Verify" OnClick="btnAction_Click1"></dx:BootstrapButton>
+                                                <dx:BootstrapButton ID="BootstrapButton2" runat="server" AutoPostBack="false" Text="Verify" OnClick="btnAction_Click3"></dx:BootstrapButton>
                                             </DataItemTemplate>
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="fine" Name="fine" Caption="Fine" VisibleIndex="8"></dx:GridViewDataTextColumn>

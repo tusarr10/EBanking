@@ -55,7 +55,7 @@
     </div>
     <div class="contentFooter">
         <p class="Note">
-            <b>Note</b>: All files uploaded to this demo will be automatically deleted in 5 minutes.
+            <b>Note</b>: Only Upload DataBase File Which Contain Official Content.
         </p>
     </div>
 </asp:Content>

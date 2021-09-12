@@ -4,7 +4,7 @@ Imports DevExpress.Web
 Public Class transction
     Inherits System.Web.UI.Page
 
-    Dim filterdate As String = WorkingData
+    ' Dim filterdate As String '= WorkingData
 
     Private transctionService As New AllJournalService(connectionstringaccount)
 
@@ -80,7 +80,9 @@ Public Class transction
 
         If (IsPostBack = False) Then
             'Load Data From Server
-            WorkingData = datetb.Text
+            '  WorkingData = datetb.Text
+            filterdate = WorkingData
+            datetb.Text = WorkingData
             LoadDataFromServer(WorkingData)
         Else
 
@@ -96,23 +98,7 @@ Public Class transction
         End If
     End Sub
 
-    'Protected Sub btnAction_Init(sender As Object, e As EventArgs)
-    '    Dim btn = sender
-    '    Dim container = btn.NamingContainer
-    '    Dim value As String = container.Grid.GetRowValues(container.VisibleIndex, "accountnumber").ToString
-    '    getApproveInfo.GetAccountNumber = value
 
-    '    Dim value2 As String = container.Grid.GetRowValues(container.VisibleIndex, "trid").ToString
-    '    getApproveInfo.GetTrId = value2
-
-    '    Dim value3 As String = container.Grid.GetRowValues(container.visibleIndex, "accounttype").ToString
-
-    '    Try
-    '        Response.Redirect("TransctionStatusApprove.aspx")
-    '    Catch ex As Exception
-
-    '    End Try
-    'End Sub
 
     Private Function data(sender As Object, tablename As String)
         Dim btn As Bootstrap.BootstrapButton = sender
@@ -274,7 +260,8 @@ Public Class transction
     Protected Sub LinkButton2_Click(sender As Object, e As EventArgs) Handles LinkButton2.Click
         Try
             ' filterdate = datetb.Text.ToString
-            LoadDataFromServer("")
+            filterdate = ""
+            LoadDataFromServer(filterdate)
         Catch
             MyMessageBox.Show(Me, "Enter Valid Date In  {yyyy-MM-dd} formate ")
         End Try
@@ -282,7 +269,8 @@ Public Class transction
 
     Protected Sub LinkButton3_Click(sender As Object, e As EventArgs) Handles LinkButton3.Click
         Try
-            filterdate = datetb.Text.ToString
+            filterdate = WorkingData
+            datetb.Text = filterdate
             LoadDataFromServer(WorkingData)
         Catch
             MyMessageBox.Show(Me, "Enter Valid Date In  {yyyy-MM-dd} formate ")

@@ -65,7 +65,7 @@
             </SettingsPager>
             <SettingsExport EnableClientSideExportAPI="true" ExportSelectedRowsOnly="true" />
             <Columns>
-                <dx:GridViewCommandColumn ShowSelectCheckbox="True" SelectAllCheckboxMode="AllPages" VisibleIndex="0" Width="52"></dx:GridViewCommandColumn>
+                <dx:GridViewCommandColumn ShowSelectCheckbox="True" SelectAllCheckboxMode="Page" VisibleIndex="0" Width="52"></dx:GridViewCommandColumn>
 
                 <dx:GridViewDataTextColumn FieldName="id" Name="id" Caption="id" VisibleIndex="1"></dx:GridViewDataTextColumn>
                 <dx:GridViewDataTextColumn FieldName="N_AME" Name="N_AME" Caption="NAME" VisibleIndex="2"></dx:GridViewDataTextColumn>
@@ -111,12 +111,9 @@
                 <ContentTemplate>
                     <%--    <asp:Button runat="server" ID="Button1xyz" Text="Submit" OnClick="btn2_Click" />--%>
                     <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Submit" OnClick="btn2_Click" AutoPostBack="False">
-                        <%-- <ClientSideEvents Click="function(s, e) {
-                        Callback.PerformCallback();
-                        LoadingPanel.Show();
-                    }" />--%>
                     </dx:ASPxButton>
-
+                      <dx:ASPxButton ID="ASPxButton2" runat="server" Text="Update" OnClick ="ASPxButton2_Click" AutoPostBack="False">
+                    </dx:ASPxButton>
                     <dx:ASPxMemo ID="ASPxMemo1" runat="server" Height="140px" ReadOnly="true" Width="100%"></dx:ASPxMemo>
                 </ContentTemplate>
             </asp:UpdatePanel>

@@ -70,4 +70,50 @@
     Public Function addInteresrSsa(ssadata As ssaJournalClass, liveac As liveAccountClass) As Boolean
         Return _repo.addInterestSSA(ssadata, liveac)
     End Function
+    Public Function doSBTransction(sbData As sbJournalClass, dltdata As dltClass) As Boolean
+        Return _repo.DoSBTransction(sbData, dltdata)
+    End Function
+    Public Function dordTransction(rdData As rdJournalClass, dltdata As dltClass) As Boolean
+        Return _repo.DoRDTransction(rdData, dltdata)
+    End Function
+    Public Function doSSATransction(ssaData As ssaJournalClass, dltdata As dltClass) As Boolean
+        Return _repo.DoSSATransction(ssaData, dltdata)
+    End Function
+    Public Function rejectTransction(ProductType As String, trid As String) As Boolean
+        Return _repo.rejecttransction(ProductType, trid)
+    End Function
+    Public Function IsTridExistInJournal(trid As String) As Boolean
+        Return _repo.IsTridExistInJournal(trid)
+    End Function
+    Public Function IsTridExistInsbJournal(trid As String) As Boolean
+        Return _repo.IsTridExistInSbJournal(trid)
+    End Function
+    Public Function IsTridExistInrdJournal(trid As String) As Boolean
+        Return _repo.IsTridExistInRdJournal(trid)
+    End Function
+    Public Function IsTridExistInssaJournal(trid As String) As Boolean
+        Return _repo.IsTridExistInSsaJournal(trid)
+    End Function
+    Public Function addToJournal(data As allJournalClass) As Boolean
+        Return _repo.AddToJournal(data)
+    End Function
+    Public Function addToSbjournal(data As sbJournalClass) As Boolean
+        Return _repo.AddtoSbJournal(data)
+    End Function
+    Public Function addTordjournal(data As rdJournalClass) As Boolean
+        Return _repo.AddtordJournal(data)
+    End Function
+    Public Function addToSsajournal(data As ssaJournalClass) As Boolean
+        Return _repo.AddtoSsaJournal(data)
+    End Function
+    'for Developer Module
+    Public Function IsDataExistInSB(data As sbJournalClass) As Boolean
+        Return _repo.checkDataAvailableSb(data)
+    End Function
+    Public Function IsDataExistInrd(data As rdJournalClass) As Boolean
+        Return _repo.checkDataAvailablerd(data)
+    End Function
+    Public Function IsDataExistInSsa(data As ssaJournalClass) As Boolean
+        Return _repo.checkDataAvailableSSA(data)
+    End Function
 End Class

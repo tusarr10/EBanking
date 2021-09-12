@@ -1,8 +1,13 @@
 ﻿Imports System.Data.OleDb
 Imports DevExpress.Web
+Imports DataBaseHelper
+
 
 Public Class journaltrns
     Inherits System.Web.UI.Page
+
+    Private JournalData As allJournalClass
+    Private Journalservice As New AllJournalService(connectionstringaccount)
 
     Dim logmsg As String ' = DateAndTime.Now.ToLongTimeString & "  : "
     Private Const UploadDirectory As String = "~/Developer/Data/"
@@ -85,30 +90,51 @@ Public Class journaltrns
             Else
                 _acNo = ""
             End If
+            JournalData = New allJournalClass
+            JournalData.accountnumber = _acNo
             _date = ASPxGridView1.GetSelectedFieldValues("d_ate")(x).ToString
+            JournalData.da_te = _date
             _actype = ASPxGridView1.GetSelectedFieldValues("AccountType")(x).ToString
+            If _actype = "Requiring Deposit" Then
+                _actype = "RD"
+            ElseIf _actype = "Time Deposit" Then
+                _actype = "TD"
+            ElseIf _actype = "SS Account" Then
+                _actype = "SSA"
+            Else
+                _actype = "Saving"
+            End If
+            JournalData.accounttype = _actype
             balance = ASPxGridView1.GetSelectedFieldValues("balance")(x).ToString
+            JournalData.balance = balance
             _name = ASPxGridView1.GetSelectedFieldValues("AccountHolderName")(x).ToString
+            JournalData.na_me = _name
             deposit = ASPxGridView1.GetSelectedFieldValues("deposit")(x).ToString
+            JournalData.deposit = deposit
+
             withdrow = ASPxGridView1.GetSelectedFieldValues("withdrow")(x).ToString
+            JournalData.withdraw = withdrow
             dlt = ASPxGridView1.GetSelectedFieldValues("DLT")(x).ToString
+            JournalData.dlt = dlt
             remark = ASPxGridView1.GetSelectedFieldValues("remark")(x).ToString
+            JournalData.trid = remark
+            JournalData.status = "Approved"
+            JournalData.office = OfficeName
+            JournalData.u_ser = Getusername
             logmsg = logmsg & timeme & " : Getting Data from DB Acno- " & _acNo.ToString() & Environment.NewLine
             ASPxMemo1.Text = logmsg
             UPN1.Update()
             Try
-                If Len(_acNo) > 6 Then
-                    'cifsearch(_cif)
-                    '     dtrnsreportHelper(_acNo)
-                    '    If dtrnsreportHelper.IsIdExistdlt(_acNo) = False Then
+                If Not Journalservice.IsTridExistInJournal(remark) Then
+
                     logmsg = logmsg & timeme & " : Inserting Data Please wait... " & Environment.NewLine
                     ASPxMemo1.Text = logmsg
                     UPN1.Update()
                     '       InsertIntoDB(_acNo, _dlt, _dlt1, _AccountBalance)
+                    InsertIntoDB(JournalData)
                 Else
                     n += 1
-
-                    logmsg = logmsg & timeme & " : Account Id Already Exist in Database  " & Environment.NewLine & Environment.NewLine
+                    logmsg = logmsg & timeme & " : Teansction Id Already Exist in Database  " & Environment.NewLine & Environment.NewLine
                     ASPxMemo1.Text = logmsg
                     UPN1.Update()
                 End If
@@ -118,6 +144,22 @@ Public Class journaltrns
 
         Next
 
+    End Sub
+
+    Private Sub InsertIntoDB(journalData As allJournalClass)
+        Dim i As Boolean
+        i = Journalservice.addToJournal(journalData)
+        If i Then
+            z += 1
+            logmsg = logmsg & timeme & " : Data Saved Successfully.. " & journalData.trid & Environment.NewLine & Environment.NewLine
+            ASPxMemo1.Text = logmsg
+            UPN1.Update()
+        Else
+            logmsg = logmsg & timeme & " : Data Not Saved " & journalData.trid & " : " & Environment.NewLine
+            y += 1
+            ASPxMemo1.Text = logmsg
+            UPN1.Update()
+        End If
     End Sub
 
     Dim timeme As String = DateAndTime.Now.ToLongTimeString

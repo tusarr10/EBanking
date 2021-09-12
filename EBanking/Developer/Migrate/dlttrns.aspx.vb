@@ -1,9 +1,13 @@
 ﻿Imports System.Data.OleDb
-Imports System.Data.SqlClient
 Imports DevExpress.Web
+Imports DataBaseHelper
 
 Public Class dlttrns
     Inherits System.Web.UI.Page
+
+    Private dltdata As dltClass
+    Private dltService As New dltService(connectionstringaccount)
+
     Dim logmsg As String ' = DateAndTime.Now.ToLongTimeString & "  : "
     Private Const UploadDirectory As String = "~/Developer/Data/"
     Dim resultFileUrl As String
@@ -104,45 +108,6 @@ Public Class dlttrns
 
     Dim timeme As String = DateAndTime.Now.ToLongTimeString
 
-    Private Sub DLTACCOUNTSEARCH(ByVal acNo As String)
-        Try
-            datasetcifdb.Tables(dlttable).Clear()
-        Catch
-
-        End Try
-        Dim cs As String = connectionhelper.connectionstringaccount()
-        databaseconnection = New SqlConnection(cs)
-        databaseconnection.Open()
-        currentrow = 0
-        dataadapter = New SqlDataAdapter("SELECT * FROM " & dlttable & " where accountnumber='" & acNo & "'", databaseconnection)
-
-        dataadapter.Fill(datasetcifdb, dlttable)
-        'ShowData(currentrow)
-
-        databaseconnection.Close()
-
-    End Sub
-
-    Function IsIdExistdlt(ByVal matchingcif As String) As Boolean
-
-        Dim Str, Str1 As String
-        Dim i As Integer
-
-        Str = matchingcif ' searchciftb.Text
-        i = 0
-        While i <> datasetcifdb.Tables(dlttable).Rows.Count
-            Str1 = CType(datasetcifdb.Tables(dlttable).Rows(i)("accountnumber"), String)
-
-            If Str = Str1 Then
-                Return True
-
-            End If
-            i += 1
-
-        End While
-        Return False
-    End Function
-
     Private Sub InsertDataIntoSqlCIFDB(ByVal i As Integer)
         Dim x As Integer
 
@@ -164,18 +129,19 @@ Public Class dlttrns
             Try
                 If Len(_acNo) > 6 Then
                     'cifsearch(_cif)
-                    DLTACCOUNTSEARCH(_acNo)
-                    If IsIdExistdlt(_acNo) = False Then
+                    ' DLTACCOUNTSEARCH(_acNo)
+                    If Not dltService.IsDltExist(_acNo) Then
                         logmsg = logmsg & timeme & " : Inserting Data Please wait... " & Environment.NewLine
                         ASPxMemo1.Text = logmsg
                         UPN1.Update()
                         InsertIntoDB(_acNo, _dlt, _dlt1, _AccountBalance)
                     Else
-                        n += 1
 
-                        logmsg = logmsg & timeme & " : Account Id Already Exist in Database  " & Environment.NewLine & Environment.NewLine
+                        logmsg = logmsg & timeme & " : Account Id Already Exist in Database  " & Environment.NewLine & timeme & "Trying To Update Data For AccountNumber - " & _acNo & " ..." & Environment.NewLine
                         ASPxMemo1.Text = logmsg
                         UPN1.Update()
+                        'Logic For Update Data 
+                        UpdatetIntoDB(_acNo, _dlt, _dlt1, _AccountBalance)
                     End If
                 Else
                     y += 1
@@ -192,16 +158,63 @@ Public Class dlttrns
 
     End Sub
 
-    Private Sub InsertIntoDB(_acNo As String, _dlt As String, _dlt1 As String, _AccountBalance As String)
-        Dim cmdstr As String
+    Private Sub UpdatetIntoDB(acNo As String, dlt As String, dlt1 As String, accountBalance As String)
+        dltdata = New dltClass
+        dltdata.accountnumber = _acNo
+        dltdata.accountbalance = _AccountBalance
+        dltdata.dlt = _dlt
+        dltdata.dlt2 = _dlt1
+
+        Dim i As Boolean
+        i = dltService.Updatedlt(dltdata)
+
+
         Try
-            cmdstr = "insert into dlt(accountnumber , accountbalance ,dlt ,dlt2)values('" & _acNo & "','" & _AccountBalance & "','" & _dlt & "','" & _dlt1 & "')"
-            databaseconnection = New SqlConnection(connectionhelper.connectionstringaccount())
-            datacommand = New SqlCommand(cmdstr, databaseconnection)
-            databaseconnection.Open()
-            Dim i
-            i = datacommand.ExecuteNonQuery()
-            If i > 0 Then
+            'Dim cmdstr As String
+            'cmdstr = "insert into dlt(accountnumber , accountbalance ,dlt ,dlt2)values('" & _acNo & "','" & _AccountBalance & "','" & _dlt & "','" & _dlt1 & "')"
+            'databaseconnection = New SqlConnection(connectionhelper.connectionstringaccount())
+            'datacommand = New SqlCommand(cmdstr, databaseconnection)
+            'databaseconnection.Open()
+            'Dim i
+            'i = datacommand.ExecuteNonQuery()
+            If i Then
+                logmsg = logmsg & timeme & " :  Record successfully Update .." & Environment.NewLine & Environment.NewLine
+                n += 1
+                ASPxMemo1.Text = logmsg
+                UPN1.Update()
+            Else
+                logmsg = logmsg & timeme & " : Record Not Update " & Environment.NewLine & Environment.NewLine
+                y += 1
+                ASPxMemo1.Text = logmsg
+                UPN1.Update()
+            End If
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub InsertIntoDB(_acNo As String, _dlt As String, _dlt1 As String, _AccountBalance As String)
+
+        dltdata = New dltClass
+        dltdata.accountnumber = _acNo
+        dltdata.accountbalance = _AccountBalance
+        dltdata.dlt = _dlt
+        dltdata.dlt2 = _dlt1
+
+        Dim i As Boolean
+        i = dltService.AddCustmor(dltdata)
+
+
+        Try
+            'Dim cmdstr As String
+            'cmdstr = "insert into dlt(accountnumber , accountbalance ,dlt ,dlt2)values('" & _acNo & "','" & _AccountBalance & "','" & _dlt & "','" & _dlt1 & "')"
+            'databaseconnection = New SqlConnection(connectionhelper.connectionstringaccount())
+            'datacommand = New SqlCommand(cmdstr, databaseconnection)
+            'databaseconnection.Open()
+            'Dim i
+            'i = datacommand.ExecuteNonQuery()
+            If i Then
                 logmsg = logmsg & timeme & " :  Record successfully saved .." & Environment.NewLine & Environment.NewLine
                 z += 1
                 ASPxMemo1.Text = logmsg
@@ -212,9 +225,9 @@ Public Class dlttrns
                 ASPxMemo1.Text = logmsg
                 UPN1.Update()
             End If
-            databaseconnection.Close()
+
         Catch ex As Exception
-            databaseconnection.Close()
+
         End Try
     End Sub
 
@@ -240,7 +253,7 @@ Public Class dlttrns
         _totalSkip = y.ToString
         _totalinsert = z.ToString
         _exist = n.ToString
-        logmsg = logmsg & Environment.NewLine & Environment.NewLine & timeme & " :  Total Data Select = " & _totaldata & " Total Insert =  " & _totalinsert & " Total Skip = " & _totalSkip & "  Already Exist = " & _exist & " ." & Environment.NewLine
+        logmsg = logmsg & Environment.NewLine & Environment.NewLine & timeme & " :  Total Data Select = " & _totaldata & " Total Insert =  " & _totalinsert & " Total Skip = " & _totalSkip & "  Total Update = " & _exist & " ." & Environment.NewLine
         ASPxMemo1.Text = logmsg
         UPN1.Update()
         If IsCallback Then
