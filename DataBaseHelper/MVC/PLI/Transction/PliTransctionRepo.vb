@@ -24,7 +24,7 @@ Public Class PliTransctionRepo
         New SqlParameter("@totalrec", transction.totalrec),
         New SqlParameter("@type", transction.type)
         }
-        Dim query As String = "INSERT INTO dbo.pli_transction (id, policyNo, proposalno, amount, month, dat_e, name, recno, gst, totalrec, type) VALUES (@id, @policyno, @proposalno,@amount , @month, @date, @name, @recno, @gst, @totalrec, @type)"
+        Dim query As String = "INSERT INTO pli_transction (id, policyNo, proposalno, amount, month, dat_e, name, recno, gst, totalrec, type) VALUES (@id, @policyno, @proposalno,@amount , @month, @date, @name, @recno, @gst, @totalrec, @type)"
 
         Dim args As DynamicParameters = New DynamicParameters
         For Each p As SqlParameter In parm
@@ -48,7 +48,28 @@ Public Class PliTransctionRepo
     End Function
 
     Public Function GetAll() As List(Of classPliTransction) Implements IPliTransction.GetAll
-        Throw New NotImplementedException()
+        Return Me._db.Query(Of classPliTransction)("select * from pli_transction")
     End Function
 
+    Public Function IstransctionExist(trid As String) As Boolean Implements IPliTransction.IstransctionExist
+        Dim x = Me._db.Query(Of classPliTransction)("select * from pli_transction where recno='" & trid & "'").ToList().Count
+        If x > 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Public Function IsPolicyExist(num As String) As Boolean Implements IPliTransction.IsPolicyExist
+        Dim x = Me._db.Query(Of classPliTransction)("select * from pli_transction where policyNo='" & num & "'").ToList().Count
+        If x > 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Public Function FindByPolicyNum(policyNum As String) As classPliTransction Implements IPliTransction.FindByPolicyNum
+        Return Me._db.Query(Of classPliTransction)("select * from pli_transction where policyNo=@pno", New With {Key .pno = policyNum}).FirstOrDefault
+    End Function
 End Class

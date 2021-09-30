@@ -74,9 +74,24 @@ Public Class sbjournaltrns
             End If
             JournalData.depositername = ASPxGridView1.GetSelectedFieldValues("CustmorName")(x).ToString
             JournalData.da_te = ASPxGridView1.GetSelectedFieldValues("todate")(x).ToString
+            Try
+                Dim xy As String
+                xy = JournalData.da_te 'datetb.Text '.ToString("dd MMMM yyyy")
+                Dim newDate As Date = DateTime.ParseExact(xy, "dd MMMM yyyy", Globalization.CultureInfo.InvariantCulture)
+                JournalData.da_te = newDate.ToString("yyyy-MM-dd")
+            Catch ex As Exception
+                Try
+                    Dim xy As String
+                    xy = JournalData.da_te 'datetb.Text '.ToString("dd MMMM yyyy")
+                    Dim newDate As Date = DateTime.ParseExact(xy, "dd-MM-yyyy", Globalization.CultureInfo.InvariantCulture)
+                    JournalData.da_te = newDate.ToString("yyyy-MM-dd")
+                Catch exx As Exception
+
+                End Try
+            End Try
             JournalData.bbt = ASPxGridView1.GetSelectedFieldValues("BBT")(x).ToString
 
-            If JournalData.da_te = "31 March 2021" Then
+            If JournalData.da_te = "2021-03-31" Then
                 JournalData.transctiontype = "Interest"
             Else
                 JournalData.transctiontype = ASPxGridView1.GetSelectedFieldValues("transType")(x).ToString

@@ -127,4 +127,12 @@ Public Class PliIndexRepo
         Return True
     End Function
 
+    Public Function IsrecExist(rec As String) As Boolean Implements IPliIndex.IsrecExist
+        Dim x = Me._db.Query(Of ClassPliIndex)("select * from Pli_Indexing where recno='" & rec & "'").ToList().Count
+        If x > 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
 End Class

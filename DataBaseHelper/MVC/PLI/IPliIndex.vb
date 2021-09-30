@@ -15,5 +15,7 @@
     Function IsProposalExist(Proposal As String) As Boolean
 
     Function FindByIdNo(id As String) As ClassPliIndex
+    Function IsrecExist(rec As String) As Boolean
+
 
 End Interface

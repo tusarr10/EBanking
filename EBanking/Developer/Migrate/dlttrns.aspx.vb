@@ -121,7 +121,37 @@ Public Class dlttrns
                 _acNo = ""
             End If
             _dlt = ASPxGridView1.GetSelectedFieldValues("DLT")(x).ToString
+            Try
+                Dim xy As String
+                xy = _dlt 'datetb.Text '.ToString("dd MMMM yyyy")
+                Dim newDate As Date = DateTime.ParseExact(xy, "dd MMMM yyyy", Globalization.CultureInfo.InvariantCulture)
+                _dlt = newDate.ToString("yyyy-MM-dd")
+            Catch ex As Exception
+                Try
+                    Dim xy As String
+                    xy = _dlt 'datetb.Text '.ToString("dd MMMM yyyy")
+                    Dim newDate As Date = DateTime.ParseExact(xy, "dd-MM-yyyy", Globalization.CultureInfo.InvariantCulture)
+                    _dlt = newDate.ToString("yyyy-MM-dd")
+                Catch exx As Exception
+
+                End Try
+            End Try
             _dlt1 = ASPxGridView1.GetSelectedFieldValues("DLT2")(x).ToString ' For cif
+            Try
+                Dim xy As String
+                xy = _dlt1  'datetb.Text '.ToString("dd MMMM yyyy")
+                Dim newDate As Date = DateTime.ParseExact(xy, "dd MMMM yyyy", Globalization.CultureInfo.InvariantCulture)
+                _dlt1 = newDate.ToString("yyyy-MM-dd")
+            Catch ex As Exception
+                Try
+                    Dim xy As String
+                    xy = _dlt1 'datetb.Text '.ToString("dd MMMM yyyy")
+                    Dim newDate As Date = DateTime.ParseExact(xy, "dd-MM-yyyy", Globalization.CultureInfo.InvariantCulture)
+                    _dlt1 = newDate.ToString("yyyy-MM-dd")
+                Catch exx As Exception
+
+                End Try
+            End Try
             _AccountBalance = ASPxGridView1.GetSelectedFieldValues("Acbal")(x).ToString
             logmsg = logmsg & timeme & " : Getting Data from DB Acno- " & _acNo.ToString() & Environment.NewLine
             ASPxMemo1.Text = logmsg

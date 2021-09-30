@@ -74,6 +74,21 @@ Public Class rdjournaltrns
             End If
             JournalData.depositername = ASPxGridView1.GetSelectedFieldValues("Name")(x).ToString
             JournalData.da_te = ASPxGridView1.GetSelectedFieldValues("today")(x).ToString
+            Try
+                Dim xy As String
+                xy = JournalData.da_te 'datetb.Text '.ToString("dd MMMM yyyy")
+                Dim newDate As Date = DateTime.ParseExact(xy, "dd MMMM yyyy", Globalization.CultureInfo.InvariantCulture)
+                JournalData.da_te = newDate.ToString("yyyy-MM-dd")
+            Catch ex As Exception
+                Try
+                    Dim xy As String
+                    xy = JournalData.da_te 'datetb.Text '.ToString("dd MMMM yyyy")
+                    Dim newDate As Date = DateTime.ParseExact(xy, "dd-MM-yyyy", Globalization.CultureInfo.InvariantCulture)
+                    JournalData.da_te = newDate.ToString("yyyy-MM-dd")
+                Catch exx As Exception
+
+                End Try
+            End Try
             JournalData.bbt = ASPxGridView1.GetSelectedFieldValues("BBT")(x).ToString
             JournalData.transctiontype = ASPxGridView1.GetSelectedFieldValues("Transtype")(x).ToString
 

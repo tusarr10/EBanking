@@ -57,7 +57,7 @@
 
       <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="card ">
-        <dx:ASPxGridView ID="ASPxGridView1" runat="server" ClientInstanceName="gridView" EnablePagingGestures="False" CssClass="grid-view" Width="100%" OnCustomCallback="GridView_CustomCallback" KeyFieldName="ACNO" AutoGenerateColumns="False">
+        <dx:ASPxGridView ID="ASPxGridView1" runat="server" ClientInstanceName="gridView" EnablePagingGestures="False" CssClass="grid-view" Width="100%" OnCustomCallback="GridView_CustomCallback" KeyFieldName="D_ate" AutoGenerateColumns="False">
             <SettingsBehavior AllowFocusedRow="true" AllowSelectByRowClick="true" AllowEllipsisInText="true" AllowDragDrop="false" />
             <SettingsEditing Mode="PopupEditForm" EditFormColumnCount="2" />
             <SettingsSearchPanel CustomEditorID="SearchButtonEdit" />
@@ -69,24 +69,38 @@
             <Columns>
                 <dx:GridViewCommandColumn ShowSelectCheckbox="True" SelectAllCheckboxMode="Page" VisibleIndex="0" Width="52"></dx:GridViewCommandColumn>
 
-                <dx:GridViewDataTextColumn FieldName="id" Name="id" Caption="id" VisibleIndex="1"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="N_AME" Name="N_AME" Caption="NAME" VisibleIndex="2"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="CIF" Name="CIF" Caption="CIF" VisibleIndex="3"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="ACNO" Name="ACNO" Caption="ACNO" VisibleIndex="4"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="FNAME" Name="FNAME" Caption="FNAME" VisibleIndex="5"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="D_ATE" Name="D_ATE" Caption="DATE" VisibleIndex="6"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="aDDRESS" Name="aDDRESS" Caption="aDDRESS" VisibleIndex="7"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="dob" Name="dob" Caption="dob" VisibleIndex="8"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="aDHAR" Name="aDHAR" Caption="aDHAR" VisibleIndex="9"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="PAN" Name="PAN" Caption="PAN" VisibleIndex="10"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="NOMINI" Name="NOMINI" Caption="NOMINI" VisibleIndex="11"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="GENDER" Name="GENDER" Caption="GENDER" VisibleIndex="12"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="ACTYPE" Name="ACTYPE" Caption="ACTYPE" VisibleIndex="13"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="NOTES" Name="NOTES" Caption="NOTES" VisibleIndex="14"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="AMOUNT" Name="AMOUNT" Caption="AMOUNT" VisibleIndex="15"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="rEFF_NO" Name="rEFF_NO" Caption="REFFNO" VisibleIndex="16"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="mobile" Name="mobile" Caption="mobile" VisibleIndex="17"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="recno" Name="recno" Caption="recno" VisibleIndex="18"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="Open_bal" Name="Open_bal" Caption="Open_bal" VisibleIndex="2"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="cashrec" Name="cashrec" Caption="cashrec" VisibleIndex="3"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="Sbdep" Name="Sbdep" Caption="Sbdep" VisibleIndex="4"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="rddep" Name="rddep" Caption="rddep" VisibleIndex="5"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="rdfine" Name="rdfine" Caption="rdfine" VisibleIndex="6"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="ssadep" Name="ssadep" Caption="ssadep" VisibleIndex="7"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="ssafine" Name="ssafine" Caption="ssafine" VisibleIndex="8"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="tddep" Name="tddep" Caption="tddep" VisibleIndex="9"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="rplidep" Name="rplidep" Caption="rplidep" VisibleIndex="10"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="rplifine" Name="rplifine" Caption="rplifine" VisibleIndex="11"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="rplitax" Name="rplitax" Caption="rplitax" VisibleIndex="12"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="vpp" Name="vpp" Caption="vpp" VisibleIndex="13"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="othcol1" Name="othcol1" Caption="othcol1" VisibleIndex="14"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="othcol2" Name="othcol2" Caption="othcol2" VisibleIndex="15"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="totaldep" Name="totaldep" Caption="totaldep" VisibleIndex="16"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="cashremet" Name="cashremet" Caption="cashremet" VisibleIndex="17"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="sbwith" Name="sbwith" Caption="sbwith" VisibleIndex="18"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="rdwith" Name="rdwith" VisibleIndex="19"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="ssawith" Name="ssawith" VisibleIndex="20"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="rpliwith" Name="rpliwith" VisibleIndex="22"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="MONwith" Name="MONwith" VisibleIndex="23"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="othwith" Name="othwith" VisibleIndex="24"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="totalwith" Name="totalwith" VisibleIndex="25"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="curr_ency" Name="curr_ency" VisibleIndex="26"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="stamp1" Name="stamp1" VisibleIndex="27"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="stamp2" Name="stamp2" VisibleIndex="28"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataTextColumn FieldName="colsebal" Name="colsebal" VisibleIndex="29"></dx:GridViewDataTextColumn>
+                <dx:GridViewDataDateColumn FieldName="D_ate" Name="D_ate" Caption="D_ate" VisibleIndex="1">
+                    <PropertiesDateEdit DisplayFormatString=""></PropertiesDateEdit>
+                </dx:GridViewDataDateColumn>
+
+                <dx:GridViewDataTextColumn FieldName="tdwith" Name="tdwith" VisibleIndex="21"></dx:GridViewDataTextColumn>
             </Columns>
 
             <SettingsPopup>
@@ -114,7 +128,7 @@
                     <%--    <asp:Button runat="server" ID="Button1xyz" Text="Submit" OnClick="btn2_Click" />--%>
                     <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Submit" OnClick="btn2_Click" AutoPostBack="False">
                     </dx:ASPxButton>
-                      <dx:ASPxButton ID="ASPxButton2" runat="server" Text="Update" OnClick ="ASPxButton2_Click" AutoPostBack="False">
+                      <dx:ASPxButton ID="ASPxButton2" runat="server" Text="Update" OnClick="ASPxButton2_Click" AutoPostBack="False">
                     </dx:ASPxButton>
                     <dx:ASPxMemo ID="ASPxMemo1" runat="server" Height="140px" ReadOnly="true" Width="100%"></dx:ASPxMemo>
                 </ContentTemplate>

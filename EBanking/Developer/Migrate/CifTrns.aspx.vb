@@ -96,6 +96,21 @@ Public Class CifTrns
             _adhar = ASPxGridView1.GetSelectedFieldValues("Adhar")(x).ToString
             _address = ASPxGridView1.GetSelectedFieldValues("Address")(x).ToString
             _dob = ASPxGridView1.GetSelectedFieldValues("DOB")(x).ToString
+            Try
+                Dim xy As String
+                xy = _dob 'datetb.Text '.ToString("dd MMMM yyyy")
+                Dim newDate As Date = DateTime.ParseExact(xy, "dd MMMM yyyy", Globalization.CultureInfo.InvariantCulture)
+                _dob = newDate.ToString("yyyy-MM-dd")
+            Catch ex As Exception
+                Try
+                    Dim xy As String
+                    xy = _dob 'datetb.Text '.ToString("dd MMMM yyyy")
+                    Dim newDate As Date = DateTime.ParseExact(xy, "dd-MM-yyyy", Globalization.CultureInfo.InvariantCulture)
+                    _dob = newDate.ToString("yyyy-MM-dd")
+                Catch exx As Exception
+
+                End Try
+            End Try
             _gender = ASPxGridView1.GetSelectedFieldValues("Gender")(x).ToString
             logmsg = logmsg & timeme & " : Getting Data from DB CIF- " & _cif.ToString() & Environment.NewLine
             ASPxMemo1.Text = logmsg

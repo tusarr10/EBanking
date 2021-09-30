@@ -109,6 +109,8 @@ Public Class rpliIndex
         ' matagerp = matagetb.Text.Trim
         Custmorfiles.matage = matagetb.Text.Trim
 
+        Custmorfiles.proposalno = propnotb.Text.Trim
+
         ' indexborp = "Talita"
         Custmorfiles.indexbo = "Talita"
 
@@ -185,7 +187,17 @@ Public Class rpliIndex
 
     Private Function verifyData() As Boolean
         'Data Verification
-        Return True 'it (false) now its true  for testing
+        If Not Custmorfiles.proposalno = "" Or Not Custmorfiles.proposalno = Nothing Then
+            If CustmorService.IsProposalExist(Custmorfiles.proposalno) = False Then
+                Return True 'it (false) now its true  for testing
+            Else
+                Return False
+            End If
+        Else
+            Return True
+        End If
+
+
     End Function
 
     Protected Sub ASPxButton1_Click(sender As Object, e As EventArgs) Handles ASPxButton1.Click 'insert data to new account
@@ -212,7 +224,7 @@ Public Class rpliIndex
             '    logtb.Text = log
             '   End If
         Else
-            log = log & " ErrorData Verification " & Environment.NewLine
+            log = log & " ErrorData Verification Data already exist  " & Environment.NewLine
             logtb.Text = log
         End If
     End Sub
@@ -277,13 +289,15 @@ Public Class rpliIndex
         'myMsgBox.Show(Me, "~/Official/Operation/rpliIndex.aspx")
     End Sub
 
-    Protected Sub LinkButton4_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click 'Search Proposal Number
+    Protected Sub LinkButton4_Click(sender As Object, e As EventArgs) 'Search Proposal Number
         Dim pno As String = psearchtb.Text.Trim
         If CustmorService.IsProposalExist(pno) Then
             Custmorfiles = CustmorService.FindById(pno)
             'Dim x = Custmorfiles.agentId
             insertDataaInView()
             ASPxButton1.Enabled = False
+            ASPxButton4.Enabled = True
+            propnotb.ReadOnly = True
         Else
             'my message = Proposal Number Not Found
         End If
@@ -292,23 +306,29 @@ Public Class rpliIndex
 
     Protected Sub LinkButton1_Click(sender As Object, e As EventArgs)
         Dim idno As String
-        idno = TextBox1.Text.Trim
-        If CustmorService.IsProposalExist(idno) Then
-            Custmorfiles = CustmorService.FindByIdNo(idno)
-            'Dim x = Custmorfiles.agentId
-            insertDataaInView()
-            ASPxButton1.Enabled = False
-            ASPxButton4.Enabled = True
-        Else
-            'my message = Proposal Number Not Found
-            Custmorfiles = CustmorService.FindByIdNo(idno)
-            'Dim x = Custmorfiles.agentId
-            insertDataaInView()
-            'do payment update
-            ASPxButton1.Enabled = False
-            ASPxButton4.Enabled = True
-        End If
+        Try
 
+
+            idno = TextBox1.Text.Trim
+            If CustmorService.IsProposalExist(idno) Then
+                Custmorfiles = CustmorService.FindByIdNo(idno)
+                'Dim x = Custmorfiles.agentId
+                insertDataaInView()
+                ASPxButton1.Enabled = False
+                ASPxButton4.Enabled = True
+            Else
+                'my message = Proposal Number Not Found
+                Custmorfiles = CustmorService.FindByIdNo(idno)
+                'Dim x = Custmorfiles.agentId
+                insertDataaInView()
+                'do payment update
+                ASPxButton1.Enabled = False
+                ASPxButton4.Enabled = True
+            End If
+        Catch ex As Exception
+            log = log & "Data Not Found " & Environment.NewLine
+            logtb.Text = log
+        End Try
     End Sub
 
     Protected Sub ASPxButton4_Click(sender As Object, e As EventArgs) Handles ASPxButton4.Click
@@ -331,9 +351,26 @@ Public Class rpliIndex
                     End If
                 Else
                     log = log & "Proposal Number already EXIST ..With Proposal Number " & Custmorfiles.proposalno & " ." & Environment.NewLine
+
+                    If Not CustmorService.IsREcExist(Custmorfiles.recno) Then 'if trid not avl
+                        result = CustmorService.UpdateCustmor(Custmorfiles)
+                        If result Then
+                            log = log & "Successfully Added A New Recored with Proposal Number " & Environment.NewLine
+                            logtb.Text = log
+                            ASPxButton2.Enabled = True '2
+                        Else
+                            log = log & "Failed Adding Recored " & Environment.NewLine
+                            logtb.Text = log
+                        End If
+                    Else
+                        log = log & "Recored Already Exist " & Environment.NewLine
+                        logtb.Text = log
+                    End If
+
+
                     logtb.Text = log
-                End If
-            Else
+                    End If
+                    Else
                 log = log & " Enter Proposal Number Before Submit" & Environment.NewLine
                 logtb.Text = log
             End If
@@ -352,5 +389,6 @@ Public Class rpliIndex
         End If
 
     End Function
+
 
 End Class

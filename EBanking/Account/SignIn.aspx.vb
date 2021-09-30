@@ -15,7 +15,7 @@ Partial Public Class SignInModule
                 GeneralErrorDiv.InnerText = "Invalid login attempt."
                 FormLayout.FindItemOrGroupByName("GeneralError").Visible = True
             Else
-                Response.Redirect("~/") ' to main page
+                Response.Redirect("~/Official/Default.aspx") ' to main page
             End If
         End If
     End Sub

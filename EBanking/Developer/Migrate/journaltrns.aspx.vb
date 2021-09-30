@@ -93,6 +93,21 @@ Public Class journaltrns
             JournalData = New allJournalClass
             JournalData.accountnumber = _acNo
             _date = ASPxGridView1.GetSelectedFieldValues("d_ate")(x).ToString
+            Try
+                Dim xy As String
+                xy = _date 'datetb.Text '.ToString("dd MMMM yyyy")
+                Dim newDate As Date = DateTime.ParseExact(xy, "dd MMMM yyyy", Globalization.CultureInfo.InvariantCulture)
+                _date = newDate.ToString("yyyy-MM-dd")
+            Catch ex As Exception
+                Try
+                    Dim xy As String
+                    xy = _date 'datetb.Text '.ToString("dd MMMM yyyy")
+                    Dim newDate As Date = DateTime.ParseExact(xy, "dd-MM-yyyy", Globalization.CultureInfo.InvariantCulture)
+                    _date = newDate.ToString("yyyy-MM-dd")
+                Catch exx As Exception
+
+                End Try
+            End Try
             JournalData.da_te = _date
             _actype = ASPxGridView1.GetSelectedFieldValues("AccountType")(x).ToString
             If _actype = "Requiring Deposit" Then
@@ -115,6 +130,21 @@ Public Class journaltrns
             withdrow = ASPxGridView1.GetSelectedFieldValues("withdrow")(x).ToString
             JournalData.withdraw = withdrow
             dlt = ASPxGridView1.GetSelectedFieldValues("DLT")(x).ToString
+            Try
+                Dim xy As String
+                xy = dlt 'datetb.Text '.ToString("dd MMMM yyyy")
+                Dim newDate As Date = DateTime.ParseExact(xy, "dd MMMM yyyy", Globalization.CultureInfo.InvariantCulture)
+                dlt = newDate.ToString("yyyy-MM-dd")
+            Catch ex As Exception
+                Try
+                    Dim xy As String
+                    xy = dlt 'datetb.Text '.ToString("dd MMMM yyyy")
+                    Dim newDate As Date = DateTime.ParseExact(xy, "dd-MM-yyyy", Globalization.CultureInfo.InvariantCulture)
+                    dlt = newDate.ToString("yyyy-MM-dd")
+                Catch exx As Exception
+
+                End Try
+            End Try
             JournalData.dlt = dlt
             remark = ASPxGridView1.GetSelectedFieldValues("remark")(x).ToString
             JournalData.trid = remark

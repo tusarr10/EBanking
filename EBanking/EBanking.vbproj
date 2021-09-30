@@ -226,6 +226,13 @@
       <DependentUpon>ssajournaltrns.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="Official\Accounts\DallyAccounts.aspx.designer.vb">
+      <DependentUpon>DallyAccounts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Accounts\DallyAccounts.aspx.vb">
+      <DependentUpon>DallyAccounts.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Official\Operation\AllRpliIndex.aspx.designer.vb">
       <DependentUpon>AllRpliIndex.aspx</DependentUpon>
     </Compile>
@@ -238,6 +245,20 @@
     </Compile>
     <Compile Include="Official\Operation\rpliIndex.aspx.vb">
       <DependentUpon>rpliIndex.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\Reports\RpliIndexReport.aspx.designer.vb">
+      <DependentUpon>RpliIndexReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Reports\RpliIndexReport.aspx.vb">
+      <DependentUpon>RpliIndexReport.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\Reports\AllrpliTranstion.aspx.designer.vb">
+      <DependentUpon>AllrpliTranstion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Reports\AllrpliTranstion.aspx.vb">
+      <DependentUpon>AllrpliTranstion.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="UserControls\UploadedFilesContainer.ascx.designer.vb">
@@ -570,8 +591,11 @@
     <Content Include="Developer\Migrate\sbjournaltrns.aspx" />
     <Content Include="Developer\Migrate\sbtrns.aspx" />
     <Content Include="Developer\Migrate\ssajournaltrns.aspx" />
+    <Content Include="Official\Accounts\DallyAccounts.aspx" />
     <Content Include="Official\Operation\AllRpliIndex.aspx" />
     <Content Include="Official\Operation\rpliIndex.aspx" />
+    <Content Include="Official\Reports\RpliIndexReport.aspx" />
+    <Content Include="Official\Reports\AllrpliTranstion.aspx" />
     <Content Include="UserControls\UploadedFilesContainer.ascx" />
     <Content Include="Official\Operation\addAccount.aspx" />
     <Content Include="Official\Operation\addcif.aspx" />

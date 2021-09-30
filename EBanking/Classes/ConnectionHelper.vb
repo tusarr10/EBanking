@@ -18,14 +18,19 @@ Module connectionhelper
         Return databaseconnectionstring
     End Function
 
+
     Dim databasesourceaccount As String = ConfigurationSettings.AppSettings("dbsource").ToString()
+    Dim databasesourceoperate As String = ConfigurationSettings.AppSettings("dboperate").ToString()
     Dim databasesourcerpli As String = ConfigurationSettings.AppSettings("plidbsrc").ToString()
 
     Function connectionstringaccount() As String
         databaseconnectionstring = "server=TMEDIA\TMEDIA ; database=" & databasesourceaccount.ToString & ";user=tusar;password=tusarranjan"
         Return databaseconnectionstring
     End Function
-
+    Function connectionstringoperate() As String
+        databaseconnectionstring = "server=TMEDIA\TMEDIA ; database=" & databasesourceoperate.ToString & ";user=tusar;password=tusarranjan"
+        Return databaseconnectionstring
+    End Function
     Function connectionstringRpli() As String
         databaseconnectionstring = "server=TMEDIA\TMEDIA ; database=" & databasesourcerpli.ToString & ";user=tusar;password=tusarranjan"
         Return databaseconnectionstring

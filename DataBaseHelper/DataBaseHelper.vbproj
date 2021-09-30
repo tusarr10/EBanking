@@ -100,6 +100,10 @@
     <Compile Include="MVC\operateMode\IOperateMode.vb" />
     <Compile Include="MVC\operateMode\operateModeRepo.vb" />
     <Compile Include="MVC\operateMode\OperateModeService.vb" />
+    <Compile Include="MVC\Operate\dac\dacClass.vb" />
+    <Compile Include="MVC\Operate\dac\dacRepo.vb" />
+    <Compile Include="MVC\Operate\dac\dacService.vb" />
+    <Compile Include="MVC\Operate\dac\Idac.vb" />
     <Compile Include="MVC\PLI\ClassPliIndex.vb" />
     <Compile Include="MVC\PLI\IPliIndex.vb" />
     <Compile Include="MVC\PLI\PliIndexRepo.vb" />

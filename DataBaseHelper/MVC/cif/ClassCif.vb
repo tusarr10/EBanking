@@ -116,6 +116,11 @@
         End Get
         Set(value As String)
             m_dob = value
+            'Dim x As String
+            'x = value 'datetb.Text '.ToString("dd MMMM yyyy")
+            'Dim newDate As Date = DateTime.ParseExact(x, "yyyy-MM-dd", Globalization.CultureInfo.InvariantCulture)
+            'm_dob = newDate.ToString("dd MMMM yyyy")
+
         End Set
     End Property
 

@@ -13,6 +13,6 @@
 		  <siteMapNode url="~/Developer/Migrate/ssajournaltrns.aspx" title="SSA Transction"  description="" />
 		  <siteMapNode url="~/Developer/Migrate/tdjournaltrns.aspx" title="TD Transction"  description="" />
 	 </siteMapNode>
-	<siteMapNode url="" title="DalyAccount"  description="" />
+	<siteMapNode url="~/Developer/Migrate/dactrns.aspx" title="DalyAccount"  description="" />
 	  </siteMapNode>
 </siteMap>

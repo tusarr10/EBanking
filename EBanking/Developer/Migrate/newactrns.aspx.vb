@@ -161,6 +161,21 @@ Public Class newactrns
             _Gname = ASPxGridView1.GetSelectedFieldValues("FNAME")(x).ToString
             newAcClass.guardianname = _Gname
             _date = ASPxGridView1.GetSelectedFieldValues("D_ATE")(x).ToString
+            Try
+                Dim xy As String
+                xy = _date 'datetb.Text '.ToString("dd MMMM yyyy")
+                Dim newDate As Date = DateTime.ParseExact(xy, "dd MMMM yyyy", Globalization.CultureInfo.InvariantCulture)
+                _date = newDate.ToString("yyyy-MM-dd")
+            Catch ex As Exception
+                Try
+                    Dim xy As String
+                    xy = _date 'datetb.Text '.ToString("dd MMMM yyyy")
+                    Dim newDate As Date = DateTime.ParseExact(xy, "dd-MM-yyyy", Globalization.CultureInfo.InvariantCulture)
+                    _date = newDate.ToString("yyyy-MM-dd")
+                Catch exx As Exception
+
+                End Try
+            End Try
             newAcClass.doo = _date
             _address = ASPxGridView1.GetSelectedFieldValues("aDDRESS")(x).ToString
             newAcClass.address = _address

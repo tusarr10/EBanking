@@ -37,5 +37,7 @@
     Public Function IsProposalExist(pno As String) As Boolean
         Return _repo.IsProposalExist(pno)
     End Function
-
+    Public Function IsREcExist(rec As String) As Boolean
+        Return _repo.IsrecExist(rec)
+    End Function
 End Class

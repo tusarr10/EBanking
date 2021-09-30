@@ -73,7 +73,7 @@
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="card ">
-        <dx:ASPxGridView ID="ASPxGridView1" runat="server" ClientInstanceName="gridView" EnablePagingGestures="False" CssClass="grid-view" Width="100%" OnCustomCallback="GridView_CustomCallback" KeyFieldName="policyno" AutoGenerateColumns="False">
+        <dx:ASPxGridView ID="ASPxGridView1" runat="server" ClientInstanceName="gridView" EnablePagingGestures="False" CssClass="grid-view" Width="100%" OnCustomCallback="GridView_CustomCallback" KeyFieldName="recno;dat_e" AutoGenerateColumns="False">
             <SettingsBehavior AllowFocusedRow="true" AllowSelectByRowClick="true" AllowEllipsisInText="true" AllowDragDrop="false" />
             <SettingsEditing Mode="PopupEditForm" EditFormColumnCount="2" />
             <SettingsSearchPanel CustomEditorID="SearchButtonEdit" />
@@ -88,7 +88,7 @@
                 <dx:GridViewDataTextColumn FieldName="proposalno" Name="proposalno" Caption="proposalno" VisibleIndex="3"></dx:GridViewDataTextColumn>
                 <dx:GridViewDataTextColumn FieldName="amount" Name="amount" Caption="amount" VisibleIndex="6"></dx:GridViewDataTextColumn>
                 <dx:GridViewDataTextColumn FieldName="month" Name="month" Caption="Month" VisibleIndex="5"></dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="dat_e" Name="dat_e" Caption="Date" VisibleIndex="1"></dx:GridViewDataTextColumn>
+              <dx:GridViewDataTextColumn FieldName="dat_e" Name="dat_e" Caption="dat_e" VisibleIndex="1"></dx:GridViewDataTextColumn>
                 <dx:GridViewDataTextColumn FieldName="name" Name="name" Caption="Name" VisibleIndex="4"></dx:GridViewDataTextColumn>
                 <dx:GridViewDataTextColumn FieldName="recno" Name="recno" Caption="RecNo" VisibleIndex="9"></dx:GridViewDataTextColumn>
                 <dx:GridViewDataTextColumn FieldName="gst" Name="gst" Caption="GST" VisibleIndex="7"></dx:GridViewDataTextColumn>

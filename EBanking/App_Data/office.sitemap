@@ -46,6 +46,7 @@
     <siteMapNode url="" title="Report"  description="">
       <siteMapNode title="All Account" url="~/Official/Reports/Operation.aspx" description="" />
       <siteMapNode title="New Account" url="~/Official/Reports/AllOpenAccount.aspx" description="" />
+		<siteMapNode title="RPLI INDEX" url="~/Official/Reports/RpliIndexReport.aspx" description="" />
       <siteMapNode title="Transction" url="" description="">
         <siteMapNode title="All Transction" url="~/Official/Reports/AllTrnsction.aspx" description="" />
         <siteMapNode title="Sb Transction" url="~/Official/Reports/AllSbTranstion.aspx" description="" />

@@ -1,9 +1,22 @@
 ﻿Imports DevExpress.Web
+Imports DataBaseHelper
 
 Public Class rpliAllDeposit
     Inherits System.Web.UI.Page
 
+    Dim dataclass As List(Of classPliTransction)
+    Dim dataserver As New PliTransctionService(connectionstringRpli)
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        loaddataFromServer()
+    End Sub
+
+    Private Sub loaddataFromServer()
+        Try
+            ASPxGridView1.DataSource = dataserver.GetAll()
+            ASPxGridView1.DataBind()
+        Catch ex As Exception
+
+        End Try
 
     End Sub
 
@@ -26,8 +39,6 @@ Public Class rpliAllDeposit
         End If
     End Sub
 
-    Protected Sub ASPxButton1_Click(sender As Object, e As EventArgs) Handles ASPxButton1.Click
 
-    End Sub
 
 End Class

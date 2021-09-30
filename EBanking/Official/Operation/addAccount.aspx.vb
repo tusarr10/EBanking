@@ -84,7 +84,11 @@ Public Class addAccount
         ' _NominiAddress = NominiAddressInfotb.Text
         nominiData.nominiaddress = NominiAddressInfotb.Text
         ' _NominiDob = NominiAgeInfotb.Text.Trim
-        nominiData.nominiage = NominiAgeInfotb.Text
+
+        'Dim x As String
+        'x = NominiAgeInfotb.Text 'datetb.Text '.ToString("dd MMMM yyyy")
+        'Dim newDate As Date = DateTime.ParseExact(x, "yyyy-MM-dd", Globalization.CultureInfo.InvariantCulture)
+        nominiData.nominiage = NominiAgeInfotb.Text ' newDate.ToString("dd MMMM yyyy")
         nominiData.nominireg = nominiregcb.Text.Trim
 
         'dlt ==> accountnumber ,accountbalance,dlt,dlt2

@@ -12,7 +12,7 @@ Option Explicit On
 
 
 Partial Public Class rpliDeposit
-    
+
     '''<summary>
     '''TableOfContentsTreeView control.
     '''</summary>
@@ -21,7 +21,7 @@ Partial Public Class rpliDeposit
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents TableOfContentsTreeView As Global.DevExpress.Web.ASPxTreeView
-    
+
     '''<summary>
     '''NodesDataSource control.
     '''</summary>
@@ -30,4 +30,103 @@ Partial Public Class rpliDeposit
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents NodesDataSource As Global.System.Web.UI.WebControls.XmlDataSource
+
+    '''<summary>
+    '''accIdTb control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents accIdTb As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''btnFindAccount control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnFindAccount As Global.System.Web.UI.WebControls.LinkButton
+
+    '''<summary>
+    '''nametb control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents nametb As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''DepositAmounttb control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DepositAmounttb As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Calculatebtn control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Calculatebtn As Global.System.Web.UI.WebControls.LinkButton
+
+    '''<summary>
+    '''transctiontb control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents transctiontb As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''DateofTransction control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DateofTransction As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''tillDateTB control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents tillDateTB As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''detailstb control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents detailstb As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Button1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Button3 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Button3 As Global.System.Web.UI.WebControls.Button
 End Class
