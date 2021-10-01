@@ -13,7 +13,7 @@
         <div>
             <h4>Daily Account</h4>
         </div>
-
+        
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-header ">Reciepts</div>

@@ -10,8 +10,12 @@ Public Class CifTrns
     Dim logmsg As String ' = DateAndTime.Now.ToLongTimeString & "  : "
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Try
+            loaddatafromserver()
+        Catch ex As Exception
+            MyMessageBox.Show(Me, ex.Message) '  MsgBox(ex.Message)
+        End Try
 
-        loaddatafromserver()
 
         If Page.IsPostBack Then
             '     Notes.Text = logmsg
@@ -36,6 +40,7 @@ Public Class CifTrns
             databaseconnection1.Close()
         Catch ex As Exception
             MyMessageBox.Show(Me, "Unable to load Database Mak sure Your Data Base Upload to ....." + ex.Message)
+
         End Try
 
     End Sub
@@ -52,7 +57,7 @@ Public Class CifTrns
     Dim resultFileUrl As String
     Dim resultFilePath As String
 
-    Sub loaddatafromserver()
+    Sub loaddatafromserver() 'test
         Try
 
             resultFileUrl = UploadDirectory & "Database1.accdb"
@@ -64,6 +69,7 @@ Public Class CifTrns
             ASPxGridView1.DataSource = table
             ASPxGridView1.DataBind()
         Catch ex As Exception
+            MyMessageBox.Show(Me, ex.Message)
 
         End Try
     End Sub

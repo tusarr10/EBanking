@@ -72,6 +72,7 @@ Public Class journaltrns
             ASPxGridView1.DataSource = table
             ASPxGridView1.DataBind()
         Catch ex As Exception
+            MyMessageBox.Show(Me, ex.Message)
         End Try
     End Sub
 
