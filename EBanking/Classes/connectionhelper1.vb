@@ -20,6 +20,6 @@
 
     Public logindatasource As String = ConfigurationSettings.AppSettings("loginsource").ToString
 
-    Public logindatastring As String = "server=tmedia ; database=" & logindatasource & ";user=tusar;password=tusarranjan"
+    Public logindatastring As String = "server=tmedia ; database=" & logindatasource & ";user=tusar;password=prahallad89"
 
 End Module

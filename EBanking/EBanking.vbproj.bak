@@ -13,7 +13,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>TWEB</RootNamespace>
     <AssemblyName>EBanking</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MyType>Custom</MyType>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -26,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <UpgradeBackupLocation />
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,10 +51,22 @@
       <HintPath>..\packages\AjaxControlToolkit.20.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.90\lib\netstandard2.0\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dapper.Mapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.Mapper.2.0.0\lib\net451\Dapper.Mapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DevExpress.Web.Bootstrap.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.Resources.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
     <Reference Include="System" />
-    <Reference Include="System.Data" />
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
@@ -69,6 +82,7 @@
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="DevExpress.Data.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Web.ASPxThemes.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.RichEdit.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.RichEdit.v20.1.Export, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -127,12 +141,6 @@
     <Compile Include="Classes\DataInformation.vb" />
     <Compile Include="Classes\ErrorText.vb" />
     <Compile Include="Classes\getApproveInfo.vb" />
-    <Compile Include="Classes\MVC\cif\ClassCif.vb" />
-    <Compile Include="Classes\MVC\cif\ClassCifRepo.vb" />
-    <Compile Include="Classes\MVC\cif\ClassCifService.vb" />
-    <Compile Include="Classes\MVC\PLI\ClassPliIndex.vb" />
-    <Compile Include="Classes\MVC\cif\ICif.vb" />
-    <Compile Include="Classes\MVC\PLI\PliIndexRepo.vb" />
     <Compile Include="Code\AuthHelper.vb" />
     <Compile Include="Code\DBContext.vb" />
     <Compile Include="Default.aspx.designer.vb">
@@ -155,6 +163,13 @@
     </Compile>
     <Compile Include="Developer\Migrate\CifTrns.aspx.vb">
       <DependentUpon>CifTrns.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Developer\Migrate\dactrns.aspx.designer.vb">
+      <DependentUpon>dactrns.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Developer\Migrate\dactrns.aspx.vb">
+      <DependentUpon>dactrns.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Developer\Migrate\Default.aspx.designer.vb">
@@ -213,7 +228,13 @@
       <DependentUpon>ssajournaltrns.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Official\class\rpliIndexHelper.vb" />
+    <Compile Include="Official\Accounts\DallyAccounts.aspx.designer.vb">
+      <DependentUpon>DallyAccounts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Accounts\DallyAccounts.aspx.vb">
+      <DependentUpon>DallyAccounts.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Official\Operation\AllRpliIndex.aspx.designer.vb">
       <DependentUpon>AllRpliIndex.aspx</DependentUpon>
     </Compile>
@@ -226,6 +247,20 @@
     </Compile>
     <Compile Include="Official\Operation\rpliIndex.aspx.vb">
       <DependentUpon>rpliIndex.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\Reports\RpliIndexReport.aspx.designer.vb">
+      <DependentUpon>RpliIndexReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Reports\RpliIndexReport.aspx.vb">
+      <DependentUpon>RpliIndexReport.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\Reports\AllrpliTranstion.aspx.designer.vb">
+      <DependentUpon>AllrpliTranstion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Reports\AllrpliTranstion.aspx.vb">
+      <DependentUpon>AllrpliTranstion.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="UserControls\UploadedFilesContainer.ascx.designer.vb">
@@ -242,6 +277,7 @@
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -274,19 +310,7 @@
       <DependentUpon>AllOpenAccount.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Official\class\AccountOperateModeHelper.vb" />
     <Compile Include="Official\class\AddAccountHelper.vb" />
-    <Compile Include="Official\class\CifHelper.vb" />
-    <Compile Include="Official\class\dltHelper.vb" />
-    <Compile Include="Official\class\GriddViewHelper\allaccountgrid.vb" />
-    <Compile Include="Official\class\IntersetHelper.vb" />
-    <Compile Include="Official\class\JournalHelper.vb" />
-    <Compile Include="Official\class\newaccounthelper.vb" />
-    <Compile Include="Official\class\NominiInfoHelper.vb" />
-    <Compile Include="Official\class\ProductTypeHelper.vb" />
-    <Compile Include="Official\class\RdJournalHelper.vb" />
-    <Compile Include="Official\class\SbJournalHelper.vb" />
-    <Compile Include="Official\class\SSAJournalHelper.vb" />
     <Compile Include="Official\Default.aspx.designer.vb">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
@@ -418,6 +442,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\DefaultLeft.xml" />
+    <Content Include="App_Data\Overview.html" />
+    <Content Include="App_Data\OverviewContents.xml" />
     <Content Include="Content\Common.css" />
     <Content Include="Content\Custom\css\customMessages.css" />
     <Content Include="Content\Custom\css\releasenotes.plugin.css" />
@@ -520,6 +546,7 @@
     <Content Include="DATA\Image\156312PhotoDD06YYY1224" />
     <Content Include="DATA\Image\bgv44354Photo190620211228" />
     <Content Include="Content\Custom\js\languages\jquery.validationEngine-uk" />
+    <Content Include="Developer\Data\1234343Photo190620211008.png" />
     <Content Include="Developer\Developer.Master" />
     <Content Include="App_Data\Developer.sitemap" />
     <None Include="My Project\Application.myapp">
@@ -559,6 +586,7 @@
     <Content Include="DATA\Sign\tre1234Sign190620211028.png" />
     <Content Include="DATA\Sign\vter123Sign19062021710.png" />
     <Content Include="Developer\Migrate\CifTrns.aspx" />
+    <Content Include="Developer\Migrate\dactrns.aspx" />
     <Content Include="Developer\Migrate\Default.aspx" />
     <Content Include="Developer\Migrate\dlttrns.aspx" />
     <Content Include="Developer\Migrate\journaltrns.aspx" />
@@ -567,8 +595,11 @@
     <Content Include="Developer\Migrate\sbjournaltrns.aspx" />
     <Content Include="Developer\Migrate\sbtrns.aspx" />
     <Content Include="Developer\Migrate\ssajournaltrns.aspx" />
+    <Content Include="Official\Accounts\DallyAccounts.aspx" />
     <Content Include="Official\Operation\AllRpliIndex.aspx" />
     <Content Include="Official\Operation\rpliIndex.aspx" />
+    <Content Include="Official\Reports\RpliIndexReport.aspx" />
+    <Content Include="Official\Reports\AllrpliTranstion.aspx" />
     <Content Include="UserControls\UploadedFilesContainer.ascx" />
     <Content Include="Official\Operation\addAccount.aspx" />
     <Content Include="Official\Operation\addcif.aspx" />
@@ -616,10 +647,14 @@
     <Content Include="Global.asax" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Classes\MVC\Account\" />
     <Folder Include="Content\Images\Overview\" />
     <Folder Include="Content\Photo\" />
-    <Folder Include="Developer\Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataBaseHelper\DataBaseHelper.vbproj">
+      <Project>{8eee01e8-b238-4d93-9f7c-44d22e65918c}</Project>
+      <Name>DataBaseHelper</Name>
+    </ProjectReference>
   </ItemGroup>
   <!--<ItemGroup>
     <Folder Include="App_Data\" />

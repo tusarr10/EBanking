@@ -9,12 +9,12 @@ Module connectionhelper
     Public datacommand As SqlCommand = Nothing
 
     Function connectionString(ByVal databasename As String, ByVal databasepassword As String) As String
-        databaseconnectionstring = "server=tmedia ; database=" & databasename & ";user=tusar;password=tusarranjan"
+        databaseconnectionstring = "server=tmedia ; database=" & databasename & ";user=tusar;password=prahallad89"
         Return databaseconnectionstring
     End Function
 
     Function connectionString(ByVal databasename As String) As String
-        databaseconnectionstring = "server=tmedia ; database=" & databasename & ";user=tusar;password=tusarranjan"
+        databaseconnectionstring = "server=tmedia ; database=" & databasename & ";user=tusar;password=prahallad89"
         Return databaseconnectionstring
     End Function
 
@@ -24,15 +24,15 @@ Module connectionhelper
     Dim databasesourcerpli As String = ConfigurationSettings.AppSettings("plidbsrc").ToString()
 
     Function connectionstringaccount() As String
-        databaseconnectionstring = "server=TMEDIA\TMEDIA ; database=" & databasesourceaccount.ToString & ";user=tusar;password=tusarranjan"
+        databaseconnectionstring = "server=TMEDIA ; database=" & databasesourceaccount.ToString & ";user=tusar;password=prahallad89"
         Return databaseconnectionstring
     End Function
     Function connectionstringoperate() As String
-        databaseconnectionstring = "server=TMEDIA\TMEDIA ; database=" & databasesourceoperate.ToString & ";user=tusar;password=tusarranjan"
+        databaseconnectionstring = "server=TMEDIA ; database=" & databasesourceoperate.ToString & ";user=tusar;password=prahallad89"
         Return databaseconnectionstring
     End Function
     Function connectionstringRpli() As String
-        databaseconnectionstring = "server=TMEDIA\TMEDIA ; database=" & databasesourcerpli.ToString & ";user=tusar;password=tusarranjan"
+        databaseconnectionstring = "server=TMEDIA ; database=" & databasesourcerpli.ToString & ";user=tusar;password=prahallad89"
         Return databaseconnectionstring
     End Function
 
