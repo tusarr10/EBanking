@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0">
+	<siteMapNode url="" title=""  description="">
+		<siteMapNode url="~/admin/Default.aspx" title="Home"  description="" />
+		<siteMapNode url="~/admin/" title="Office"  description="" />
+		<siteMapNode url="~/admin/EmployeeInfo.aspx" title="Employee"  description="" />
+		<siteMapNode url="~/" title="DLT"  description="" />
+		<siteMapNode url="~/Developer/Migrate/newactrns.aspx" title="New Account"  description="" />
+		<siteMapNode url="" title="Transction"  description="" >
+			<siteMapNode url="~/Developer/Migrate/journaltrns.aspx" title="All Transction"  description="" />
+			<siteMapNode url="~/Developer/Migrate/sbjournaltrns.aspx" title="SB Transction"  description="" />
+			<siteMapNode url="~/Developer/Migrate/rdjournaltrns.aspx" title="RD Transction"  description="" />
+			<siteMapNode url="~/Developer/Migrate/ssajournaltrns.aspx" title="SSA Transction"  description="" />
+			<siteMapNode url="~/Developer/Migrate/tdjournaltrns.aspx" title="TD Transction"  description="" />
+		</siteMapNode>
+		<siteMapNode url="~/Developer/Migrate/dactrns.aspx" title="DalyAccount"  description="" />
+	</siteMapNode>
+</siteMap>

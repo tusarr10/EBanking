@@ -130,6 +130,27 @@
       <DependentUpon>SignIn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="admin\AddBO.aspx.designer.vb">
+      <DependentUpon>AddBO.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\AddBO.aspx.vb">
+      <DependentUpon>AddBO.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="admin\Admin.Master.designer.vb">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Admin.Master.vb">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\EmployeeInfo.aspx.designer.vb">
+      <DependentUpon>EmployeeInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\EmployeeInfo.aspx.vb">
+      <DependentUpon>EmployeeInfo.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Article.aspx.designer.vb">
       <DependentUpon>Article.aspx</DependentUpon>
     </Compile>
@@ -248,6 +269,13 @@
     </Compile>
     <Compile Include="Official\Operation\rpliIndex.aspx.vb">
       <DependentUpon>rpliIndex.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\Reports\DepositFormPrint.aspx.designer.vb">
+      <DependentUpon>DepositFormPrint.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Reports\DepositFormPrint.aspx.vb">
+      <DependentUpon>DepositFormPrint.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Official\Reports\RpliIndexReport.aspx.designer.vb">
@@ -442,6 +470,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin\AddBO.aspx" />
+    <Content Include="admin\EmployeeInfo.aspx" />
     <Content Include="App_Data\DefaultLeft.xml" />
     <Content Include="App_Data\Overview.html" />
     <Content Include="App_Data\OverviewContents.xml" />
@@ -550,6 +580,8 @@
     <Content Include="Developer\Data\1234343Photo190620211008.png" />
     <Content Include="Developer\Developer.Master" />
     <Content Include="App_Data\Developer.sitemap" />
+    <Content Include="admin\Admin.Master" />
+    <Content Include="App_Data\admin.sitemap" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -599,6 +631,7 @@
     <Content Include="Official\Accounts\DallyAccounts.aspx" />
     <Content Include="Official\Operation\AllRpliIndex.aspx" />
     <Content Include="Official\Operation\rpliIndex.aspx" />
+    <Content Include="Official\Reports\DepositFormPrint.aspx" />
     <Content Include="Official\Reports\RpliIndexReport.aspx" />
     <Content Include="Official\Reports\AllrpliTranstion.aspx" />
     <Content Include="UserControls\UploadedFilesContainer.ascx" />
