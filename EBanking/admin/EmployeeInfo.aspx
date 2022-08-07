@@ -287,10 +287,11 @@
                     <hr />
                 </div>
             </div>
-             <div class="card ">
+
+                   <div class="card ">
                 <div class="card-body ">
 
-                    <dx:ASPxRoundPanel ID="ASPxRoundPanel2" runat="server" Width="100%" ClientInstanceName="roundpanel" HeaderText=" User Service Details " AllowCollapsingByHeaderClick="True" ShowCollapseButton="True" LoadContentViaCallback="True" Collapsed="false" EnableAnimation="True">
+                    <dx:ASPxRoundPanel ID="ASPxRoundPanel4" runat="server" Width="100%" ClientInstanceName="roundpanel" HeaderText=" User Service Details " AllowCollapsingByHeaderClick="True" ShowCollapseButton="True" LoadContentViaCallback="True" Collapsed="false" EnableAnimation="True">
                         <PanelCollection>
                             <dx:PanelContent>
                                 <div class="content">
@@ -300,7 +301,7 @@
                                                 <div class="col-md-3">
                                                     <label>IPPB Id</label>
                                                    <div class="form-group">
-                                                        <asp:DropDownList CssClass="form-control" ID="DropDownList1" runat="server" placeholder="Ippb" Enabled="False" AutoPostBack="true">
+                                                        <asp:DropDownList CssClass="form-control" ID="DropDownList6" runat="server" placeholder="Ippb" Enabled="False" AutoPostBack="true">
                                                             <asp:ListItem Text="Choose .." Value="" />
                                                             <asp:ListItem Text="Yes" Value="Yes" />
                                                             <asp:ListItem Text="No" Value="No" />
@@ -310,7 +311,7 @@
                                                 <div class="col-md-3">
                                                     <label>If yes</label>
                                                    <div class="form-group  ">
-                                                        <asp:TextBox CssClass="form-control" ID="TextBox17" runat="server" placeholder="Enter IPPB User ID"  ReadOnly="True"></asp:TextBox>
+                                                        <asp:TextBox CssClass="form-control" ID="TextBox18" runat="server" placeholder="Enter IPPB User ID"  ReadOnly="True"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 
@@ -319,7 +320,7 @@
                                                 <div class="col-md-3">
                                                     <label>UIDAI</label>
                                                      <div class="form-group">
-                                                        <asp:DropDownList CssClass="form-control" ID="DropDownList3" runat="server" placeholder="Uidai" Enabled="False" AutoPostBack="true">
+                                                        <asp:DropDownList CssClass="form-control" ID="DropDownList7" runat="server" placeholder="Uidai" Enabled="False" AutoPostBack="true">
                                                             <asp:ListItem Text="Choose .." Value="" />
                                                             <asp:ListItem Text="Yes" Value="Yes" />
                                                             <asp:ListItem Text="No" Value="No" />
@@ -329,7 +330,7 @@
                                                  <div class="col-md-3">
                                                     <label>If yes</label>
                                                     <div class="form-group  ">
-                                                        <asp:TextBox CssClass="form-control" ID="TextBox20" runat="server" placeholder="Enter ID" ReadOnly="True"></asp:TextBox>
+                                                        <asp:TextBox CssClass="form-control" ID="TextBox19" runat="server" placeholder="Enter ID" ReadOnly="True"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 
@@ -338,7 +339,7 @@
                                                 <div class="col-md-3">
                                                     <label>CSC ID</label>
                                                   <div class="form-group">
-                                                        <asp:DropDownList CssClass="form-control" ID="DropDownList4" runat="server" placeholder="CSC" Enabled="False" AutoPostBack="true">
+                                                        <asp:DropDownList CssClass="form-control" ID="DropDownList8" runat="server" placeholder="CSC" Enabled="False" AutoPostBack="true">
                                                             <asp:ListItem Text="Choose .." Value="" />
                                                             <asp:ListItem Text="Yes" Value="Yes" />
                                                             <asp:ListItem Text="No" Value="No" />
@@ -348,7 +349,7 @@
                                                 <div class="col-md-3">
                                                     <label>If Yes</label>
                                                    <div class="form-group  ">
-                                                        <asp:TextBox CssClass="form-control" ID="TextBox21" runat="server" placeholder="CSC Id "  ReadOnly="True"></asp:TextBox>
+                                                        <asp:TextBox CssClass="form-control" ID="TextBox22" runat="server" placeholder="CSC Id "  ReadOnly="True"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 
@@ -357,7 +358,7 @@
                                                 <div class="col-md-3">
                                                     <label>PLI</label>
                                                    <div class="form-group">
-                                                        <asp:DropDownList CssClass="form-control" ID="DropDownList5" runat="server" placeholder="CSC" Enabled="False" AutoPostBack="true">
+                                                        <asp:DropDownList CssClass="form-control" ID="DropDownList9" runat="server" placeholder="CSC" Enabled="False" AutoPostBack="true">
                                                             <asp:ListItem Text="Choose .." Value="" />
                                                             <asp:ListItem Text="Yes" Value="Yes" />
                                                             <asp:ListItem Text="No" Value="No" />
@@ -367,11 +368,48 @@
                                                  <div class="col-md-3">
                                                     <label>IF Yes</label>
                                                     <div class="form-group  ">
-                                                        <asp:TextBox CssClass="form-control" ID="TextBox23" runat="server" placeholder="Enter ID" ReadOnly="True"></asp:TextBox>
+                                                        <asp:TextBox CssClass="form-control" ID="TextBox24" runat="server" placeholder="Enter ID" ReadOnly="True"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </dx:PanelContent>
+                        </PanelCollection>
+                    </dx:ASPxRoundPanel>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+
+                    <hr />
+                </div>
+            </div>
+
+
+
+             <div class="card ">
+                <div class="card-body ">
+
+                    <dx:ASPxRoundPanel ID="ASPxRoundPanel2" runat="server" Width="100%" ClientInstanceName="roundpanel" HeaderText="User Transfer Details " AllowCollapsingByHeaderClick="True" ShowCollapseButton="True" LoadContentViaCallback="True" Collapsed="false" EnableAnimation="True">
+                        <PanelCollection>
+                            <dx:PanelContent>
+                                <div class="content">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False">
+                                                <Columns>
+                                                    <dx:GridViewDataTextColumn FieldName="sn" Name="sn" Caption="sn" VisibleIndex="0"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="date" Name="date" Caption="Date" VisibleIndex="1"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="from" Name="from" Caption="From" VisibleIndex="2"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="To" Name="To" Caption="To" VisibleIndex="3"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="trnsftype" Name="trnsftype" Caption="TransfType" VisibleIndex="4"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="memono" Name="Memono" Caption="MemoNumber" VisibleIndex="5"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="remarks" Name="remarks" Caption="Remarks" VisibleIndex="6"></dx:GridViewDataTextColumn>
+                                                </Columns>
+                                            </dx:ASPxGridView>
                                         </div>
                                     </div>
                                 </div>
@@ -412,11 +450,11 @@
                 </div>
             </div>
 
-            <div class="card-body ">
+           <%-- <div class="card-body ">
                 <div class="form-group  ">
                     <asp:TextBox CssClass="form-control" ID="Errortb" runat="server" placeholder="Type" ReadOnly="True"></asp:TextBox>
                 </div>
-            </div>
+            </div>--%>
         </div>
     </div>
 

@@ -302,6 +302,87 @@ Partial Public Class EmployeeInfo
     Protected WithEvents TextBox14 As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''ASPxRoundPanel4 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ASPxRoundPanel4 As Global.DevExpress.Web.ASPxRoundPanel
+
+    '''<summary>
+    '''DropDownList6 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DropDownList6 As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''TextBox18 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TextBox18 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''DropDownList7 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DropDownList7 As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''TextBox19 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TextBox19 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''DropDownList8 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DropDownList8 As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''TextBox22 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TextBox22 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''DropDownList9 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DropDownList9 As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''TextBox24 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TextBox24 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''ASPxRoundPanel2 control.
     '''</summary>
     '''<remarks>
@@ -311,76 +392,13 @@ Partial Public Class EmployeeInfo
     Protected WithEvents ASPxRoundPanel2 As Global.DevExpress.Web.ASPxRoundPanel
 
     '''<summary>
-    '''DropDownList1 control.
+    '''ASPxGridView1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DropDownList1 As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''TextBox17 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents TextBox17 As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''DropDownList3 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents DropDownList3 As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''TextBox20 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents TextBox20 As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''DropDownList4 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents DropDownList4 As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''TextBox21 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents TextBox21 As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''DropDownList5 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents DropDownList5 As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''TextBox23 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents TextBox23 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents ASPxGridView1 As Global.DevExpress.Web.ASPxGridView
 
     '''<summary>
     '''Button1 control.
@@ -408,13 +426,4 @@ Partial Public Class EmployeeInfo
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Button2 As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''Errortb control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Errortb As Global.System.Web.UI.WebControls.TextBox
 End Class

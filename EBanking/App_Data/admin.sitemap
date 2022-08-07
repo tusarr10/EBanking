@@ -2,7 +2,7 @@
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0">
 	<siteMapNode url="" title=""  description="">
 		<siteMapNode url="~/admin/Default.aspx" title="Home"  description="" />
-		<siteMapNode url="~/admin/" title="Office"  description="" />
+		<siteMapNode url="~/admin/AddBO.aspx" title="Office"  description="" />
 		<siteMapNode url="~/admin/EmployeeInfo.aspx" title="Employee"  description="" />
 		<siteMapNode url="~/" title="DLT"  description="" />
 		<siteMapNode url="~/Developer/Migrate/newactrns.aspx" title="New Account"  description="" />
