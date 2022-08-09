@@ -324,7 +324,7 @@
                                                     <dx:GridViewDataTextColumn FieldName="sn" Name="sn" Caption="Sn" VisibleIndex="0"></dx:GridViewDataTextColumn>
                                                     <dx:GridViewDataTextColumn FieldName="Name" Name="name" Caption=" name" VisibleIndex="2"></dx:GridViewDataTextColumn>
                                                     <dx:GridViewDataTextColumn FieldName="officecode" Name="officecode" Caption="Office Code" VisibleIndex="1"></dx:GridViewDataTextColumn>
-                                                    <dx:GridViewDataTextColumn FieldName="Deg" Name="deg" Caption="deg" VisibleIndex="3"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="designation" Name="designation" Caption="designation" VisibleIndex="3"></dx:GridViewDataTextColumn>
                                                     <dx:GridViewDataTextColumn FieldName="post" Name="post" Caption="post" VisibleIndex="4"></dx:GridViewDataTextColumn>
                                                     <dx:GridViewDataTextColumn FieldName="fromdate" Name="frondate" Caption="from date" VisibleIndex="5"></dx:GridViewDataTextColumn>
                                                     <dx:GridViewDataTextColumn FieldName="remark" Name="remark" Caption="remark" VisibleIndex="6"></dx:GridViewDataTextColumn>
