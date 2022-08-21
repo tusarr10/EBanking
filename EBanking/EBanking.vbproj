@@ -687,6 +687,10 @@
     <Folder Include="Public\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AdminDataBaseHelper\AdminDataBaseHelper.vbproj">
+      <Project>{6ed8c090-65ff-4a05-8db1-43765aeb288b}</Project>
+      <Name>AdminDataBaseHelper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataBaseHelper\DataBaseHelper.vbproj">
       <Project>{8eee01e8-b238-4d93-9f7c-44d22e65918c}</Project>
       <Name>DataBaseHelper</Name>

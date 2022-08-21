@@ -21,7 +21,7 @@ Public Class clsEmpDetails
     Private mIsUidai As String
     Private mIsIPPB As String
     Private mIsCSC As String
-    Private mIsPLI As String
+    Private mIsPLI As String  '16
 
 
     Public Property remarks1() As String

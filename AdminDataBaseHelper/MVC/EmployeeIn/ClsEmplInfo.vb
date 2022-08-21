@@ -20,7 +20,8 @@ Public Class ClsEmplInfo
     Private mBlood As String
     Private maadhar As String
     Private mPan As String
-    Private mPran As String
+    Private mPran As String ' 15
+    Private mIdRemark As String
     Public Property mpran1() As String
         Get
             Return mPran
@@ -29,7 +30,7 @@ Public Class ClsEmplInfo
             mPran = value
         End Set
     End Property
-    Private mIdRemark As String
+
 
     Public Property MUserId1 As String
         Get

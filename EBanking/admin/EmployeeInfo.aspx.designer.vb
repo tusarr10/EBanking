@@ -23,13 +23,13 @@ Partial Public Class EmployeeInfo
     Protected WithEvents tb_employeeId As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''LinkButton4 control.
+    '''btnSearchEmployee control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents LinkButton4 As Global.System.Web.UI.WebControls.LinkButton
+    Protected WithEvents btnSearchEmployee As Global.System.Web.UI.WebControls.LinkButton
 
     '''<summary>
     '''tb_employeeName control.
@@ -113,13 +113,13 @@ Partial Public Class EmployeeInfo
     Protected WithEvents tb_fathername As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''TextBox7 control.
+    '''tb_DOB control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox7 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tb_DOB As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''cb_gender control.
@@ -131,94 +131,94 @@ Partial Public Class EmployeeInfo
     Protected WithEvents cb_gender As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''DropDownList2 control.
+    '''cb_bloodGroup control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DropDownList2 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents cb_bloodGroup As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''TextBox1 control.
+    '''tb_address control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox1 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tb_address As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''TextBox2 control.
+    '''tb_address2 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox2 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tb_address2 As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Guardiantb control.
+    '''tb_mobile control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Guardiantb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tb_mobile As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''TextBox6 control.
+    '''tb_mobile2 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox6 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tb_mobile2 As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''TextBox3 control.
+    '''tb_email control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox3 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tb_email As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''TextBox5 control.
+    '''tb_aadhaar control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox5 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tb_aadhaar As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''TextBox4 control.
+    '''tb_pan control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox4 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tb_pan As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''TextBox8 control.
+    '''tb_pran control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox8 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tb_pran As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''TextBox9 control.
+    '''tb_remarks control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox9 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tb_remarks As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''ASPxRoundPanel3 control.
@@ -230,76 +230,76 @@ Partial Public Class EmployeeInfo
     Protected WithEvents ASPxRoundPanel3 As Global.DevExpress.Web.ASPxRoundPanel
 
     '''<summary>
-    '''TextBox10 control.
+    '''tb_joindate control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox10 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tb_joindate As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''TextBox11 control.
+    '''tb_retair control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox11 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tb_retair As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Relationtb control.
+    '''tb_post control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Relationtb As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tb_post As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''TextBox16 control.
+    '''tb_trca control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox16 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tb_trca As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''TextBox12 control.
+    '''tb_originalPost control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox12 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tb_originalPost As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''TextBox13 control.
+    '''tb_currentPlacePost control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox13 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tb_currentPlacePost As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''TextBox15 control.
+    '''tb_currentPost control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox15 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tb_currentPost As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''TextBox14 control.
+    '''tb_PostRemark control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox14 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tb_PostRemark As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''ASPxRoundPanel4 control.
@@ -311,76 +311,76 @@ Partial Public Class EmployeeInfo
     Protected WithEvents ASPxRoundPanel4 As Global.DevExpress.Web.ASPxRoundPanel
 
     '''<summary>
-    '''DropDownList6 control.
+    '''cb_ippb control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DropDownList6 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents cb_ippb As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''TextBox18 control.
+    '''tb_ippb control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox18 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tb_ippb As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''DropDownList7 control.
+    '''cb_uidai control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DropDownList7 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents cb_uidai As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''TextBox19 control.
+    '''tb_uidai control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox19 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tb_uidai As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''DropDownList8 control.
+    '''cb_cscid control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DropDownList8 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents cb_cscid As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''TextBox22 control.
+    '''tb_cscid control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox22 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tb_cscid As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''DropDownList9 control.
+    '''cb_pli control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DropDownList9 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents cb_pli As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''TextBox24 control.
+    '''tb_pli control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox24 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tb_pli As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''ASPxRoundPanel2 control.
@@ -401,29 +401,29 @@ Partial Public Class EmployeeInfo
     Protected WithEvents ASPxGridView1 As Global.DevExpress.Web.ASPxGridView
 
     '''<summary>
-    '''Button1 control.
+    '''btn_add control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents btn_add As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Button3 control.
+    '''btn_update control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Button3 As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents btn_update As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Button2 control.
+    '''btn_delete control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Button2 As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents btn_delete As Global.System.Web.UI.WebControls.Button
 End Class
