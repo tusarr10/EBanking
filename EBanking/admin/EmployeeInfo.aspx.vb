@@ -5,7 +5,10 @@ Public Class EmployeeInfo
     ' Declar class 
     Private employeeInformation As ClsEmplInfo
     Private employeeDetails As clsEmpDetails
+    Private employeeService As EmpServices
 
+
+    Private AddEmployeeTransction As New AddEmpServices(connectionstringAdmin)
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
     End Sub
@@ -115,8 +118,9 @@ Public Class EmployeeInfo
     End Sub
 
     Private Sub btn_add_Click(sender As Object, e As EventArgs) Handles btn_add.Click
-        If "if employe exist " Then
+        If 1 = 2 Then
             '' already exist you cannot add
+
             Exit Sub
         Else
             Try
@@ -132,14 +136,28 @@ Public Class EmployeeInfo
         '' add data to class
         employeeInformation = New ClsEmplInfo
         employeeDetails = New clsEmpDetails
+        employeeService = New EmpServices
+        getDataFromView(employeeInformation, employeeDetails, employeeService)
+        Try
+            'Logic Here
+            If AddEmployeeTransction.AddEmployee(employeeDetails, employeeInformation, employeeService) Then
 
-        getDataFromView(employeeInformation, employeeDetails)
+            End If
+            '  Errortb.Text = "Data Saved Successfully"
 
+            Dim x = Request.Url.AbsoluteUri
+            myMsgBox.Show(Me, x)
+
+            MyMessageBox.Show(Me, "Data Saved Successfully")
+        Catch ex As Exception
+            ' Errortb.Text = "Data Not Saved Successfully"
+            MyMessageBox.Show(Me, "Data Not Saved Successfully")
+        End Try
 
     End Sub
 
-    Private Sub getDataFromView(employeeInformation As ClsEmplInfo, employeeDetails As clsEmpDetails)
-        ''' Get Employee Information from View and store in employee info table
+    Private Sub getDataFromView(employeeInformation As ClsEmplInfo, employeeDetails As clsEmpDetails, employeeService As EmpServices)
+        ' Get Employee Information from View and store in employee info table
 
         employeeInformation.MUserId1 = tb_userid.Text.Trim
         employeeInformation.MEmployeeId1 = tb_employeeId.Text.Trim
@@ -159,10 +177,32 @@ Public Class EmployeeInfo
         employeeInformation.MIdRemark1 = tb_remarks.Text
 
 
+#Disable Warning BC42303 ' XML comment cannot appear within a method or a property
         ''' Get Office details data from VIEW and store in class employee details table
+#Enable Warning BC42303 ' XML comment cannot appear within a method or a property
 
+        employeeDetails.MemployeeId1 = tb_employeeId.Text.Trim
+        employeeDetails.Mofficeid1 = tb_originalPost.Text '' to be change in future and replace with Office ID or BO id
+        employeeDetails.MDateofJoin1 = tb_joindate.Text
+        employeeDetails.MDateofRet1 = tb_retair.Text
+        employeeDetails.MDateOfPosting1 = tb_joindate.Text
+        employeeDetails.MEmployeeStatus1 = "Service"
+        employeeDetails.post1 = tb_currentPost.Text.Trim
+        employeeDetails.trcalvl1 = tb_trca.Text.Trim
+        employeeDetails.orgPost1 = tb_post.Text
+        employeeDetails.CurrentPlace1 = tb_currentPlacePost.Text
+        employeeDetails.currentPost1 = tb_currentPost.Text.Trim
+        employeeDetails.remarks1 = tb_remarks.Text
+        employeeDetails.MIsUidai1 = cb_uidai.Text
+        employeeDetails.MIsIPPB1 = cb_ippb.Text
+        employeeDetails.MIsPLI1 = cb_pli.Text
+        employeeDetails.MIsCSC1 = cb_cscid.Text
 
-        employeeDetails.
+        employeeService.memployeeid = tb_employeeId.Text.Trim
+        employeeService.muidaiid = tb_uidai.Text.Trim
+        employeeService.mpli = tb_pli.Text.Trim
+        employeeService.mippbid = tb_ippb.Text.Trim
+        employeeService.mcscid = tb_cscid.Text.Trim
 
 
     End Sub

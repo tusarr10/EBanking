@@ -22,6 +22,7 @@ Module connectionhelper
     Dim databasesourceaccount As String = ConfigurationSettings.AppSettings("dbsource").ToString()
     Dim databasesourceoperate As String = ConfigurationSettings.AppSettings("dboperate").ToString()
     Dim databasesourcerpli As String = ConfigurationSettings.AppSettings("plidbsrc").ToString()
+    Dim databasesourceAdmin As String = ConfigurationSettings.AppSettings("admindbsrc").ToString()
 
     Function connectionstringaccount() As String
         databaseconnectionstring = "server=TMEDIA ; database=" & databasesourceaccount.ToString & ";user=tusar;password=prahallad89"
@@ -35,5 +36,8 @@ Module connectionhelper
         databaseconnectionstring = "server=TMEDIA ; database=" & databasesourcerpli.ToString & ";user=tusar;password=prahallad89"
         Return databaseconnectionstring
     End Function
-
+    Function connectionstringAdmin() As String
+        databaseconnectionstring = "server=TMEDIA ; database=" & databasesourceAdmin.ToString & ";user=tusar;password=prahallad89"
+        Return databaseconnectionstring
+    End Function
 End Module

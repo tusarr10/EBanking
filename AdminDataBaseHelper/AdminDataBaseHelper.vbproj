@@ -44,6 +44,9 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.123\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -70,6 +73,7 @@
     <Compile Include="MVC\EmployeeTransfer\IEmpTransfer.vb" />
     <Compile Include="MVC\EmployeeTransfer\RepoEmployeeTransfer.vb" />
     <Compile Include="MVC\EmployeeTransfer\ServiceEmployeeTransfer.vb" />
+    <Compile Include="MVC\EmpServices\EmpServices.vb" />
     <Compile Include="MVC\Office\clsoffice.vb" />
     <Compile Include="MVC\Office\Ioffice.vb" />
     <Compile Include="MVC\Office\Repooffice.vb" />
@@ -78,6 +82,9 @@
     <Compile Include="MVC\Staff\Istaff.vb" />
     <Compile Include="MVC\Staff\RepoStaff.vb" />
     <Compile Include="MVC\Staff\ServiceStaff.vb" />
+    <Compile Include="MVC\trnsemployee\AddEmpinterface.vb" />
+    <Compile Include="MVC\trnsemployee\AddEmpRepo.vb" />
+    <Compile Include="MVC\trnsemployee\AddEmpServices.vb" />
     <Compile Include="MVC\villege\clsvillege.vb" />
     <Compile Include="MVC\villege\Ivillege.vb" />
     <Compile Include="MVC\villege\RepoVillege.vb" />
@@ -116,6 +123,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MVC\transctions\" />
