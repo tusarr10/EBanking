@@ -12,7 +12,7 @@ Public Class AddEmpRepo
     End Sub
 
 
-    Public Function AddEmpDataTransction(empdetails As clsEmpDetails, empinfo As ClsEmplInfo, empservices As EmpServices) As Boolean Implements AddEmpinterface.AddEmpDataTransction
+    Public Function AddEmpDataTransction(empdetails As clsEmpDetails, empinfo As ClsEmplInfo, empservices As EmpServices, emptrnsf As clsEmpTrnsf) As Boolean Implements AddEmpinterface.AddEmpDataTransction
         Dim parm As SqlParameter() = {
         New SqlParameter("@officeid", empdetails.Mofficeid1),
         New SqlParameter("@empid", empdetails.MemployeeId1),
@@ -56,6 +56,19 @@ Public Class AddEmpRepo
         New SqlParameter("@cscId", empservices.mcscid),
         New SqlParameter("@pliID", empservices.mpli)
         }
+        Dim parm4 As SqlParameter() = {
+        New SqlParameter("@empId", emptrnsf.MEmployeeID1),
+        New SqlParameter("@mDate", emptrnsf.Mdate1),
+        New SqlParameter("@mFrom", emptrnsf.MFrom1),
+        New SqlParameter("@mTo", emptrnsf.MTO1),
+        New SqlParameter("@mRemarks", emptrnsf.MRemark1),
+        New SqlParameter("@officeCode", emptrnsf.mofficecode),
+        New SqlParameter("@officeName", emptrnsf.mOfficename),
+        New SqlParameter("@Name", emptrnsf.mname),
+        New SqlParameter("@Designation", emptrnsf.mdesignation),
+        New SqlParameter("@postt", emptrnsf.mpost),
+        New SqlParameter("@other", emptrnsf.mother)
+        }
 
         Try
             If _db.State() Then
@@ -85,6 +98,11 @@ Public Class AddEmpRepo
                     Next
                     _db.Execute(query3, args3, transction)
                     '4.
+                    Dim query4 As String = "INSERT INTO dbo.EmpTransf (EmpId, mDate, mFrom, mTO, mRearmks, officeCode, officeName, Name, Designation, postt, other) VALUES (@MEmployeeID1, @mDate, @mFrom, @mTO, @mRearmks, @officeCode, @officeName, @Name, @Designation, @postt, @other)"
+                    Dim args4 = New DynamicParameters()
+                    For Each q As SqlParameter In parm4
+                        args4.Add(q.ParameterName, q.Value)
+                    Next
                     '.
                     '.
 
@@ -103,6 +121,7 @@ Public Class AddEmpRepo
 
     End Function
 
+
     Public Function UpdateDataTransction() As Boolean Implements AddEmpinterface.UpdateDataTransction
         Throw New NotImplementedException()
     End Function
@@ -112,6 +131,27 @@ Public Class AddEmpRepo
     End Function
 
     Public Function CheckEmployeeExist(employeeId As String) As Boolean Implements AddEmpinterface.CheckEmployeeExist
-        Throw New NotImplementedException()
+        Dim x As Integer = Me._db.Query(Of clsEmpDetails)("SELECT * FROM EmpDetails WHERE empId = @emploID ", New With {Key .emploID = employeeId}).ToList.Count
+        If x > 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Public Function GetEmpDetailsById(employeeId As String) As clsEmpDetails Implements AddEmpinterface.GetEmpDetailsById
+        Return Me._db.Query(Of clsEmpDetails)("SELECT * FROM EmpDetails where empId = @accountnumber ", New With {Key .accountnumber = employeeId}).FirstOrDefault
+    End Function
+
+    Public Function GetEmpInfoById(employeeId As String) As ClsEmplInfo Implements AddEmpinterface.GetEmpInfoById
+        Return Me._db.Query(Of ClsEmplInfo)("SELECT * FROM EmpInfo where EmployeeID = @accountnumber ", New With {Key .accountnumber = employeeId}).FirstOrDefault
+    End Function
+
+    Public Function GetEmpServiceById(employeeId As String) As EmpServices Implements AddEmpinterface.GetEmpServiceById
+        Return Me._db.Query(Of EmpServices)("SELECT * FROM EmpServices where empId = @accountnumber ", New With {Key .accountnumber = employeeId}).FirstOrDefault
+    End Function
+
+    Public Function GetTransferById(employeeId As String) As clsEmpTrnsf Implements AddEmpinterface.GetTransferById
+        Return Me._db.Query(Of clsEmpTrnsf)("SELECT * FROM EmpTransf where EmpId = @accountnumber ", New With {Key .accountnumber = employeeId}).FirstOrDefault
     End Function
 End Class

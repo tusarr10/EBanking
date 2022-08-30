@@ -5,10 +5,22 @@
 
     End Sub
 
-    Public Function AddEmployee(EmployeeDetails As clsEmpDetails, EmployeeInformation As ClsEmplInfo, EmployeeServices As EmpServices) As Boolean
-        Return _repo.AddEmpDataTransction(EmployeeDetails, EmployeeInformation, EmployeeServices)
+    Public Function AddEmployee(EmployeeDetails As clsEmpDetails, EmployeeInformation As ClsEmplInfo, EmployeeServices As EmpServices, employeetransfer As clsEmpTrnsf) As Boolean
+        Return _repo.AddEmpDataTransction(EmployeeDetails, EmployeeInformation, EmployeeServices, employeetransfer)
     End Function
     Public Function EmployeeExist(employeeId As String) As Boolean
-        Return _repo.
+        Return _repo.CheckEmployeeExist(employeeId)
+    End Function
+    Public Function GetEmployeeDetailsById(employeeId As String) As clsEmpDetails
+        Return _repo.GetEmpDetailsById(employeeId)
+    End Function
+    Public Function GetEmployeeInfoById(employeeId As String) As ClsEmplInfo
+        Return _repo.GetEmpInfoById(employeeId)
+    End Function
+    Public Function GetEmployeeServicesById(employeeId As String) As EmpServices
+        Return _repo.GetEmpServiceById(employeeId)
+    End Function
+    Public Function GetEmpTrnsfById(employeeId As String) As clsEmpTrnsf
+        Return _repo.GetTransferById(employeeId)
     End Function
 End Class

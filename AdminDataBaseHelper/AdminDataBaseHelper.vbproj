@@ -70,9 +70,6 @@
     <Compile Include="MVC\AttchedOffice\clsEmpDetails.vb" />
     <Compile Include="MVC\EmployeeIn\ClsEmplInfo.vb" />
     <Compile Include="MVC\EmployeeTransfer\clsEmpTrnsf.vb" />
-    <Compile Include="MVC\EmployeeTransfer\IEmpTransfer.vb" />
-    <Compile Include="MVC\EmployeeTransfer\RepoEmployeeTransfer.vb" />
-    <Compile Include="MVC\EmployeeTransfer\ServiceEmployeeTransfer.vb" />
     <Compile Include="MVC\EmpServices\EmpServices.vb" />
     <Compile Include="MVC\Office\clsoffice.vb" />
     <Compile Include="MVC\Office\Ioffice.vb" />

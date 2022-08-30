@@ -6,6 +6,7 @@ Public Class EmployeeInfo
     Private employeeInformation As ClsEmplInfo
     Private employeeDetails As clsEmpDetails
     Private employeeService As EmpServices
+    Private emptrnsf As clsEmpTrnsf
 
 
     Private AddEmployeeTransction As New AddEmpServices(connectionstringAdmin)
@@ -118,18 +119,14 @@ Public Class EmployeeInfo
     End Sub
 
     Private Sub btn_add_Click(sender As Object, e As EventArgs) Handles btn_add.Click
-        If 1 = 2 Then
-            '' already exist you cannot add
 
-            Exit Sub
-        Else
-            Try
+        Try
                 ' insert data into database
                 DoTransctionAddData()
             Catch ex As Exception
                 ' error message
             End Try
-        End If
+
     End Sub
 
     Private Sub DoTransctionAddData()
@@ -137,18 +134,26 @@ Public Class EmployeeInfo
         employeeInformation = New ClsEmplInfo
         employeeDetails = New clsEmpDetails
         employeeService = New EmpServices
-        getDataFromView(employeeInformation, employeeDetails, employeeService)
+        emptrnsf = New clsEmpTrnsf
+        getDataFromView(employeeInformation, employeeDetails, employeeService, emptrnsf)
         Try
-            'Logic Here
-            If AddEmployeeTransction.AddEmployee(employeeDetails, employeeInformation, employeeService) Then
+            If AddEmployeeTransction.EmployeeExist(employeeDetails.MemployeeId1) Then
+                '' already exist you cannot add
+                MyMessageBox.Show(Me, "already exist you can not add")
+                Exit Sub
+            Else
+            End If
 
+            'Logic Here
+            If AddEmployeeTransction.AddEmployee(employeeDetails, employeeInformation, employeeService, emptrnsf) Then
+                MyMessageBox.Show(Me, "Data Saved Successfully")
             End If
             '  Errortb.Text = "Data Saved Successfully"
 
             Dim x = Request.Url.AbsoluteUri
             myMsgBox.Show(Me, x)
 
-            MyMessageBox.Show(Me, "Data Saved Successfully")
+
         Catch ex As Exception
             ' Errortb.Text = "Data Not Saved Successfully"
             MyMessageBox.Show(Me, "Data Not Saved Successfully")
@@ -156,7 +161,7 @@ Public Class EmployeeInfo
 
     End Sub
 
-    Private Sub getDataFromView(employeeInformation As ClsEmplInfo, employeeDetails As clsEmpDetails, employeeService As EmpServices)
+    Private Sub getDataFromView(employeeInformation As ClsEmplInfo, employeeDetails As clsEmpDetails, employeeService As EmpServices, emptrnsf As clsEmpTrnsf)
         ' Get Employee Information from View and store in employee info table
 
         employeeInformation.MUserId1 = tb_userid.Text.Trim
@@ -204,6 +209,55 @@ Public Class EmployeeInfo
         employeeService.mippbid = tb_ippb.Text.Trim
         employeeService.mcscid = tb_cscid.Text.Trim
 
+        emptrnsf.MEmployeeID1 = tb_employeeId.Text.Trim   'EmpId, mDate, mFrom, mTO, mRearmks, officeCode, officeName, Name, Designation, postt, other
+        emptrnsf.Mdate1 = tb_joindate.Text
+        emptrnsf.MFrom1 = tb_originalPost.Text
+        emptrnsf.MTO1 = tb_originalPost.Text
+        emptrnsf.MRemark1 =
+            emptrnsf.mofficecode =
+            emptrnsf.mOfficename =
+            emptrnsf.mname =
 
+
+
+    End Sub
+
+    Private Sub GetDataByEmployeeId(AccountId As String)
+        If AddEmployeeTransction.EmployeeExist(AccountId) Then
+            'Disable Add Button 
+            Try
+                'Get data From Employee Details
+                employeeDetails = New clsEmpDetails
+                employeeDetails = AddEmployeeTransction.GetEmployeeDetailsById(AccountId)
+                fillDataInDivisionOne(employeeDetails)
+
+                'Get Data From Employee Informations
+                employeeInformation = New ClsEmplInfo
+                employeeInformation = AddEmployeeTransction.GetEmployeeInfoById(AccountId)
+
+
+                ' Get Data From employee Services
+                employeeService = New EmpServices
+                employeeService = AddEmployeeTransction.GetEmployeeServicesById(AccountId)
+
+
+            Catch ex As Exception
+
+            End Try
+        End If
+    End Sub
+    Private Sub fillDataInDivisionOne(data As clsEmpDetails) 'For 1st Devision
+        'division 1
+
+        balanceTb.Text = data.balance ' getAccountBalance(row) 'Get Balance Form Database
+        AccStatustb.Text = data.status ' getAccountStatus(row) 'Get Account Status
+        'division 2
+        ciftb.Text = data.cif ' getAccountCif(row)
+        nametb.Text = data.n_ame ' getAccountName(row)
+        name2tb.Text = data.jointname ' getAccountJointName(row)
+        nominiregcb.Text = data.nominireg ' getAccountNominiRegistor(row)
+        ProductCb.Text = data.producttype ' getAccountProductType(row)
+        Modetb.Text = data.acctype ' getAccountAccType(row)
+        Guardiantb.Text = data.guardianname ' getAccountGuardianName(row)
     End Sub
 End Class
