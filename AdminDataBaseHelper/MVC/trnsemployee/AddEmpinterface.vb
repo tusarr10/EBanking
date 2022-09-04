@@ -8,7 +8,7 @@
     Function GetEmpInfoById(employeeId As String) As ClsEmplInfo
     Function AddEmpDataTransction(empdetails As clsEmpDetails, empinfo As ClsEmplInfo, empservices As EmpServices, emptrnsf As clsEmpTrnsf) As Boolean
     Function GetEmpServiceById(employeeId As String) As EmpServices
-    Function GetTransferById(employeeId As String) As clsEmpTrnsf
+    Function GetTransferById(employeeId As String) As List(Of clsEmpTrnsf)
 
 
 End Interface

@@ -67,7 +67,8 @@ Public Class AddEmpRepo
         New SqlParameter("@Name", emptrnsf.mname),
         New SqlParameter("@Designation", emptrnsf.mdesignation),
         New SqlParameter("@postt", emptrnsf.mpost),
-        New SqlParameter("@other", emptrnsf.mother)
+        New SqlParameter("@other", emptrnsf.mother),
+        New SqlParameter("@mmemo", emptrnsf.mmemo1)
         }
 
         Try
@@ -98,7 +99,7 @@ Public Class AddEmpRepo
                     Next
                     _db.Execute(query3, args3, transction)
                     '4.
-                    Dim query4 As String = "INSERT INTO dbo.EmpTransf (EmpId, mDate, mFrom, mTO, mRemarks, officeCode, officeName, Name, Designation, postt, other) VALUES (@empId, @mDate, @mFrom, @mTO, @mRemarks, @officeCode, @officeName, @Name, @Designation, @postt, @other)"
+                    Dim query4 As String = "INSERT INTO dbo.EmpTransf (EmpId, mDate, mFrom, mTO, mRemarks, officeCode, officeName, Name, Designation, postt, other ,mmemo) VALUES (@empId, @mDate, @mFrom, @mTO, @mRemarks, @officeCode, @officeName, @Name, @Designation, @postt, @other ,@mmemo)"
                     Dim args4 = New DynamicParameters()
                     For Each q As SqlParameter In parm4
                         args4.Add(q.ParameterName, q.Value)
@@ -152,7 +153,7 @@ Public Class AddEmpRepo
         Return Me._db.Query(Of EmpServices)("SELECT * FROM EmpServices where empId = @accountnumber ", New With {Key .accountnumber = employeeId}).FirstOrDefault
     End Function
 
-    Public Function GetTransferById(employeeId As String) As clsEmpTrnsf Implements AddEmpinterface.GetTransferById
-        Return Me._db.Query(Of clsEmpTrnsf)("SELECT * FROM EmpTransf where EmpId = @accountnumber ", New With {Key .accountnumber = employeeId}).FirstOrDefault
+    Public Function GetTransferById(employeeId As String) As List(Of clsEmpTrnsf) Implements AddEmpinterface.GetTransferById
+        Return Me._db.Query(Of clsEmpTrnsf)("SELECT * FROM EmpTransf where EmpId = @accountnumber ", New With {Key .accountnumber = employeeId})
     End Function
 End Class

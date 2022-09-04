@@ -392,13 +392,13 @@ Partial Public Class EmployeeInfo
     Protected WithEvents ASPxRoundPanel2 As Global.DevExpress.Web.ASPxRoundPanel
 
     '''<summary>
-    '''ASPxGridView1 control.
+    '''emptrnsfGridView control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ASPxGridView1 As Global.DevExpress.Web.ASPxGridView
+    Protected WithEvents emptrnsfGridView As Global.DevExpress.Web.ASPxGridView
 
     '''<summary>
     '''btn_add control.

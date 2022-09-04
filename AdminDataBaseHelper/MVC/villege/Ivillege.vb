@@ -4,7 +4,7 @@
     ''' <summary>
     ''' List Of Villeger available Under Office
     ''' </summary>
-    ''' <param name="code"> as office code</param>
+    ''' <param Name="code"> as office code</param>
     ''' <returns>list of villege</returns>
     Function FindByOfficeCode(code As String) As IList(Of clsvillege)
 

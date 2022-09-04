@@ -399,15 +399,16 @@
                                 <div class="content">
                                     <div class="card">
                                         <div class="card-body">
-                                            <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False">
+                                            <dx:ASPxGridView ID="emptrnsfGridView" runat="server" AutoGenerateColumns="False">
                                                 <Columns>
-                                                    <dx:GridViewDataTextColumn FieldName="sn" Name="sn" Caption="sn" VisibleIndex="0"></dx:GridViewDataTextColumn>
-                                                    <dx:GridViewDataTextColumn FieldName="date" Name="date" Caption="Date" VisibleIndex="1"></dx:GridViewDataTextColumn>
-                                                    <dx:GridViewDataTextColumn FieldName="from" Name="from" Caption="From" VisibleIndex="2"></dx:GridViewDataTextColumn>
-                                                    <dx:GridViewDataTextColumn FieldName="To" Name="To" Caption="To" VisibleIndex="3"></dx:GridViewDataTextColumn>
-                                                    <dx:GridViewDataTextColumn FieldName="trnsftype" Name="trnsftype" Caption="TransfType" VisibleIndex="4"></dx:GridViewDataTextColumn>
-                                                    <dx:GridViewDataTextColumn FieldName="memono" Name="Memono" Caption="MemoNumber" VisibleIndex="5"></dx:GridViewDataTextColumn>
-                                                    <dx:GridViewDataTextColumn FieldName="remarks" Name="remarks" Caption="Remarks" VisibleIndex="6"></dx:GridViewDataTextColumn>
+                                                    <dx:gridviewdatatextcolumn  name="SN" caption="SN" visibleindex="0"></dx:gridviewdatatextcolumn>
+                                                    <dx:GridViewDataTextColumn FieldName="Mdate1" Name="Mdate1" Caption="Date" VisibleIndex="2"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="MFrom1" Name="MFrom1" Caption="From" VisibleIndex="3"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="MTO1" Name="MTO1" Caption="To" VisibleIndex="4"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="mother" Name="mother" Caption="TransfType" VisibleIndex="5"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="mmemo1" Name="mmemo1" Caption="MemoNumber" VisibleIndex="6"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="MRemark1" Name="MRemark1" Caption="Remarks" VisibleIndex="0"></dx:GridViewDataTextColumn>
+                                                    <dx:GridViewDataTextColumn FieldName="MEmployeeID1" Name="MEmployeeID1" Caption="Employee Id" VisibleIndex="1"></dx:GridViewDataTextColumn>
                                                 </Columns>
                                             </dx:ASPxGridView>
                                         </div>

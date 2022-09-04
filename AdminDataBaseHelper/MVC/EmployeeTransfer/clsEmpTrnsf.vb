@@ -1,15 +1,24 @@
 ﻿Public Class clsEmpTrnsf
-    Private mEmployeeID As String        '1
-    Private mdate As String       '2
+    Private EmpId As String        '1
+    Private mDate As String       '2
     Private mFrom As String     '3  
     Private mTO As String       '4
-    Private mRemark As String       '5
-    Private officecode As String         '6
+    Private mRemarks As String       '5
+    Private officeCode As String         '6
     Private officeName As String        '7
-    Private name As String            '8
-    Private designation As String        '9
-    Private post As String          '10
+    Private Name As String            '8
+    Private Designation As String        '9
+    Private postt As String          '10
     Private other As String     '11
+    Private mmemo As String
+    Public Property mmemo1() As String
+        Get
+            Return mmemo
+        End Get
+        Set(ByVal value As String)
+            mmemo = value
+        End Set
+    End Property
     Public Property mother() As String
         Get
             Return other
@@ -20,26 +29,26 @@
     End Property
     Public Property mpost() As String
         Get
-            Return post
+            Return postt
         End Get
         Set(ByVal value As String)
-            post = value
+            postt = value
         End Set
     End Property
     Public Property mdesignation() As String
         Get
-            Return designation
+            Return Designation
         End Get
         Set(ByVal value As String)
-            designation = value
+            Designation = value
         End Set
     End Property
     Public Property mname() As String
         Get
-            Return name
+            Return Name
         End Get
         Set(ByVal value As String)
-            name = value
+            Name = value
         End Set
     End Property
     Public Property mOfficename() As String
@@ -52,28 +61,28 @@
     End Property
     Public Property mofficecode() As String
         Get
-            Return officecode
+            Return officeCode
         End Get
         Set(ByVal value As String)
-            officecode = value
+            officeCode = value
         End Set
     End Property
 
     Public Property MEmployeeID1 As String
         Get
-            Return mEmployeeID
+            Return EmpId
         End Get
         Set(value As String)
-            mEmployeeID = value
+            EmpId = value
         End Set
     End Property
 
     Public Property Mdate1 As String
         Get
-            Return mdate
+            Return mDate
         End Get
         Set(value As String)
-            mdate = value
+            mDate = value
         End Set
     End Property
 
@@ -97,10 +106,10 @@
 
     Public Property MRemark1 As String
         Get
-            Return mRemark
+            Return mRemarks
         End Get
         Set(value As String)
-            mRemark = value
+            mRemarks = value
         End Set
     End Property
 End Class

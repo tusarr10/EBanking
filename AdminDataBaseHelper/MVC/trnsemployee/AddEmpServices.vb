@@ -20,7 +20,7 @@
     Public Function GetEmployeeServicesById(employeeId As String) As EmpServices
         Return _repo.GetEmpServiceById(employeeId)
     End Function
-    Public Function GetEmpTrnsfById(employeeId As String) As clsEmpTrnsf
+    Public Function GetEmpTrnsfById(employeeId As String) As List(Of clsEmpTrnsf)
         Return _repo.GetTransferById(employeeId)
     End Function
 End Class

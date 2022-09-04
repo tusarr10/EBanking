@@ -210,16 +210,17 @@ Public Class EmployeeInfo
         employeeService.mcscid = tb_cscid.Text.Trim
 
         emptrnsf.MEmployeeID1 = tb_employeeId.Text.Trim
-        emptrnsf.Mdate1 = tb_joindate.Text
-        emptrnsf.MFrom1 = tb_originalPost.Text
-        emptrnsf.MTO1 = tb_originalPost.Text
+        emptrnsf.Mdate1 = tb_currentPlacePost.Text
+        emptrnsf.MFrom1 = tb_currentPlacePost.Text
+        emptrnsf.MTO1 = ""
         emptrnsf.MRemark1 = "NEW JOIN"
-        emptrnsf.mofficecode = tb_post.Text
+        emptrnsf.mofficecode = tb_currentPlacePost.Text
         emptrnsf.mOfficename = tb_currentPlacePost.Text
-        emptrnsf.mname = tb_post.Text
+        emptrnsf.mname = tb_employeeName.Text
         emptrnsf.mdesignation = tb_currentPost.Text
-        emptrnsf.mpost = tb_currentPlacePost.Text
+        emptrnsf.mpost = tb_originalPost.Text
         emptrnsf.mother = "NEW JOIN"
+        emptrnsf.mmemo1 = "n/a"
 
 
     End Sub
@@ -242,13 +243,16 @@ Public Class EmployeeInfo
                 employeeService = New EmpServices
                 employeeService = AddEmployeeTransction.GetEmployeeServicesById(AccountId)
 
-                fillDataInDivisionOne(employeeInformation, employeeDetails, employeeService)
+                ' emptrnsf = New clsEmpTrnsf
+                ' emptrnsf = AddEmployeeTransction.GetEmpTrnsfById(AccountId)
+
+                fillDataInDivisionOne(employeeInformation, employeeDetails, employeeService, AccountId)
             Catch ex As Exception
 
             End Try
         End If
     End Sub
-    Private Sub fillDataInDivisionOne(employeeInformation As ClsEmplInfo, employeeDetails As clsEmpDetails, employeeService As EmpServices) 'For 1st Devision
+    Private Sub fillDataInDivisionOne(employeeInformation As ClsEmplInfo, employeeDetails As clsEmpDetails, employeeService As EmpServices, AccountId As String)
         'division 1
 
         tb_userid.Text = employeeInformation.MUserId1
@@ -295,5 +299,15 @@ Public Class EmployeeInfo
         tb_pli.Text = employeeService.mpli
         tb_ippb.Text = employeeService.mippbid
         tb_cscid.Text = employeeService.mcscid
+
+
+        Try
+            emptrnsfGridView.DataSource = AddEmployeeTransction.GetEmpTrnsfById(AccountId)
+            emptrnsfGridView.DataBind()
+
+        Catch ex As Exception
+
+        End Try
+
     End Sub
 End Class
