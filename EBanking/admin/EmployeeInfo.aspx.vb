@@ -1,4 +1,4 @@
-﻿Imports adminDataBaseHelper
+﻿Imports AdminDataBaseHelper
 Public Class EmployeeInfo
     Inherits System.Web.UI.Page
 
@@ -21,8 +21,8 @@ Public Class EmployeeInfo
         End Try
 
         Try
-            If 1 = 2 Then
-                MsgBox("test 2")
+            If AddEmployeeTransction.EmployeeExist(tb_employeeId.Text.Trim) Then
+                GetDataByEmployeeId(tb_employeeId.Text.Trim)
                 ''do fill data
             Else
 
@@ -209,15 +209,17 @@ Public Class EmployeeInfo
         employeeService.mippbid = tb_ippb.Text.Trim
         employeeService.mcscid = tb_cscid.Text.Trim
 
-        emptrnsf.MEmployeeID1 = tb_employeeId.Text.Trim   'EmpId, mDate, mFrom, mTO, mRearmks, officeCode, officeName, Name, Designation, postt, other
+        emptrnsf.MEmployeeID1 = tb_employeeId.Text.Trim
         emptrnsf.Mdate1 = tb_joindate.Text
         emptrnsf.MFrom1 = tb_originalPost.Text
         emptrnsf.MTO1 = tb_originalPost.Text
-        emptrnsf.MRemark1 =
-            emptrnsf.mofficecode =
-            emptrnsf.mOfficename =
-            emptrnsf.mname =
-
+        emptrnsf.MRemark1 = "NEW JOIN"
+        emptrnsf.mofficecode = tb_post.Text
+        emptrnsf.mOfficename = tb_currentPlacePost.Text
+        emptrnsf.mname = tb_post.Text
+        emptrnsf.mdesignation = tb_currentPost.Text
+        emptrnsf.mpost = tb_currentPlacePost.Text
+        emptrnsf.mother = "NEW JOIN"
 
 
     End Sub
@@ -229,7 +231,7 @@ Public Class EmployeeInfo
                 'Get data From Employee Details
                 employeeDetails = New clsEmpDetails
                 employeeDetails = AddEmployeeTransction.GetEmployeeDetailsById(AccountId)
-                fillDataInDivisionOne(employeeDetails)
+
 
                 'Get Data From Employee Informations
                 employeeInformation = New ClsEmplInfo
@@ -240,24 +242,58 @@ Public Class EmployeeInfo
                 employeeService = New EmpServices
                 employeeService = AddEmployeeTransction.GetEmployeeServicesById(AccountId)
 
-
+                fillDataInDivisionOne(employeeInformation, employeeDetails, employeeService)
             Catch ex As Exception
 
             End Try
         End If
     End Sub
-    Private Sub fillDataInDivisionOne(data As clsEmpDetails) 'For 1st Devision
+    Private Sub fillDataInDivisionOne(employeeInformation As ClsEmplInfo, employeeDetails As clsEmpDetails, employeeService As EmpServices) 'For 1st Devision
         'division 1
 
-        balanceTb.Text = data.balance ' getAccountBalance(row) 'Get Balance Form Database
-        AccStatustb.Text = data.status ' getAccountStatus(row) 'Get Account Status
-        'division 2
-        ciftb.Text = data.cif ' getAccountCif(row)
-        nametb.Text = data.n_ame ' getAccountName(row)
-        name2tb.Text = data.jointname ' getAccountJointName(row)
-        nominiregcb.Text = data.nominireg ' getAccountNominiRegistor(row)
-        ProductCb.Text = data.producttype ' getAccountProductType(row)
-        Modetb.Text = data.acctype ' getAccountAccType(row)
-        Guardiantb.Text = data.guardianname ' getAccountGuardianName(row)
+        tb_userid.Text = employeeInformation.MUserId1
+        tb_employeeId.Text = employeeInformation.MEmployeeId1
+        tb_employeeName.Text = employeeInformation.MName1
+        tb_fathername.Text = employeeInformation.MFather1
+        tb_DOB.Text = employeeInformation.MDOB1
+        cb_gender.Text = employeeInformation.MGender1
+        cb_bloodGroup.Text = employeeInformation.MBlood1
+        tb_address.Text = employeeInformation.MAddress1
+        tb_address2.Text = employeeInformation.MAddress21
+        tb_mobile.Text = employeeInformation.MMobile11
+        tb_mobile2.Text = employeeInformation.MMobile2
+        tb_email.Text = employeeInformation.MEmail1
+        tb_aadhaar.Text = employeeInformation.Maadhar1
+        tb_pan.Text = employeeInformation.MPan1
+        tb_pran.Text = employeeInformation.mpran1
+        tb_remarks.Text = employeeInformation.MIdRemark1
+
+
+#Disable Warning BC42303 ' XML comment cannot appear within a method or a property
+        ''' Get Office details data from VIEW and store in class employee details table
+#Enable Warning BC42303 ' XML comment cannot appear within a method or a property
+
+        ' tb_employeeId.Text = employeeDetails.MemployeeId1
+        tb_originalPost.Text = employeeDetails.Mofficeid1  '' to be change in future and replace with Office ID or BO id
+        tb_joindate.Text = employeeDetails.MDateofJoin1
+        tb_retair.Text = employeeDetails.MDateofRet1
+        tb_joindate.Text = employeeDetails.MDateOfPosting1
+        '   employeeDetails.MEmployeeStatus1 = "Service"
+        tb_currentPost.Text = employeeDetails.post1
+        tb_trca.Text = employeeDetails.trcalvl1
+        tb_post.Text = employeeDetails.orgPost1
+        tb_currentPlacePost.Text = employeeDetails.CurrentPlace1
+        tb_currentPost.Text = employeeDetails.currentPost1
+        tb_PostRemark.Text = employeeDetails.remarks1
+        cb_uidai.Text = employeeDetails.MIsUidai1
+        cb_ippb.Text = employeeDetails.MIsIPPB1
+        cb_pli.Text = employeeDetails.MIsPLI1
+        cb_cscid.Text = employeeDetails.MIsCSC1
+
+        tb_employeeId.Text = employeeService.memployeeid
+        tb_uidai.Text = employeeService.muidaiid
+        tb_pli.Text = employeeService.mpli
+        tb_ippb.Text = employeeService.mippbid
+        tb_cscid.Text = employeeService.mcscid
     End Sub
 End Class

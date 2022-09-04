@@ -5,23 +5,23 @@
 '''                 date of join ret and licences
 ''' </summary>
 Public Class clsEmpDetails
-    Private mofficeid As String
-    Private memployeeId As String
-    Private mDateOfPosting As String ' in current post
-    Private mDateofJoin As String   ' in India Post
-    Private mDateofRet As String
-    Private mEmployeeStatus As String   ' Acctive or terminate
-    Private post As String
+    Private officeId As String
+    Private empId As String
+    Private DateOfPosting As String ' in current Postt
+    Private DateOfJoin As String   ' in India Post
+    Private DateOfRet As String
+    Private EmpStatus As String   ' Acctive or terminate
+    Private Postt As String
     Private trcalvl As String
     Private orgPost As String
     Private currentPlace As String
     Private currentPost As String
     Private Remarks As String
 
-    Private mIsUidai As String
-    Private mIsIPPB As String
-    Private mIsCSC As String
-    Private mIsPLI As String  '16
+    Private IsUIDAI As String
+    Private IsIPPB As String
+    Private IsCSC As String
+    Private IsPLI As String  '16
 
 
     Public Property remarks1() As String
@@ -66,99 +66,99 @@ Public Class clsEmpDetails
     End Property
     Public Property post1() As String
         Get
-            Return post
+            Return Postt
         End Get
         Set(ByVal value As String)
-            post = value
+            Postt = value
         End Set
     End Property
     Public Property Mofficeid1 As String
         Get
-            Return mofficeid
+            Return officeId
         End Get
         Set(value As String)
-            mofficeid = value
+            officeId = value
         End Set
     End Property
 
     Public Property MemployeeId1 As String
         Get
-            Return memployeeId
+            Return empId
         End Get
         Set(value As String)
-            memployeeId = value
+            empId = value
         End Set
     End Property
 
     Public Property MDateofJoin1 As String
         Get
-            Return mDateofJoin
+            Return DateOfJoin
         End Get
         Set(value As String)
-            mDateofJoin = value
+            DateOfJoin = value
         End Set
     End Property
 
     Public Property MDateofRet1 As String
         Get
-            Return mDateofRet
+            Return DateOfRet
         End Get
         Set(value As String)
-            mDateofRet = value
+            DateOfRet = value
         End Set
     End Property
 
     Public Property MEmployeeStatus1 As String
         Get
-            Return mEmployeeStatus
+            Return EmpStatus
         End Get
         Set(value As String)
-            mEmployeeStatus = value
+            EmpStatus = value
         End Set
     End Property
 
     Public Property MIsUidai1 As String
         Get
-            Return mIsUidai
+            Return IsUIDAI
         End Get
         Set(value As String)
-            mIsUidai = value
+            IsUIDAI = value
         End Set
     End Property
 
     Public Property MIsIPPB1 As String
         Get
-            Return mIsIPPB
+            Return IsIPPB
         End Get
         Set(value As String)
-            mIsIPPB = value
+            IsIPPB = value
         End Set
     End Property
 
     Public Property MIsCSC1 As String
         Get
-            Return mIsCSC
+            Return IsCSC
         End Get
         Set(value As String)
-            mIsCSC = value
+            IsCSC = value
         End Set
     End Property
 
     Public Property MIsPLI1 As String
         Get
-            Return mIsPLI
+            Return IsPLI
         End Get
         Set(value As String)
-            mIsPLI = value
+            IsPLI = value
         End Set
     End Property
 
     Public Property MDateOfPosting1 As String
         Get
-            Return mDateOfPosting
+            Return DateOfPosting
         End Get
         Set(value As String)
-            mDateOfPosting = value
+            DateOfPosting = value
         End Set
     End Property
 End Class

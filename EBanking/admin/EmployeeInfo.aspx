@@ -242,7 +242,7 @@
                                                    <div class="col-md-3">
                                                     <label>TRCA Lavel</label>
                                                     <div class="form-group  ">
-                                                        <asp:TextBox CssClass="form-control" ID="tb_trca" runat="server" placeholder="TRCA lavel" ReadOnly="True"></asp:TextBox>
+                                                        <asp:TextBox CssClass="form-control" ID="tb_trca" runat="server" placeholder="TRCA lavel" ReadOnly="True" ForeColor="#3333FF"></asp:TextBox>
                                                     </div>
                                                 </div>
                                             </div>

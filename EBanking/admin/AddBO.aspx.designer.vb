@@ -122,13 +122,13 @@ Partial Public Class AddBO
     Protected WithEvents TextBox7 As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''cb_gender control.
+    '''cb_Circle control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents cb_gender As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents cb_Circle As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''DropDownList2 control.

@@ -6,164 +6,164 @@
 
 Public Class ClsEmplInfo
 
-    Private mUserId As String
-    Private mEmployeeId As String
-    Private mName As String
-    Private mFather As String
-    Private mDOB As String
-    Private mGender As String
-    Private mAddress As String
-    Private mAddress2 As String
-    Private mMobile As String
-    Private mMobile1 As String
-    Private mEmail As String
-    Private mBlood As String
-    Private maadhar As String
-    Private mPan As String
-    Private mPran As String ' 15
-    Private mIdRemark As String
+    Private UserId As String
+    Private EmployeeId As String
+    Private Name As String
+    Private Father As String
+    Private DOB As String
+    Private Gender As String
+    Private Address As String
+    Private Address2 As String
+    Private Mobile As String
+    Private Mobile2 As String
+    Private Email As String
+    Private Blood As String
+    Private Aadhaar As String
+    Private Pan As String
+    Private Pran As String ' 15
+    Private IdRemark As String
     Public Property mpran1() As String
         Get
-            Return mPran
+            Return Pran
         End Get
         Set(ByVal value As String)
-            mPran = value
+            Pran = value
         End Set
     End Property
 
 
     Public Property MUserId1 As String
         Get
-            Return mUserId
+            Return UserId
         End Get
         Set(value As String)
-            mUserId = value
+            UserId = value
         End Set
     End Property
 
     Public Property MEmployeeId1 As String
         Get
-            Return mEmployeeId
+            Return EmployeeId
         End Get
         Set(value As String)
-            mEmployeeId = value
+            EmployeeId = value
         End Set
     End Property
 
     Public Property MName1 As String
         Get
-            Return mName
+            Return Name
         End Get
         Set(value As String)
-            mName = value
+            Name = value
         End Set
     End Property
 
     Public Property MFather1 As String
         Get
-            Return mFather
+            Return Father
         End Get
         Set(value As String)
-            mFather = value
+            Father = value
         End Set
     End Property
 
     Public Property MDOB1 As String
         Get
-            Return mDOB
+            Return DOB
         End Get
         Set(value As String)
-            mDOB = value
+            DOB = value
         End Set
     End Property
 
     Public Property MGender1 As String
         Get
-            Return mGender
+            Return Gender
         End Get
         Set(value As String)
-            mGender = value
+            Gender = value
         End Set
     End Property
 
     Public Property MAddress1 As String
         Get
-            Return mAddress
+            Return Address
         End Get
         Set(value As String)
-            mAddress = value
+            Address = value
         End Set
     End Property
 
     Public Property MAddress21 As String
         Get
-            Return mAddress2
+            Return Address2
         End Get
         Set(value As String)
-            mAddress2 = value
+            Address2 = value
         End Set
     End Property
 
     Public Property MMobile2 As String
         Get
-            Return mMobile
+            Return Mobile
         End Get
         Set(value As String)
-            mMobile = value
+            Mobile = value
         End Set
     End Property
 
     Public Property MMobile11 As String
         Get
-            Return mMobile1
+            Return Mobile2
         End Get
         Set(value As String)
-            mMobile1 = value
+            Mobile2 = value
         End Set
     End Property
 
     Public Property MEmail1 As String
         Get
-            Return mEmail
+            Return Email
         End Get
         Set(value As String)
-            mEmail = value
+            Email = value
         End Set
     End Property
 
     Public Property MBlood1 As String
         Get
-            Return mBlood
+            Return Blood
         End Get
         Set(value As String)
-            mBlood = value
+            Blood = value
         End Set
     End Property
 
     Public Property Maadhar1 As String
         Get
-            Return maadhar
+            Return Aadhaar
         End Get
         Set(value As String)
-            maadhar = value
+            Aadhaar = value
         End Set
     End Property
 
     Public Property MPan1 As String
         Get
-            Return mPan
+            Return Pan
         End Get
         Set(value As String)
-            mPan = value
+            Pan = value
         End Set
     End Property
 
     Public Property MIdRemark1 As String
         Get
-            Return mIdRemark
+            Return IdRemark
         End Get
         Set(value As String)
-            mIdRemark = value
+            IdRemark = value
         End Set
     End Property
 End Class

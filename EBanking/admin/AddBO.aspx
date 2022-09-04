@@ -20,13 +20,13 @@
                             <label>Office ID</label>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <asp:TextBox CssClass="form-control " ID="tb_employeeId" runat="server" placeholder="Employee ID"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control " ID="tb_employeeId" runat="server" placeholder="Office ID"></asp:TextBox>
                                     <asp:LinkButton class="btn btn-primary" ID="LinkButton4" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <label>Name </label>
+                            <label>Office Name </label>
                             <div class="form-group  ">
                                 <asp:TextBox CssClass="form-control" ID="tb_employeeName" runat="server" placeholder="Office Name" ReadOnly="true"></asp:TextBox>
                             </div>
@@ -82,14 +82,14 @@
                                                 <div class="col-md-3">
                                                     <label>Office ID</label>
                                                     <div class="input-group  ">
-                                                        <asp:TextBox CssClass="form-control" ID="tb_userid" runat="server" placeholder="User ID" ReadOnly="true"></asp:TextBox>
+                                                        <asp:TextBox CssClass="form-control" ID="tb_userid" runat="server" placeholder="Office ID" ReadOnly="true"></asp:TextBox>
                                                         <%--<asp:LinkButton class="btn btn-primary" ID="LinkButton5" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>--%>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label>Number of staff</label>
                                                     <div class="form-group  ">
-                                                        <asp:TextBox CssClass="form-control" ID="tb_fathername" runat="server" placeholder="Staff" ReadOnly="true"></asp:TextBox>
+                                                        <asp:TextBox CssClass="form-control" ID="tb_fathername" runat="server" placeholder="Number of Staff" ReadOnly="true"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
@@ -103,7 +103,7 @@
                                                 <div class="col-md-2">
                                                     <label>Circle</label>
                                                     <div class="form-group">
-                                                        <asp:DropDownList CssClass="form-control" ID="cb_gender" runat="server" placeholder="Nomini" Enabled="False" AutoPostBack="true">
+                                                        <asp:DropDownList CssClass="form-control" ID="cb_Circle" runat="server" placeholder="Nomini" Enabled="False" AutoPostBack="true">
                                                             <asp:ListItem Text="Chose .." Value="" />
                                                             <asp:ListItem Text="Odisha" Value="Odisha" />
                                                             <asp:ListItem Text="Delhi" Value="Delhi" />
@@ -111,7 +111,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label>Rigion</label>
+                                                    <label>Region</label>
                                                     <div class="form-group">
                                                         <asp:DropDownList CssClass="form-control" ID="DropDownList2" runat="server" placeholder="Nomini" Enabled="False" AutoPostBack="true">
                                                             <asp:ListItem Text="Chose .." Value="" />

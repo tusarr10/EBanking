@@ -98,11 +98,12 @@ Public Class AddEmpRepo
                     Next
                     _db.Execute(query3, args3, transction)
                     '4.
-                    Dim query4 As String = "INSERT INTO dbo.EmpTransf (EmpId, mDate, mFrom, mTO, mRearmks, officeCode, officeName, Name, Designation, postt, other) VALUES (@MEmployeeID1, @mDate, @mFrom, @mTO, @mRearmks, @officeCode, @officeName, @Name, @Designation, @postt, @other)"
+                    Dim query4 As String = "INSERT INTO dbo.EmpTransf (EmpId, mDate, mFrom, mTO, mRemarks, officeCode, officeName, Name, Designation, postt, other) VALUES (@empId, @mDate, @mFrom, @mTO, @mRemarks, @officeCode, @officeName, @Name, @Designation, @postt, @other)"
                     Dim args4 = New DynamicParameters()
                     For Each q As SqlParameter In parm4
                         args4.Add(q.ParameterName, q.Value)
                     Next
+                    _db.Execute(query4, args4, transction)
                     '.
                     '.
 
