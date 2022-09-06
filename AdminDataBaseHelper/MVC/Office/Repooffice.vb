@@ -1,5 +1,7 @@
 ﻿Imports System.Data
 Imports System.Data.SqlClient
+Imports Dapper
+
 
 Public Class Repooffice
     Implements Ioffice
@@ -11,15 +13,24 @@ Public Class Repooffice
     End Sub
 
     Public Function GetAll() As IList(Of clsoffice) Implements Ioffice.GetAll
-        Throw New NotImplementedException()
+        Return Me._db.Query(Of clsoffice)("SELECT * FROM OfficeDetails").ToList()
     End Function
 
     Public Function FindByOfficeCode(OfficeCode As String) As clsoffice Implements Ioffice.FindByOfficeCode
-        Throw New NotImplementedException()
+        Return Me._db.Query(Of clsoffice)("SELECT * FROM OfficeDetails WHERE officeId =@officecode", New With {Key .officecode = OfficeCode}).FirstOrDefault
     End Function
 
-    Public Function IsOfficecodeExist() As Boolean Implements Ioffice.IsOfficecodeExist
-        Throw New NotImplementedException()
+    'Public Function IsOfficecodeExist(officecode As String) As Boolean Implements Ioffice.IsOfficecodeExist
+    '    Throw New NotImplementedException()
+    'End Function
+
+    Public Function IsOfficecodeExist(officeCode As String) As Boolean Implements Ioffice.IsOfficecodeExist
+        Dim x = Me._db.Query(Of clsoffice)("SELECT * FROM OfficeDetails WHERE officeId =@officecode", New With {Key .officecode = officeCode}).ToList().Count
+        If x > 0 Then
+            Return True
+        Else
+            Return False
+        End If
     End Function
 
     Public Function AddOffice(officeData As clsoffice) As Boolean Implements Ioffice.AddOffice
@@ -31,6 +42,10 @@ Public Class Repooffice
     End Function
 
     Public Function DeleteOffice(officeCode As String) As Boolean Implements Ioffice.DeleteOffice
+        Throw New NotImplementedException()
+    End Function
+
+    Public Function FindBySubdivision(SD As String) As List(Of clsoffice) Implements Ioffice.FindBySubdivision
         Throw New NotImplementedException()
     End Function
 End Class

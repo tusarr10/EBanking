@@ -145,18 +145,20 @@ Public Class EmployeeInfo
             End If
 
             'Logic Here
-            If AddEmployeeTransction.AddEmployee(employeeDetails, employeeInformation, employeeService, emptrnsf) Then
+            Dim addEmpStatus As Boolean
+            addEmpStatus = AddEmployeeTransction.AddEmployee(employeeDetails, employeeInformation, employeeService, emptrnsf)
+            If addEmpStatus Then
                 MyMessageBox.Show(Me, "Data Saved Successfully")
+                Dim RedirectedUrl = Request.Url.AbsoluteUri
+                myMsgBox.Show(Me, RedirectedUrl)
+            Else
+                MyMessageBox.Show(Me, "Data Not Saved Successfully")
             End If
             '  Errortb.Text = "Data Saved Successfully"
 
-            Dim x = Request.Url.AbsoluteUri
-            myMsgBox.Show(Me, x)
-
-
         Catch ex As Exception
             ' Errortb.Text = "Data Not Saved Successfully"
-            MyMessageBox.Show(Me, "Data Not Saved Successfully")
+
         End Try
 
     End Sub

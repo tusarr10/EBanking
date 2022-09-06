@@ -69,6 +69,7 @@
                                                         </dx:ASPxImage>
                                                        
                                                         <%--<img width="100px" src="../Resour/Images/generaluser.png" alt="Photo" />--%>
+
                                                     </center>
                                                 </div>
                                             </div>
@@ -171,7 +172,6 @@
                                                     </div>
                                                 </div>
 
-
                                             </div>
 
                                             <div class="row">
@@ -194,8 +194,6 @@
                     <hr />
                 </div>
             </div>
-
-
 
             <div class="card ">
                 <div class="card-body ">
@@ -525,11 +523,11 @@
                 </div>
             </div>
 
-            <div class="card-body ">
+           <%-- <div class="card-body ">
                 <div class="form-group  ">
                     <asp:TextBox CssClass="form-control" ID="Errortb" runat="server" placeholder="Type" ReadOnly="True"></asp:TextBox>
                 </div>
-            </div>
+            </div>--%>
         </div>
     </div>
 

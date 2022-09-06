@@ -1,133 +1,133 @@
 ﻿Public Class clsoffice
 
-    Private mCircle As String
-    Private mRO As String
-    Private mDO As String
-    Private mSDO As String
-    Private mHO As String
-    Private mSO As String
-    Private mBo As String
-    Private mOfficetype As String
-    Private mofficeId As String
-    Private mFacilityId As String
-    Private mProfitCenterId As String
-    Private mBoType As String
-    Private mRemarks As String
+    Private Circle As String                   'circle
+    Private Region As String
+    Private Division As String
+    Private SubDiv As String
+    Private Ho As String
+    Private SO As String
+    Private N_ame As String
+    Private Staff As String
+    Private officeId As String                 ' Primary Key   
+    Private FacilityId As String               'office code
+    Private ProfitCenter As String              '    profit centre
+    Private Status As String                   'status
+    Private Remark As String                  'remark
 
     Public Property MCircle1 As String
         Get
-            Return mCircle
+            Return Circle
         End Get
         Set(value As String)
-            mCircle = value
+            Circle = value
         End Set
     End Property
 
     Public Property MRO1 As String
         Get
-            Return mRO
+            Return Region
         End Get
         Set(value As String)
-            mRO = value
+            Region = value
         End Set
     End Property
 
     Public Property MDO1 As String
         Get
-            Return mDO
+            Return Division
         End Get
         Set(value As String)
-            mDO = value
+            Division = value
         End Set
     End Property
 
     Public Property MSDO1 As String
         Get
-            Return mSDO
+            Return SubDiv
         End Get
         Set(value As String)
-            mSDO = value
+            SubDiv = value
         End Set
     End Property
 
     Public Property MSO1 As String
         Get
-            Return mSO
+            Return SO
         End Get
         Set(value As String)
-            mSO = value
+            SO = value
         End Set
     End Property
 
     Public Property MBo1 As String
         Get
-            Return mBo
+            Return N_ame
         End Get
         Set(value As String)
-            mBo = value
+            N_ame = value
         End Set
     End Property
 
     Public Property MOfficetype1 As String
         Get
-            Return mOfficetype
+            Return Staff
         End Get
         Set(value As String)
-            mOfficetype = value
+            Staff = value
         End Set
     End Property
 
     Public Property MofficeId1 As String
         Get
-            Return mofficeId
+            Return officeId
         End Get
         Set(value As String)
-            mofficeId = value
+            officeId = value
         End Set
     End Property
 
     Public Property MFacilityId1 As String
         Get
-            Return mFacilityId
+            Return FacilityId
         End Get
         Set(value As String)
-            mFacilityId = value
+            FacilityId = value
         End Set
     End Property
 
     Public Property MProfitCenterId1 As String
         Get
-            Return mProfitCenterId
+            Return ProfitCenter
         End Get
         Set(value As String)
-            mProfitCenterId = value
+            ProfitCenter = value
         End Set
     End Property
 
     Public Property MBoType1 As String
         Get
-            Return mBoType
+            Return Status
         End Get
         Set(value As String)
-            mBoType = value
+            Status = value
         End Set
     End Property
 
     Public Property MRemarks1 As String
         Get
-            Return mRemarks
+            Return Remark
         End Get
         Set(value As String)
-            mRemarks = value
+            Remark = value
         End Set
     End Property
 
     Public Property MHO1 As String
         Get
-            Return mHO
+            Return Ho
         End Get
         Set(value As String)
-            mHO = value
+            Ho = value
         End Set
     End Property
 End Class
