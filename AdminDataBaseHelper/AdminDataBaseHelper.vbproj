@@ -67,18 +67,24 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MVC\AttchedOffice\clsEmpDetails.vb" />
-    <Compile Include="MVC\EmployeeIn\ClsEmplInfo.vb" />
-    <Compile Include="MVC\EmployeeTransfer\clsEmpTrnsf.vb" />
-    <Compile Include="MVC\EmpServices\EmpServices.vb" />
-    <Compile Include="MVC\Office\clsoffice.vb" />
-    <Compile Include="MVC\Office\Ioffice.vb" />
-    <Compile Include="MVC\Office\Repooffice.vb" />
-    <Compile Include="MVC\Office\ServiceOffice.vb" />
-    <Compile Include="MVC\Staff\ClassStaff.vb" />
-    <Compile Include="MVC\Staff\Istaff.vb" />
-    <Compile Include="MVC\Staff\RepoStaff.vb" />
-    <Compile Include="MVC\Staff\ServiceStaff.vb" />
+    <Compile Include="MVC\OfficeInfo\AccountList\clsNumberOfAccount.vb" />
+    <Compile Include="MVC\OfficeInfo\AccountList\INumberOfAccount.vb" />
+    <Compile Include="MVC\OfficeInfo\AccountList\RepoNumberOfAccount.vb" />
+    <Compile Include="MVC\EmpAdmin\AttchedOffice\clsEmpDetails.vb" />
+    <Compile Include="MVC\EmpAdmin\EmployeeIn\ClsEmplInfo.vb" />
+    <Compile Include="MVC\EmpAdmin\EmployeeTransfer\clsEmpTrnsf.vb" />
+    <Compile Include="MVC\EmpAdmin\EmpServices\EmpServices.vb" />
+    <Compile Include="MVC\OfficeInfo\location\ClsLocation.vb" />
+    <Compile Include="MVC\OfficeInfo\location\ILocation.vb" />
+    <Compile Include="MVC\OfficeInfo\location\RepoLocation.vb" />
+    <Compile Include="MVC\OfficeInfo\Office\clsoffice.vb" />
+    <Compile Include="MVC\OfficeInfo\Office\Ioffice.vb" />
+    <Compile Include="MVC\OfficeInfo\Office\Repooffice.vb" />
+    <Compile Include="MVC\OfficeInfo\Office\ServiceOffice.vb" />
+    <Compile Include="MVC\OfficeInfo\Staff\ClassStaff.vb" />
+    <Compile Include="MVC\OfficeInfo\Staff\Istaff.vb" />
+    <Compile Include="MVC\OfficeInfo\Staff\RepoStaff.vb" />
+    <Compile Include="MVC\OfficeInfo\Staff\ServiceStaff.vb" />
     <Compile Include="MVC\trnsemployee\AddEmpinterface.vb" />
     <Compile Include="MVC\trnsemployee\AddEmpRepo.vb" />
     <Compile Include="MVC\trnsemployee\AddEmpServices.vb" />
@@ -122,8 +128,6 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MVC\transctions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

@@ -36,7 +36,7 @@
                             <label>Employee Status</label>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <asp:TextBox CssClass="form-control mr-1" ID="tbEmployeeStatus" runat="server" placeholder="Employee Status" ReadOnly="True"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control mr-1" ID="tb_EmployeeStatus" runat="server" placeholder="Employee Status" ReadOnly="True"></asp:TextBox>
                                     <asp:LinkButton class="btn btn-success mr-1" ID="AccountStatusApproveBtn" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
                                     <asp:LinkButton class="btn btn-warning mr-1" ID="AccountStatusPendingBtn" runat="server"><i class="far fa-pause-circle"></i></asp:LinkButton>
                                     <asp:LinkButton class="btn btn-danger mr-1" ID="AccountStatusFreezBtn" runat="server"><i class="fas fa-times-circle"></i></asp:LinkButton>

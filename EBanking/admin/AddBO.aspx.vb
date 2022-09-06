@@ -19,4 +19,29 @@ Public Class AddBO
         GetDataFromInterface(BoCLass)
     End Sub
 
+
+    ''' <summary>
+    ''' Fill employee Deatils Division In AddBo Aspx
+    ''' </summary>
+    Private Sub availableEmployeeDetails()
+        'Retrive Data from (empDetails Table )
+    End Sub
+    ''' <summary>
+    ''' Fill Data In Available Servi details
+    ''' Check availablety Details In Data Base
+    ''' </summary>
+    Private Sub availableServiceDetails()
+        'If Employees has All Function  Then Choose Yes 
+        ' REFFER to availableEmployeeDetails()
+
+    End Sub
+    Private Sub OfficeAccountDetails()
+        'Get Data From 
+    End Sub
+
+
+
+
+
+
 End Class

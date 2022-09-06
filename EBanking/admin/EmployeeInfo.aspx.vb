@@ -37,7 +37,7 @@ Public Class EmployeeInfo
     End Sub
     Private Sub EnableInput()
         tb_employeeName.ReadOnly = False
-        tbEmployeeStatus.ReadOnly = False
+        tb_EmployeeStatus.ReadOnly = False
 
         tb_userid.ReadOnly = False
         cb_gender.Enabled = True
@@ -260,6 +260,7 @@ Public Class EmployeeInfo
         tb_userid.Text = employeeInformation.MUserId1
         tb_employeeId.Text = employeeInformation.MEmployeeId1
         tb_employeeName.Text = employeeInformation.MName1
+        tb_EmployeeStatus.Text = employeeDetails.MEmployeeStatus1
         tb_fathername.Text = employeeInformation.MFather1
         tb_DOB.Text = employeeInformation.MDOB1
         cb_gender.Text = employeeInformation.MGender1
@@ -296,7 +297,7 @@ Public Class EmployeeInfo
         cb_pli.Text = employeeDetails.MIsPLI1
         cb_cscid.Text = employeeDetails.MIsCSC1
 
-        tb_employeeId.Text = employeeService.memployeeid
+        ' tb_employeeId.Text = employeeService.memployeeid
         tb_uidai.Text = employeeService.muidaiid
         tb_pli.Text = employeeService.mpli
         tb_ippb.Text = employeeService.mippbid

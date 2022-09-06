@@ -41,13 +41,13 @@ Partial Public Class EmployeeInfo
     Protected WithEvents tb_employeeName As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''tbEmployeeStatus control.
+    '''tb_EmployeeStatus control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents tbEmployeeStatus As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tb_EmployeeStatus As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''AccountStatusApproveBtn control.
