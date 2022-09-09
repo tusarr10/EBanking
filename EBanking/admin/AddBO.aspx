@@ -20,7 +20,7 @@
                             <label>Office ID</label>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <asp:TextBox CssClass="form-control " ID="tb_employeeId" runat="server" placeholder="Office ID"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control " ID="tbofficeId" runat="server" placeholder="Office ID"></asp:TextBox>
                                     <asp:LinkButton class="btn btn-primary" ID="LinkButton4" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
                                 </div>
                             </div>
@@ -35,7 +35,7 @@
                             <label>Office Status</label>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <asp:TextBox CssClass="form-control mr-1" ID="tbEmployeeStatus" runat="server" placeholder="Office Status" ReadOnly="True"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control mr-1" ID="tb_officeStatus" runat="server" placeholder="Office Status" ReadOnly="True"></asp:TextBox>
                                     <asp:LinkButton class="btn btn-success mr-1" ID="AccountStatusApproveBtn" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>
                                     <asp:LinkButton class="btn btn-warning mr-1" ID="AccountStatusPendingBtn" runat="server"><i class="far fa-pause-circle"></i></asp:LinkButton>
                                     <asp:LinkButton class="btn btn-danger mr-1" ID="AccountStatusFreezBtn" runat="server"><i class="fas fa-times-circle"></i></asp:LinkButton>
@@ -83,20 +83,20 @@
                                                 <div class="col-md-3">
                                                     <label>Office ID</label>
                                                     <div class="input-group  ">
-                                                        <asp:TextBox CssClass="form-control" ID="tb_userid" runat="server" placeholder="Office ID" ReadOnly="true"></asp:TextBox>
+                                                        <asp:TextBox CssClass="form-control" ID="tb_officeId" runat="server" placeholder="Office ID" ReadOnly="true"></asp:TextBox>
                                                         <%--<asp:LinkButton class="btn btn-primary" ID="LinkButton5" runat="server"><i class="fas fa-check-circle"></i></asp:LinkButton>--%>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label>Number of staff</label>
                                                     <div class="form-group  ">
-                                                        <asp:TextBox CssClass="form-control" ID="tb_fathername" runat="server" placeholder="Number of Staff" ReadOnly="true"></asp:TextBox>
+                                                        <asp:TextBox CssClass="form-control" ID="tb_numberOfStaff" runat="server" placeholder="Number of Staff" ReadOnly="true"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label>Date Of Est.</label>
                                                     <div class="form-group  ">
-                                                        <asp:TextBox CssClass="form-control" ID="TextBox7" runat="server" placeholder="Date" TextMode="Date" ReadOnly="True"></asp:TextBox>
+                                                        <asp:TextBox CssClass="form-control" ID="tb_dateOfEstablishment" runat="server" placeholder="Date" TextMode="Date" ReadOnly="True"></asp:TextBox>
                                                     </div>
                                                 </div>
                                             </div>
@@ -114,7 +114,7 @@
                                                 <div class="col-md-2">
                                                     <label>Region</label>
                                                     <div class="form-group">
-                                                        <asp:DropDownList CssClass="form-control" ID="DropDownList2" runat="server" placeholder="Nomini" Enabled="False" AutoPostBack="true">
+                                                        <asp:DropDownList CssClass="form-control" ID="cb_Region" runat="server" placeholder="Nomini" Enabled="False" AutoPostBack="true">
                                                             <asp:ListItem Text="Chose .." Value="" />
                                                             <asp:ListItem Text="Sambalpur" Value="Sambalpur" />
                                                             <asp:ListItem Text="Bhubaneswar" Value="Bhubaneswar" />
@@ -124,7 +124,7 @@
                                                 <div class="col-md-2">
                                                     <label>Division</label>
                                                     <div class="form-group">
-                                                        <asp:DropDownList CssClass="form-control" ID="DropDownList6" runat="server" placeholder="Nomini" Enabled="False" AutoPostBack="true">
+                                                        <asp:DropDownList CssClass="form-control" ID="tb_Division" runat="server" placeholder="Nomini" Enabled="False" AutoPostBack="true">
                                                             <asp:ListItem Text="Chose .." Value="" />
                                                             <asp:ListItem Text="Rourkela" Value="Rourkela" />
                                                             <asp:ListItem Text="Delhi" Value="Delhi" />
@@ -134,7 +134,7 @@
                                                 <div class="col-md-2">
                                                     <label>Sub Division</label>
                                                     <div class="form-group">
-                                                        <asp:DropDownList CssClass="form-control" ID="DropDownList7" runat="server" placeholder="Nomini" Enabled="False" AutoPostBack="true">
+                                                        <asp:DropDownList CssClass="form-control" ID="tb_SubDivP" runat="server" placeholder="Nomini" Enabled="False" AutoPostBack="true">
                                                             <asp:ListItem Text="Chose .." Value="" />
                                                             <asp:ListItem Text="Bonaigarh" Value="Bonaigarh" />
                                                             <asp:ListItem Text="Bhubaneswar" Value="Bhubaneswar" />
@@ -144,7 +144,7 @@
                                                 <div class="col-md-2">
                                                     <label>Account Office</label>
                                                     <div class="form-group">
-                                                        <asp:DropDownList CssClass="form-control" ID="DropDownList8" runat="server" placeholder="Nomini" Enabled="False" AutoPostBack="true">
+                                                        <asp:DropDownList CssClass="form-control" ID="tb_Accountoffice" runat="server" placeholder="Nomini" Enabled="False" AutoPostBack="true">
                                                             <asp:ListItem Text="Chose .." Value="" />
                                                             <asp:ListItem Text="Bonaigarh" Value="Bonaigarh" />
                                                             <asp:ListItem Text="Bhubaneswar" Value="Bhubaneswar" />
@@ -156,19 +156,19 @@
                                                 <div class="col-md-3">
                                                     <label>Office Code</label>
                                                     <div class="form-group  ">
-                                                        <asp:TextBox CssClass="form-control" ID="Guardiantb" runat="server" placeholder="Office Code" ReadOnly="true"></asp:TextBox>
+                                                        <asp:TextBox CssClass="form-control" ID="tb_OfficeCode" runat="server" placeholder="Office Code" ReadOnly="true"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label>Office Code 2</label>
                                                     <div class="form-group  ">
-                                                        <asp:TextBox CssClass="form-control" ID="TextBox6" runat="server" placeholder="Office Code 2" ReadOnly="true"></asp:TextBox>
+                                                        <asp:TextBox CssClass="form-control" ID="tb_OfficeCode2" runat="server" placeholder="Office Code 2" ReadOnly="true"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label>Remarks</label>
                                                     <div class="form-group  ">
-                                                        <asp:TextBox CssClass="form-control" ID="TextBox3" runat="server" placeholder="Email Address" ReadOnly="true"></asp:TextBox>
+                                                        <asp:TextBox CssClass="form-control" ID="Tb_remarks" runat="server" placeholder="Email Address" ReadOnly="true"></asp:TextBox>
                                                     </div>
                                                 </div>
 
@@ -208,25 +208,25 @@
                                                 <div class="col-md-3">
                                                     <label>District</label>
                                                     <div class="form-group  ">
-                                                        <asp:TextBox CssClass="form-control" ID="TextBox10" runat="server" placeholder="Districts" ReadOnly="True"></asp:TextBox>
+                                                        <asp:TextBox CssClass="form-control" ID="tb_Districts" runat="server" placeholder="Districts" ReadOnly="True"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label>Subdivision</label>
                                                     <div class="form-group  ">
-                                                        <asp:TextBox CssClass="form-control" ID="TextBox11" runat="server" placeholder="SUb Div" ReadOnly="True"></asp:TextBox>
+                                                        <asp:TextBox CssClass="form-control" ID="tb_subDiv" runat="server" placeholder="SUb Div" ReadOnly="True"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label>Block</label>
                                                     <div class="form-group  ">
-                                                        <asp:TextBox CssClass="form-control" ID="Relationtb" runat="server" placeholder="Block" ReadOnly="True"></asp:TextBox>
+                                                        <asp:TextBox CssClass="form-control" ID="tb_Bolck" runat="server" placeholder="Block" ReadOnly="True"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label>Panchyat</label>
                                                     <div class="form-group  ">
-                                                        <asp:TextBox CssClass="form-control" ID="TextBox16" runat="server" placeholder="Panchyat" ReadOnly="True"></asp:TextBox>
+                                                        <asp:TextBox CssClass="form-control" ID="tb_panchyat" runat="server" placeholder="Panchyat" ReadOnly="True"></asp:TextBox>
                                                     </div>
                                                 </div>
                                             </div>
@@ -234,26 +234,26 @@
                                                 <div class="col-md-3">
                                                     <label>Number Of Village</label>
                                                     <div class="form-group  ">
-                                                        <asp:TextBox CssClass="form-control" ID="TextBox12" runat="server" placeholder="0" ReadOnly="True"></asp:TextBox>
+                                                        <asp:TextBox CssClass="form-control" ID="tb_NoOfVillege" runat="server" placeholder="0" ReadOnly="True"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label>Approx Population</label>
                                                     <div class="form-group  ">
-                                                        <asp:TextBox CssClass="form-control" ID="TextBox13" runat="server" placeholder="0" ReadOnly="True"></asp:TextBox>
+                                                        <asp:TextBox CssClass="form-control" ID="tb_approxPeople" runat="server" placeholder="0" ReadOnly="True"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label>lONG</label>
                                                     <div class="form-group  ">
-                                                        <asp:TextBox CssClass="form-control" ID="TextBox15" runat="server" placeholder="Current Post" ReadOnly="True"></asp:TextBox>
+                                                        <asp:TextBox CssClass="form-control" ID="tb_loong" runat="server" placeholder="Current Post" ReadOnly="True"></asp:TextBox>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-3">
                                                     <label>lat</label>
                                                     <div class="form-group  ">
-                                                        <asp:TextBox CssClass="form-control" ID="TextBox14" runat="server" placeholder="Remarks" ReadOnly="True"></asp:TextBox>
+                                                        <asp:TextBox CssClass="form-control" ID="tb_lat" runat="server" placeholder="Remarks" ReadOnly="True"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <dx:ASPxHyperLink ID="ASPxHyperLink1" runat="server" Text="Google Link" NavigateUrl="https://maps.google.com/?q=<lat>,<lng>">

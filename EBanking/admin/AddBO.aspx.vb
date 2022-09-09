@@ -8,9 +8,15 @@ Public Class AddBO
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
     End Sub
-    Private Sub GetDataFromInterface(boclass155 As clsoffice)
+    Private Sub GetDataFromInterface(boclass As clsoffice)
         '  boclass155 = New clsoffice
-        boclass155.MCircle1 = cb_Circle.Text.Trim
+        boclass.MCircle1 = cb_Circle.Text.Trim
+        boclass.MBo1 = tb_employeeName.Text
+        boclass.MofficeId1 = tb_employeeName.Text ' Office nmae as Office Id 
+        boclass.MBoType1 = tb_officeStatus.Text
+        boclass.staffNo = tb_numberOfStaff.Text
+
+
 
     End Sub
 

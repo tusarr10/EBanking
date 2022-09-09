@@ -5,7 +5,7 @@
         Throw New NotImplementedException()
     End Function
 
-    Public Function IsOfficeIdExist() As Boolean Implements INumberOfAccount.IsOfficeIdExist
+    Public Function IsOfficeIdExist(OfficeId As String) As Boolean Implements INumberOfAccount.IsOfficeIdExist
         Throw New NotImplementedException()
     End Function
 

@@ -68,7 +68,7 @@
         End Set
     End Property
 
-    Public Property MOfficetype1 As String
+    Public Property staffNo As String
         Get
             Return Staff
         End Get
