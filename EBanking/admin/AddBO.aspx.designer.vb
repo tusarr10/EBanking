@@ -167,6 +167,15 @@ Partial Public Class AddBO
     Protected WithEvents tb_Accountoffice As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''tb_headPost control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents tb_headPost As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''tb_OfficeCode control.
     '''</summary>
     '''<remarks>

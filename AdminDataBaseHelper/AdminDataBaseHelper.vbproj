@@ -88,10 +88,10 @@
     <Compile Include="MVC\trnsemployee\AddEmpinterface.vb" />
     <Compile Include="MVC\trnsemployee\AddEmpRepo.vb" />
     <Compile Include="MVC\trnsemployee\AddEmpServices.vb" />
-    <Compile Include="MVC\villege\clsvillege.vb" />
-    <Compile Include="MVC\villege\Ivillege.vb" />
-    <Compile Include="MVC\villege\RepoVillege.vb" />
-    <Compile Include="MVC\villege\ServiceVillege.vb" />
+    <Compile Include="MVC\OfficeInfo\villege\clsvillege.vb" />
+    <Compile Include="MVC\OfficeInfo\villege\Ivillege.vb" />
+    <Compile Include="MVC\OfficeInfo\villege\RepoVillege.vb" />
+    <Compile Include="MVC\OfficeInfo\villege\ServiceVillege.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

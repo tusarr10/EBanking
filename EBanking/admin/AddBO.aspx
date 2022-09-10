@@ -154,6 +154,12 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-3">
+                                                    <label>H O</label>
+                                                    <div class="form-group  ">
+                                                        <asp:TextBox CssClass="form-control" ID="tb_headPost" runat="server" placeholder="Office Code" ReadOnly="true"></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
                                                     <label>Office Code</label>
                                                     <div class="form-group  ">
                                                         <asp:TextBox CssClass="form-control" ID="tb_OfficeCode" runat="server" placeholder="Office Code" ReadOnly="true"></asp:TextBox>

@@ -15,10 +15,33 @@ Public Class AddBO
         boclass.MofficeId1 = tb_employeeName.Text ' Office nmae as Office Id 
         boclass.MBoType1 = tb_officeStatus.Text
         boclass.staffNo = tb_numberOfStaff.Text
+        boclass.MEstDate = tb_dateOfEstablishment.Text
+        boclass.MCircle1 = cb_Circle.Text
+        boclass.MRO1 = cb_Region.Text
+        boclass.MDO1 = tb_Division.Text
+        boclass.MSDO1 = tb_subDiv.Text
+        boclass.MHO1 = tb_headPost.Text
+        boclass.MSO1 = tb_Accountoffice.Text
+        boclass.MFacilityId1 = tb_OfficeCode.Text
+        boclass.MProfitCenterId1 = tb_OfficeCode2.Text
+
 
 
 
     End Sub
+    Public Sub GetDataFromOfficeLocation(data As ClsLocation)
+        data.Districts = tb_Districts.Text
+        data.SubDiv = tb_SubDivP.Text
+        data.Block = tb_Bolck.Text
+        data.Panchyat = tb_panchyat.Text
+        data.NoVillege = tb_NoOfVillege.Text
+        data.ApproxPopulation = tb_approxPeople.Text
+        data.Loong = tb_loong.Text
+        data.latt = tb_lat.Text
+        data.OfficeId = tb_employeeName.Text
+
+    End Sub
+
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         BoCLass = New clsoffice
@@ -29,6 +52,8 @@ Public Class AddBO
     ''' <summary>
     ''' Fill employee Deatils Division In AddBo Aspx
     ''' </summary>
+
+
     Private Sub availableEmployeeDetails()
         'Retrive Data from (empDetails Table )
     End Sub

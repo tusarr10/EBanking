@@ -13,7 +13,15 @@
     Private ProfitCenter As String              '    profit centre
     Private Status As String                   'status
     Private Remark As String                  'remark
-
+    Private EstDate As String
+    Public Property MEstDate() As String
+        Get
+            Return EstDate
+        End Get
+        Set(ByVal value As String)
+            EstDate = value
+        End Set
+    End Property
     Public Property MCircle1 As String
         Get
             Return Circle
