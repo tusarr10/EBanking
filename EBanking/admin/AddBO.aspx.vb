@@ -4,15 +4,22 @@ Public Class AddBO
     Inherits System.Web.UI.Page
 
     Private BoCLass As clsoffice
+    Private BoLocation As ClsLocation
+    Private allStaffs As ClassStaff
+    Private listOfVillege As clsvillege
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
     End Sub
+    ''' <summary>
+    ''' Getting Data From Interface and it contains All Information of Office Location 
+    ''' </summary>
+    ''' <param name="boclass">Enter Data Of BoClass as Office Object </param>
     Private Sub GetDataFromInterface(boclass As clsoffice)
         '  boclass155 = New clsoffice
         boclass.MCircle1 = cb_Circle.Text.Trim
-        boclass.MBo1 = tb_employeeName.Text
-        boclass.MofficeId1 = tb_employeeName.Text ' Office nmae as Office Id 
+        boclass.MBo1 = tb_employeeName.Text.Trim        'Office Name as BO
+        boclass.MofficeId1 = tb_employeeName.Text.Trim 'office nmae as Office Id 
         boclass.MBoType1 = tb_officeStatus.Text
         boclass.staffNo = tb_numberOfStaff.Text
         boclass.MEstDate = tb_dateOfEstablishment.Text
@@ -24,11 +31,11 @@ Public Class AddBO
         boclass.MSO1 = tb_Accountoffice.Text
         boclass.MFacilityId1 = tb_OfficeCode.Text
         boclass.MProfitCenterId1 = tb_OfficeCode2.Text
-
-
-
-
     End Sub
+    ''' <summary>
+    ''' It Contains Office Location And Geo Information 
+    ''' </summary>
+    ''' <param name="data">It contains Locationn Informations</param>
     Public Sub GetDataFromOfficeLocation(data As ClsLocation)
         data.Districts = tb_Districts.Text
         data.SubDiv = tb_SubDivP.Text
@@ -38,22 +45,51 @@ Public Class AddBO
         data.ApproxPopulation = tb_approxPeople.Text
         data.Loong = tb_loong.Text
         data.latt = tb_lat.Text
-        data.OfficeId = tb_employeeName.Text
+        data.OfficeId = tb_employeeName.Text.Trim
+
+    End Sub
+    ''' <summary>
+    ''' Insert BoId and Office Code as primary key
+    ''' </summary>
+    ''' <param name="data">Data as Class Of Available Staff </param>
+    Public Sub GetEmployeeDetails(data As ClassStaff)
+        data.MBoname = tb_employeeName.Text.Trim
+        data.MofficeId = tb_employeeName.Text.Trim
+    End Sub
+
+    ''' <summary>
+    ''' Data as Villege Class
+    ''' </summary>
+    ''' <param name="data">only office code </param>
+    Public Sub getAvailableVillegeDetails(data As clsvillege)
+        data.mofficecode = tb_employeeName.Text.Trim
+    End Sub
+
+    ''' <summary>
+    ''' Getting Data From Interface And Insert Into Data Base
+    ''' </summary>
+    Public Sub AddDataIntoDatabae()
+        BoCLass = New clsoffice
+        BoLocation = New ClsLocation
+        allStaffs = New ClassStaff
+        listOfVillege = New clsvillege
+
+        GetDataFromInterface(BoCLass)
+        GetDataFromOfficeLocation(BoLocation)
+        GetEmployeeDetails(allStaffs)
+        getAvailableVillegeDetails(listOfVillege)
+
 
     End Sub
 
-
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        BoCLass = New clsoffice
-        GetDataFromInterface(BoCLass)
+        AddDataIntoDatabae()
     End Sub
 
 
     ''' <summary>
     ''' Fill employee Deatils Division In AddBo Aspx
     ''' </summary>
-
-
     Private Sub availableEmployeeDetails()
         'Retrive Data from (empDetails Table )
     End Sub
