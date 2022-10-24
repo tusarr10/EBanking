@@ -59,9 +59,24 @@
       <HintPath>..\packages\Dapper.Mapper.2.0.0\lib\net451\Dapper.Mapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="DevExpress.Charts.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Dashboard.v21.2.Web.WebForms, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.Desktop.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxDiagram.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxGantt.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxGauges.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxHtmlEditor.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxPivotGrid.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.Bootstrap.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.Resources.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v21.2.Web, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v21.2.Web.WebForms, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
     <Reference Include="System" />
@@ -272,6 +287,19 @@
       <DependentUpon>rpliIndex.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="Official\Print\CustomerInformation.Designer.vb">
+      <DependentUpon>CustomerInformation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Print\CustomerInformation.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Official\Print\DallyAccountsPrint.aspx.designer.vb">
+      <DependentUpon>DallyAccountsPrint.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Print\DallyAccountsPrint.aspx.vb">
+      <DependentUpon>DallyAccountsPrint.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Official\Reports\DepositFormPrint.aspx.designer.vb">
       <DependentUpon>DepositFormPrint.aspx</DependentUpon>
     </Compile>
@@ -469,6 +497,9 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Official\Print\CustomerInformation.resx">
+      <DependentUpon>CustomerInformation.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\AddBO.aspx" />
@@ -632,6 +663,7 @@
     <Content Include="Official\Accounts\DallyAccounts.aspx" />
     <Content Include="Official\Operation\AllRpliIndex.aspx" />
     <Content Include="Official\Operation\rpliIndex.aspx" />
+    <Content Include="Official\Print\DallyAccountsPrint.aspx" />
     <Content Include="Official\Reports\DepositFormPrint.aspx" />
     <Content Include="Official\Reports\RpliIndexReport.aspx" />
     <Content Include="Official\Reports\AllrpliTranstion.aspx" />

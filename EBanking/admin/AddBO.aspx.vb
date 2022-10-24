@@ -32,6 +32,23 @@ Public Class AddBO
         boclass.MFacilityId1 = tb_OfficeCode.Text
         boclass.MProfitCenterId1 = tb_OfficeCode2.Text
     End Sub
+    Private Sub GetDataFromDatabase(boclass As clsoffice)
+        cb_Circle.Text = boclass.MCircle1
+        tb_employeeName.Text = boclass.MBo1
+        ' tb_employeeName.Text = boclass.MofficeId1
+        tb_officeStatus.Text = boclass.MBoType1
+        boclass.staffNo = tb_numberOfStaff.Text
+        boclass.MEstDate = tb_dateOfEstablishment.Text
+        boclass.MCircle1 = cb_Circle.Text
+        cb_Region.Text = boclass.MRO1
+        tb_Division.Text = boclass.MDO1
+        tb_subDiv.Text = boclass.MSDO1
+        tb_headPost.Text = boclass.MHO1
+        tb_Accountoffice.Text = boclass.MSO1
+        tb_OfficeCode.Text = boclass.MFacilityId1
+        tb_OfficeCode2.Text = boclass.MProfitCenterId1
+
+    End Sub
     ''' <summary>
     ''' It Contains Office Location And Geo Information 
     ''' </summary>
@@ -48,6 +65,18 @@ Public Class AddBO
         data.OfficeId = tb_employeeName.Text.Trim
 
     End Sub
+    Public Sub getDataFromOfficeLocationDataBase(data As ClsLocation)
+        tb_Districts.Text = data.Districts
+        tb_SubDivP.Text = data.SubDiv
+        data.Block = tb_Bolck.Text
+        data.Panchyat = tb_panchyat.Text
+        data.NoVillege = tb_NoOfVillege.Text
+        data.ApproxPopulation = tb_approxPeople.Text
+        data.Loong = tb_loong.Text
+        data.latt = tb_lat.Text
+        data.OfficeId = tb_employeeName.Text.Trim
+    End Sub
+
     ''' <summary>
     ''' Insert BoId and Office Code as primary key
     ''' </summary>

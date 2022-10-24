@@ -21,7 +21,10 @@
         <siteMapNode url="~/Official/Transction/rpliAllDeposit.aspx" description="" title="All Deposit" />
       </siteMapNode>
     </siteMapNode>
-    <siteMapNode url="" title="Accounts"  description="" />
+	  <siteMapNode url="" title="Accounts"  description="" >
+		  <siteMapNode url="~/Official/Accounts/DallyAccounts.aspx" description="" title="Daily Account" />
+		  <siteMapNode url="~/Official/Accounts/DallyAccountsPrint.aspx" description="" title="Prints" />
+	  </siteMapNode>
     <siteMapNode url="" title="Operation"  description="">
       <siteMapNode description="" title="CIF" url="">
         <siteMapNode description="" title="New" url="~/official/Operation/addcif.aspx" />

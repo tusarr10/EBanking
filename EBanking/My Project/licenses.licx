@@ -1,5 +1,1 @@
-DevExpress.Web.ASPxButton, DevExpress.Web.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
-DevExpress.Web.ASPxGridView, DevExpress.Web.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
-DevExpress.Web.ASPxHyperLink, DevExpress.Web.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
-DevExpress.Web.ASPxImage, DevExpress.Web.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
-DevExpress.Web.ASPxRoundPanel, DevExpress.Web.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a

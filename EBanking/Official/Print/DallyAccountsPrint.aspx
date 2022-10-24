@@ -1,5 +1,4 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="OpenAccountCheck.aspx.vb" Inherits="TWEB.OpenAccountCheck" %>
-
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="DallyAccountsPrint.aspx.vb" Inherits="TWEB.DallyAccountsPrint" %>
 <%@ Register Assembly="DevExpress.Web.Bootstrap.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
 
 <%@ Register Assembly="DevExpress.Web.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
@@ -7,21 +6,21 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head runat="server">
+     <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <link href="../Resour/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../Resour/css/customStyleSheet.css" rel="stylesheet" />
     <link href="../Resour/fontawesome/css/all.css" rel="stylesheet" />
     <link href="../Resour/datatable/css/jquery.dataTables.min.css" rel="stylesheet" />
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous"/>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
     <script src="../Resour/css/js/myjs.js" type="text/javascript"></script>
-    <title></title>
+    
     <script type="text/javascript">
         function PrintPanel() {
             var panel = document.getElementById("<%=pnl1.ClientID %>");
@@ -39,11 +38,13 @@
     </script>
 </head>
 <body>
-    <form id="form1" runat="server">
+   <form id="form1" runat="server">
         <asp:Panel ID="pnl1" runat="server">
             <br />
             <div class="row">
+                <h4 style="left:50%">Daily Account</h4>
                 <div class="col">
+
                     <hr />
                 </div>
             </div>

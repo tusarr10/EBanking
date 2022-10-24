@@ -165,6 +165,18 @@ Public Class DallyAccounts
     End Sub
 
     Protected Sub btnprint_Click(sender As Object, e As EventArgs) Handles btnprint.Click
+        '' go to generate report where we can generate report and print daily account 
+        Data = New dacClass
+        Try
+            Data = dataservice.SearchByDate(datetb.Text)
+            FillDataInView(Data)
+        Catch ex As Exception
+            MyMessageBox.Show(Me, "Data Not Available ")
+        End Try
+
+
+
+
 
     End Sub
 

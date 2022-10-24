@@ -59,6 +59,7 @@
       <HintPath>..\packages\Dapper.Mapper.2.0.0\lib\net451\Dapper.Mapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="DevExpress.Dashboard.v20.1.Web.WebForms, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.Bootstrap.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.Resources.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CSharp" />
@@ -87,6 +88,7 @@
     <Reference Include="DevExpress.RichEdit.v20.1.Export, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Web.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v20.1.Core.Desktop, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraScheduler.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Web.ASPxScheduler.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="System.Xml.Linq" />
@@ -128,6 +130,27 @@
     <Compile Include="Account\SignIn.aspx.vb">
       <DependentUpon>SignIn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\AddBO.aspx.designer.vb">
+      <DependentUpon>AddBO.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\AddBO.aspx.vb">
+      <DependentUpon>AddBO.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="admin\Admin.Master.designer.vb">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Admin.Master.vb">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\EmployeeInfo.aspx.designer.vb">
+      <DependentUpon>EmployeeInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\EmployeeInfo.aspx.vb">
+      <DependentUpon>EmployeeInfo.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Article.aspx.designer.vb">
       <DependentUpon>Article.aspx</DependentUpon>
@@ -247,6 +270,13 @@
     </Compile>
     <Compile Include="Official\Operation\rpliIndex.aspx.vb">
       <DependentUpon>rpliIndex.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Official\Reports\DepositFormPrint.aspx.designer.vb">
+      <DependentUpon>DepositFormPrint.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Official\Reports\DepositFormPrint.aspx.vb">
+      <DependentUpon>DepositFormPrint.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Official\Reports\RpliIndexReport.aspx.designer.vb">
@@ -441,6 +471,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin\AddBO.aspx" />
+    <Content Include="admin\EmployeeInfo.aspx" />
     <Content Include="App_Data\DefaultLeft.xml" />
     <Content Include="App_Data\Overview.html" />
     <Content Include="App_Data\OverviewContents.xml" />
@@ -549,6 +581,8 @@
     <Content Include="Developer\Data\1234343Photo190620211008.png" />
     <Content Include="Developer\Developer.Master" />
     <Content Include="App_Data\Developer.sitemap" />
+    <Content Include="admin\Admin.Master" />
+    <Content Include="App_Data\admin.sitemap" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -598,6 +632,7 @@
     <Content Include="Official\Accounts\DallyAccounts.aspx" />
     <Content Include="Official\Operation\AllRpliIndex.aspx" />
     <Content Include="Official\Operation\rpliIndex.aspx" />
+    <Content Include="Official\Reports\DepositFormPrint.aspx" />
     <Content Include="Official\Reports\RpliIndexReport.aspx" />
     <Content Include="Official\Reports\AllrpliTranstion.aspx" />
     <Content Include="UserControls\UploadedFilesContainer.ascx" />
@@ -649,8 +684,13 @@
   <ItemGroup>
     <Folder Include="Content\Images\Overview\" />
     <Folder Include="Content\Photo\" />
+    <Folder Include="Public\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AdminDataBaseHelper\AdminDataBaseHelper.vbproj">
+      <Project>{6ed8c090-65ff-4a05-8db1-43765aeb288b}</Project>
+      <Name>AdminDataBaseHelper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataBaseHelper\DataBaseHelper.vbproj">
       <Project>{8eee01e8-b238-4d93-9f7c-44d22e65918c}</Project>
       <Name>DataBaseHelper</Name>
@@ -677,6 +717,25 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>EBanking.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>EBanking.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
